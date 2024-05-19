@@ -1,0 +1,62 @@
+body,
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.nossaHistoria{
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+}
+
+.imgPessoasUnidas{
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+}
+    
+.imgPessoasUnidas img {
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+h1 {
+    display: flex;
+}
+
+.texto {
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.texto h1{
+    display: flex;
+    font-size: large;
+    color: rgb(41, 166, 104);
+}
+
+.texto h4{
+    display: flex;
+    font-size: small;
+    color: #000;
+}
+
+.texto h3{
+    display: flex;
+    font-size: medium;
+    color: rgb(41, 166, 104);
+}
