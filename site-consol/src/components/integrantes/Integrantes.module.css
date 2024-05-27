@@ -1,92 +1,106 @@
 body,
-html{
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+/* Style for the main wrapper of integrantes */
+.integrantes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 106px;
+    gap: 16px;
+    width: 100%;
+    background: #F3E7E2;
+    box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
     overflow: hidden;
 }
 
-.integrantes{
+/* Style for the title section */
+.titulo {
     display: flex;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    justify-content: center;
-    align-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 10px;
+    width: 285px;
+    height: 65px;
 }
 
-.cards{
+/* Container for all blocks */
+.blocos {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0;
+    gap: 24px;
+    width: 100%;
+    
+}
+
+/* Individual block styles */
+.bloco1, .bloco2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 32px;
+    width: 50%;
+}
+
+/* Card styles */
+.card {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #fff;
+    gap: 16px;
+    width: 100%;
+    max-width: 507px;
+    height: auto; /* Adjust height to content */
+    background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    margin: 20px;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-.cards img{
+/* Image styles within card */
+.card img {
+    border-radius: 50%;
     width: 100px;
     height: 100px;
-    border-radius: 50%;
-    margin-bottom: 20px;
     object-fit: cover;
+    margin-bottom: 20px;
 }
 
-.caio h2{
+/* Heading styles */
+.card h2 {
+    font-family: 'Noto Sans';
+    font-weight: 700;
+    font-size: 36px;
     color: #29A668;
-    margin: 0;
+    margin: 10px 0;
 }
 
-.caio h3{
-    color: #000;
-    margin: 5px 0;
+.card h3 {
+    font-family: 'Noto Sans';
+    font-weight: 500;
+    font-size: 24px;
+    color: #000000;
+    margin: 10px 0;
+    border-bottom: 4px solid red; 
+    padding-bottom: 5px; 
 }
 
-.bazante h2{
-    color: #29A668;
-    margin: 0;
-}
-
-.bazante h3{
-    color: #000;
-    margin: 5px 0;
-}
-
-.edu h2{
-    color: #29A668;
-    margin: 0;
-}
-
-.edu h3{
-    color: #000;
-    margin: 5px 0;
-}
-
-.schimas h2{
-    color: #29A668;
-    margin: 0;
-}
-
-.schimas h3{
-    color: #000;
-    margin: 5px 0;
-}
-
-.rafa h2{
-    color: #29A668;
-    margin: 0;
-}
-
-.rafa h3{
-    color: #000;
-    margin: 5px 0;
-}
-
-.luanna h2{
-    color: #29A668;
-    margin: 0;
-}
-
-.luanna h3{
-    color: #000;
-    margin: 5px 0;
+.card h5 {
+    font-family: 'Noto Sans';
+    font-weight: 300;
+    font-size: 16px;
+    color: #000000;
+    margin: 10px 0;
 }
