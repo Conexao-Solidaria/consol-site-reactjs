@@ -1,4 +1,4 @@
-import Site from './pages/Site';
+import Cadastro from './pages/cadastro/Cadastro'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ToastContainer } from 'react-toastify';
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route index element={<Site />} />
+      <Route index element={<Cadastro />} />
     </Routes>
     <ToastContainer></ToastContainer>
   </BrowserRouter>
