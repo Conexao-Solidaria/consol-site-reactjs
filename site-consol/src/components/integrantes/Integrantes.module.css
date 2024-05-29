@@ -3,16 +3,20 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: #F9F3F1;
 }
+
 /* Style for the main wrapper of integrantes */
 .integrantes {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 24px 106px;
+    /* padding: 24px 106px; */
     gap: 16px;
-    width: 100%;
+    margin-top: 30px;
+    margin-left: 74px;
+    width: 90%;
     background: #F3E7E2;
     box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -28,6 +32,9 @@ html {
     gap: 10px;
     width: 285px;
     height: 65px;
+    color: #29A668;
+    font-family: 'Noto Sans';
+
 }
 
 /* Container for all blocks */
@@ -39,7 +46,6 @@ html {
     padding: 0;
     gap: 24px;
     width: 100%;
-    
 }
 
 /* Individual block styles */
@@ -62,7 +68,7 @@ html {
     width: 100%;
     max-width: 507px;
     height: auto; /* Adjust height to content */
-    background: white;
+    background: #F9F3F1;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;

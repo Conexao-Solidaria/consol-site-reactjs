@@ -1,5 +1,5 @@
 import React from 'react';
-import imagemPessoasUnidas from "../../utils/assets/imagemPessoasUnidas.png";
+import imagemPessoasUnidas from "../../utils/assets/imgPessoasUnidas.png";
 import styles from './NossaHistoria.module.css';
 
 const NossaHistoria = () => {

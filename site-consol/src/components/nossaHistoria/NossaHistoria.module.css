@@ -1,53 +1,47 @@
-body,
-html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-/* NossaHistoria.module.css */
 .container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F3E7E2;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    justify-content: center; /* Alinha o card horizontalmente no centro */
+    align-items: center; /* Alinha o card verticalmente no centro */
+    height: 100vh; /* Define a altura do container como 100% da altura da janela */
+    padding: 20px; /* Padding para espaçamento */
+    box-sizing: border-box; /* Inclui o padding na largura e altura */
+    background-color: #F3E7E2; /* Fundo suave para contraste */
 }
 
-.card{
+.card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F3E7E2;
-    border-radius: 10px;
-    width: 100%;
-    overflow: hidden;
+    flex-direction: row; /* Alinha a imagem e o texto lado a lado */
+    border-radius: 10px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse os limites do card */
+    width: 100%; /* Largura total disponível */
+    height: 600px;
+    background-color: #F9F3F1; /* Fundo branco para o card */
+    margin: 55px;
+    box-shadow: -5px 5px 40px rgba(0, 0, 0, 0.25);
+
 }
 
 .image {
-    /* flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
+    flex: 1; /* Faz a imagem ocupar 1 parte do espaço */
 }
 
 .image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 100%; /* Garante que a imagem ocupe toda a largura do container da imagem */
+    height: 100%; /* Garante que a imagem ocupe toda a altura do container da imagem */
+    object-fit: cover; /* Cobre todo o espaço possível mantendo a proporção */
 }
 
 .text {
-    flex: 1;
-    padding: 20px;
-    color: #333;
-    background-color: white;
+    flex: 1; /* Faz o texto ocupar 1 parte do espaço */
+    padding: 20px; /* Padding interno para o texto */
+    display: flex;
+    flex-direction: column; /* Alinha os elementos do texto em coluna */
+    justify-content: center; /* Alinha o texto verticalmente no centro */
+    color: #333; /* Cor do texto */
 }
 
 .text h1 {
-    color: #2e7d32;
+    color: #29A668;
     margin-bottom: 20px;
 }
 
@@ -60,4 +54,3 @@ html {
     color: #333;
     text-decoration: none;
 }
-

@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Integrantes.module.css";
-import bazante from "../../utils/assets/bazante.png";
 import caio from "../../utils/assets/caio.jpg";
 import edu from "../../utils/assets/edu.png";
-import schimas from "../../utils/assets/rafa-s.jpg";
-import rafa from "../../utils/assets/rafa-r.jpeg";
+import schimas from "../../utils/assets/shimas.jpg";
+import rrr from "../../utils/assets/rrr.jpg";
 import luanna from "../../utils/assets/luanna.jpg";
+import bazante from "../../utils/assets/bazante.png";
 
 const Integrantes = () => {
     return (
@@ -44,7 +44,7 @@ const Integrantes = () => {
                             <h5>Olá, Sou Rafael Schneider, tenho 19 anos e estou atualmente no curso de Ciência da Computação. Nascido em São Bernardo do Campo sempre fui guiado em expressar minha criatividade utilizando a criação em geral, o que me levou para a área de tecnologia.</h5>
                         </div>
                         <div className={styles.card}>
-                            <img src={rafa} alt="Rafael Rocha" />
+                            <img src={rrr} alt="Rafael Rocha" />
                             <h2>Rafael Rocha</h2>
                             <h3>Insira um cargo aqui</h3>
                             <h5>Olá, Sou Rafael Schneider, tenho 19 anos e estou atualmente no curso de Ciência da Computação. Nascido em São Bernardo do Campo sempre fui guiado em expressar minha criatividade utilizando a criação em geral, o que me levou para a área de tecnologia.</h5>
