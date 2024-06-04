@@ -8,7 +8,7 @@ const Cadastro = () => {
         <>
             <div className={styles.divPrincipal}>
                 <div>
-                    <img src={imagem} alt="jonas" />
+                    <img src={imagem} alt="jonas"/>
                 </div>
                 <div className={styles.form}>
                     <div>
@@ -24,6 +24,7 @@ const Cadastro = () => {
                         <p>Confirmação de Senha:</p>
                         <input type="text" placeholder="Confirme sua senha" />
                         <button>Confirmar</button>
+                        
                     </div>
                 </div>
             </div>
