@@ -7,7 +7,7 @@ const Site = () => {
     return (
         <>
             <NossaHistoria />
-            <Integrantes />
+            <Integrantes integrantes={[{"xpto": "dauihduishduias"},{"xpto": "dauihduishduias"},{"xpto": "dauihduishduias"},]} />
         </>
     );
 };

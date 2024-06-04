@@ -42,12 +42,12 @@
 
 .text h1 {
     color: #29A668;
-    margin-bottom: 20px;
+    margin-bottom: -20px;
 }
 
 .text h2 {
     color: #2e7d32;
-    margin-bottom: 10px;
+    margin-bottom: -10px;
 }
 
 .text h3 {
