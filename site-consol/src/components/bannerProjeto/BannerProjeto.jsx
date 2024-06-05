@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './BannerProjeto.module.css';
+import img from "../../utils/assets/bannerProj.png";
 
-const BannerProjeto = ({ img }) => {
+const BannerProjeto = () => {
     return (
         <div id="5" className={styles["banner-projeto"]}>
 
@@ -27,12 +28,7 @@ const BannerProjeto = ({ img }) => {
                     <img src={img} alt='imagem de frutas' />
                     <input type="button" value="Quero Conhecer" />
                 </div>
-
-
             </div>
-
-
-
         </div>
     );
 };

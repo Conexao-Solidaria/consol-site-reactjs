@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from './NavBar.module.css';
+import styles from './Navbar.module.css';
+import logo from "../../utils/assets/logo.png";
 
-const NavBar = ({ logoInicio }) => {
+const NavBar = () => {
     return (
         <nav className={styles['header']}>
             <div className={styles["container-img"]}>
-                <img src={logoInicio} alt="logo" />
+                <img src={logo} alt="logo" />
             </div>
             <div className={styles["container-navegacao"]}>
                 <div className={styles["container-botoes"]}>

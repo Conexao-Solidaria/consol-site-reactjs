@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Footer.module.css';
+import logo from "../../utils/assets/logo.png";
 
-const Footer = ({ logoInicio }) => {
+const Footer = () => {
     return (
         <footer className={styles["footer"]}>
             <div className={styles["container"]}>
-                <img src={logoInicio} alt="logo" />
+                <img src={logo} alt="logo" />
 
                 <div className={styles["direita"]}>
                     <h6>
