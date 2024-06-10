@@ -9,7 +9,7 @@ const Login = () => {
         <>
             <div className={styles.containerBackground}>
                 <div className={styles.containerImage}>
-                    <img src={image} alt="" />
+                    <img src={image} alt="Mulher colocando um broche escrito 'voluntário'" />
                 </div>
 
                 <div className={styles.container}>
