@@ -7,10 +7,13 @@ import BannerProjeto from "../components/bannerProjeto/BannerProjeto"
 import Footer from "../components/footer/Footer"
 import banner from "../utils/assets/banner.png";
 import styles from './Site.module.css';
+import VLibras from "@djpfs/react-vlibras";
+
 
 const Site = () => {
     return (
         <>
+            <VLibras />
             <NavBar />
             <img src={banner} alt="Eduardo Seba" ></img>
             <NossaHistoria />
