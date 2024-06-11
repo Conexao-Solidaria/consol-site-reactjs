@@ -1,0 +1,6 @@
+@import url("../../utils/globals.css");
+
+@font-face {
+    font-family: Inter;
+    src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
