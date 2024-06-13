@@ -1,5 +1,6 @@
 import Cadastro from './pages/cadastro/Cadastro';
 import Login from './pages/login/Login';
+import Teste from './pages/teste/Teste';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -14,6 +15,7 @@ root.render(
     <Routes>
       <Route path='/' element={<Login />} />
       <Route path='/cadastro' element={<Cadastro />} />
+      <Route path='/teste' element={<Teste />} />
     </Routes>
     <ToastContainer></ToastContainer>
   </BrowserRouter>
