@@ -5,187 +5,198 @@
     src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Inter;
-    overflow: hidden;
-}
-
 .container {
     background-color: var(--global-blue);
-    position: fixed;
-    width: 7%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    width: 9vw;
     align-items: center;
-    padding: 1%;
-    transition: width 0.3s ease;
+    height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.container.expandedContainer {
-    width: 11%;
+.container .iconIgreja {
+    width: 40px;
 }
 
 .container img {
-    width: 45px;
+    width: 30px;
+}
+
+.container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 40px;
+    width: 50%;
+    text-decoration: none;
+
+}
+
+.container a:hover {
+    background-color: var(--global-blue-marked);
+}
+
+.container a p {
+    display: none;
 }
 
 .container .line {
     height: 2px;
-    width: 95%;
+    width: 60%;
     background-color: var(--global-light-grey);
-    border-radius: 3px;
-    margin: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
 }
 
-.containerIcon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 6vh;
-    width: 90%;
-    border-radius: 5px;
-    margin-bottom: 10%;
-    transition: all 0.3s ease;
-}
-
-.containerIcon:hover {
-    background-color: var(--global-light-grey-houver);
-}
-
-.containerIcon img {
-    width: 25px;
-}
-
-.containerIcon a {
-    display: none;
-    text-decoration: none;
-    color: var(--global-baby-blue);
-    font-size: 16px;
-    margin-left: 10px;
-}
-
-.containerIcon.open a {
-    display: inline-block;
-}
-
-.containerIcon.leftAlign {
-    justify-content: flex-start;
-    padding: 1px;
-}
-
-.containerNavbar {
+.containerBar {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: end;
-    width: 100%;
-    height: 50%;
+    align-items: center;
+    height: 55%;
+    width: 80%;
+}
+    
+.containerBar .bar {
+    height: 2px;
+    width: 30%;
+    background-color: var(--global-light-grey);
+    margin-bottom: 5px;
+
 }
 
-.containerNavbar .bar {
-    height: 3px;
-    width: 25px;
-    background-color: var(--global-baby-blue);
-    border-radius: 3px;
-    margin-top: 5px;
-}
-
-.navBar {
+.menuMobile{
     display: none;
 }
 
-.menuHamburguer {
-    display: none;
+/*            VISIVEL               */
+.expandedContainer {
+    width: 16vw;
+
+
+}
+
+.expandedContainer a {
+    width: 80%;
+    justify-content: normal;
+
+}
+
+.expandedContainer a p {
+    padding: 10px;
+    color: var(--global-white);
+}
+
+.expandedContainer .line {
+    width: 80%;
+}
+
+.expandedContainer .bar {
+    width: 20%;
 }
 
 @media screen and (max-width: 1020px) {
-    .container {
-        display: none;
+    .container .iconIgreja {
+        width: 35px;
     }
 
-    .menuHamburguer {
-        background-color: var(--global-blue-marked);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 7vw;
-        height: 9vh;
-        padding: 0.2%;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .menuHamburguer .bar {
-        height: 4px;
-        width: 70%;
-        background-color: var(--global-baby-blue);
-        border-radius: 3px;
-        margin: 1px;
-    }
-
-    .navBar {
-        display: none;
-        position: absolute;
-        left: 0;
-        width: 100%;
-        background-color: var(--global-blue-marked);
-        z-index: 1000;
-        top: 9vh;
-        font-size: 16px;
-    }
-
-    .navBar ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .navBar ul li {
-        margin: 10px 0;
-        border-bottom: 1px solid var(--global-blue-houver);
-    }
-
-    .navBar ul li a {
-        display: flex;
-        align-items: center;
-        text-align: center;
-        padding: 0.8%;
-        text-decoration: none;
-        color: var(--global-baby-blue);
-        align-items: center;
-    }
-
-    .navBar ul li a:hover {
-        background-color: var(--global-dark-blue);
-    }
-
-    .navBar ul li a img {
+    .container img {
         width: 20px;
-        padding: 5px;
     }
 
-    .navBar.open {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .menuHamburguer {
-        width: 12%;
-        height: 7vh;
-    }
-
-    .navBar {
-        top: 6vh;
+    .container a {
+        height: 35px;
+        width: 90%;
         font-size: 12px;
     }
 
-    .navBar ul li a img {
-        width: 15px;
-        padding: 5px;
+    .containerBar {
+        height: 55%;
+    
     }
+    
+}
+
+
+@media screen and (max-width: 750px) {
+    .container{
+        display: none;
+    }
+
+    .menuMobile{
+        display: block;
+    }
+    
+    .menuMobile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--global-blue);
+        width: 50px;
+        height: 7.9vh;
+    }
+
+    .menuMobile button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0px;
+        background-color: var(--global-blue);
+        width: 100%;
+        height: 100%;
+        
+    }
+
+    .menuMobile .bar{
+        height: 2px;
+        width: 90%;
+        background-color: var(--global-white);
+        margin-bottom: 5px;
+        
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 35px;
+        left: 5px;
+        width: 40%;
+        background-color: var(--global-blue);
+        padding: 3px;
+        border-radius: 5px;
+    
+    }
+    
+    .menu img {
+        width: 25px;
+    }
+    
+    .menu.open {
+        display: block;
+    }
+    
+    
+    .menu a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--global-back);
+        padding: 0px 5px;
+    
+    }
+    
+    .menu a img {
+        margin-right: 10px;
+    }
+    
+    
+    .menu a:hover {
+        background-color: var(--global-light-grey-houver);
+    }
+
+
 }

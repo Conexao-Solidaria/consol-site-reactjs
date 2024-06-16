@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState } from "react";
 import styles from "./NavBar.module.css";
 import iconIgreja from "../../utils/assets/icon_igreja.png";
@@ -7,61 +8,58 @@ import iconDoacoes from "../../utils/assets/icon_doacoes.png";
 import iconPerfil from "../../utils/assets/icon_perfil.png";
 
 const NavBar = () => {
-    const [showLinks, setShowLinks] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
 
-    const toggleLinks = () => {
-        setShowLinks(!showLinks);
+    const [showText, setShowText] = useState(false);
+
+    const toggleText = () => {
+        setShowText(!showText);
     };
+
+    const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
-    const menuItems = [
-        { img: iconHome, text: "Início", link: "/" },
-        { img: iconHistorico, text: "Histórico", link: "/historico" },
-        { img: iconDoacoes, text: "Doações", link: "/doacoes" },
-        { img: iconPerfil, text: "Donatário", link: "/donatario" }
-    ];
-
+    
     return (
         <>
-            <div className={`${styles.container} ${showLinks ? styles.expandedContainer : ''}`}>
-                <img src={iconIgreja} alt="Ícone Home" />
+            <div className={`${styles.container} ${showText ? styles.expandedContainer : ''}`}>
+                <img src={iconIgreja} className={styles.iconIgreja} alt='Icone de uma igreja' />
+
                 <div className={styles.line}></div>
 
-                {menuItems.map((item, index) => (
-                    <div key={index} className={`${styles.containerIcon} ${showLinks ? `${styles.open} ${styles.leftAlign}` : ''}`}>
-                        <img src={item.img} alt={`Ícone ${item.text}`} />
-                        <a href={item.link} style={{ display: showLinks ? 'block' : 'none' }}>{item.text}</a>
-                    </div>
-                ))}
+                <a href='#'> <img src={iconHome} alt='Icone de uma casa' />       <p style={{ display: showText ? 'block' : 'none' }}> Início    </p> </a>
+                <a href='#'> <img src={iconHistorico} alt='Icone de histórico' /> <p style={{ display: showText ? 'block' : 'none' }}> Histórico </p> </a>
+                <a href='#'> <img src={iconDoacoes} alt='Icone de doações' />     <p style={{ display: showText ? 'block' : 'none' }}> Doações   </p> </a>
+                <a href='#'> <img src={iconPerfil} alt='Icone de perfil' />       <p style={{ display: showText ? 'block' : 'none' }}> Donatários</p> </a>
 
-                <div className={styles.containerNavbar} onClick={toggleLinks}>
+                <div className={styles.containerBar} onClick={toggleText}>
                     <div className={styles.bar}></div>
                     <div className={styles.bar}></div>
                     <div className={styles.bar}></div>
                 </div>
+
             </div>
 
-            <nav className={`${styles.navBar} ${isOpen ? styles.open : ''}`}>
-                <ul>
-                    {menuItems.map((item, index) => (
-                        <li key={index}>
-                            <a href={item.link}>
-                                <img src={item.img} alt={`Ícone ${item.text}`} /> {item.text}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+            <div className={styles.menuMobile}>
 
-            <div className={styles.menuHamburguer} onClick={toggleMenu}>
-                <div className={styles.bar}></div>
-                <div className={styles.bar}></div>
-                <div className={styles.bar}></div>
+                <button onClick={toggleMenu}>
+                    <div className={styles.containerBar} onClick={toggleText}>
+                        <div className={styles.bar}></div>
+                        <div className={styles.bar}></div>
+                        <div className={styles.bar}></div>
+                    </div>
+                </button>
+
+                <nav className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
+                    <a href='#'> <img src={iconHome} alt='Icone de uma casa' />       <p> Início    </p> </a>
+                    <a href='#'> <img src={iconHistorico} alt='Icone de histórico' /> <p> Histórico </p> </a>
+                    <a href='#'> <img src={iconDoacoes} alt='Icone de doações' />     <p> Doações   </p> </a>
+                    <a href='#'> <img src={iconPerfil} alt='Icone de perfil' />       <p> Donatários</p> </a>
+                </nav>
+
             </div>
+
         </>
     );
 };

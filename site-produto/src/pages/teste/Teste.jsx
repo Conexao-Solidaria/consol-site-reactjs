@@ -1,12 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/navabar/NavBar";
+import Head from "../../components/head/Head";
+import style from "./stylesTeste.module.css";
 
 const Teste = () => {
     return (
         <>
-         <NavBar></NavBar>
+            <div className={style.containerComponetes}>
+                <NavBar />
+                <div className={style.container}>
+                    <Head />
+                </div>
+            </div>
+
         </>
+
     );
 };
 export default Teste;
