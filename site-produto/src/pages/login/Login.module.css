@@ -12,6 +12,8 @@ body {
     height: 100%;
     width: 100%;
     font-family: Inter;
+    overflow: hidden;
+
 }
 
 .containerBackground {
@@ -20,15 +22,20 @@ body {
     background-color: var(--global-baby-blue);
     width: 100vw;
     height: 100vh;
-    
+    font-size: 16px;
+
 }
 
-.containerImage{
+.containerImage {
     width: 41.5vw;
 }
 
+.containerImage img {
+    width: 100%;
+    height: 100%;
+}
 
-.container{
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,7 +60,6 @@ body {
     margin-top: 0%;
 }
 
-
 .containerForm input {
     margin-bottom: 5%;
     border-radius: 5px;
@@ -77,11 +83,9 @@ body {
     border-radius: 10px;
     border: none;
     padding: 6px;
-
-    
 }
 
-.containerButton button::houver{
+.containerButton button::hover {
     background-color: var(--global-blue-houver);
 }
 
@@ -90,7 +94,7 @@ body {
     color: var(--global-global-dark-blue);
     margin-top: 5%;
     font-size: 12px;
-    
+
 
 }
 
@@ -99,42 +103,21 @@ body {
 }
 
 
-
-@media screen and (max-width: 1024px) {
-    
-    .containerImage{
-        width: 50%;
-        height: 100%;
-    }
-
-    .containerImage img{
-        width: 100%;
-    }
-
-    .containerForm{
-        width: 80%;
-        height: 30%;
-        padding: 5%;
-    }
-
-    .containerForm a{
-        font-size: 10px;
-    }
-}
-
 @media screen and (max-width: 750px) {
     .containerBackground {
-        position: relative;    
+        position: relative;
         align-items: center;
         justify-content: center;
         background-color: #0000;
+        font-size: 14px;
     }
 
+    .container {
+        width: 80%;
+    }
 
     .containerImage {
         position: absolute;
-        top: 0;
-        left: 0;
         width: 100vw;
         height: 100%;
         filter: blur(4px);
@@ -148,19 +131,25 @@ body {
 
     .containerForm {
         background-color: var(--global-baby-blue);
-        width: 70%;
-        height: 25vh;
+        width: 75%;
+        height: 40vh;
         max-width: 400px;
         padding: 8%;
         border-radius: 10px;
         z-index: 2;
     }
 
-    .containerButton{
+    .containerButton {
         height: 20%;
         padding: 2%;
     }
-    
+
+    .containerButton button {
+        width: 70%;
+        height: 60%;
+        padding: 2%;
+    }
+
     .containerButton a {
         font-size: 10px;
         align-items: center;

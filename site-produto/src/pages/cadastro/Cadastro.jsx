@@ -6,25 +6,27 @@ import imagem from "../../utils/assets/cadastro_image.jpg";
 const Cadastro = () => {
     return (
         <>
-            <div className={styles.divPrincipal}>
-                <div>
-                    <img src={imagem} alt="jonas"/>
+            <div className={styles.containerBackground}>
+                <div className={styles.containerImage}>
+                    <img src={imagem} alt="Mulher colocando um broche de voluntário"></img>
                 </div>
-                <div className={styles.form}>
-                    <div>
+                <div className={styles.container}>
+                    <div className={styles.containerForm}>
                         <h3>Cadastro</h3>
                         <p>Nome:</p>
-                        <input type="text" placeholder="Nome Completo"/>
-                        <p>RG:</p>
-                        <input type="text" placeholder="XX.XXX.XXX-XX"/>
+                        <input type="text" placeholder="Nome Completo" />
+                        <p>Email:</p>
+                        <input type="text" placeholder="you@example.com" />
                         <p>Data de Nascimento:</p>
-                        <input type="text" placeholder="DD/MM/AAAA"/>
+                        <input type="text" placeholder="DD/MM/AAAA" />
                         <p>Senha:</p>
-                        <input type="text" placeholder="Senha"/>
+                        <input type="password" placeholder="Senha" />
                         <p>Confirmação de Senha:</p>
-                        <input type="text" placeholder="Confirme sua senha" />
-                        <button>Confirmar</button>
-                        
+                        <input type="password" placeholder="Confirme sua senha" />
+                        <div className={styles.containerButton}>
+                            <button> Cadastrar </button>
+                            <a href="/"> Já tem conta? Realize o Login. </a>
+                        </div>
                     </div>
                 </div>
             </div>

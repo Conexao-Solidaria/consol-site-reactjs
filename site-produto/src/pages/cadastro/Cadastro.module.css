@@ -1,70 +1,160 @@
+@import url("../../utils/globals.css");
+
 @font-face {
     font-family: Inter;
     src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
-body{
-    margin: 0;
+html,body {
+    margin: 0%;
+    padding: 0%;
+    font-family: Inter;
     overflow: hidden;
+    
 }
 
-.divPrincipal{
-    width: 100vw;
+.containerBackground {
     display: flex;
     flex-direction: row;
+    background-color: var(--global-baby-blue);
+    width: 100%;
+    height: 100vh;
+    font-size: 16px;
+    
 }
 
-img{
-    height: 100vh;
+.containerImage{
+    width: 41.5vw;
 }
 
-.form{
-    height: 100vh;
-    width: 90%;
+.containerImage img{
+    width: 100%;
+    height: 100%;
+}
+
+.container{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #DEE8EC;
+    width: 55%;
+
 }
 
-.form div{
-    width: 40vw;
-    height: 70vh;
-    background-color: #FFFFFF;
-    box-shadow: 0.5vb 0.5vb 0.5vb rgba(0, 0, 0, 0.575);
-    border-radius: 1vh;
+.containerForm {
+    background-color: var(--global-white);
+    border-radius: 10px;
+    padding: 24px;
+    width: 55%;
+
+}
+
+.containerForm h3 {
+    margin-top: 0;
+    margin-bottom: 5%;
+}
+
+.containerForm p {
+    margin-bottom: 2%;
+    margin-top: 0%;
+}
+
+
+.containerForm input {
+    margin-bottom: 5%;
+    border-radius: 5px;
+    padding: 5px;
+    height: 15%;
+    border: 1px var(--global-light-grey) solid;
+    width: 100%;
+}
+
+.containerButton {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.form input{
-    width: 80%;
-    border: solid #CCCCCC 0.1vb;
-    border-radius: 1vh;
-    margin-left: 1vw;
-    height: 3vh;
+.containerButton button {
+    background-color: var(--global-blue);
+    width: 60%;
+    border-radius: 10px;
+    border: none;
+    padding: 3%;
+
 }
 
-.form p{
-    margin-left: 1vw;
-    font-family: Inter;
-    font-size: 2vh;
+.containerButton button::hover{
+    background-color: var(--global-blue-houver);
 }
 
-.form h3{
-    font-family: Inter;
-    margin-left: 1vw;
-    font-size: 3vh;
+.containerButton a {
+    text-decoration: none;
+    color: var(--global-global-dark-blue);
+    margin-top: 5%;
+    font-size: 12px;
+    
+
 }
 
-.form button{
-    width: 10vw;
-    height: 5vh;
-    margin-top: 2vh;
-    margin-left: 23.5vw;
-    color: white;
-    background-color: #6C9BD9;
-    border: 0;
-    border-radius: 1vh;
-    font-size: 2vh;
+.containerButton a::before {
+    color: var(--global-blue-houver);
+}
+
+@media screen and (max-width: 750px) {
+    .containerBackground {
+        position: relative;    
+        align-items: center;
+        justify-content: center;
+        background-color: #0000;
+        font-size: 12px;
+       
+    }
+
+    .container{
+        width: 80%;
+    }
+
+    .containerImage {
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        filter: blur(4px);
+        z-index: -100;
+    }
+
+    .containerImage img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .containerForm {
+        background-color: var(--global-baby-blue);
+        width: 100%;
+        height: 80vh;
+        max-width: 400px;
+        padding: 10%;
+        border-radius: 10px;
+        z-index: 2;
+    }
+
+    .containerForm input{
+        height: 5%;
+    }
+
+    .containerButton{
+        height: 10%;
+        padding: 2%;
+    }
+
+    .containerButton button{
+        width: 70%;
+        height: 60%;
+        padding: 2%;
+    }
+    
+    .containerButton a {
+        align-items: center;
+    }
+
 }
