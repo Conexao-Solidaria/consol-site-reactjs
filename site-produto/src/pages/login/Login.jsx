@@ -1,9 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import image from "../../utils/assets/login_image.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate();
+    const email = useState("");
+    const senha = useState("");
+    const entrar = () => {
+    }
+
+
+    const navigateCadastro = () => {
+        navigate("/cadastro");
+    }
     return (
         <>
             <div className={styles.containerBackground}>
@@ -19,8 +29,8 @@ const Login = () => {
                         <p>Senha:</p>
                         <input type="password" placeholder="********" />
                         <div className={styles.containerButton}>
-                            <button> Entrar </button>
-                            <a href="/cadastro"> Não tem conta? Cadastre-se </a>
+                            <button onClick={entrar}> Entrar </button>
+                            <a onClick={navigateCadastro}>Não tem conta? Cadastre-se </a>
                         </div>
                     </div>
                 </div>
