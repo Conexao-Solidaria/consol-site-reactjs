@@ -8,12 +8,14 @@ import api from "../../api";
 
 function Cadastrar() {
   const navigate = useNavigate();
-  const [nome, setNome] = useState("");
+  const [nomeUsuario, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [dataNasc, setDataNasc] = useState("");
+  const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmSenha, setConfirmSenha] = useState("");
   const [error, setError] = useState("");
+  const fkInstituicao = 1;
+  const coordenador = false;
 
   const handleSave = async (event) => {
     event.preventDefault();
@@ -24,10 +26,12 @@ function Cadastrar() {
 
     try {
       const response = await api.post('/cadastro', {
-        nome,
+        nomeUsuario,
         email,
-        dataNasc,
+        cpf,
         senha,
+        fkInstituicao,
+        coordenador
       });
 
       toast.success("Novo usuário cadastrado com sucesso!");
@@ -51,7 +55,7 @@ function Cadastrar() {
             <input
               type="text"
               placeholder="Nome Completo"
-              value={nome}
+              value={nomeUsuario}
               onChange={(e) => setNome(e.target.value)}
               required
             />
@@ -65,9 +69,9 @@ function Cadastrar() {
             />
             <p>Data de Nascimento:</p>
             <input
-              type="date"
-              value={dataNasc}
-              onChange={(e) => setDataNasc(e.target.value)}
+              type="text"
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
               required
             />
             <p>Senha:</p>
