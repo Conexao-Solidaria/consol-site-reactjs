@@ -1,66 +1,65 @@
-import React, { useEffect, useState } from "react";
+// src/components/Login/Login.js
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import image from "../../utils/assets/login_image.jpg";
-import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import api from "../../api";
 
-function Login = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const entrar = () => {
+function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await api.post('/login', { email, senha });
+      toast.success("Login bem-sucedido!");
+      navigate('/home');
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Erro ao fazer login");
+      setError(error.response?.data?.message || "Erro ao fazer login");
     }
+  };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-    
-        try {
-          const response = await fetch('api', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, senha }),
-          });
-    
-          const data = await response.json();
-    
-          if (response.ok) {
-            console.log('Login bem-sucedido:', data);
-          } else {
-            setError(data.message || 'Erro ao fazer login');
-          }
-        } catch (error) {
-          setError('Erro ao fazer login');
-        }
-      };
-    
-
-    const navigateCadastro = () => {
-        navigate("/cadastro");
-    }
-    return (
-        <>
-            <div className={styles.containerBackground}>
-                <div className={styles.containerImage}>
-                    <img src={image} alt="Mulher colocando um broche escrito 'voluntário'" />
-                </div>
-
-                <div className={styles.container}>
-                    <div className={styles.containerForm}>
-                        <h3>Login</h3>
-                        <p>Email:</p>
-                        <input type="text" placeholder="you@example.com" />
-                        <p>Senha:</p>
-                        <input type="password" placeholder="********" />
-                        <div className={styles.containerButton}>
-                            <button onClick={entrar}> Entrar </button>
-                            <a onClick={navigateCadastro}>Não tem conta? Cadastre-se </a>
-                        </div>
-                    </div>
-                </div>
-
+  return (
+    <div className={styles.containerBackground}>
+      <div className={styles.containerImage}>
+        <img src={image} alt="Mulher colocando um broche escrito 'voluntário'" />
+      </div>
+      <div className={styles.container}>
+        <div className={styles.containerForm}>
+          <h3>Login</h3>
+          <form onSubmit={handleSubmit}>
+            <p>Email:</p>
+            <input
+              type="text"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <p>Senha:</p>
+            <input
+              type="password"
+              placeholder="********"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+            />
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <div className={styles.containerButton}>
+              <button type="submit">Entrar</button>
+              <a href="/cadastro">Não tem conta? Cadastre-se</a>
             </div>
-        </>
-    );
-};
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default Login;
