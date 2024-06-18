@@ -89,7 +89,7 @@ function Cadastrar() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className={styles.containerButton}>
               <button type="submit">Cadastrar</button>
-              <a href="/login">Já tem conta? Realize o Login.</a>
+              <a href="/">Já tem conta? Realize o Login.</a>
             </div>
           </form>
         </div>
