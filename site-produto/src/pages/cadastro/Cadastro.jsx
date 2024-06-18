@@ -23,7 +23,7 @@ function Cadastrar() {
     }
 
     try {
-      const response = await api.post('/cadastro', {
+      const response = await api.post('usuario/cadastro', {
         nome,
         email,
         dataNasc,
