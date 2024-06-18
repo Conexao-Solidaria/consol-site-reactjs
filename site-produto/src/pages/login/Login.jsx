@@ -16,7 +16,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await api.post('/login', { email, senha });
+      const response = await api.post('usuarios/login', { email, senha });
       toast.success("Login bem-sucedido!");
       navigate('/home');
     } catch (error) {

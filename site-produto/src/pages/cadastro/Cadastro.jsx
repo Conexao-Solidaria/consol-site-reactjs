@@ -25,7 +25,7 @@ function Cadastrar() {
     }
 
     try {
-      const response = await api.post('/cadastro', {
+      const response = await api.post('usuarios/cadastro', {
         nomeUsuario,
         email,
         cpf,
@@ -35,7 +35,7 @@ function Cadastrar() {
       });
 
       toast.success("Novo usuário cadastrado com sucesso!");
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       toast.error("Ocorreu um erro ao realizar o cadastro");
       setError(error.response?.data?.message || "Erro ao cadastrar");
@@ -67,7 +67,7 @@ function Cadastrar() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <p>Data de Nascimento:</p>
+            <p>CPF:</p>
             <input
               type="text"
               value={cpf}
