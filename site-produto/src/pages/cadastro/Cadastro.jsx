@@ -10,7 +10,7 @@ function Cadastrar() {
   const navigate = useNavigate();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [dataNasc, setDataNasc] = useState("");
+  const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmSenha, setConfirmSenha] = useState("");
   const [error, setError] = useState("");
@@ -23,10 +23,10 @@ function Cadastrar() {
     }
 
     try {
-      const response = await api.post('/cadastro', {
+      const response = await api.post('/usuarios/cadastro', {
         nome,
         email,
-        dataNasc,
+        cpf,
         senha,
       });
 
@@ -63,11 +63,12 @@ function Cadastrar() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <p>Data de Nascimento:</p>
+            <p>CPF:</p>
             <input
-              type="date"
-              value={dataNasc}
-              onChange={(e) => setDataNasc(e.target.value)}
+              type="text"
+              placeholder="CPF"
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
               required
             />
             <p>Senha:</p>
@@ -89,7 +90,7 @@ function Cadastrar() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className={styles.containerButton}>
               <button type="submit">Cadastrar</button>
-              <a href="/login">Já tem conta? Realize o Login.</a>
+              <a href="/">Já tem conta? Realize o Login.</a>
             </div>
           </form>
         </div>
