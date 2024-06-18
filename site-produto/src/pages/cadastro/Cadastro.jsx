@@ -1,9 +1,48 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Cadastro.module.css";
 import imagem from "../../utils/assets/cadastro_image.jpg";
+import { toast } from "react-toastify";
 
-const Cadastro = () => {
+function Cadastrar() {
+    const navigate = useNavigate();
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [dataNasc, setDataNasc] = useState("");
+    const [senha, setSenha] = useState("");
+    const [confirmSenha, setConfirmSenha] = useState("");
+
+    const handleSave = () => {
+        const usuarioAdicionado = {
+            nome,
+            email,
+            dataNasc,
+            senha,
+            confirmSenha
+        };
+// POST COMENTADO PARA TESTE, NECESSITA DE CHAMAR A API!!!!!!
+        // api.post(``,{
+        //     nome,
+        //     email,
+        //     dataNasc,
+        //     senha,
+        //     confirmSenha
+        // }).then(() => {
+        //     toast.sucess("Novo usuário cadastrado com sucesso!");
+        // }).catch(() => {
+        //     toast.error("Ocorreu um erro ao realizar o cadastro")
+        // })
+    };
+
+    const handleInputChange = (event, setStateFunction) => {
+        setStateFunction(event.target.value);
+    }
+    const handleBack = () => {
+        navigate("/login")
+    }
+
+
+
     return (
         <>
             <div className={styles.containerBackground}>
@@ -32,5 +71,5 @@ const Cadastro = () => {
             </div>
         </>
     );
-};
-export default Cadastro;
+}
+export default Cadastrar;

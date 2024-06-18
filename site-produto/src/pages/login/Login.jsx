@@ -3,13 +3,37 @@ import styles from "./Login.module.css";
 import image from "../../utils/assets/login_image.jpg";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+function Login = () => {
     const navigate = useNavigate();
-    const email = useState("");
-    const senha = useState("");
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
     const entrar = () => {
     }
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+    
+        try {
+          const response = await fetch('api', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, senha }),
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+            console.log('Login bem-sucedido:', data);
+          } else {
+            setError(data.message || 'Erro ao fazer login');
+          }
+        } catch (error) {
+          setError('Erro ao fazer login');
+        }
+      };
+    
 
     const navigateCadastro = () => {
         navigate("/cadastro");
