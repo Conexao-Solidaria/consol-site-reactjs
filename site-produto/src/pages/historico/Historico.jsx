@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Historico.module.css";
-import NavBar from "../../components/navBar/NavBar";
+import NavBar from "../../components/sideBar/sideBar";
 
 
 const Historico = () => {
