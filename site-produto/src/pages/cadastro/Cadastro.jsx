@@ -8,12 +8,14 @@ import api from "../../api";
 
 function Cadastrar() {
   const navigate = useNavigate();
-  const [nome, setNome] = useState("");
+  const [nomeUsuario, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmSenha, setConfirmSenha] = useState("");
   const [error, setError] = useState("");
+  const fkInstituicao = 1;
+  const coordenador = false;
 
   const handleSave = async (event) => {
     event.preventDefault();
@@ -28,10 +30,12 @@ function Cadastrar() {
         email,
         cpf,
         senha,
+        fkInstituicao,
+        coordenador
       });
 
       toast.success("Novo usuário cadastrado com sucesso!");
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       toast.error("Ocorreu um erro ao realizar o cadastro");
       setError(error.response?.data?.message || "Erro ao cadastrar");
@@ -51,7 +55,7 @@ function Cadastrar() {
             <input
               type="text"
               placeholder="Nome Completo"
-              value={nome}
+              value={nomeUsuario}
               onChange={(e) => setNome(e.target.value)}
               required
             />
