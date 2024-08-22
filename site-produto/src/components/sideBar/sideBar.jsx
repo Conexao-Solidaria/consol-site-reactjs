@@ -7,6 +7,7 @@ import iconHistorico from "../../utils/assets/icon_historico.png";
 import iconDoacoes from "../../utils/assets/icon_doacoes.png";
 import iconPerfil from "../../utils/assets/icon_perfil.png";
 
+
 const NavBar = () => {
 
     const [showText, setShowText] = useState(false);

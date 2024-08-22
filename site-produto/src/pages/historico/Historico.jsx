@@ -1,12 +1,17 @@
-import React from 'react';
-import NavBar from "../../components/navabar/NavBar";
-import Head from "../../components/head/Head";
-import style from "./Historico.module.css"
+import React, { useState } from "react";
+import styles from "./Historico.module.css";
+import NavBar from "../../components/sideBar/sideBar";
+
 
 const Historico = () => {
+
     return (
         <>
-        <h1>Teste</h1>
+        
+        <div className={styles.container}>
+            <NavBar />
+
+        </div>  
         </>
     )
 }

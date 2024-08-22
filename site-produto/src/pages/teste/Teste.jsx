@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../components/navabar/NavBar";
+import NavBar from "../../components/sideBar/sideBar";
 import Head from "../../components/head/Head";
 import style from "./stylesTeste.module.css";
 
