@@ -2,6 +2,8 @@ import Cadastro from './pages/cadastro/Cadastro';
 import Login from './pages/login/Login';
 import Teste from './pages/teste/Teste';
 import Dashboard from './pages/dashboard/Dashboard';
+import Historico from './pages/historico/Historico';
+
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -18,6 +20,7 @@ root.render(
       <Route path='/cadastro' element={<Cadastro />} />
       <Route path='/teste' element={<Teste />} />
       <Route path='/home' element={<Dashboard />} />
+      <Route path='/historico' element={<Historico />} />
     </Routes>
     <ToastContainer></ToastContainer>
   </BrowserRouter>
