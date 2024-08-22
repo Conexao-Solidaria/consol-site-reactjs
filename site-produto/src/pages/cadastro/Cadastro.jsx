@@ -25,8 +25,8 @@ function Cadastrar() {
     }
 
     try {
-      const response = await api.post('usuarios/cadastro', {
-        nomeUsuario,
+      const response = await api.post('/usuarios/cadastro', {
+        nome,
         email,
         cpf,
         senha,
@@ -70,6 +70,7 @@ function Cadastrar() {
             <p>CPF:</p>
             <input
               type="text"
+              placeholder="CPF"
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
               required
@@ -93,7 +94,7 @@ function Cadastrar() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className={styles.containerButton}>
               <button type="submit">Cadastrar</button>
-              <a href="/login">Já tem conta? Realize o Login.</a>
+              <a href="/">Já tem conta? Realize o Login.</a>
             </div>
           </form>
         </div>
