@@ -11,10 +11,7 @@ const Historico = () => {
         <div className={styles.container}>
             <NavBar />
 
-        </div>
-
-        
-        
+        </div>  
         </>
     )
 }
