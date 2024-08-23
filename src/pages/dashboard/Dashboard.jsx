@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from "../../components/sideBar/sideBar";
+import NavBar from "../../components/navBar/navBar";
 import Head from "../../components/head/Head";
 import style from "./Dashboard.module.css";
 import iconFamilia from "../../utils/assets/icon_familia.png";

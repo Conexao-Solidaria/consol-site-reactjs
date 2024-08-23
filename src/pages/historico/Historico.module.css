@@ -1,3 +1,10 @@
+@import url("../../utils/globals.css");
+
+@font-face {
+    font-family: Inter;
+    src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
 html,
 body {
     margin: 0%;
@@ -6,5 +13,221 @@ body {
     overflow-y: auto;
     overflow-y: visible;
     background-color: var(--global-baby-blue);
+
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.containerHead {
+    width: 100%;
+}
+
+.containerConteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+    margin-top: 20px;
+}
+
+.containerGeral {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--global-white);
+    border-radius: 10px;
+    width: 95%;
+    padding: 5px;
+    box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
+}
+
+.containerCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--global-white);
+    width: 30%;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+ .line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--global-light-grey-houver);
+}
+
+.containerCard .containerMetrica {
+    display: flex;
+    align-items: center;
+
+}
+
+.containerCard .containerMetrica img {
+    width: 70px;
+    height: 70px;
+    margin-right: 50px;
+
+}
+
+.containerCard .containerMetrica p {
+    font-size: 40px;
+}
+
+.containerListas{
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    padding: 5px;
+    margin-top: 10px;
+    text-align: center;
+    height: 750px;
+    overflow-y: auto;
+    box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
+}
+
+.textoLista {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.containerListaDoacoes{
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    padding: 5px;
+    height: 100%;
+    margin-bottom: 10px ;
+}
+
+.containerListaDoacoes img{
+    width: 40px;
+    height: 40px;
+}
+
+.containerListaDoacoes .containerTipoDoacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.containerListaDoacoes .containerTipoDoacao p{
+    margin: 0px;
+}
+
+.containerListaDoacoes .containerTipoDoacao .Categoria{
+    color: var(--global-dark-blue);
+}
+
+.containerListaDoacoes .containerInformacoes{
+    display: flex;
+    justify-content: end;
+    width: 68vw;
+
+}
+
+.verticalLine{
+    width: 1px;
+    height: 10vh;
+    background-color: var(--global-light-grey-houver);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .containerGeral {
+        padding: 10px;
+    }
+
+    .containerCard {
+        width: 30%;
+        height: 250px;
+        text-align: center;
+
+
+    }
+
+    .containerCard p {
+        padding: 0;
+    }
+
+    .graficoIdade {
+        width: 0px;
+    }
+
+    .containerListaDoacoes img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .containerListaDoacoes .containerInformacoes{
+        display: flex;
+        justify-content: end;
+        width: 60vw;
+    
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .containerGeral {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .containerCard{
+        width: 90%;
+        padding: 0px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .containerGraficos{
+        width: 80%;
+        height: 100%;
+        flex-direction: column;
+    }
+    
+    .containerGraficos .containerIdade{
+        width: 95%;
+        margin-bottom: 10px;
+       
+    }
+
+    .containerGraficos .containerDoacoes{
+        width: 95%;
+        margin-bottom: 50px;
+    }
+    
+    .containerListaDoacoes img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .containerListaDoacoes{
+        font-size: 12px;
+    }
+
+    .containerListaDoacoes .containerInformacoes{
+        display: flex;
+        justify-content: end;
+        width: 45vw;
+    
+    }
 
 }
