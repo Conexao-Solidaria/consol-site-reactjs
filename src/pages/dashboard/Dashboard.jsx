@@ -7,7 +7,7 @@ import iconCrianca from "../../utils/assets/icon_Crianca.png";
 import iconAlerta from "../../utils/assets/icon_Alerta.png";
 import GraficoIdade from '../../components/graficos/GraficoIdade';
 import GraficoDoacoes from '../../components/graficos/GraficoNumeroDoacoes';
-import iconDoacoes from "../../utils/assets/icons_doacoes_azul.png";
+import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
 
 const Dashboard = () => {
     return (

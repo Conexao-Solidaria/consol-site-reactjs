@@ -58,9 +58,10 @@ body {
 }
 
  .line {
+    display: flex;
     width: 100%;
     height: 1px;
-    background-color: var(--global-light-grey-houver);
+    background-color: var(--global-dark-blue);
 }
 
 .containerCard .containerMetrica {
@@ -94,6 +95,12 @@ body {
     overflow-y: auto;
     box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
 }
+
+    .kpiHistorico {
+        width: 100%;
+        height: 20px;
+        color: aqua;
+    }
 
 .textoLista {
     width: 100%;
@@ -133,6 +140,7 @@ body {
 
 .containerListaDoacoes .containerTipoDoacao .Categoria{
     color: var(--global-dark-blue);
+    padding-left: 13px;
 }
 
 .containerListaDoacoes .containerInformacoes{

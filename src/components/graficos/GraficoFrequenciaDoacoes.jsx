@@ -1,42 +1,36 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+} from 'recharts';
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
+const data = [
+  { name: 'Apr 2022', frequency: 3 },
+  { name: 'May 2022', frequency: 5 },
+  { name: 'Jun 2022', frequency: 2 },
+  { name: 'Jul 2022', frequency: 8 },
+  { name: 'Aug 2022', frequency: 6 },
+  // Adicione mais dados conforme necessário
+  { name: 'Apr 2024', frequency: 4 },
+];
 
-const HistogramChart = () => {
-  const data = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-    datasets: [
-      {
-        label: 'Frequência de doações',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
-      },
-    ],
-  };
+const FrequencyChart = () => (
+  <ResponsiveContainer width="100%" height={300}>
+    <BarChart
+      width={500}
+      height={300}
+      data={data}
+      margin={{
+        top: 5, right: 30, left: 20, bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Bar dataKey="Frequência de doações por mês" fill="#8884d8" />
+    </BarChart>
+  </ResponsiveContainer>
+);
 
-  // Opções do gráfico
-  const options = {
-    scales: {
-      x: {
-        beginAtZero: true,
-      },
-      y: {
-        beginAtZero: true,
-      },
-    },
-  };
-
-  return (
-    <div style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
-      <h3>Histórico</h3>
-      <h4>Últimos 24 meses</h4>
-      <Bar data={data} options={options} />
-    </div>
-  );
-};
-
-export default HistogramChart;
+export default FrequencyChart;
