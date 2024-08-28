@@ -26,7 +26,7 @@ function Cadastrar() {
 
     try {
       const response = await api.post('/usuarios/cadastro', {
-        nome,
+        nomeUsuario,
         email,
         cpf,
         senha,

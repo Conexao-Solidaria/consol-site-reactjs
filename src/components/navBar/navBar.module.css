@@ -5,15 +5,22 @@
     src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
+.teste {
+    width: 8vw;
+}
+
 .container {
     background-color: var(--global-blue);
     display: flex;
     flex-direction: column;
-    width: 9vw;
+    width: 8vw;
     align-items: center;
     min-height: 200vh;
     padding-top: 20px;
     padding-bottom: 20px;
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
 }
 
 .container .iconIgreja {
@@ -52,12 +59,19 @@
 
 }
 
+.container .ativado {
+    width: 50px;
+    height: 40px;
+    background-color: #4A8BE1;
+}
+
 .containerBar {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    height: 25%;
+    height: 19%;
     width: 80%;
 }
     
