@@ -24,6 +24,7 @@ body {
 
 .containerHead {
     width: 100%;
+    height: auto;
 }
 
 .containerConteudo {
@@ -31,8 +32,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 90%;
-    margin-top: 20px;
+    margin: 20px 0 20px 0;
 }
 
 .containerGeral {
@@ -42,6 +42,7 @@ body {
     background-color: var(--global-white);
     border-radius: 10px;
     width: 95%;
+    height: 300px;
     padding: 5px;
     box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
 }
@@ -52,16 +53,17 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--global-white);
-    width: 30%;
+    width: 100%;
+    height: 100%;
     margin-left: 10px;
     border-radius: 10px;
 }
 
  .line {
-    display: flex;
     width: 100%;
     height: 1px;
-    background-color: var(--global-dark-blue);
+    background-color: rgba(0, 0, 0, 0.205);
+    margin-top: 6px;
 }
 
 .containerCard .containerMetrica {
@@ -88,19 +90,35 @@ body {
     flex-direction: column;
     align-items: center;
     width: 95%;
-    padding: 5px;
     margin-top: 10px;
     text-align: center;
-    height: 750px;
+    height: 450px;
     overflow-y: auto;
     box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
 }
 
-    .kpiHistorico {
-        width: 100%;
-        height: 20px;
-        color: aqua;
-    }
+.containerKpiHistorico {
+    width: 100%;
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    font-size: 11px;
+    text-wrap: nowrap;
+    padding: 8px 0px 0px 10px;
+}
+
+.kpiHistorico {
+    width: 7%;
+    height: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #6C9BD9;
+    margin: 3px;
+    padding: 5px 35px 5px 35px;
+    border-radius: 10px;
+}
 
 .textoLista {
     width: 100%;
@@ -117,7 +135,7 @@ body {
     width: 95%;
     padding: 5px;
     height: 100%;
-    margin-bottom: 10px ;
+    margin: 0px 0px 10px 0px;
 }
 
 .containerListaDoacoes img{

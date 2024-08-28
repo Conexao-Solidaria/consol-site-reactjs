@@ -26,6 +26,7 @@ const NavBar = () => {
     
     return (
         <>
+            <div className={styles.teste}></div>
             <div className={`${styles.container} ${showText ? styles.expandedContainer : ''}`}>
                 <img src={iconIgreja} className={styles.iconIgreja} alt='Icone de uma igreja' />
 
@@ -33,7 +34,7 @@ const NavBar = () => {
 
                 <a href='#'> <img src={iconHome} alt='Icone de uma casa' />       <p style={{ display: showText ? 'block' : 'none' }}> Início    </p> </a>
                 <br />
-                <a href='#'> <img src={iconHistorico} alt='Icone de histórico' /> <p style={{ display: showText ? 'block' : 'none' }}> Histórico </p> </a>
+                <a className={styles.ativado} href='#'> <img src={iconHistorico} alt='Icone de histórico' /> <p style={{ display: showText ? 'block' : 'none' }}> Histórico </p> </a>
                 <br />
                 <a href='#'> <img src={iconDoacoes} alt='Icone de doações' />     <p style={{ display: showText ? 'block' : 'none' }}> Doações   </p> </a>
                 <br />
