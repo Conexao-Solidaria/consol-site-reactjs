@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import styles from "./sideBar.module.css";
-import iconIgreja from "../../utils/assets/icon_igreja.png";
+import styles from "./NavBar.module.css";
+import iconIgreja from "../../utils/assets/iconIgreja.png";
 import iconHome from "../../utils/assets/icon_home.png";
 import iconHistorico from "../../utils/assets/icon_historico.png";
 import iconDoacoes from "../../utils/assets/icon_doacoes.png";
+import fechadura from "../../utils/assets/fechadura.png";
 import iconPerfil from "../../utils/assets/icon_perfil.png";
 
 const NavBar = () => {
@@ -21,6 +22,7 @@ const NavBar = () => {
 
   return (
     <>
+      <div className={styles.teste}></div>
       <div
         className={`${styles.container} ${showText ? styles.expandedContainer : ""}`}
       >
@@ -37,20 +39,29 @@ const NavBar = () => {
           <img src={iconHome} alt="Icone de uma casa" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Início </p>{" "}
         </a>
-        <a href="#">
+        <br />
+        <a className={styles.ativado} href="#">
           {" "}
           <img src={iconHistorico} alt="Icone de histórico" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Histórico </p>{" "}
         </a>
+        <br />
         <a href="#">
           {" "}
           <img src={iconDoacoes} alt="Icone de doações" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Doações </p>{" "}
         </a>
+        <br />
         <a href="#">
           {" "}
           <img src={iconPerfil} alt="Icone de perfil" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Donatários</p>{" "}
+        </a>
+        <br />
+        <a href="#">
+          {" "}
+          <img src={fechadura} alt="Icone de acessos" />{" "}
+          <p style={{ display: showText ? "block" : "none" }}> Acessos</p>{" "}
         </a>
 
         <div className={styles.containerBar} onClick={toggleText}>
