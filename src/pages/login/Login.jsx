@@ -16,9 +16,9 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await api.post('/usuarios/login', { email, senha });
+      const response = await api.post("/usuarios/login", { email, senha });
       toast.success("Login bem-sucedido!");
-      navigate('/home');
+      navigate("/home");
     } catch (error) {
       toast.error(error.response?.data?.message || "Erro ao fazer login");
       setError(error.response?.data?.message || "Erro ao fazer login");
@@ -28,7 +28,10 @@ function Login() {
   return (
     <div className={styles.containerBackground}>
       <div className={styles.containerImage}>
-        <img src={image} alt="Mulher colocando um broche escrito 'voluntário'" />
+        <img
+          src={image}
+          alt="Mulher colocando um broche escrito 'voluntário'"
+        />
       </div>
       <div className={styles.container}>
         <div className={styles.containerForm}>
@@ -50,7 +53,7 @@ function Login() {
               onChange={(e) => setSenha(e.target.value)}
               required
             />
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <div className={styles.containerButton}>
               <button type="submit">Entrar</button>
               <a href="/cadastro">Não tem conta? Cadastre-se</a>
