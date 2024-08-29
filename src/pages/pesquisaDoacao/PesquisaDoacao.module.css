@@ -1,0 +1,148 @@
+@import url(../../utils/globals.css);
+
+@font-face {
+    font-family: Inter;
+    src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+html,
+body {
+    margin: 0%;
+    padding: 0%;
+    font-family: Inter;
+    overflow-y: auto;
+    overflow-y: visible;
+    background-color: var(--global-baby-blue);
+
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.containerHead {
+    width: 100%;
+}
+
+.containerConteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--global-light-grey-houver);
+}
+
+.containerBarraPesquisa{
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    padding: 5px;
+    height: 100%;
+    margin-bottom: 10px ;
+}
+
+.containerListaDoacoes{
+    background-color: var(--global-white);
+    border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+    width: 95%;
+    padding: 5px;
+    margin-top: 10px;
+    text-align: center;
+    max-height: 750px;
+    overflow-y: auto;
+}
+
+.containerListaDoacoes .containerDoacao {
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    padding: 5px;
+    height: 100%;
+    margin-bottom: 10px ;
+}
+
+.containerListaDoacoes img{
+    width: 60px;
+    height: 60px;
+}
+
+.containerListaDoacoes .containerIdDoBanco{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.containerListaDoacoes .containerIdDoBanco p{
+    margin: 0px;
+}
+
+.containerListaDoacoes .containerIdDoBanco .Categoria{
+    color: var(--global-dark-blue);
+}
+
+.containerListaDoacoes .containerInformacoes{
+    display: flex;
+    justify-content: end;
+    width: 68vw;
+
+}
+
+.verticalLine{
+    width: 1px;
+    height: 10vh;
+    background-color: var(--global-light-grey-houver);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.containerBarraPesquisa{
+    display: flex;
+    flex-direction: row;
+}
+
+.containerFiltros{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.containerFiltros img{
+    width: 20px;
+    height: 20px;   
+
+}
+
+.containerFiltros button{
+    color: azure;
+    background-color: #6c9bd9;
+    border-radius: 6px;
+    margin: 20px;
+}
+
+.line{
+    z-index: 10;
+    position: relative;
+    width: 1150px;
+    border: 1px ;
+}
