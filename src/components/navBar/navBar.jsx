@@ -34,9 +34,9 @@ const NavBar = () => {
 
                 <a href='#'> <img src={iconHome} alt='Icone de uma casa' />       <p style={{ display: showText ? 'block' : 'none' }}> Início    </p> </a>
                 <br />
-                <a className={styles.ativado} href='#'> <img src={iconHistorico} alt='Icone de histórico' /> <p style={{ display: showText ? 'block' : 'none' }}> Histórico </p> </a>
+                <a href='#'> <img src={iconHistorico} alt='Icone de histórico' /> <p style={{ display: showText ? 'block' : 'none' }}> Histórico </p> </a>
                 <br />
-                <a href='#'> <img src={iconDoacoes} alt='Icone de doações' />     <p style={{ display: showText ? 'block' : 'none' }}> Doações   </p> </a>
+                <a className={styles.ativado} href='#'> <img src={iconDoacoes} alt='Icone de doações' />     <p style={{ display: showText ? 'block' : 'none' }}> Doações   </p> </a>
                 <br />
                 <a href='#'> <img src={iconPerfil} alt='Icone de perfil' />       <p style={{ display: showText ? 'block' : 'none' }}> Donatários</p> </a>
                 <br />
