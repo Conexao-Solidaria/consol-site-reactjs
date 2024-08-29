@@ -1,131 +1,123 @@
 @import url("../../utils/globals.css");
 
 @font-face {
-    font-family: Inter;
-    src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+  font-family: Inter;
+  src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
 .container {
-    background-color: var(--global-baby-blue);
-    display: flex;
-    width: 100%;
-    height: 6vh;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
+  background-color: var(--global-baby-blue);
+  display: flex;
+  width: 100%;
+  height: 6vh;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
 }
 
 .container p {
-    color: var(--global-light-grey-houver);
+  color: var(--global-light-grey-houver);
 }
 
 .container button {
-    border: 0px;
-    background-color: var(--global-baby-blue);
+  border: 0px;
+  background-color: var(--global-baby-blue);
 }
 
-.container button img{
-    margin-right: 10px;
+.container button img {
+  margin-right: 10px;
 }
 .menu {
-    display: none;
-    position: absolute;
-    top: 45px;
-    right: 20px;
-    width: 20%;
-    background-color: var(--global-light-grey);
-    padding: 10px;
-    border-radius: 5px;
-
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 20px;
+  width: 20%;
+  background-color: var(--global-light-grey);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .menu img {
-    width: 20px;
+  width: 20px;
 }
 
 .menu.open {
-    display: block;
+  display: block;
 }
 
 .menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .menu ul li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .menu ul li a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--global-back);
-    padding: 8px 15px;
-
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--global-back);
+  padding: 8px 15px;
 }
 
 .menu ul li a img {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-
 .menu ul li a:hover {
-    background-color: var(--global-light-grey-houver);
+  background-color: var(--global-light-grey-houver);
 }
 
 @media screen and (max-width: 1024px) {
-    .container {
-        height: 5vh;
-        padding: 10px;
-    }
+  .container {
+    height: 5vh;
+    padding: 10px;
+  }
 
-    .container img {
-        width: 25px;
-    }
+  .container img {
+    width: 25px;
+  }
 
-    .menu {
-        top: 35px;
-        right: 20px;
-        width: 25%;
+  .menu {
+    top: 35px;
+    right: 20px;
+    width: 25%;
+  }
 
-    }
+  .menu img {
+    width: 15px;
+  }
 
-    .menu img {
-        width: 15px;
-    }
-
-    .menu ul li a {
-        font-size: 12px;
-    
-    }
-
+  .menu ul li a {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 750px) {
-    .container {
-        height: 4vh;
-        padding: 10px;
-    }
+  .container {
+    height: 4vh;
+    padding: 10px;
+  }
 
-    .container img {
-        width: 20px;
-    }
+  .container img {
+    width: 20px;
+  }
 
-    .menu {
-        top: 35px;
-        right: 20px;
-        width: 30%;
+  .menu {
+    top: 35px;
+    right: 20px;
+    width: 30%;
+  }
 
-    }
+  .menu img {
+    width: 15px;
+  }
 
-    .menu img {
-        width: 15px;
-    }
-
-    .menu ul li a {
-        font-size: 12px;
-    
-    } 
+  .menu ul li a {
+    font-size: 12px;
+  }
 }
