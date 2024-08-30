@@ -41,7 +41,7 @@ body {
     justify-content: center;
     background-color: var(--global-white);
     border-radius: 10px;
-    width: 95%;
+    width: 94%;
     height: 40px;
     padding: 5px;
     box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
@@ -55,7 +55,8 @@ body {
     background-color: var(--global-white);
     width: 100%;
     height: 100%;
-    margin-left: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
     border-radius: 10px;
 }
 
@@ -66,49 +67,43 @@ body {
     margin-top: 6px;
 }
 
-.containerCard .containerMetrica {
-    display: flex;
-    align-items: center;
-
+.inputDoacao{
+    width: 300px;
+    height: 20px;
+    border-radius: 8px;
+    color: #CCCCCC;
+    border-width: 0.8px;
+    padding-left: 10px;
 }
 
-.containerCard .containerMetrica img {
-    width: 70px;
-    height: 70px;
-    margin-right: 50px;
-
-}
-
-.containerCard .containerMetrica p {
-    font-size: 40px;
-}
-
-.containerListas{
+.containerCadastro{
     background-color: var(--global-white);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 95%;
     margin-top: 10px;
     text-align: center;
-    height: 450px;
+    height: 440px;
     overflow-y: auto;
     box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
 }
 
 .containerTituloCadastro {
     width: 100%;
-    height: 50px;
+    height: 20px;
     color: rgb(0, 0, 0);
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 14px;
     text-wrap: nowrap;
     padding: 8px 0px 0px 10px;
 }
 
-.kpiHistorico {
+.containerTitulo {
     width: 7%;
     height: 20px;
     align-items: center;
@@ -118,60 +113,39 @@ body {
     padding: 5px 35px 5px 35px;
 }
 
-.textoLista {
+.containerInfosCadastro{
     width: 100%;
+    height: auto;
     display: flex;
-    align-items: flex-start;
+    justify-content: space-between;
 }
 
-.containerListaDoacoes{
-    background-color: var(--global-white);
-    border-radius: 10px;
+.containerFormularioCadastro{
+    width: 50%;
+    height: auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 95%;
-    padding: 5px;
+    justify-content: space-between;
+}
+
+.campo1Formulario{
+    width: 100%;
+    height: 20px;
+    background-color: aqua;
+}
+
+.inputLinha1{
+
+}
+
+.containerImagemCadastro{
+    width: 50%;
     height: 100%;
-    margin: 0px 0px 10px 0px;
 }
 
-.containerListaDoacoes img{
-    width: 40px;
-    height: 40px;
-}
-
-.containerListaDoacoes .containerTipoDoacao{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-
-}
-
-.containerListaDoacoes .containerTipoDoacao p{
-    margin: 0px;
-}
-
-.containerListaDoacoes .containerTipoDoacao .Categoria{
-    color: var(--global-dark-blue);
-    padding-left: 13px;
-}
-
-.containerListaDoacoes .containerInformacoes{
-    display: flex;
-    justify-content: end;
-    width: 68vw;
-
-}
-
-.verticalLine{
-    width: 1px;
-    height: 10vh;
-    background-color: var(--global-light-grey-houver);
-    margin-left: 10px;
-    margin-right: 10px;
+.containerImage img {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 1024px) {

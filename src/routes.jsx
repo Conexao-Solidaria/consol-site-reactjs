@@ -9,7 +9,7 @@ import Historico from "./pages/historico/Historico";
 import Acessos from "./pages/acessos/Acessos";
 import Doacoes from "./pages/doacoes/Doacoes";
 import Donatarios from "./pages/donatarios/Donatarios";
-import PesquisaDoacao from "./pages/pesquisaDoacao/PesquisaDoacao";
+import CadastroDoacao from "./pages/cadastroDoacao/CadastroDoacao";
 
 const Rotas = () => {
     return (
@@ -24,7 +24,7 @@ const Rotas = () => {
                     <Route path='/acessos' element={<Acessos />} />
                     <Route path='/doacoes' element={<Doacoes />} />
                     <Route path='/donatarios' element={<Donatarios />} />
-                    <Route path='/pesquisa-doacao' element={<PesquisaDoacao />} />
+                    <Route path='/cadastro-doacao' element={<CadastroDoacao />} />
                 </Routes>
                 <ToastContainer></ToastContainer>
             </BrowserRouter>

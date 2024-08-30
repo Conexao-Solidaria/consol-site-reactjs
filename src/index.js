@@ -3,7 +3,7 @@ import Login from './pages/login/Login';
 import Teste from './pages/teste/Teste';
 import Dashboard from './pages/dashboard/Dashboard';
 import Historico from './pages/historico/Historico';
-import PesquisaDoacao from './pages/pesquisaDoacao/PesquisaDoacao';
+import CadastroDoacao from './pages/cadastroDoacao/CadastroDoacao';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
