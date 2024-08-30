@@ -2,6 +2,11 @@
 
 > 🚨 **Atenção, ler atentamente antes de codar ou iniciar a aplicação!!!!!** 🚨 
 
+## Requisitos
+- Docker;
+- Git;
+- Git Bash ou Qualquer terminal baseado em Bash.
+  
 ## Desenvolvimento (Máquina Pessoal)
 Executar pelo `git bash` ou qualquer `bash` (CMD e Powershell não inclusos) o arquivo "build.sh"
 ```
