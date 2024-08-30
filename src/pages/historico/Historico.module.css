@@ -206,7 +206,7 @@ body {
         display: flex;
         justify-content: end;
         width: 60vw;
-    
+
     }
 }
 
@@ -228,18 +228,18 @@ body {
         height: 100%;
         flex-direction: column;
     }
-    
+
     .containerGraficos .containerIdade{
         width: 95%;
         margin-bottom: 10px;
-       
+
     }
 
     .containerGraficos .containerDoacoes{
         width: 95%;
         margin-bottom: 50px;
     }
-    
+
     .containerListaDoacoes img{
         width: 30px;
         height: 30px;
@@ -253,7 +253,7 @@ body {
         display: flex;
         justify-content: end;
         width: 45vw;
-    
+
     }
 
 }
