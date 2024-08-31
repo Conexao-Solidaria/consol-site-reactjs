@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import NavBar from "../../components/navabar/NavBar";
+import NavBar from "../../components/navBar/navBar";
 import Head from "../../components/head/Head";
-import style from "./PesquisaDoacoes.module.css";
+import style from "./PesquisaDoacao.module.css";
 import iconCrianca from "../../utils/assets/icon_Crianca.png";
-import iconDoacoes from "../../utils/assets/icons_doacoes_azul.png";
+import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
 import iconLupa from "../../utils/assets/icon_lupa.png";
-import iconFiltro from "../../utils/assets/icon_filtro.png"
 
-const PesquisaDoacoes = ({ onSearch }) => {
+
+const PesquisaDoacao = ({ onSearch }) => {
     const [query, setQuery] = useState('');
 
     const handleInputChange = (event) => {
@@ -28,8 +28,8 @@ const PesquisaDoacoes = ({ onSearch }) => {
                     <div className={style.containerConteudo}>
 
                         <div className={style.containerBarraPesquisa}>
-                            <p>Pesquisar Doações Realizadas:</p>
-                            <div className={style.containerBarraPesquisa}>
+                            <p><b>Pesquisar Doações Realizadas:</b></p>
+                            <div className={style.inputBarraPesquisa}>
                                 <input type="text"
                                     placeholder='Pesquisar doação'
                                     value={query}
@@ -40,21 +40,22 @@ const PesquisaDoacoes = ({ onSearch }) => {
                         </div>
 
                         <div className={style.containerListaDoacoes}>
-                            <div className={style.containerFiltros}>
-                                <p>Filtrar por: </p>
-                                <button
-                                // onClick={}
-                                ><img src={iconFiltro} alt="icone de filtro" /></button>
-                                <p>Filtros</p>
-                                <button
-                                // onClick={}
-                                >data</button>
-                                <button
-                                // onClick={}
-                                >hora</button>
+
+                            <div className={style.filtroMaisAdicionaDoacao}>
+                                <div className={style.containerFiltros}>
+                                    <p>Filtrar por: </p>
+                                    <button>filtros</button>
+                                    <p>Filtros:</p>
+                                    <button>00h00</button>
+                                    <button>DD mm YYYY</button>
+
+
+                                </div>
+                                <div className={style.containerAdicionarDoacao}>
+                                    <button>+ Adicionar Doação</button>
+                                </div>
                             </div>
-                            
-                            <div className={style.line}></div>
+                            <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
 
                             <div className={style.containerDoacao}>
                                 <img src={iconDoacoes} alt='Icone de Doações'></img>
@@ -206,7 +207,7 @@ const PesquisaDoacoes = ({ onSearch }) => {
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                             <div className={style.containerDoacao}>
                                 <img src={iconDoacoes} alt='Icone de Doações'></img>
@@ -233,4 +234,4 @@ const PesquisaDoacoes = ({ onSearch }) => {
     )
 }
 
-export default PesquisaDoacoes;
+export default PesquisaDoacao;
