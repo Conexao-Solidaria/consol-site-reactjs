@@ -6,7 +6,15 @@ import style from "./EditarFamilia.module.css";
 const EditarFamila = () => {
     return (
         <>
-            
+            <div className={style.container}>
+                <NavBar />
+                <div className={style.containerHead}>
+                    <Head />
+
+                    
+
+                </div>
+            </div>
         </>
     );
 };
