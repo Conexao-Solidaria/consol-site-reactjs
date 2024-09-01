@@ -4,7 +4,6 @@ import { ToastContainer } from "react-toastify";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/login/Login";
-import Teste from "./pages/teste/Teste";
 import Historico from "./pages/historico/Historico";
 import Acessos from "./pages/acessos/Acessos";
 import Doacoes from "./pages/doacoes/Doacoes";

@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from "../../components/navBar/navBar";
+import SideBar from "../../components/sideBar/sideBar";
 import Head from "../../components/head/Head";
 import style from "./EditarFamilia.module.css";
 
@@ -7,11 +7,11 @@ const EditarFamila = () => {
     return (
         <>
             <div className={style.container}>
-                <NavBar />
+                <SideBar />
                 <div className={style.containerHead}>
                     <Head />
 
-                    
+
 
                 </div>
             </div>
