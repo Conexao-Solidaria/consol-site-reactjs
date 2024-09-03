@@ -25,3 +25,41 @@ body {
 .containerHead {
     width: 100%;
 }
+
+.containerConteudo {
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    width: 95%;
+    padding: 5px;
+    margin-left: 20px;
+    height: 45%;
+    flex-direction: column;
+}
+
+.line {
+    width: 174vh;
+    height: 1px;
+    background-color: var(--global-light-grey-houver);
+
+}
+
+.tituloPagina{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+}
+
+.containerInputImg{
+    display: flex;
+    width: 50%;
+    font-size: large;
+    padding: 50px;
+}
+
+.containerInputImg img{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
