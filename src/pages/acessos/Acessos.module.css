@@ -1,0 +1,137 @@
+@import url("../../utils/globals.css");
+
+@font-face {
+    font-family: Inter;
+    src: url("../../utils/fonts/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+span{
+    font-size: 3vh;
+    margin-right: 1vh;
+}
+
+h2{
+    font-size: 2vh;
+}
+
+html,
+body {
+    margin: 0%;
+    padding: 0%;
+    font-family: Inter;
+    overflow: hidden;
+}
+
+.pesquisa {
+    width: 85vw;
+    height: 6vh;
+    margin-left: 10vw;
+    background-color: white;
+    border-radius: 1vw;
+    box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
+    display: flex;
+    align-items: center;
+}
+
+.pesquisa input{
+    height: 3vh;
+    width: 40vh;
+    border-radius: 1vh;
+    margin-right: 1vh;
+}
+
+
+.gerenciar {
+    margin-top: 2vh;
+    width: 85vw;
+    height: 80vh;
+    margin-left: 10vw;
+    background-color: white;
+    border-radius: 1vw;
+    box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.gerenciarTitulo{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo{
+    width: 85vw;
+    display: flex;
+    align-items: center;
+}
+
+.tituloTexto{
+    width: 85vw;
+    margin-left: 1vh;
+    font-weight: 600;
+}
+
+.gerenciar .tituloTexto{
+    width: 85vw;
+    text-align: center;
+}
+
+hr{
+    color: black;
+    background-color: black;
+    height: 0.1vh;
+    width: 100%;
+    border: none;
+}
+
+/* Cartões */
+.cartoes{
+    width: 100%;
+    height: 100%;
+}
+
+.cartao{
+    margin-left: 1vh;
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cartoes span{
+    font-size: 2vh;
+}
+
+.cartoes h2{
+    font-size: 3vh;
+}
+
+.cartao button{
+    margin-right: 1vh;
+    width: 25vh;
+    height: 6vh;
+    border-radius: 1vh;
+    border: 0px;
+    font-size: 3vh;
+    color: white;
+    text-align: center;
+}
+
+.cartao i{
+    font-size: 3vh;
+    margin-right: 3vh;
+    
+}
+
+.cartao .button1{
+    background-color: #4ED463;
+}
+
+.cartao .button2{
+    background-color: #EB4C46;
+}
