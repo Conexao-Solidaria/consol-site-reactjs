@@ -29,16 +29,30 @@ const CadastroDoacao = () => {
                                 </div>
                             </div>
 
-                            <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
+                            {/* <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div> */}
 
                             <div className={style.containerInfosCadastro}>
                                 <div className={style.containerFormularioCadastro}>
 
                                     <div className={style.campo1Formulario}>
-                                        <p>Horário</p> <input className={style.inputLinha1} placeholder='00h00' type="text" />
-                                        <p>Data:</p> <input className={style.inputLinha1} placeholder='DD/MM/YY' type="text" />
+                                        <div>
+                                            <span>Horário:</span> 
+                                            <input className={style.inputLinha1} placeholder='00h00' type="text" />
+                                        </div>
+                                        <div>
+                                            <span>Data:</span>
+                                             <input className={style.inputLinha1} placeholder='DD/MM/YY' type="text" />
+                                        </div>
                                     </div>
-
+                                    <div className={style.campo2Formulario}>
+                                        <span>Quem está recebendo a doação?</span>
+                                        <input className={style.inputLinha2} placeholder='Pesquisar Titular' type="text" />
+                                    </div>
+                                    <div className={style.campo3Formulario}>
+                                        <span>Descrição:</span>
+                                        <textarea className={style.inputLinha3} placeholder='Descrição' type="text" />
+                                    </div>
+                                    <div className={style.ContainerBotao}><button className={style.botao}>Adicionar</button></div>
                                 </div>
                                 <div className={style.containerImagemCadastro}>
                                     <div className={style.containerImage}>
