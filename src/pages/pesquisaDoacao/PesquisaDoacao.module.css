@@ -1,0 +1,212 @@
+@import url(../../utils/globals.css);
+
+@font-face {
+    font-family: Inter;
+    src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+html,
+body {
+    margin: 0%;
+    padding: 0%;
+    font-family: Inter;
+    overflow-y: auto;
+    overflow-y: visible;
+    background-color: var(--global-baby-blue);
+
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.containerHead {
+    width: 100%;
+}
+
+.containerConteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.line {
+    width: 1px;
+    height: 10vh;
+    background-color: var(--global-light-grey-houver);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.verticalLine {
+    width: 1px;
+    height: 10vh;
+    background-color: var(--global-light-grey-houver);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.containerBarraPesquisa {
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    padding: 5px;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+.inputBarraPesquisa {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 5px;
+    position: relative;
+}
+
+.inputBarraPesquisa input {
+    width: 40%;
+    padding: 10px ; 
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
+    box-sizing: border-box; /* Para incluir padding na largura */
+    margin-right: 20px;
+}
+
+.containerBarraPesquisa button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 20px;
+
+}
+
+.containerBarraPesquisa p{
+    width: 100%;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: x-large;
+}
+
+.containerListaDoacoes {
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    padding: 5px;
+    margin-top: 10px;
+    text-align: center;
+    max-height: 750px;
+    overflow-y: auto;
+
+}
+
+.containerListaDoacoes .containerDoacao {
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    padding: 5px;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+.containerListaDoacoes img {
+    width: 60px;
+    height: 60px;
+}
+
+.containerListaDoacoes .containerIdDoBanco {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.containerListaDoacoes .containerIdDoBanco p {
+    margin: 0px;
+}
+
+.containerListaDoacoes .containerIdDoBanco .Categoria {
+    color: var(--global-dark-blue);
+}
+
+.containerListaDoacoes .containerInformacoes {
+    display: flex;
+    justify-content: end;
+    width: 68vw;
+}
+
+.containerBarraPesquisa {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.containerFiltros {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.containerFiltros p {
+    margin-right: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.containerFiltros button {
+    color: azure;
+    background-color: #6c9bd9;
+    border-color: #6c9bd9;
+    border-radius: 6px;
+    margin: 15px;
+}
+
+.containerAdicionarDoacao {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.filtroMaisAdicionaDoacao {
+    width: 100%;
+    display: flex;
+}
+
+.filtroMaisAdicionaDoacao button {
+    color: azure;
+    background-color: #6c9bd9;
+    border-color: #6c9bd9;
+    border-radius: 6px;
+    margin: 15px;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.205);
+    margin-top: 6px;
+}

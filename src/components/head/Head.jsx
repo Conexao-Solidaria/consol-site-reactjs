@@ -16,7 +16,7 @@ const Head = () => {
         <>
             <div className={styles.container}>
                 <a><img src={iconConfig} alt="Icone de configuração" /></a>
-                <p>SGD</p>
+                <h3>SGD</h3>
 
                 <button onClick={toggleMenu}><img src={iconPerfil} alt="Icone de perfil" /></button>
 
