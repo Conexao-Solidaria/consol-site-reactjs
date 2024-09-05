@@ -2,6 +2,7 @@ import React from 'react';
 import SideBar from "../../components/sideBar/sideBar";
 import Head from "../../components/head/Head";
 import style from "./EditarFamilia.module.css";
+import FotoFamilia from "../../utils/assets/foto-familia.png";
 
 const EditarFamila = () => {
     return (
@@ -17,25 +18,38 @@ const EditarFamila = () => {
                         </div>
                         <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
 
-                        <div className={style.containerInputImg}>
-                            <div className={style.camposTexto}>
+                        <div className={style.containerFormularioImg}>
+                            <div className={style.formulario}>
                                 <p>Nome:</p>
                                 <input type="text"
                                     placeholder='Nome' />
                                 <p>CEP:</p>
                                 <input type="text"
                                     placeholder='CEP' />
-                                <p>Número da Casa:</p>
-                                <input type="text"
-                                    placeholder='Número' />
-                                <p>Renda:</p>
-                                <input type="text"
-                                    placeholder='Selecione' />
-                                    <button>Atualizar</button>
+
+                                <div className={style.formulario2}>
+                                    <div className={style.numeroCasa}>
+                                        <p>Número da Casa:</p>
+                                        <input type="text"
+                                            placeholder='Número' />
+                                    </div>
+
+                                    <div className={style.renda}>
+                                        <p>Renda:</p>
+                                        <input type="text"
+                                            placeholder='Renda' />
+                                        <div className={style.botaoAtualizar}>
+                                            <button>Atualizar</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                            <div>
-                                <img src="" alt="foto familia feliz" />
+
+                            <div className={style.fotoFamilia}>
+                                <img src={FotoFamilia} alt="foto familia feliz" />
                             </div>
 
                         </div>
