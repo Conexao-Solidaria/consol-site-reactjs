@@ -1,3 +1,4 @@
+import React from "react";
 import style from "./BotaoPadrao.module.css"
 import { useNavigate } from "react-router-dom";
 

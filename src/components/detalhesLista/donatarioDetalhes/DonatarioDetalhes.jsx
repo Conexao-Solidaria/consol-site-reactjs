@@ -1,3 +1,4 @@
+import React from "react";
 import style from "./DonatarioDetalhes.module.css"
 import iconPerfil from "../../../utils/assets/icon_perfil_usuario.png"
 
