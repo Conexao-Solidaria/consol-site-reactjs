@@ -19,13 +19,19 @@ const EditarFamila = () => {
                         <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
 
                         <div className={style.containerFormularioImg}>
+
                             <div className={style.formulario}>
-                                <p>Nome:</p>
-                                <input type="text"
-                                    placeholder='Nome' />
-                                <p>CEP:</p>
-                                <input type="text"
-                                    placeholder='CEP' />
+                                <div className={style.nome}>
+                                    <p>Nome:</p>
+                                    <input type="text"
+                                        placeholder='Nome' />
+                                </div>
+
+                                <div className={style.cep}>
+                                    <p>CEP:</p>
+                                    <input type="text"
+                                        placeholder='CEP' />
+                                </div>
 
                                 <div className={style.formulario2}>
                                     <div className={style.numeroCasa}>
@@ -38,11 +44,12 @@ const EditarFamila = () => {
                                         <p>Renda:</p>
                                         <input type="text"
                                             placeholder='Renda' />
-                                        <div className={style.botaoAtualizar}>
-                                            <button>Atualizar</button>
-                                        </div>
                                     </div>
 
+                                </div>
+                                
+                                <div className={style.botaoAtualizar}>
+                                    <button>Atualizar</button>
                                 </div>
 
                             </div>
