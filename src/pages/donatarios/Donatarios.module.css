@@ -90,7 +90,8 @@ p {
 .filtros {
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  width: 30%;
+  align-items: center;
 }
 
 .botoes {

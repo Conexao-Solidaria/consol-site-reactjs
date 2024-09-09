@@ -1,3 +1,4 @@
+import React from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Donatarios.module.css";
@@ -23,13 +24,15 @@ function Donatarios() {
             <div className={style.containerFiltro}>
               <div className={style.filtros}>
                 <p>Filtar por:</p>
-                <button>Filter</button>
+                <span> Nome </span>
                 <p>Filtros:</p>
-                <button>Rua exemplo 000</button>
+                <BotaoPadrao texto="Nome" />
+                <BotaoPadrao texto="Rua" />
+                <BotaoPadrao texto="Bairro" />
               </div>
               <div className={style.botoes}>
                 <BotaoPadrao texto="+ Cadastrar Família" onClick={() => {alert("Redirecionando Para Familia")}} />
-                <BotaoPadrao texto="+ Cadastrar Donatário" />
+                <BotaoPadrao texto="+ Cadastrar Donatário" to="/cadastrarDonatario"/>
               </div>
             </div>
             <div className={style.containerLista}>
