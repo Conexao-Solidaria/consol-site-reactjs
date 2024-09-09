@@ -1,6 +1,8 @@
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Donatarios.module.css";
+import DonatarioDetalhes from "../../components/detalhesLista/donatarioDetalhes/DonatarioDetalhes"
+import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 function Donatarios() {
   return <>
@@ -17,8 +19,31 @@ function Donatarios() {
             <h2>Pesquisar Donatário:</h2>
             <input type="text" placeholder="Pesquisar Donátario"/>
           </div>
-          <div className={style.containerLista}>
-
+          <div className={style.containerDonatarios}>
+            <div className={style.containerFiltro}>
+              <div className={style.filtros}>
+                <p>Filtar por:</p>
+                <button>Filter</button>
+                <p>Filtros:</p>
+                <button>Rua exemplo 000</button>
+              </div>
+              <div className={style.botoes}>
+                <BotaoPadrao texto="+ Cadastrar Família" onClick={() => {alert("Redirecionando Para Familia")}} />
+                <BotaoPadrao texto="+ Cadastrar Donatário" />
+              </div>
+            </div>
+            <div className={style.containerLista}>
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+              <DonatarioDetalhes />
+            </div>
           </div>
         </div>
       </div>

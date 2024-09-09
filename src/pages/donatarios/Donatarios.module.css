@@ -14,6 +14,10 @@ body {
   background-color: var(--global-baby-blue);
 }
 
+p {
+  margin: 0;
+}
+
 .container {
   display: flex;
   width: 100vw;
@@ -32,14 +36,14 @@ body {
 }
 
 .containerHead {
-  width: 100%;
+  width: auto;
 }
 
 .containerConteudo {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 75%;
   box-sizing: border-box;
   padding: 24px;
   gap: 16px;
@@ -53,7 +57,7 @@ body {
   background-color: var(--global-white);
   border-radius: 10px;
   width: 100%;
-  height: 10%;
+  height: 15%;
   padding: 16px 24px;
   box-sizing: border-box;
   align-items: center;
@@ -71,9 +75,39 @@ body {
   background-size: 18px 18px;
 }
 
-.containerLista {
-  background-color: brown;
-  width: 100%;
+.containerDonatarios {
+  box-sizing: border-box;
   height: 90%;
 }
 
+.containerFiltro {
+  box-sizing: border-box;
+  display: flex;
+  background-color: var(--global-white);
+  padding: 16px 24px;
+}
+
+.filtros {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.botoes {
+  display: flex;
+  gap: 16px;
+  justify-content: end;
+  flex-grow: 1;
+}
+
+.containerBotoes {
+  width: 50%;
+}
+
+
+.containerLista {
+  background-color: var(--global-white);
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
