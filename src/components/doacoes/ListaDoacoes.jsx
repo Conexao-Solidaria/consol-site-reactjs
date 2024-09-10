@@ -1,12 +1,18 @@
 import React from "react";
 import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
 import style from "./ListaDoacoes.module.css";
+import modalStyle from "../modal/Modal.module.css";
 
 const ListaDoacoes = ({ data }) => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  }
 
   return (
     <>
-      <div className={style.containerListaDoacoes}>
+      <div className={style.containerListaDoacoes} onClick={handleModal}>
         <img src={iconDoacoes} alt='Icone de Doações'></img>
         <div className={style.containerTipoDoacao}>
           <p><b>Doação</b></p>
@@ -20,7 +26,34 @@ const ListaDoacoes = ({ data }) => {
           </div>
         </div>
       </div>
+      <div
+        className={modalStyle.containerModal}
+        style={{ display: isModalOpen ? 'block' : 'none' }}
+        onClick={handleModal}
+      ></div>
 
+      <div
+        className={modalStyle.modal}
+        style={{ display: isModalOpen ? 'flex' : 'none' }}
+      >
+        <div className={modalStyle.modalHeader}><b onClick={handleModal}>X</b></div>
+        <div className={modalStyle.line}>
+          <div className={modalStyle.background}>
+            <div className={modalStyle.content}>
+            </div>
+            <div className={modalStyle.content}>
+            </div>
+          </div>
+        </div>
+        <div className={modalStyle.line}>
+          <div className={modalStyle.background}>
+            <div className={modalStyle.content}>
+            </div>
+            <div className={modalStyle.content}>
+            </div>
+          </div>
+        </div>
+      </div >
     </>
   );
 }

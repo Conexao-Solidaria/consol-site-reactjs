@@ -182,7 +182,6 @@ body {
   .containerGraficos .containerIdade {
     width: 95%;
     margin-bottom: 10px;
-
   }
 
   .containerGraficos .containerDoacoes {
@@ -206,89 +205,4 @@ body {
 
   }
 
-}
-
-.containerModal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 999;
-}
-
-.modal {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  z-index: 1000;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 40vw;
-  height: 100vh;
-  background-color: var(--global-baby-blue);
-}
-
-.modal * {
-  display: flex;
-  width: 100%;
-  padding: 16px 16px;
-}
-
-.modal .modalHeader {
-  display: flex;
-  justify-content: end;
-  width: 100%;
-  padding: 10px 10px;
-  border-bottom: solid 1px var(--global-black);
-}
-
-.containerInfoDoacao {
-  padding: 0px 16px;
-}
-
-.containerInfoDoacao .background {
-  flex-direction: column;
-  gap: 16px;
-  background-color: var(--global-beige);
-  width: 100%;
-  border-radius: 10px;
-}
-
-.containerInfoDoacao .background .infoDoacao {
-  background-color: var(--global-white);
-  width: 100%;
-  border-radius: 10px;
-}
-
-.containerInfoDoacao .background .descricao {
-  background-color: var(--global-white);
-  width: 100%;
-  border-radius: 10px;
-}
-
-.containerInfoDonatario {
-  padding: 0px 16px;
-}
-
-.containerInfoDonatario .background {
-  flex-direction: column;
-  gap: 16px;
-  background-color: var(--global-beige);
-  width: 100%;
-  border-radius: 10px;
-}
-
-.containerInfoDonatario .background .infoDonatario {
-  background-color: var(--global-white);
-  width: 100%;
-  border-radius: 10px;
-}
-
-.containerInfoDonatario .background .contato {
-  background-color: var(--global-white);
-  width: 100%;
-  border-radius: 10px;
 }

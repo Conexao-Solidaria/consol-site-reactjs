@@ -46,28 +46,8 @@ const Historico = () => {
               ))}
             </div>
           </div>
-          <div className={style.containerModal}></div>
-          <div className={style.modal}>
-            <div className={style.modalHeader}>X</div>
-            <div className={style.containerInfoDoacao}>
-              <div className={style.background}>
-                <div className={style.infoDoacao}>
-                </div>
-                <div className={style.descricao}>
-                </div>
-              </div>
-            </div>
-          <div className={style.containerInfoDonatario}>
-            <div className={style.background}>
-              <div className={style.infoDonatario}>
-              </div>
-              <div className={style.contato}>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-          </div>
     </>
 
   );

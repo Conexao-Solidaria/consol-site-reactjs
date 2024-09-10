@@ -1,0 +1,69 @@
+:root {
+  --shadow-light: 0px 10px 25px 0px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0px 10px 25px 0px rgba(0, 0, 0, 0.2);
+  --shadow-dark: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+}
+
+.containerModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.modal {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40vw;
+  height: 100vh;
+  background-color: var(--global-baby-blue);
+}
+
+.modal * {
+  display: flex;
+  width: 100%;
+  padding: 16px 16px;
+}
+
+.modal .modalHeader {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  padding: 10px 10px;
+  border-bottom: solid 1px var(--global-black);
+}
+
+.modal .modalHeader b {
+  width: auto;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.line {
+  padding: 0px 16px;
+}
+
+.background {
+  box-shadow: var(--shadow-medium);
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--global-beige);
+  width: 100%;
+  border-radius: 10px;
+}
+
+.content {
+  box-shadow: var(--light);
+  background-color: var(--global-white);
+  width: 100%;
+  border-radius: 10px;
+}
