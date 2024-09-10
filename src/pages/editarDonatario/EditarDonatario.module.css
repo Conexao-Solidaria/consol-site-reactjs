@@ -71,13 +71,25 @@ body {
     display: flex;
 }
 
-.numeroCasa {
-    width: 25%;
-    margin-right: 30px;
+.formulario3 {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 20px;
+    display: flex;
 }
 
-.renda {
-    width: 60%;
+.formulario4 {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 20px;
+    display: flex;
+}
+
+.formulario5 {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 20px;
+    display: flex;
 }
 
 .botaoAtualizar{
@@ -104,26 +116,100 @@ button{
     border-radius: 6px;
 }
 
-.cep input {
+.rg input {
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
+    margin-right: 85px;
+}
+
+.cpf{
+    margin-left: 45px;
+}
+
+.cpf input {
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
+    margin-right: 85px;
+}
+
+.dataNasc input {
     width: 90%;
     font-size: 16px;
     border: 1px solid #cdd1d6;
     border-radius: 6px;
 }
 
-.numeroCasa input {
+.estadoCivil{
+    margin-left: 25px;
+}
+
+.estadoCivil select{
     width: 100%;
     font-size: 16px;
     border: 1px solid #cdd1d6;
     border-radius: 6px;
 }
 
-.renda input {
+.escolaridade{
+    margin-left: 35px;
+}
+
+
+.escolaridade select{
     width: 100%;
     font-size: 16px;
     border: 1px solid #cdd1d6;
     border-radius: 6px;
+}
 
+.telefone{
+    margin-left: 15px;
+}
+
+.celular input {
+    width: 90%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    margin-right: 110px;
+    border-radius: 6px;
+}
+
+.telefone input {
+    width: 90%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    margin-right: 115px;
+    border-radius: 6px;
+}
+
+.trabalhando select{
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
+}
+
+.ocupacao{
+    margin-left: 30px;
+}
+
+.ocupacao input {
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    margin-right: 190px;
+    border-radius: 6px;
+}
+
+.familiaPertence input {
+    width: 90%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
 }
 
 .fotoFamilia {

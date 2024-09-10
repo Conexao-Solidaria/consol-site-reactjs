@@ -4,15 +4,18 @@ import EditarDonatario from './pages/editarDonatario/EditarDonatario';
 
 
 const App = () => {
-  const options = ['Solteiro', 'Casado', 'União Estável', 'Viúvo'];
-
   const handleSelect = (value) => {
     console.log('Opção selecionada:', value);
   };
 
   return (
     <div>
-      <EditarDonatario options={options} onSelect={handleSelect} />
+      <EditarDonatario
+        optionsEstadoCivil={['Solteiro', 'Casado', 'União Estável', 'Viúvo']}
+        optionsEscolaridade={['Analfabeto','Analfabeto Funcional', 'Educação Infantil', 'Fundamental', 'Médio', 'Superior', 'Pós-Graduação']}
+        optionsTrabalhando={['Sim', 'Não']}
+        onSelect={handleSelect}
+      />
     </div>
   );
 
