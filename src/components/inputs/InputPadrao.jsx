@@ -7,7 +7,7 @@ const InputPadrao = ({ label, placeholder, mask, onlyLetters, onChange, value })
   const handleChange = (e) => {
     const newValue = e.target.value;
     if (onlyLetters) {
-      const filteredValue = newValue.replace(/[^a-zA-Z]/g, "");
+      const filteredValue = newValue.replace(/[^a-zA-Z\s]/g, "");
       onChange(filteredValue);
     } else {
       onChange(newValue);
