@@ -1,6 +1,5 @@
 import Rotas from "./routes";
 
-
 const App = () => {
   return <Rotas />;
 };
