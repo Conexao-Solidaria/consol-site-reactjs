@@ -85,6 +85,14 @@ body {
   gap: 16px;
 }
 
+.formLine#formLine7 {
+  justify-content: end;
+}
+
+.formLine button {
+  width: 120px;
+  height: 40px;
+}
 
 .imagem {
   width: 50%;

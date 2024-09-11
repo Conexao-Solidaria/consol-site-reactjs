@@ -6,6 +6,7 @@ import FotoFamilia from "../../utils/assets/familiares_image.png";
 import InputPadrao from "../../components/inputs/InputPadrao";
 import { useState } from "react";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
+import ComboBox from "../../components/comboBox/ComboBox";
 
 const CadastrarDonatario = () => {
   const [nome, setNome] = useState("");
@@ -16,6 +17,13 @@ const CadastrarDonatario = () => {
   const [telefone, setTelefone] = useState("");
   const [ocupacao, setOcupacao] = useState("");
   const [familia, setFamilia] = useState("");
+
+  const [estadoCivil, setEstadoCivil] = useState("");
+  const optEstadoCivil = ["Opção 1", "Opção 2", "Opção 3", "Opção 4"];
+  const [escolaridade, setEscolaridade] = useState("");
+  const optEscolaridade = ["Opção 1", "Opção 2", "Opção 3", "Opção 4"];
+  const [trabalhando, isTrabalhando] = useState("");
+  const optTrabalhando = ["Sim", "Não"];
 
   return (
     <>
@@ -34,16 +42,16 @@ const CadastrarDonatario = () => {
             </div>
             <div className={style.containerFormulario}>
               <div className={style.formulario}>
-                <div className={style.formLine} id="1">
+                <div className={style.formLine} id={style.formLine1}>
                   <InputPadrao
-                    label="Nome:"
-                    placeholder="Primeiro nome"
+                    label="Nome Completo:"
+                    placeholder="Nome Completo"
                     onlyLetters={true}
                     value={nome}
                     onChange={(value) => setNome(value)}
                   />
                 </div>
-                <div className={style.formLine} id="2">
+                <div className={style.formLine} id={style.formLine2}>
                   <InputPadrao
                     label="RG:"
                     placeholder="__.___.___-_"
@@ -59,7 +67,7 @@ const CadastrarDonatario = () => {
                     onChange={(value) => setCpf(value)}
                   />
                 </div>
-                <div className={style.formLine} id="3">
+                <div className={style.formLine} id={style.formLine3}>
                 <InputPadrao
                     label="Data de Nascimento:"
                     placeholder="DD/MM/YY"
@@ -67,20 +75,22 @@ const CadastrarDonatario = () => {
                     value={dataNasc}
                     onChange={(value) => setDataNasc(value)}
                   />
-                  <InputPadrao
+                  <ComboBox
                     label="Estado Civil:"
-                    placeholder="Selecione"
-                    value={cpf}
-                    onChange={(value) => setCpf(value)}
+                    defaultOption="Selecione"
+                    options={optEstadoCivil}
+                    value={estadoCivil}
+                    onChange={(e) => setEstadoCivil(e.target.value)}
                   />
-                  <InputPadrao
+                  <ComboBox
                     label="Escolaridade:"
-                    placeholder="Selecione"
-                    value={cpf}
-                    onChange={(value) => setCpf(value)}
+                    defaultOption="Selecione"
+                    options={optEscolaridade}
+                    value={escolaridade}
+                    onChange={(e) => setEscolaridade(e.target.value)}
                   />
                 </div>
-                <div className={style.formLine} id="4">
+                <div className={style.formLine} id={style.formLine4}>
                 <InputPadrao
                   label="Celular:"
                   placeholder="(__) _____-____"
@@ -96,22 +106,21 @@ const CadastrarDonatario = () => {
                   onChange={(value) => setTelefone(value)}
                 />
                 </div>
-                <div className={style.formLine} id="5">
-                <InputPadrao
-                    label="Trabalhando?:"
-                    placeholder="Selecione"
-                    value={cpf}
-                    onChange={(value) => setCpf(value)}
+                <div className={style.formLine} id={style.formLine5}>
+                <ComboBox
+                  label="Trabalhando?"
+                  options={optTrabalhando}
+                  value={trabalhando}
+                  onChange={(e) => isTrabalhando(e.target.value)}
                 />
                 <InputPadrao
                   label="Ocupação:"
                   placeholder="Ocupação"
-                  mask="999.999.999-99"
                   value={ocupacao}
                   onChange={(value) => setOcupacao(value)}
                 />
                 </div>
-                <div className={style.formLine} id="6">
+                <div className={style.formLine} id={style.formLine6}>
                 <InputPadrao
                     label="A qual familía pertence?"
                     placeholder="Nome da Família"
@@ -119,7 +128,9 @@ const CadastrarDonatario = () => {
                     onChange={(value) => setFamilia(value)}
                 />
                 </div>
-                <BotaoPadrao texto="Cadastrar"/>
+                <div className={style.formLine} id={style.formLine7}>
+                  <BotaoPadrao texto="Cadastrar"/>
+                </div>
               </div>
               <div className={style.imagem}>
                 <img src={FotoFamilia} alt="Foto de uma familia unida" />
