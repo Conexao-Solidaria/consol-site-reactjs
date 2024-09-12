@@ -6,8 +6,31 @@ import iconHistorico from "../../utils/assets/icon_historico.png";
 import iconDoacoes from "../../utils/assets/icon_doacoes.png";
 import fechadura from "../../utils/assets/fechadura.png";
 import iconPerfil from "../../utils/assets/icon_perfil.png";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+    const navigate = useNavigate();
+
+    const home = () => {
+        navigate("/")
+    }
+
+    const historico = () => {
+        navigate("/historico")
+    }
+
+    const doacao = () => {
+        navigate("/doacoes")
+    }
+
+    const donatario = () => {
+        navigate("/donatarios")
+    }
+    
+    const acessos = () => {
+        navigate("/acessos")
+    }
+
   const [showText, setShowText] = useState(false);
 
   const toggleText = () => {
@@ -34,31 +57,32 @@ const NavBar = () => {
 
         <div className={styles.line}></div>
 
-        <a href="#">
-          {" "}
+        <a onClick={home}>
+            {" "}
           <img src={iconHome} alt="Icone de uma casa" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Início </p>{" "}
         </a>
         <br />
-        <a className={styles.ativado} href="#">
+        <a onClick={historico}>
+        {/* <a className={styles.ativado} href="#"> */}
           {" "}
           <img src={iconHistorico} alt="Icone de histórico" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Histórico </p>{" "}
         </a>
         <br />
-        <a href="#">
+        <a onClick={doacao}>
           {" "}
           <img src={iconDoacoes} alt="Icone de doações" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Doações </p>{" "}
         </a>
         <br />
-        <a href="#">
+        <a onClick={donatario}>
           {" "}
           <img src={iconPerfil} alt="Icone de perfil" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Donatários</p>{" "}
         </a>
         <br />
-        <a href="#">
+        <a onClick={acessos}>
           {" "}
           <img src={fechadura} alt="Icone de acessos" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Acessos</p>{" "}

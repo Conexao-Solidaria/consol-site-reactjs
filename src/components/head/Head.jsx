@@ -6,9 +6,6 @@ import iconTrocarConta from "../../utils/assets/icon_trocar.png";
 import iconSair from "../../utils/assets/icon_sair.png";
 
 const Head = () => {
-  const home = () => {
-    navigate("/configura");
-  }
   
   const [isOpen, setIsOpen] = useState(false);
 
