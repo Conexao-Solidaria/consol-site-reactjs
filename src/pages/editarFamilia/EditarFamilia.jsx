@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBar from "../../components/sideBar/sideBar";
+import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./EditarFamilia.module.css";
 import FotoFamilia from "../../utils/assets/foto-familia.png";
@@ -8,7 +8,7 @@ const EditarFamila = () => {
     return (
         <>
             <div className={style.container}>
-                <SideBar />
+                <NavBar />
                 <div className={style.containerHead}>
                     <Head />
 
