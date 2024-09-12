@@ -8,7 +8,7 @@ import api from "../../api";
 
 function Cadastrar() {
   const navigate = useNavigate();
-  const [nomeUsuario, setNome] = useState("");
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
@@ -25,13 +25,13 @@ function Cadastrar() {
     }
 
     try {
-      const response = await api.post('/usuarios/cadastro', {
-        nomeUsuario,
+      const response = await api.post("/usuarios/cadastro", {
+        nome,
         email,
         cpf,
         senha,
         fkInstituicao,
-        coordenador
+        coordenador,
       });
 
       toast.success("Novo usuário cadastrado com sucesso!");
@@ -55,7 +55,7 @@ function Cadastrar() {
             <input
               type="text"
               placeholder="Nome Completo"
-              value={nomeUsuario}
+              value={nome}
               onChange={(e) => setNome(e.target.value)}
               required
             />
@@ -91,7 +91,7 @@ function Cadastrar() {
               onChange={(e) => setConfirmSenha(e.target.value)}
               required
             />
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <div className={styles.containerButton}>
               <button type="submit">Cadastrar</button>
               <a href="/">Já tem conta? Realize o Login.</a>

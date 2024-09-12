@@ -1,11 +1,9 @@
 import React from 'react';
-import NavBar from "../../components/navBar/navBar";
+import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Historico.module.css";
 import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
 import LineChart from '../../components/graficos/GraficoFrequenciaDoacoes';
-
-
 
 const Historico = () => {
     return (
@@ -18,7 +16,7 @@ const Historico = () => {
                     <div className={style.containerConteudo}>
 
                         <div className={style.containerGeral}>
-                            
+
                             <div className={style.containerCard}>
                             <LineChart/>
                             </div>
@@ -33,7 +31,7 @@ const Historico = () => {
                                 <p>11 Novas Doações</p>
                             </div>
                             </div>
-                            
+
                             <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
 
 
