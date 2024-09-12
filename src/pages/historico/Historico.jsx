@@ -96,7 +96,6 @@ const Historico = () => {
 
               <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
 
-
               {vetorMockup && vetorMockup.map((data, index) => (
                 <div key={index} >
                   <ListaDoacoes data={data} />
