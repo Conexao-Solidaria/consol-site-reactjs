@@ -1,0 +1,133 @@
+@import url(../../utils/globals.css);
+
+@font-face {
+    font-family: Inter;
+    src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+html,
+body {
+    margin: 0%;
+    padding: 0%;
+    font-family: Inter;
+    overflow-y: auto;
+    overflow-y: visible;
+    background-color: var(--global-baby-blue);
+
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.containerHead {
+    width: 100%;
+}
+
+.containerConteudo {
+    background-color: var(--global-white);
+    border-radius: 10px;
+    display: flex;
+    width: 95%;
+    padding: 5px;
+    margin-left: 20px;
+    flex-direction: column;
+}
+
+.line {
+    width: 180vh;
+    height: 1px;
+    background-color: var(--global-light-grey-houver);
+
+}
+
+.tituloPagina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+}
+
+.containerFormularioImg {
+    display: flex;
+    width: 100%;
+    font-size: large;
+    padding: 50px;
+}
+
+.formulario {
+    display: flex;
+    width: 100%;
+    align-items: flex;
+    flex-direction: column;
+}
+
+.formulario2 {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 20px;
+    display: flex;
+}
+
+.numeroCasa {
+    width: 25%;
+    margin-right: 30px;
+}
+
+.renda {
+    width: 60%;
+}
+
+.botaoAtualizar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    width: 91%;
+}
+
+button{
+    margin-top: 10px;
+    color: azure;
+    background-color: #6c9bd9;
+    border-color: #6c9bd9;
+    border-radius: 6px;
+    width: 65px;
+    height: 22px;
+}
+
+.nome input {
+    width: 90%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
+}
+
+.cep input {
+    width: 90%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
+}
+
+.numeroCasa input {
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
+}
+
+.renda input {
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #cdd1d6;
+    border-radius: 6px;
+
+}
+
+.fotoFamilia {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}

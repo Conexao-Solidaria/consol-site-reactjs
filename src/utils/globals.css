@@ -14,3 +14,7 @@
   --global-green-sucess: #52ff78;
   --global-yellow-attention: #fcff69;
 }
+
+* {
+  box-sizing: border-box;
+}

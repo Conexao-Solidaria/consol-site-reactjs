@@ -1,0 +1,102 @@
+:root {
+  --shadow-light: 0px 10px 25px 0px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0px 10px 25px 0px rgba(0, 0, 0, 0.2);
+  --shadow-dark: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+}
+
+.containerModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.modal {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40vw;
+  height: 100vh;
+  background-color: var(--global-baby-blue);
+}
+
+.modal div {
+  display: flex;
+}
+
+.modal .modalHeader {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  padding: 10px 10px;
+  border-bottom: solid 1px var(--global-black);
+}
+
+.modal .modalHeader b {
+  width: auto;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.line {
+  padding: 0px 16px;
+}
+
+.background {
+  padding: 16px;
+  box-shadow: var(--shadow-medium);
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--global-beige);
+  width: 100%;
+  border-radius: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-light);
+  background-color: var(--global-white);
+  width: 100%;
+  padding: 0px;
+  border-radius: 10px;
+}
+
+.titulo {
+  padding: 0px;
+  justify-content: center;
+  border-bottom: 1px solid var(--global-light-grey);
+} 
+
+.titulo h1 {
+  padding: 0px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.coluna {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.coluna p {
+  text-align: left;
+}
+
+.botao {
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 8px 16px;
+  background-color: var(--global-blue);
+}
+
