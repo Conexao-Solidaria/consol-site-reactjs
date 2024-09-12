@@ -1,0 +1,70 @@
+.containerListaDoacoes {
+  background-color: var(--global-white);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  padding: 5px;
+  height: 100%;
+  margin: 0px 0px 10px 0px;
+}
+
+.containerListaDoacoes img {
+  width: 40px;
+  height: 40px;
+}
+
+.containerListaDoacoes .containerTipoDoacao {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+}
+
+.containerListaDoacoes .containerTipoDoacao p {
+  margin: 0px;
+}
+
+.containerListaDoacoes .containerTipoDoacao .Categoria {
+  color: var(--global-dark-blue);
+  padding-left: 13px;
+}
+
+.containerListaDoacoes .containerInformacoes {
+  display: flex;
+  justify-content: end;
+  width: 68vw;
+
+}
+
+.verticalLine {
+  width: 1px;
+  height: 10vh;
+  background-color: var(--global-light-grey-houver);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.informacoesDoacao {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+}
+
+.modalImagem {
+  width: 100%;
+  height: auto;
+  max-width: 5vw;
+}
+
+.modalImagem img {
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}

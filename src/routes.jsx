@@ -9,6 +9,7 @@ import Acessos from "./pages/acessos/Acessos";
 import Doacoes from "./pages/doacoes/Doacoes";
 import Donatarios from "./pages/donatarios/Donatarios";
 import Configuracao from "./pages/configuracao/Configuracao";
+import EditarFamilia from "./pages/editarFamila/EditarFamilia";
 
 const Rotas = () => {
   return (
@@ -16,6 +17,7 @@ const Rotas = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path='/editar-familia' element={<EditarFamilia />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/home" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
@@ -23,6 +25,7 @@ const Rotas = () => {
           <Route path="/doacoes" element={<Doacoes />} />
           <Route path="/donatarios" element={<Donatarios />} />
           <Route path='/configuracao' element={<Configuracao />} />
+          <Route path='/cadastro-doacao' element={<CadastroDoacao />} />
         </Routes>
         <ToastContainer></ToastContainer>
       </BrowserRouter>
