@@ -1,0 +1,114 @@
+@import url("../../utils/globals.css");
+
+@font-face {
+  font-family: Inter;
+  src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+html,
+body {
+  margin: 0%;
+  padding: 0%;
+  font-family: Inter;
+  overflow-y: auto;
+  background-color: var(--global-baby-blue);
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.navbarContainer {
+  width: fit-content;
+}
+
+.containerGeral {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.containerHead {
+  width: auto;
+}
+
+.containerConteudo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 75%;
+  box-sizing: border-box;
+  padding: 24px;
+  gap: 16px;
+}
+
+
+.containerPesquisa {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--global-white);
+  border-radius: 10px;
+  width: 100%;
+  height: 15%;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  align-items: center;
+  box-shadow: 0px 4px 6px 2px var(--global-light-grey-houver);
+}
+
+.containerPesquisa input {
+  width: 332px;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 30px;
+  border: 1px solid var(--global-light-grey);
+  border-radius: 10px;
+  background: url('../../utils/assets/icon_pesquisa.png') no-repeat right 10px center;
+  background-size: 18px 18px;
+}
+
+.containerDonatarios {
+  box-sizing: border-box;
+  height: 90%;
+}
+
+.containerFiltro {
+  box-sizing: border-box;
+  display: flex;
+  background-color: var(--global-white);
+  padding: 16px 24px;
+}
+
+.filtros {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  align-items: center;
+}
+
+.botoes {
+  display: flex;
+  gap: 16px;
+  justify-content: end;
+  flex-grow: 1;
+}
+
+.containerBotoes {
+  width: 50%;
+}
+
+
+.containerLista {
+  background-color: var(--global-white);
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
