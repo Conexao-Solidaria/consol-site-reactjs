@@ -1,0 +1,37 @@
+# EditorConfig is awesome: https://editorconfig.org
+# Se você estiver usando o VS Code instale o Plugin do EditorConfig
+# Top-most EditorConfig file
+root = true
+
+# Todos os arquivos
+[*]
+indent_style = space             # Usar espaços para indentação em vez de tabulação
+indent_size = 2                  # Tamanho da indentação (2 espaços)
+end_of_line = lf                 # Final de linha em formato LF (Unix-style)
+charset = utf-8                  # Codificação de caracteres UTF-8
+trim_trailing_whitespace = true  # Remover espaços em branco no final das linhas
+insert_final_newline = true      # Inserir uma nova linha no final do arquivo
+
+# Arquivos JavaScript e JSX
+[*.{js,jsx}]
+indent_size = 2
+
+# Arquivos TypeScript e TSX
+[*.{ts,tsx}]
+indent_size = 2
+
+# Arquivos JSON
+[*.json]
+indent_size = 2
+
+# Arquivos CSS, SCSS e LESS
+[*.{css,scss,less}]
+indent_size = 2
+
+# Arquivos HTML
+[*.html]
+indent_size = 2
+
+# Arquivos Markdown
+[*.md]
+trim_trailing_whitespace = false  # Em arquivos Markdown, manter espaços no final das linhas
