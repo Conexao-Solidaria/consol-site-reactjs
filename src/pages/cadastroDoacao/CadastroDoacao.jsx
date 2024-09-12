@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from "../../components/navBar/navBar";
+import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastroDoacao.module.css";
 import image from "../../utils/assets/foto-cadastro-doacao.png";
