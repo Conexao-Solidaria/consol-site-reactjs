@@ -23,6 +23,7 @@ const Rotas = () => {
           <Route path="/acessos" element={<Acessos />} />
           <Route path="/doacoes" element={<Doacoes />} />
           <Route path="/donatarios" element={<Donatarios />} />
+                    <Route path='/cadastro-doacao' element={<CadastroDoacao />} />
         </Routes>
         <ToastContainer></ToastContainer>
       </BrowserRouter>
