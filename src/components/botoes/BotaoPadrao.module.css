@@ -1,0 +1,23 @@
+@import url("../../utils/globals.css");
+
+@font-face {
+  font-family: Inter;
+  src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+.botao {
+  font-family: Inter;
+  border-style: none;
+  border-radius: 10px;
+  background-color: var(--global-blue);
+  color: var(--global-white);
+  font-weight: 400;
+  height: 26px;
+  width: auto;
+  padding: 0px 5px;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background-color: var(--global-blue-houver);
+}
