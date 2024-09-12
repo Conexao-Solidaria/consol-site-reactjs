@@ -2,7 +2,6 @@ import Rotas from "./routes";
 import React from 'react';
 import EditarDonatario from './pages/editarDonatario/EditarDonatario';
 
-
 const App = () => {
   const handleSelect = (value) => {
     console.log('Opção selecionada:', value);
