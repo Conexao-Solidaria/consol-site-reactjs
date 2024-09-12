@@ -7,11 +7,12 @@ import Login from "./pages/login/Login";
 import Historico from "./pages/historico/Historico";
 import Acessos from "./pages/acessos/Acessos";
 import Donatarios from "./pages/donatarios/Donatarios";
+import PesquisaDoacao from "./pages/pesquisaDoacao/PesquisaDoacao";
 import EditarFamilia from "./pages/editarFamilia/EditarFamilia";
 import CadastroDoacao from "./pages/cadastroDoacao/CadastroDoacao"
 import CadastrarDonatario from "./pages/cadastrarDonatario/CadastrarDonatario"
 import Configuracao from "./pages/configuracao/Configuracao";
-import ListaDoacoes from "./components/doacoes/ListaDoacoes";
+import PesquisaDoacao from "./components/doacoes/ListaDoacoes";
 
 const Rotas = () => {
   return (
@@ -24,7 +25,7 @@ const Rotas = () => {
           <Route path="/" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/acessos" element={<Acessos />} />
-          <Route path="/doacoes" element={<ListaDoacoes />} />
+          <Route path="/doacoes" element={<PesquisaDoacao />} />
           <Route path="/donatarios" element={<Donatarios />} />
           <Route path='/cadastro-doacao' element={<CadastroDoacao />} />
           <Route path="/configuracoes" element={<Configuracao />} />
