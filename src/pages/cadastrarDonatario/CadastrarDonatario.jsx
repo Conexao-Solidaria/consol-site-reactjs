@@ -19,9 +19,26 @@ const CadastrarDonatario = () => {
   const [familia, setFamilia] = useState("");
 
   const [estadoCivil, setEstadoCivil] = useState("");
-  const optEstadoCivil = ["Opção 1", "Opção 2", "Opção 3", "Opção 4"];
+  const optEstadoCivil = [
+    "Solteiro(a)",
+    "Casado(a)",
+    "Divorciado(a)",
+    "Viúvo(a)",
+    "Separado(a)"
+  ];
   const [escolaridade, setEscolaridade] = useState("");
-  const optEscolaridade = ["Opção 1", "Opção 2", "Opção 3", "Opção 4"];
+  const optEscolaridade = [
+    "Ensino Fundamental Incompleto",
+    "Ensino Fundamental Completo",
+    "Ensino Médio Incompleto",
+    "Ensino Médio Completo",
+    "Ensino Técnico",
+    "Ensino Superior Incompleto",
+    "Ensino Superior Completo",
+    "Pós-graduação",
+    "Mestrado",
+    "Doutorado"
+  ];
   const [trabalhando, isTrabalhando] = useState("");
   const optTrabalhando = ["Sim", "Não"];
 
@@ -44,6 +61,7 @@ const CadastrarDonatario = () => {
               <div className={style.formulario}>
                 <div className={style.formLine} id={style.formLine1}>
                   <InputPadrao
+                    className={style.nomeCompleto}
                     label="Nome Completo:"
                     placeholder="Nome Completo"
                     onlyLetters={true}
@@ -53,6 +71,7 @@ const CadastrarDonatario = () => {
                 </div>
                 <div className={style.formLine} id={style.formLine2}>
                   <InputPadrao
+                    className={style.rg}
                     label="RG:"
                     placeholder="__.___.___-_"
                     mask="99.999.999-9"
@@ -60,6 +79,7 @@ const CadastrarDonatario = () => {
                     onChange={(value) => setRg(value)}
                   />
                   <InputPadrao
+                    className={style.cpf}
                     label="CPF:"
                     placeholder="___.___.___-__"
                     mask="999.999.999-99"
@@ -68,14 +88,16 @@ const CadastrarDonatario = () => {
                   />
                 </div>
                 <div className={style.formLine} id={style.formLine3}>
-                <InputPadrao
+                  <InputPadrao
+                    className={style.dataNascimento}
                     label="Data de Nascimento:"
-                    placeholder="DD/MM/YY"
-                    mask="99/99/99"
+                    placeholder="DD/MM/YYYY"
+                    mask="99/99/9999"
                     value={dataNasc}
                     onChange={(value) => setDataNasc(value)}
                   />
                   <ComboBox
+                    className={style.estadoCivil}
                     label="Estado Civil:"
                     defaultOption="Selecione"
                     options={optEstadoCivil}
@@ -83,6 +105,7 @@ const CadastrarDonatario = () => {
                     onChange={(e) => setEstadoCivil(e.target.value)}
                   />
                   <ComboBox
+                    className={style.escolaridade}
                     label="Escolaridade:"
                     defaultOption="Selecione"
                     options={optEscolaridade}
@@ -91,45 +114,50 @@ const CadastrarDonatario = () => {
                   />
                 </div>
                 <div className={style.formLine} id={style.formLine4}>
-                <InputPadrao
-                  label="Celular:"
-                  placeholder="(__) _____-____"
-                  mask="(99) 99999-99"
-                  value={celular}
-                  onChange={(value) => setCelular(value)}
-                />
-                <InputPadrao
-                  label="Telefone:"
-                  placeholder="(__) _____-____"
-                  mask="(99) 99999-99"
-                  value={telefone}
-                  onChange={(value) => setTelefone(value)}
-                />
+                  <InputPadrao
+                    className={style.celular}
+                    label="Celular:"
+                    placeholder="(__) _____-____"
+                    mask="(99) 99999-99"
+                    value={celular}
+                    onChange={(value) => setCelular(value)}
+                  />
+                  <InputPadrao
+                    className={style.telefone}
+                    label="Telefone:"
+                    placeholder="(__) _____-____"
+                    mask="(99) 99999-99"
+                    value={telefone}
+                    onChange={(value) => setTelefone(value)}
+                  />
                 </div>
                 <div className={style.formLine} id={style.formLine5}>
-                <ComboBox
-                  label="Trabalhando?"
-                  options={optTrabalhando}
-                  value={trabalhando}
-                  onChange={(e) => isTrabalhando(e.target.value)}
-                />
-                <InputPadrao
-                  label="Ocupação:"
-                  placeholder="Ocupação"
-                  value={ocupacao}
-                  onChange={(value) => setOcupacao(value)}
-                />
+                  <ComboBox
+                    className={style.trabalhando}
+                    label="Trabalhando?"
+                    options={optTrabalhando}
+                    value={trabalhando}
+                    onChange={(e) => isTrabalhando(e.target.value)}
+                  />
+                  <InputPadrao
+                    className={style.ocupacao}
+                    label="Ocupação:"
+                    placeholder="Ocupação"
+                    value={ocupacao}
+                    onChange={(value) => setOcupacao(value)}
+                  />
                 </div>
                 <div className={style.formLine} id={style.formLine6}>
-                <InputPadrao
+                  <InputPadrao
+                    className={style.familia}
                     label="A qual familía pertence?"
                     placeholder="Nome da Família"
                     value={familia}
                     onChange={(value) => setFamilia(value)}
-                />
+                  />
                 </div>
                 <div className={style.formLine} id={style.formLine7}>
-                  <BotaoPadrao texto="Cadastrar"/>
+                  <BotaoPadrao texto="Cadastrar" />
                 </div>
               </div>
               <div className={style.imagem}>

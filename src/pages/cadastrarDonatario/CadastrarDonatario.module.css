@@ -85,6 +85,36 @@ body {
   gap: 16px;
 }
 
+.formLine#formLine3 {
+  display: grid;
+  grid-template-columns: 1fr .9fr 2fr;
+}
+
+.formLine#formLine3 .dataNascimento {
+  grid-column: span 1;
+}
+
+.formLine#formLine3 .estadoCivil {
+  grid-column: span 1;
+}
+
+.formLine#formLine3 .escolaridade {
+  grid-column-end: span 1;
+}
+
+.formLine#formLine5 {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.formLine#formLine5 .trabalhando {
+  grid-column: span 1;
+}
+
+.formLine#formLine5 .ocupacao {
+  grid-column: span 3;
+}
+
 .formLine#formLine7 {
   justify-content: end;
 }
@@ -106,4 +136,25 @@ body {
   height: 95%;
   object-fit: cover;
   border-radius: 10px;
+}
+
+@media (max-width: 950px) {
+
+  .containerFormulario {
+    height: 96%;
+  }
+
+  .imagem {
+    display: none;
+  }
+
+  .formulario {
+    width: 100%;
+  }
+
+  .formLine {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
 }
