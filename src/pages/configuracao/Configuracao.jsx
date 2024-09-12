@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Configuracao.module.css";
-import NavBar from "../../components/navBar/navBar";
+import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import seta from "../../utils/assets/seta-direita.png"
 
