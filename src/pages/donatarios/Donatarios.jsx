@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import styles from "./Donatarios.module.css";
 
 function Donatarios() {
-    return (
-        <></>
-    )
+  return <></>;
 }
-
-
 
 export default Donatarios;

@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import styles from "./Doacoes.module.css";
 
 function Doacoes() {
-    return (
-        <></>
-    )
+  return <></>;
 }
 
 export default Doacoes;
