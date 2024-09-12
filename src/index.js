@@ -3,7 +3,6 @@ import Login from './pages/login/Login';
 import Teste from './pages/teste/Teste';
 import Dashboard from './pages/dashboard/Dashboard';
 import Historico from './pages/historico/Historico';
-import Configuracao from './pages/configuracao/Configuracao';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -22,8 +21,7 @@ root.render(
       <Route path='/cadastro' element={<Cadastro />} />
       <Route path='/teste' element={<Teste />} />
       <Route path='/home' element={<Dashboard />} />
-      <Route path='/historico' element={<Historico />} />
-      <Route path='/configuracao' element={<Configuracao />} />
+      <Route path='/historico' element={<Historico />} />S
     </Routes>
     <ToastContainer></ToastContainer>
   </BrowserRouter>
