@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavBar from "../../components/navBar/navBar";
+import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./PesquisaDoacao.module.css";
 import iconCrianca from "../../utils/assets/icon_Crianca.png";
