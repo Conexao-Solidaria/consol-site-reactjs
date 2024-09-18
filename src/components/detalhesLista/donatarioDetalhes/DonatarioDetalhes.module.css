@@ -58,3 +58,9 @@ p {
   justify-content: center;
   align-items: end;
 }
+
+@media (max-width: 950px) {
+  .enderecoDetalhes {
+    display: none;
+  }
+}
