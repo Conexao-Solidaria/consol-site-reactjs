@@ -12,7 +12,6 @@ import EditarFamilia from "./pages/editarFamilia/EditarFamilia";
 import CadastroDoacao from "./pages/cadastroDoacao/CadastroDoacao"
 import CadastrarDonatario from "./pages/cadastrarDonatario/CadastrarDonatario"
 import Configuracao from "./pages/configuracao/Configuracao";
-import PesquisaDoacao from "./components/doacoes/ListaDoacoes";
 
 const Rotas = () => {
   return (

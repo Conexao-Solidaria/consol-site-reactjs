@@ -26,7 +26,7 @@ const NavBar = () => {
     const donatario = () => {
         navigate("/donatarios")
     }
-    
+
     const acessos = () => {
         navigate("/acessos")
     }

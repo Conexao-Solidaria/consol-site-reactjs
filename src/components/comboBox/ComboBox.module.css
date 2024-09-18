@@ -21,4 +21,5 @@
   background-color: var(--global-white);
   border-radius: 8px;
   box-sizing: border-box;
+  height: auto;
 }

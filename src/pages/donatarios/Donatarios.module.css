@@ -112,3 +112,9 @@ p {
   max-height: 100%;
   overflow-y: auto;
 }
+
+@media (max-width: 950px) {
+  .containerPesquisa h2 {
+    display: none;
+  }
+}
