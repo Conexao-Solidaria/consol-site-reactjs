@@ -4,6 +4,10 @@
   --shadow-dark: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
 }
 
+p {
+  color: black !important;
+}
+
 .containerModal {
   display: none;
   position: fixed;
@@ -93,7 +97,8 @@
 }
 
 .botao {
-  width: auto;
+  width: fit-content; 
+  align-self: flex-end;
   height: 100%;
   border-style: none;
   color: white;
