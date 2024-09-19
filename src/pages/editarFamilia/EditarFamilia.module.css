@@ -87,16 +87,6 @@ body {
     width: 91%;
 }
 
-button{
-    margin-top: 10px;
-    color: azure;
-    background-color: #6c9bd9;
-    border-color: #6c9bd9;
-    border-radius: 6px;
-    width: 65px;
-    height: 22px;
-}
-
 .nome input {
     width: 90%;
     font-size: 16px;

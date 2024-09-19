@@ -3,12 +3,31 @@ import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
 import iconPerfil from "../../utils/assets/icon_perfil_usuario.png";
 import modalStyle from "../modal/Modal.module.css";
 import style from "./ListaDoacoes.module.css";
+import DoacaoCompleta from "../doacao-completa/DoacaoCompleta";
 
 const ListaDoacoes = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsDonatarioCompleto(false);
+    setIsDoacaoCompleta(false);
+  }
+
+  const [isDoacaoCompleta, setIsDoacaoCompleta] = React.useState(false);
+
+  const handleDoacaoCompleta = () => {
+    setIsDoacaoCompleta(!isDoacaoCompleta);
+  }
+
+  const [isDonatarioCompleto, setIsDonatarioCompleto] = React.useState(false);
+
+  const handleDonatarioCompleto = () => {
+    setIsDonatarioCompleto(!isDonatarioCompleto);
   }
 
   return (
@@ -30,7 +49,7 @@ const ListaDoacoes = ({ data }) => {
       <div
         className={modalStyle.containerModal}
         style={{ display: isModalOpen ? 'block' : 'none' }}
-        onClick={handleModal}
+        onClick={closeModal}
       ></div>
 
       <div
@@ -64,7 +83,12 @@ const ListaDoacoes = ({ data }) => {
                   <p>Data/Hora:
                     <br /><b>{data.hora}</b>
                     <br />{data.data}</p>
-                  <button className={modalStyle.botao}>Ver Mais</button>
+                  <button
+                    className={modalStyle.botao}
+                    onClick={handleDoacaoCompleta}
+                  >
+                    Ver Mais
+                  </button>
                 </div>
               </div>
             </div>
@@ -131,6 +155,11 @@ const ListaDoacoes = ({ data }) => {
           </div>
         </div>
       </div>
+      <DoacaoCompleta
+        data={data}
+        isVisible={isDoacaoCompleta}
+        onClose={handleDoacaoCompleta}
+      />
     </>
   );
 }
