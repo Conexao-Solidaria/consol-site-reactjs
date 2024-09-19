@@ -159,7 +159,7 @@ select{
 .faq input{
     height: 3.5vh;
     width: 3.5vh;
-    background-image: url("C:\Users\rafae\Desktop\aprendizado\Faculdade\PE-PI\consol-site-reactjs\src\utils\assets\seta-direita.png");
+    background-image: url("../../utils/assets/seta-direita.png");
     background-color: #6C9BD9;
     background-repeat: no-repeat;
     background-position: center;

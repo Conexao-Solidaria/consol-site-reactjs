@@ -38,6 +38,7 @@ body {
 .containerConteudo {
   box-sizing: border-box;
   padding: 16px 24px;
+  height: 100vh;
 }
 
 .tituloPagina {
@@ -141,7 +142,7 @@ body {
 @media (max-width: 950px) {
 
   .containerFormulario {
-    height: 96%;
+    height: 95%;
   }
 
   .imagem {

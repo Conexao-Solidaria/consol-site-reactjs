@@ -32,7 +32,7 @@ function Donatarios() {
               </div>
               <div className={style.botoes}>
                 <BotaoPadrao texto="+ Cadastrar Família" onClick={() => {alert("Redirecionando Para Familia")}} />
-                <BotaoPadrao texto="+ Cadastrar Donatário" to="/cadastrarDonatario"/>
+                <BotaoPadrao texto="+ Cadastrar Donatário" to="/cadastrar-donatario"/>
               </div>
             </div>
             <div className={style.containerLista}>

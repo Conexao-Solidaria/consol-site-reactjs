@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./NavBar.module.css";
+import styles from "./navBar.module.css";
 import iconIgreja from "../../utils/assets/iconIgreja.png";
 import iconHome from "../../utils/assets/icon_home.png";
 import iconHistorico from "../../utils/assets/icon_historico.png";
@@ -26,7 +26,7 @@ const NavBar = () => {
     const donatario = () => {
         navigate("/donatarios")
     }
-    
+
     const acessos = () => {
         navigate("/acessos")
     }

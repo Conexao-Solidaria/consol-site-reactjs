@@ -1,8 +1,8 @@
 import React from 'react';
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
-import style from "./CadastroFamilia.module.css";
-import image from "../../utils/assets/familia 1.png";
+import style from "./CadastrarFamilia.module.css";
+import image from "../../utils/assets/familia1.png";
 
 
 const CadastroFamilia = () => {
@@ -40,7 +40,7 @@ const CadastroFamilia = () => {
                                         </div>
                                         <div>
                                             <span>Renda:</span>
-                                             <input className={style.inputLinha1} placeholder='Selecione' type="text" />
+                                             <input className={style.inputLinha1} placeholder='R$000,000,00' type="text" />
                                         </div>
                                     </div>
 

@@ -10,10 +10,9 @@ import Donatarios from "./pages/donatarios/Donatarios";
 import PesquisaDoacao from "./pages/pesquisaDoacao/PesquisaDoacao";
 import EditarFamilia from "./pages/editarFamilia/EditarFamilia";
 import CadastroDoacao from "./pages/cadastroDoacao/CadastroDoacao"
-import CadastrarDonatario from "./pages/cadastrarDonatario/CadastrarDonatario"
+import CadastrarDonatario from "./pages/cadastrarDonatario/CadastrarDonatario";
 import Configuracao from "./pages/configuracao/Configuracao";
-import PesquisaDoacao from "./components/doacoes/ListaDoacoes";
-import CadastrarFamilia from "./pages/cadastrarFamilia/CadastrarFamilia";
+import CadastroFamilia from "./pages/cadastrarFamilia/CadastrarFamilia";
 
 const Rotas = () => {
   return (
@@ -32,7 +31,7 @@ const Rotas = () => {
           <Route path="/configuracoes" element={<Configuracao />} />
           <Route path="/cadastrar-donatario" element={<CadastrarDonatario />} />
           <Route path='/configuracao' element={<Configuracao />} />
-          <Route path='/cadastrar-familia' element={<CadastrarFamilia />} />
+          <Route path='/cadastrar-familia' element={<CadastroFamilia />} />
         </Routes>
         <ToastContainer></ToastContainer>
       </BrowserRouter>
