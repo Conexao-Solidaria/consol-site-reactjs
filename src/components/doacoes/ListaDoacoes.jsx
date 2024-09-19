@@ -12,11 +12,16 @@ const ListaDoacoes = ({ data }) => {
     setIsModalOpen(!isModalOpen);
   }
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsDonatarioCompleto(false);
+    setIsDoacaoCompleta(false);
+  }
+
   const [isDoacaoCompleta, setIsDoacaoCompleta] = React.useState(false);
 
   const handleDoacaoCompleta = () => {
     setIsDoacaoCompleta(!isDoacaoCompleta);
-    handleModal();
   }
 
   const [isDonatarioCompleto, setIsDonatarioCompleto] = React.useState(false);
@@ -44,7 +49,7 @@ const ListaDoacoes = ({ data }) => {
       <div
         className={modalStyle.containerModal}
         style={{ display: isModalOpen ? 'block' : 'none' }}
-        onClick={handleModal}
+        onClick={closeModal}
       ></div>
 
       <div
@@ -78,7 +83,12 @@ const ListaDoacoes = ({ data }) => {
                   <p>Data/Hora:
                     <br /><b>{data.hora}</b>
                     <br />{data.data}</p>
-                  <button className={modalStyle.botao} onClick={handleDoacaoCompleta}>Ver Mais</button>
+                  <button
+                    className={modalStyle.botao}
+                    onClick={handleDoacaoCompleta}
+                  >
+                    Ver Mais
+                  </button>
                 </div>
               </div>
             </div>
@@ -147,7 +157,8 @@ const ListaDoacoes = ({ data }) => {
       </div>
       <DoacaoCompleta
         data={data}
-        style={{ display: isDoacaoCompleta ? 'flex' : 'none' }}
+        isVisible={isDoacaoCompleta}
+        onClose={handleDoacaoCompleta}
       />
     </>
   );
