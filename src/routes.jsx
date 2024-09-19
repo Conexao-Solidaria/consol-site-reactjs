@@ -13,6 +13,7 @@ import CadastroDoacao from "./pages/cadastroDoacao/CadastroDoacao"
 import CadastrarDonatario from "./pages/cadastrarDonatario/CadastrarDonatario"
 import Configuracao from "./pages/configuracao/Configuracao";
 import PesquisaDoacao from "./components/doacoes/ListaDoacoes";
+import CadastrarFamilia from "./pages/cadastrarFamilia/CadastrarFamilia";
 
 const Rotas = () => {
   return (
@@ -31,6 +32,7 @@ const Rotas = () => {
           <Route path="/configuracoes" element={<Configuracao />} />
           <Route path="/cadastrar-donatario" element={<CadastrarDonatario />} />
           <Route path='/configuracao' element={<Configuracao />} />
+          <Route path='/cadastrar-familia' element={<CadastrarFamilia />} />
         </Routes>
         <ToastContainer></ToastContainer>
       </BrowserRouter>
