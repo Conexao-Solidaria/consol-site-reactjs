@@ -1,57 +1,16 @@
 import React from "react";
-import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
-import iconPerfil from "../../utils/assets/icon_perfil_usuario.png";
 import modalStyle from "../modal/Modal.module.css";
-import style from "./ListaDoacoes.module.css";
-import DoacaoCompleta from "../doacao-completa/DoacaoCompleta";
+import iconPerfil from "../../utils/assets/icon_perfil_usuario.png";
+import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
+import style from "../doacoes/ListaDoacoes.module.css";
 
-const ListaDoacoes = ({ data }) => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-  const handleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  }
-
-  const [isDoacaoCompleta, setIsDoacaoCompleta] = React.useState(false);
-
-  const handleDoacaoCompleta = () => {
-    setIsDoacaoCompleta(!isDoacaoCompleta);
-    handleModal();
-  }
-
-  const [isDonatarioCompleto, setIsDonatarioCompleto] = React.useState(false);
-
-  const handleDonatarioCompleto = () => {
-    setIsDonatarioCompleto(!isDonatarioCompleto);
-  }
-
+const DoacaoCompleta = ({ data }) => {
   return (
     <>
-      <div className={style.containerListaDoacoes} onClick={handleModal}>
-        <img src={iconDoacoes} alt='Icone de Doações'></img>
-        <div className={style.containerTipoDoacao}>
-          <p><b>Doação</b></p>
-          <p className={style.Categoria}>{data.categoria}</p>
-        </div>
-        <div>
-          <div className={style.containerInformacoes}>
-            <p className={style.paragrafo}>{data.nomeCompleto}</p>
-            <div className={style.verticalLine}></div>
-            <p>{data.data}</p>
-          </div>
-        </div>
-      </div>
-      <div
-        className={modalStyle.containerModal}
-        style={{ display: isModalOpen ? 'block' : 'none' }}
-        onClick={handleModal}
-      ></div>
-
       <div
         className={modalStyle.modal}
-        style={{ display: isModalOpen ? 'flex' : 'none' }}
       >
-        <div className={modalStyle.modalHeader}><b onClick={handleModal}>X</b></div>
+        <div className={modalStyle.modalHeader}><b>X</b></div>
         <div className={modalStyle.line}>
           <div className={modalStyle.background}>
             <div className={modalStyle.content}>
@@ -78,7 +37,7 @@ const ListaDoacoes = ({ data }) => {
                   <p>Data/Hora:
                     <br /><b>{data.hora}</b>
                     <br />{data.data}</p>
-                  <button className={modalStyle.botao} onClick={handleDoacaoCompleta}>Ver Mais</button>
+                  <button className={modalStyle.botao}>Ver Mais</button>
                 </div>
               </div>
             </div>
@@ -145,12 +104,8 @@ const ListaDoacoes = ({ data }) => {
           </div>
         </div>
       </div>
-      <DoacaoCompleta
-        data={data}
-        style={{ display: isDoacaoCompleta ? 'flex' : 'none' }}
-      />
     </>
   );
 }
 
-export default ListaDoacoes;
+export default DoacaoCompleta;
