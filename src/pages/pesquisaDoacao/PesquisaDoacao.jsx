@@ -6,9 +6,16 @@ import iconCrianca from "../../utils/assets/icon_Crianca.png";
 import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
 import ListaDoacoes from "../../components/doacoes/ListaDoacoes";
 import iconLupa from "../../utils/assets/icon_lupa.png";
+import { useNavigate } from "react-router-dom";
 
 
 const PesquisaDoacao = ({ onSearch }) => {
+  const navigate = useNavigate();
+
+  const cadastroDoacao = () => {
+    navigate("/cadastro-doacao")
+  }
+  
   const [query, setQuery] = useState('');
 
   const handleInputChange = (event) => {
@@ -116,7 +123,7 @@ const PesquisaDoacao = ({ onSearch }) => {
 
                 </div>
                 <div className={style.containerAdicionarDoacao}>
-                  <button>+ Adicionar Doação</button>
+                  <button onClick={cadastroDoacao}>+ Adicionar Doação</button>
                 </div>
               </div>
               <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>

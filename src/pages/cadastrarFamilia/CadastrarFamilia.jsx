@@ -17,12 +17,11 @@ const CadastroFamilia = () => {
                         <div className={style.containerCadastro}>
                             <div className={style.containerTituloCadastro}>
                                 <div className={style.containerTitulo}>
-                                    <p>Cadastrar Doação</p>
+                                    <p>Cadastrar Familia</p>
                                 </div>
                             </div>
                             <div className={style.containerInfosCadastro}>
                                 <div className={style.containerFormularioCadastro}>
-
                                 <div className={style.campo3Formulario}>
                                         <span>Nome:</span>
                                         <input className={style.inputLinha3} placeholder='Nome' type="text" />
