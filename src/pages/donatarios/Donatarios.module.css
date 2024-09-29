@@ -105,7 +105,6 @@ p {
   width: 50%;
 }
 
-
 .containerLista {
   background-color: var(--global-white);
   width: 100%;
@@ -114,7 +113,35 @@ p {
 }
 
 @media (max-width: 950px) {
+
+  .containerConteudo {
+    gap: 0;
+  }
+
+  .containerPesquisa {
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: none;
+  }
+
   .containerPesquisa h2 {
     display: none;
+  }
+
+  .containerPesquisa input {
+    width: 100%;
+  }
+
+  .containerFiltro {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filtros {
+    display: none;
+  }
+
+  .botoes {
+    width: 100%;
+    justify-content: space-around;
   }
 }
