@@ -5,6 +5,8 @@ import styles from "./Cadastro.module.css";
 import imagem from "../../utils/assets/cadastro_image.jpg";
 import { toast } from "react-toastify";
 import api from "../../api";
+import InputPadrao from "../../components/inputs/InputPadrao";
+import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 function Cadastrar() {
   const navigate = useNavigate();
@@ -44,57 +46,48 @@ function Cadastrar() {
 
   return (
     <div className={styles.containerBackground}>
-      <div className={styles.containerImage}>
-        <img src={imagem} alt="Mulher colocando um broche de voluntário"></img>
-      </div>
+      <img src={imagem} alt="Mulher colocando um broche de voluntário"
+      />
       <div className={styles.container}>
         <div className={styles.containerForm}>
           <h3>Cadastro</h3>
           <form onSubmit={handleSave}>
-            <p>Nome:</p>
-            <input
-              type="text"
-              placeholder="Nome Completo"
+            <InputPadrao
+              label="Nome Completo:"
+              placeholder="Seu nome completo"
+              onlyLetters={true}
               value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required
+              onChange={(value) => setNome(value)}
             />
-            <p>Email:</p>
-            <input
-              type="email"
-              placeholder="you@example.com"
+            <InputPadrao
+              label="Email:"
+              placeholder="email@email.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              onChange={(value) => setEmail(value)}
             />
-            <p>CPF:</p>
-            <input
-              type="text"
-              placeholder="CPF"
+            <InputPadrao
+              label="CPF:"
+              placeholder="___.___.___-__"
+              mask="999.999.999-99"
               value={cpf}
-              onChange={(e) => setCpf(e.target.value)}
-              required
+              onChange={(value) => setCpf(value)}
             />
-            <p>Senha:</p>
-            <input
-              type="password"
-              placeholder="Senha"
+            <InputPadrao
+              label="Senha:"
+              placeholder="Sua senha"
               value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
+              onChange={(value) => setSenha(value)}
             />
-            <p>Confirmação de Senha:</p>
-            <input
-              type="password"
+            <InputPadrao
+              label="Confirmação de senha:"
               placeholder="Confirme sua senha"
               value={confirmSenha}
-              onChange={(e) => setConfirmSenha(e.target.value)}
-              required
+              onChange={(value) => setConfirmSenha(value)}
             />
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <div className={styles.containerButton}>
-              <button type="submit">Cadastrar</button>
-              <a href="/">Já tem conta? Realize o Login.</a>
+            {error && <div className={styles.error}>{error}</div>}
+            <div className={styles.containerRedirector}>
+              <a href="/login">Já tenho uma conta</a>
+              <BotaoPadrao texto="Cadastrar" />
             </div>
           </form>
         </div>

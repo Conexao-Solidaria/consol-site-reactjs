@@ -21,16 +21,14 @@ function Login() {
       toast.success("Login bem-sucedido!");
       navigate("/home");
     } catch (error) {
-      toast.error(error.response?.data?.message || "Erro ao fazer login");
-      setError(error.response?.data?.message || "Erro ao fazer login");
+      toast.error(error.response?.data?.message || "Erro ao tentar entrar");
+      setError(error.response?.data?.message || "Erro ao tentar entrar");
     }
   };
 
   return (
     <div className={styles.containerBackground}>
-      <img
-        src={image}
-        alt="Mulher colocando um broche escrito 'voluntário'"
+      <img src={image} alt="Mulher colocando um broche escrito 'voluntário'"
       />
       <div className={styles.container}>
         <div className={styles.containerForm}>
@@ -48,7 +46,7 @@ function Login() {
               value={senha}
               onChange={(value) => setSenha(value)}
             />
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <div className={styles.error}>{error}</div>}
             <div className={styles.containerRedirector}>
               <a href="/cadastro">Cadastrar-se</a>
               <BotaoPadrao texto="Entrar" />

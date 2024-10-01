@@ -5,12 +5,6 @@
   src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html,
 body {
   height: 100vh;
@@ -56,15 +50,21 @@ img {
   margin: 0;
 }
 
+.error {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 16px;
+}
+
 .containerRedirector {
-  width: 100%;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
 }
 
 .containerRedirector a {
-  font-size: small;
+  font-size: 12px;
 }
 
 .containerRedirector button{
