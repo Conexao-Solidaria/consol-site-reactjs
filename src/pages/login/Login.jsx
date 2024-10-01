@@ -1,10 +1,11 @@
-// src/components/Login/Login.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import image from "../../utils/assets/login_image.jpg";
 import { toast } from "react-toastify";
 import api from "../../api";
+import InputPadrao from "../../components/inputs/InputPadrao";
+import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 function Login() {
   const navigate = useNavigate();
@@ -27,36 +28,30 @@ function Login() {
 
   return (
     <div className={styles.containerBackground}>
-      <div className={styles.containerImage}>
-        <img
-          src={image}
-          alt="Mulher colocando um broche escrito 'voluntário'"
-        />
-      </div>
+      <img
+        src={image}
+        alt="Mulher colocando um broche escrito 'voluntário'"
+      />
       <div className={styles.container}>
         <div className={styles.containerForm}>
-          <h3>Login</h3>
+          <h3>Entrar</h3>
           <form onSubmit={handleSubmit}>
-            <p>Email:</p>
-            <input
-              type="text"
-              placeholder="you@example.com"
+            <InputPadrao
+              label="Email:"
+              placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              onChange={(value) => setEmail(value)}
             />
-            <p>Senha:</p>
-            <input
-              type="password"
-              placeholder="********"
+            <InputPadrao
+              label="Senha:"
+              placeholder="Senha"
               value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
+              onChange={(value) => setSenha(value)}
             />
             {error && <p style={{ color: "red" }}>{error}</p>}
-            <div className={styles.containerButton}>
-              <button type="submit">Entrar</button>
-              <a href="/cadastro">Não tem conta? Cadastre-se</a>
+            <div className={styles.containerRedirector}>
+              <a href="/cadastro">Cadastrar-se</a>
+              <BotaoPadrao texto="Entrar" />
             </div>
           </form>
         </div>
