@@ -1,146 +1,174 @@
-import React, { useState } from 'react';
+import React from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./EditarDonatario.module.css";
-import FotoFamilia from "../../utils/assets/foto-familia.png";
+import FotoFamilia from "../../utils/assets/familiares_image.png";
+import InputPadrao from "../../components/inputs/InputPadrao";
+import { useState } from "react";
+import BotaoPadrao from "../../components/botoes/BotaoPadrao";
+import ComboBox from "../../components/comboBox/ComboBox";
 
-const EditarDonatario = ({ optionsEstadoCivil, optionsEscolaridade,optionsTrabalhando, onSelect }) => {
-    const [selectedOptionEstadoCivil, setSelectedOptionEstadoCivil] = useState('');
-    const [selectedOptionEscolaridade, setSelectedOptionEscolaridade] = useState('');
-    const [selectedOptionTrabalhando, setSelectedOptionTrabalhando] = useState('');
+const CadastrarDonatario = () => {
+  const [nome, setNome] = useState("");
+  const [rg, setRg] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [dataNasc, setDataNasc] = useState("");
+  const [celular, setCelular] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [ocupacao, setOcupacao] = useState("");
+  const [familia, setFamilia] = useState("");
 
-    const handleEstadoCivilChange = (event) => {
-        setSelectedOptionEstadoCivil(event.target.value);
-        onSelect(event.target.value);
-    };
+  const [estadoCivil, setEstadoCivil] = useState("");
+  const optEstadoCivil = [
+    "Solteiro(a)",
+    "Casado(a)",
+    "Divorciado(a)",
+    "Viúvo(a)",
+    "Separado(a)"
+  ];
+  const [escolaridade, setEscolaridade] = useState("");
+  const optEscolaridade = [
+    "Ensino Fundamental Incompleto",
+    "Ensino Fundamental Completo",
+    "Ensino Médio Incompleto",
+    "Ensino Médio Completo",
+    "Ensino Técnico",
+    "Ensino Superior Incompleto",
+    "Ensino Superior Completo",
+    "Pós-graduação",
+    "Mestrado",
+    "Doutorado"
+  ];
+  const [trabalhando, isTrabalhando] = useState("");
+  const optTrabalhando = ["Sim", "Não"];
 
-    const handleEscolaridadeChange = (event) => {
-        setSelectedOptionEscolaridade(event.target.value);
-        onSelect(event.target.value);
-    };
-
-    const handleTrabalhandoChange = (event) => {
-        setSelectedOptionTrabalhando(event.target.value);
-        onSelect(event.target.value);
-    };
-
-    return (
-        <>
-            <div className={style.container}>
-                <NavBar />
-                <div className={style.containerHead}>
-                    <Head />
-
-                    <div className={style.containerConteudo}>
-                        <div className={style.tituloPagina}>
-                            <p>Editar Donatário</p>
-                        </div>
-                        <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
-
-                        <div className={style.containerFormularioImg}>
-                            <div className={style.formulario}>
-                                <div className={style.formulario1}>
-                                    <div className={style.nome}>
-                                        <p>Nome Completo:</p>
-                                        <input type="text" placeholder="Nome Completo" />
-                                    </div>
-                                </div>
-
-                                <div className={style.formulario2}>
-                                    <div className={style.rg}>
-                                        <p>RG:</p>
-                                        <input type="text" placeholder="XX.XXX.XXX-XX" />
-                                    </div>
-
-                                    <div className={style.cpf}>
-                                        <p>CPF:</p>
-                                        <input type="text" placeholder="XXX.XXX.XXX-XX" />
-                                    </div>
-                                </div>
-
-                                <div className={style.formulario3}>
-                                    <div className={style.dataNasc}>
-                                        <p>Data de Nascimento:</p>
-                                        <input type="text" placeholder="DD/MM/YYYY" />
-                                    </div>
-
-                                    <div className={style.estadoCivil}>
-                                        <p>Estado Civil:</p>
-                                        <select name="estadoCivil" onChange={handleEstadoCivilChange}>
-                                            <option value="">Selecione uma opção</option>
-                                            {optionsEstadoCivil.map((option, index) => (
-                                                <option key={index} value={option}>
-                                                    {option}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-
-                                    <div className={style.escolaridade}>
-                                        <p>Escolaridade:</p>
-                                        <select name="escolaridade" onChange={handleEscolaridadeChange}>
-                                            <option value="">Selecione uma opção</option>
-                                            {optionsEscolaridade.map((option, index) => (
-                                                <option key={index} value={option}>
-                                                    {option}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className={style.formulario4}>
-                                    <div className={style.celular}>
-                                        <p>Celular:</p>
-                                        <input type="text" placeholder="(XX) XXXX-XXXX" />
-                                    </div>
-
-                                    <div className={style.telefone}>
-                                        <p>Telefone:</p>
-                                        <input type="text" placeholder="(XX) XXXX-XXXX" />
-                                    </div>
-                                </div>
-
-                                <div className={style.formulario5}>
-                                    <div className={style.trabalhando}>
-                                        <p>Trabalhando?</p>
-                                        <select name="trabalhando" onChange={handleTrabalhandoChange}>
-                                            <option value="">Selecione uma opção</option>
-                                            {optionsTrabalhando.map((option, index) => (
-                                                <option key={index} value={option}>
-                                                    {option}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-
-                                    <div className={style.ocupacao}>
-                                        <p>Ocupação:</p>
-                                        <input type="text" placeholder="Ocupacao" />
-                                    </div>
-                                </div>
-
-                                <div className={style.formulario6}>
-                                <div className={style.familiaPertence}>
-                                        <p>A qual família pertence?:</p>
-                                        <input type="text" placeholder="Nome da familia" />
-                                    </div>
-                                </div>
-
-                                <div className={style.botaoAtualizar}>
-                                    <button>Atualizar</button>
-                                </div>
-                            </div>
-
-                            <div className={style.fotoFamilia}>
-                                <img src={FotoFamilia} alt="foto familia feliz" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <>
+      <div className={style.container}>
+        <div className={style.navbarContainer}>
+          <NavBar />
+        </div>
+        <div className={style.containerGeral}>
+          <div className={style.containerHead}>
+            <Head />
+          </div>
+          <div className={style.containerConteudo}>
+            <div className={style.tituloPagina}>
+              <p>Cadastrar Donatário</p>
+              <hr />
             </div>
-        </>
-    );
+            <div className={style.containerFormulario}>
+              <div className={style.formulario}>
+                <div className={style.formLine} id={style.formLine1}>
+                  <InputPadrao
+                    className={style.nomeCompleto}
+                    label="Nome Completo:"
+                    placeholder="Nome Completo"
+                    onlyLetters={true}
+                    value={nome}
+                    onChange={(value) => setNome(value)}
+                  />
+                </div>
+                <div className={style.formLine} id={style.formLine2}>
+                  <InputPadrao
+                    className={style.rg}
+                    label="RG:"
+                    placeholder="__.___.___-_"
+                    mask="99.999.999-9"
+                    value={rg}
+                    onChange={(value) => setRg(value)}
+                  />
+                  <InputPadrao
+                    className={style.cpf}
+                    label="CPF:"
+                    placeholder="___.___.___-__"
+                    mask="999.999.999-99"
+                    value={cpf}
+                    onChange={(value) => setCpf(value)}
+                  />
+                </div>
+                <div className={style.formLine} id={style.formLine3}>
+                  <InputPadrao
+                    className={style.dataNascimento}
+                    label="Data de Nascimento:"
+                    placeholder="DD/MM/YYYY"
+                    mask="99/99/9999"
+                    value={dataNasc}
+                    onChange={(value) => setDataNasc(value)}
+                  />
+                  <ComboBox
+                    className={style.estadoCivil}
+                    label="Estado Civil:"
+                    defaultOption="Selecione"
+                    options={optEstadoCivil}
+                    value={estadoCivil}
+                    onChange={(e) => setEstadoCivil(e.target.value)}
+                  />
+                  <ComboBox
+                    className={style.escolaridade}
+                    label="Escolaridade:"
+                    defaultOption="Selecione"
+                    options={optEscolaridade}
+                    value={escolaridade}
+                    onChange={(e) => setEscolaridade(e.target.value)}
+                  />
+                </div>
+                <div className={style.formLine} id={style.formLine4}>
+                  <InputPadrao
+                    className={style.celular}
+                    label="Celular:"
+                    placeholder="(__) _____-____"
+                    mask="(99) 99999-99"
+                    value={celular}
+                    onChange={(value) => setCelular(value)}
+                  />
+                  <InputPadrao
+                    className={style.telefone}
+                    label="Telefone:"
+                    placeholder="(__) _____-____"
+                    mask="(99) 99999-99"
+                    value={telefone}
+                    onChange={(value) => setTelefone(value)}
+                  />
+                </div>
+                <div className={style.formLine} id={style.formLine5}>
+                  <ComboBox
+                    className={style.trabalhando}
+                    label="Trabalhando?"
+                    options={optTrabalhando}
+                    value={trabalhando}
+                    onChange={(e) => isTrabalhando(e.target.value)}
+                  />
+                  <InputPadrao
+                    className={style.ocupacao}
+                    label="Ocupação:"
+                    placeholder="Ocupação"
+                    value={ocupacao}
+                    onChange={(value) => setOcupacao(value)}
+                  />
+                </div>
+                <div className={style.formLine} id={style.formLine6}>
+                  <InputPadrao
+                    className={style.familia}
+                    label="A qual familía pertence?"
+                    placeholder="Nome da Família"
+                    value={familia}
+                    onChange={(value) => setFamilia(value)}
+                  />
+                </div>
+                <div className={style.formLine} id={style.formLine7}>
+                  <BotaoPadrao texto="Cadastrar" />
+                </div>
+              </div>
+              <div className={style.imagem}>
+                <img src={FotoFamilia} alt="Foto de uma familia unida" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
-export default EditarDonatario;
+export default CadastrarDonatario;
