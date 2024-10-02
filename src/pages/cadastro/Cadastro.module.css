@@ -7,145 +7,92 @@
 
 html,
 body {
-  margin: 0%;
-  padding: 0%;
+  height: 100vh;
+  width: 100vw;
   font-family: Inter;
-  overflow: hidden;
 }
 
 .containerBackground {
   display: flex;
   flex-direction: row;
   background-color: var(--global-baby-blue);
-  width: 100%;
-  height: 100vh;
+  height: 100%;
   font-size: 16px;
 }
 
-.containerImage {
-  width: 41.5vw;
-}
-
-.containerImage img {
-  width: 100%;
-  height: 100%;
+img {
+  object-fit: cover;
+  height: 100vh;
+  width: 40vw;
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55%;
+  height: 100vh;
+  width: 60vw;
+  padding: 8vw;
 }
 
 .containerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   background-color: var(--global-white);
   border-radius: 10px;
-  padding: 24px;
-  width: 55%;
+  padding: 3vh 2vw;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 1vh 1vh 5px var(--global-light-grey-houver);
 }
 
 .containerForm h3 {
-  margin-top: 0;
-  margin-bottom: 5%;
+  margin: 0%;
 }
 
-.containerForm p {
-  margin-bottom: 2%;
-  margin-top: 0%;
+.error {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 16px;
 }
 
-.containerForm input {
-  margin-bottom: 5%;
-  border-radius: 5px;
-  padding: 5px;
-  height: 15%;
-  border: 1px var(--global-light-grey) solid;
-  width: 100%;
-}
-
-.containerButton {
-  width: 100%;
+.containerRedirector {
   display: flex;
-  flex-direction: column;
+  width: 100%;
   align-items: center;
+  justify-content: space-between;
 }
 
-.containerButton button {
-  background-color: var(--global-blue);
-  width: 60%;
-  border-radius: 10px;
-  border: none;
-  padding: 3%;
-}
-
-.containerButton button::hover {
-  background-color: var(--global-blue-houver);
-}
-
-.containerButton a {
-  text-decoration: none;
-  color: var(--global-global-dark-blue);
-  margin-top: 5%;
+.containerRedirector a {
   font-size: 12px;
 }
 
-.containerButton a::before {
-  color: var(--global-blue-houver);
+.containerRedirector button{
+  height: 5vh;
+  width: 100px;
 }
 
 @media screen and (max-width: 750px) {
-  .containerBackground {
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    background-color: #0000;
-    font-size: 12px;
+  .containerBackground img {
+    display: none;
   }
 
   .container {
-    width: 80%;
-  }
-
-  .containerImage {
-    position: absolute;
+    display: flex;
     width: 100vw;
-    height: 100%;
-    filter: blur(4px);
-    z-index: -100;
-  }
-
-  .containerImage img {
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .containerForm {
-    background-color: var(--global-baby-blue);
-    width: 100%;
-    height: 80vh;
-    max-width: 400px;
-    padding: 10%;
-    border-radius: 10px;
-    z-index: 2;
-  }
-
-  .containerForm input {
-    height: 5%;
-  }
-
-  .containerButton {
-    height: 10%;
-    padding: 2%;
-  }
-
-  .containerButton button {
-    width: 70%;
-    height: 60%;
-    padding: 2%;
-  }
-
-  .containerButton a {
+    height: 100vh;
+    justify-content: center;
     align-items: center;
+  }
+
+  .containerRedirector {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+
+  .containerRedirector button{
+    width: 125px;
   }
 }
