@@ -141,8 +141,12 @@ body {
 
 @media (max-width: 950px) {
 
+  .containerConteudo {
+    height: auto;
+  }
+
   .containerFormulario {
-    height: 95%;
+    height: auto;
   }
 
   .imagem {

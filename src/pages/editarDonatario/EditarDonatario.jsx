@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./EditarDonatario.module.css";
-import FotoFamilia from "../../utils/assets/familiares_image.png";
+import FotoFamilia from "../../utils/assets/foto-familia.png";
 import InputPadrao from "../../components/inputs/InputPadrao";
 import { useState } from "react";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
@@ -157,7 +157,7 @@ const CadastrarDonatario = () => {
                   />
                 </div>
                 <div className={style.formLine} id={style.formLine7}>
-                  <BotaoPadrao texto="Cadastrar" />
+                  <BotaoPadrao texto="Atualizar" />
                 </div>
               </div>
               <div className={style.imagem}>
