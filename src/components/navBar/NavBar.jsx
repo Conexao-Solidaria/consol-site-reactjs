@@ -45,7 +45,6 @@ const NavBar = () => {
 
   return (
     <>
-      <div className={styles.teste}></div>
       <div
         className={`${styles.container} ${showText ? styles.expandedContainer : ""}`}
       >
