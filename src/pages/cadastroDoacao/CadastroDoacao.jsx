@@ -6,6 +6,16 @@ import image from "../../utils/assets/foto-cadastro-doacao.png";
 
 
 const CadastroDoacao = () => {
+	
+
+
+
+
+
+
+
+
+
     return (
         <>
             <div className={style.container}>
@@ -52,7 +62,10 @@ const CadastroDoacao = () => {
                                         <span>Descrição:</span>
                                         <textarea className={style.inputLinha3} placeholder='Descrição' type="text" />
                                     </div>
-                                    <div className={style.ContainerBotao}><button className={style.botao}>Adicionar</button></div>
+                                    <div className={style.ContainerBotao}>
+										<button className={style.botao}>
+											Adicionar</button>
+										</div>
                                 </div>
                                 <div className={style.containerImagemCadastro}>
                                     <div className={style.containerImage}>
