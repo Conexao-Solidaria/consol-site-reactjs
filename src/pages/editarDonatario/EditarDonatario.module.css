@@ -1,219 +1,165 @@
-@import url(../../utils/globals.css);
+@import url("../../utils/globals.css");
 
 @font-face {
-    font-family: Inter;
-    src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+  font-family: Inter;
+  src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
 html,
 body {
-    margin: 0%;
-    padding: 0%;
-    font-family: Inter;
-    overflow-y: auto;
-    overflow-y: visible;
-    background-color: var(--global-baby-blue);
-
+  margin: 0%;
+  padding: 0%;
+  font-family: Inter;
+  overflow-y: auto;
+  background-color: var(--global-baby-blue);
 }
 
 .container {
-    display: flex;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.navbarContainer {
+  width: fit-content;
+}
+
+.containerGeral {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
 .containerHead {
-    width: 100%;
+  width: auto;
 }
 
 .containerConteudo {
-    background-color: var(--global-white);
-    border-radius: 10px;
-    display: flex;
-    width: 95%;
-    padding: 5px;
-    margin-left: 20px;
-    flex-direction: column;
-}
-
-.line {
-    width: 180vh;
-    height: 1px;
-    background-color: var(--global-light-grey-houver);
-
+  box-sizing: border-box;
+  padding: 16px 24px;
+  height: 100vh;
 }
 
 .tituloPagina {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: x-large;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--global-white);
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  padding-top: 6px;
+  color: var(--global-black);
+  gap: 5px;
 }
 
-.containerFormularioImg {
-    display: flex;
+.tituloPagina p {
+  color: var(--global-black);
+  font-size: 18px;
+}
+
+.tituloPagina hr {
     width: 100%;
-    font-size: large;
-    padding: 50px;
+    height: 1px;
+    margin: 0;
+    border: none;
+    background-color: #ccc;
+}
+
+.containerFormulario {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--global-white);
+  border-radius: 0px 0px 10px 10px;
+  height: 80vh;
 }
 
 .formulario {
-    display: flex;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  padding: 16px 24px;
+}
+
+.formLine {
+  display: flex;
+  gap: 16px;
+}
+
+.formLine#formLine3 {
+  display: grid;
+  grid-template-columns: 1fr .9fr 2fr;
+}
+
+.formLine#formLine3 .dataNascimento {
+  grid-column: span 1;
+}
+
+.formLine#formLine3 .estadoCivil {
+  grid-column: span 1;
+}
+
+.formLine#formLine3 .escolaridade {
+  grid-column-end: span 1;
+}
+
+.formLine#formLine5 {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.formLine#formLine5 .trabalhando {
+  grid-column: span 1;
+}
+
+.formLine#formLine5 .ocupacao {
+  grid-column: span 3;
+}
+
+.formLine#formLine7 {
+  justify-content: end;
+}
+
+.formLine button {
+  width: 120px;
+  height: 40px;
+}
+
+.imagem {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagem img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 950px) {
+
+  .containerConteudo {
+    height: auto;
+  }
+
+  .containerFormulario {
+    height: auto;
+  }
+
+  .imagem {
+    display: none;
+  }
+
+  .formulario {
     width: 100%;
-    align-items: flex;
+  }
+
+  .formLine {
+    display: flex !important;
     flex-direction: column;
-}
-
-.formulario2 {
-    width: 100%;
-    flex-direction: row;
-    margin-top: 20px;
-    display: flex;
-}
-
-.formulario3 {
-    width: 100%;
-    flex-direction: row;
-    margin-top: 20px;
-    display: flex;
-}
-
-.formulario4 {
-    width: 100%;
-    flex-direction: row;
-    margin-top: 20px;
-    display: flex;
-}
-
-.formulario5 {
-    width: 100%;
-    flex-direction: row;
-    margin-top: 20px;
-    display: flex;
-}
-
-.botaoAtualizar{
-    display: flex;
-    justify-content: flex-end;
-    align-items: end;
-    width: 91%;
-}
-
-button{
-    margin-top: 10px;
-    color: azure;
-    background-color: #6c9bd9;
-    border-color: #6c9bd9;
-    border-radius: 6px;
-    width: 65px;
-    height: 22px;
-}
-
-.nome input {
-    width: 90%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-}
-
-.rg input {
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-    margin-right: 85px;
-}
-
-.cpf{
-    margin-left: 45px;
-}
-
-.cpf input {
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-    margin-right: 85px;
-}
-
-.dataNasc input {
-    width: 90%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-}
-
-.estadoCivil{
-    margin-left: 25px;
-}
-
-.estadoCivil select{
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-}
-
-.escolaridade{
-    margin-left: 35px;
-}
-
-
-.escolaridade select{
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-}
-
-.telefone{
-    margin-left: 15px;
-}
-
-.celular input {
-    width: 90%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    margin-right: 110px;
-    border-radius: 6px;
-}
-
-.telefone input {
-    width: 90%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    margin-right: 115px;
-    border-radius: 6px;
-}
-
-.trabalhando select{
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-}
-
-.ocupacao{
-    margin-left: 30px;
-}
-
-.ocupacao input {
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    margin-right: 190px;
-    border-radius: 6px;
-}
-
-.familiaPertence input {
-    width: 90%;
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-}
-
-.fotoFamilia {
-    display: flex;
-    width: 100%;
-    height: 100%;
+    align-items: center;
+  }
 }

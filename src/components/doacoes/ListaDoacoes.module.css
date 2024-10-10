@@ -47,24 +47,3 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-
-.informacoesDoacao {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  gap: 16px;
-}
-
-.modalImagem {
-  width: 100%;
-  height: auto;
-  max-width: 5vw;
-}
-
-.modalImagem img {
-  margin: auto;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-}
