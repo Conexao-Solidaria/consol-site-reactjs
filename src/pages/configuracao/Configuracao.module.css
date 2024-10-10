@@ -5,60 +5,64 @@
     src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
-span{
+span {
     font-size: 2vh;
     margin-right: 1vh;
 }
 
-h2{
+h2 {
     font-size: 2vh;
 }
 
 html,
 body {
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
     font-family: Inter;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-hr{
+hr {
     color: black;
     background-color: black;
     height: 0.1vh;
     border: none;
 }
 
-.tituloTexto{
-    width: 85vw;
-    text-align: center;
+.container {
+    display: flex;
+    padding: 0;
 }
 
-.titulo{
-    width: 85vw;
+.main {
+    width: 100%;
+    height: 100vh;
+    padding: 16px
+}
+
+.tituloTexto {
+    text-align: left; /* Alinhado à esquerda */
+    font-size: 3vw; /* Ajuste responsivo */
+    font-size: 20px;
     display: flex;
-    align-items: center;
+    justify-content: center;
+}
+
+.titulo, .temas, .suporte {
+    background-color: white;
+    border-radius: 1vw;
+    box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
+    padding: 2vh; /* Adiciona padding */
 }
 
 .temas {
-    width: 85vw;
-    height: 25vh;
-    margin-left: 10vw;
-    background-color: white;
-    border-radius: 1vw;
-    box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
-    /* box-shadow: 10px 5px 5px red; */
+    height: auto; /* Altura automática */
+    width: 100%;
 }
 
 .suporte {
-    margin-top: 10vh;
-    width: 85vw;
-    height: 17vh;
-    margin-left: 10vw;
-    background-color: white;
-    border-radius: 1vw;
-    box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
-    /* box-shadow: 10px 5px 5px red; */
+    margin-top: 5vh; /* Espaço superior */
+    width: 100%;
 }
 
 .switch {
@@ -68,95 +72,46 @@ hr{
     height: 3.5vh;
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
     transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 2.8vh;
-    width: 2.5vh;
-    left: 0.2vw;
-    bottom: 0.2vw;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked+.slider {
-    background-color: #2196F3;
-}
-
-input:focus+.slider {
-    box-shadow: 0 0 0.2vh #2196F3;
-}
-
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-.slider{
     border-radius: 1vh;
 }
 
-.slider:before {
-    border-radius: 50%;
-}
-
-.temasItens{
+.temasItens {
     width: 100%;
-    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-left: 1vw;
 }
 
-.checkbox{
-    height: 10%;
-    width: 100%;
+.checkbox {
     display: flex;
     align-items: center;
 }
 
-select{
+select {
     height: 3vh;
-    width: 20vw;
+    width: auto; /* Largura automática */
     font-size: 2vh;
+    margin-left: 1vh; /* Espaço à esquerda */
 }
 
-.suporteItens{
-    width: 100%;
-    height: 100%;
+.suporte {
     display: flex;
     flex-direction: column;
-    margin-left: 1vw;
 }
 
-.faq{
-    width: 50vw;
+.faq {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+    margin-top: 1vh; /* Espaço superior */
 }
 
-.faq input{
+.faq input {
     height: 3.5vh;
     width: 3.5vh;
     background-image: url("../../utils/assets/seta-direita.png");
@@ -164,5 +119,5 @@ select{
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 1vh;
-    border: 0px;
+    border: none;
 }

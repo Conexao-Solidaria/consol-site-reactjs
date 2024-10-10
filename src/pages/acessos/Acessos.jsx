@@ -5,16 +5,16 @@ import Head from "../../components/head/Head";
 
 function Acessos() {
   return (
-    <>
+    <div className={style.container}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-      <div className={style.container}>
-        <NavBar />
+      <NavBar />
+      <div className={style.main}>
         <div className={style.containerHead}>
           <Head />
         </div>
         <div className={style.pesquisa}>
           <span className={style.tituloTexto}> Pesquisar Usuários: </span>
-          <input type="text" placeholder="Pesquisar Usuário"/>
+          <input type="text" placeholder="Pesquisar Usuário" />
         </div>
         <div className={style.gerenciar}>
           <div className={style.gerenciarTitulo}>
@@ -99,7 +99,7 @@ function Acessos() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
