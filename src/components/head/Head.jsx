@@ -10,20 +10,23 @@ const Head = () => {
   const navigate = useNavigate();
 
   const configuracao = () => {
-      navigate("/configuracoes")
-  }
-  
+    navigate("/configuracoes");
+  };
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-    return (
-        <>
-            <div className={styles.container}>
-                <a onClick={configuracao}> <img src={iconConfig} alt="Icone de configuração" /></a>
-                <h3>SGD</h3>
+  return (
+    <>
+      <div className={styles.container}>
+        <a onClick={configuracao}>
+          {" "}
+          <img src={iconConfig} alt="Icone de configuração" />
+        </a>
+        <h3>SGD</h3>
 
         <button onClick={toggleMenu}>
           <img src={iconPerfil} alt="Icone de perfil" />
@@ -34,13 +37,13 @@ const Head = () => {
             <li>
               <a href="#home">
                 {" "}
-                <img src={iconTrocarConta} alt=""/> Trocar de Usuário
+                <img src={iconTrocarConta} alt="" /> Trocar de Usuário
               </a>
             </li>
             <li>
               <a href="#about">
                 {" "}
-                <img src={iconSair} alt=""/> Sair
+                <img src={iconSair} alt="" /> Sair
               </a>
             </li>
           </ul>
