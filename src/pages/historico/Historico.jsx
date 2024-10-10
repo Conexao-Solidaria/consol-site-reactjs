@@ -72,32 +72,31 @@ const Historico = () => {
     <>
       <div className={style.container}>
         <NavBar />
-        <div className={style.containerHead}>
-          <Head />
-
+        <div className={style.main}>
+          <div className={style.containerHead}>
+            <Head />
+          </div>
           <div className={style.containerConteudo}>
-
             <div className={style.containerGeral}>
-
               <div className={style.containerCard}>
-                <LineChart />
+                {/* <LineChart /> */}
               </div>
             </div>
 
             <div className={style.containerListas}>
               <div className={style.containerKpiHistorico}>
                 <div className={style.kpiHistorico}>
-                  <p>14 Doações Periódicas</p>
+                  <span>14 Doações Periódicas</span>
                 </div>
                 <div className={style.kpiHistorico}>
-                  <p>11 Novas Doações</p>
+                  <span>11 Novas Doações</span>
                 </div>
               </div>
 
-              <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
+              <div className={style.line}></div>
 
               {vetorMockup && vetorMockup.map((data, index) => (
-                <div key={index} >
+                <div key={index}>
                   <ListaDoacoes data={data} />
                 </div>
               ))}
@@ -106,7 +105,6 @@ const Historico = () => {
         </div>
       </div>
     </>
-
   );
 };
 
