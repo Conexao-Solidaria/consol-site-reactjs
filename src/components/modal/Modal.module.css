@@ -157,4 +157,8 @@
   .modal .icon {
     width: 20%;
   }
+
+  .modal b {
+    font-size: 12px;
+  }
 }
