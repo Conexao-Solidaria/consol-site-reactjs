@@ -13,12 +13,14 @@ import CadastroDoacao from "./pages/cadastroDoacao/CadastroDoacao"
 import CadastrarDonatario from "./pages/cadastrarDonatario/CadastrarDonatario";
 import Configuracao from "./pages/configuracao/Configuracao";
 import CadastroFamilia from "./pages/cadastrarFamilia/CadastrarFamilia";
+import EditarDonatario from "./pages/editarDonatario/EditarDonatario";
 
 const Rotas = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/editar-donatario" element={<EditarDonatario />}></Route>
           <Route path="/login" element={<Login />} />
           <Route path='/editar-familia' element={<EditarFamilia />} />
           <Route path="/cadastro" element={<Cadastro />} />
