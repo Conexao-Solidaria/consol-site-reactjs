@@ -25,6 +25,7 @@
 }
 
 .container button img {
+  width: 3vw;
   margin-right: 10px;
 }
 .menu {
