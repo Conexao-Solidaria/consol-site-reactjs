@@ -69,14 +69,10 @@ const PesquisaDoacao = ({ onSearch }) => {
 					<div className={style.containerConteudo}>
 
 						<div className={style.containerBarraPesquisa}>
-							<p><b>Pesquisar Doações Realizadas:</b></p>
+							<p><b>Pesquisar por nome donatario:</b></p>
 							<div className={style.inputBarraPesquisa}>
-								<input type="text"
-									placeholder='Pesquisar doação'
-									value={query}
-									onChange={handleInputChange}
-								/>
-								<button onClick={handleSearch}><img src={iconLupa} alt="icone de pesquisar" style={{ width: "20px", height: "20px" }} /></button>
+								<input type="text" />
+								<button value={"PESQUISAR"}>PESQUISAR</button>
 							</div>
 						</div>
 
@@ -84,13 +80,8 @@ const PesquisaDoacao = ({ onSearch }) => {
 
 							<div className={style.filtroMaisAdicionaDoacao}>
 								<div className={style.containerFiltros}>
-									<p>Filtrar por: </p>
-									<button>filtros</button>
-									<p>Filtros:</p>
-									<button>00h00</button>
-									<button>DD mm YYYY</button>
-
-
+									<p>Filtros data:</p>
+									<input type="date" id="inputData" />
 								</div>
 								<div className={style.containerAdicionarDoacao}>
 									<button onClick={cadastroDoacao}>+ Adicionar Doação</button>
