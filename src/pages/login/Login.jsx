@@ -19,6 +19,7 @@ function Login() {
     try {
       const response = await api.post("/usuarios/login", { email, senha });
 	  sessionStorage.setItem("token", response.data.token);
+	  sessionStorage.setItem("usuario", JSON.stringify(response.data));
       toast.success("Login bem-sucedido!");
       navigate("/");
     } catch (error) {
