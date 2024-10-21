@@ -97,19 +97,20 @@ hr{
     border: none;
 }
 
-/* Cartões */
 .cartoes{
     width: 100%;
     height: 100%;
 }
 
-.cartao{
+.cartao {
     margin-left: 1vh;
     width: 98%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 1vh;
+    box-sizing: border-box;
 }
 
 .cartoes span{
@@ -143,4 +144,67 @@ hr{
 
 .cartao .button2{
     background-color: #EB4C46;
+}
+@media (max-width: 768px) {
+    .cartao {
+        flex-direction: column; 
+        align-items: stretch; 
+        margin: 1vh 0;
+    }
+
+    .cartao button {
+        width: 100%;
+        height: 5vh; 
+        margin: 0.5vh 0; 
+    }
+}
+
+@media (max-width: 768px) {
+    .pesquisa {
+        width: 90vw;
+        height: 5vh;
+    }
+
+    .pesquisa input {
+        height: 4vh;
+        width: 70vw;
+        font-size: 1.5vh;
+    }
+
+    .gerenciar {
+        width: 90vw;
+        height: auto;
+    }
+
+    .tituloTexto {
+        font-size: 2vh;
+    }
+
+    h2 {
+        font-size: 2vh;
+    }
+
+    span {
+        font-size: 2vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .pesquisa {
+        height: 6vh;
+    }
+
+    .pesquisa input {
+        height: 4vh;
+        width: 80vw;
+        font-size: 1.5vh;
+    }
+
+    .tituloTexto {
+        font-size: 2.5vh;
+    }
+
+    h2 {
+        font-size: 2vh;
+    }
 }
