@@ -22,7 +22,7 @@ const CadastroDoacao = () => {
 		if(infoInput.value.length > 0){
 			const yourConfig = {
 				headers: {
-					'Authorization': "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3OTk1MDIwLCJleHAiOjE3MzE1OTUwMjB9.gkDsEDCQ4gE7Ls1XDHCFpoqKlGQsofe0pOcqVsMwYmFexkDzgLYY-NuaS4pDS_Zn",
+					'Authorization': "Bearer " + sessionStorage.getItem("token"),
 				}
 			}
 
