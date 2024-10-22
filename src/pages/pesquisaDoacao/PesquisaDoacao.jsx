@@ -30,7 +30,7 @@ const PesquisaDoacao = ({ onSearch }) => {
 
 	const yourConfig = {
 		headers: {
-			Authorization: "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3OTA0NjA3LCJleHAiOjE3MzE1MDQ2MDd9.Gbaz5Xy3PFzqjKNw4e_d0kWyubXu88uJGUTh-_eOdqKY62lWSnPjK1iiwjhZ1ba-"
+			Authorization: "Bearer " + sessionStorage.getItem("token")
 		}
 	}
 
