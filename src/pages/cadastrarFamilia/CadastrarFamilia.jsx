@@ -22,7 +22,7 @@ const CadastroFamilia = () => {
         ){
 			const yourConfig = {
 				headers: {
-					'Authorization': "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI4NDA5MzQ0LCJleHAiOjE3MzIwMDkzNDR9.Hd-dTzDW4s7hoMHz584ZIPm2pCa3F0snHHQ-O7-Px1CBEwZcHnlIR-ceTLkx6zaJ",
+					'Authorization': "Bearer " + sessionStorage.getItem("token"),
 					'Content-Type': 'application/json'
 				}
 			}
