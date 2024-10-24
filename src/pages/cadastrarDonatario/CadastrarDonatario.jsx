@@ -7,6 +7,7 @@ import InputPadrao from "../../components/inputs/InputPadrao";
 import { useState } from "react";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
+import api from "../../api";
 
 const CadastrarDonatario = () => {
     const [nome, setNome] = useState("");
@@ -51,7 +52,7 @@ const CadastrarDonatario = () => {
     const optTrabalhando = ["Sim", "Não"];
 
     async function executarBusca() {
-        infoInput = document.getElementById('inputNome');
+        const infoInput = document.getElementById('inputNome');
 
         if (infoInput.value.length > 0) {
             const yourConfig = {
@@ -62,7 +63,7 @@ const CadastrarDonatario = () => {
 
             try {
                 const response = await api.get(`familias/filtro/por-nome?nome=${infoInput.value}`, yourConfig);
-                dropdown = document.getElementById('dropdown');
+                let dropdown = document.getElementById('dropdown');
                 dropdown.innerHTML = "";
 
                 for (var i = 0; i <= response.data.length - 1; i++) {
