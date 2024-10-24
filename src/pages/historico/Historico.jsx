@@ -20,6 +20,30 @@ const Historico = () => {
       email: "joao.silva@example.com"
     },
     {
+      categoria: "Alimento",
+      data: "10/09/2024",
+      hora: "14h30",
+      nomeCompleto: "João da Silva",
+      descricao: "Doação de cesta básica contendo 5kg de arroz, 2kg de feijão, 1L de óleo, 1kg de açúcar, e 1 pacote de café.",
+      endereco: "Rua das Flores 123",
+      complemento: "Centro - SP",
+      telefone: "+55 11 2345-6789",
+      celular: "+55 11 91234-5678",
+      email: "joao.silva@example.com"
+    },
+    {
+      categoria: "Alimento",
+      data: "10/09/2024",
+      hora: "14h30",
+      nomeCompleto: "João da Silva",
+      descricao: "Doação de cesta básica contendo 5kg de arroz, 2kg de feijão, 1L de óleo, 1kg de açúcar, e 1 pacote de café.",
+      endereco: "Rua das Flores 123",
+      complemento: "Centro - SP",
+      telefone: "+55 11 2345-6789",
+      celular: "+55 11 91234-5678",
+      email: "joao.silva@example.com"
+    },
+    {
       categoria: "Higiene",
       data: "08/09/2024",
       hora: "09h45",
@@ -56,6 +80,29 @@ const Historico = () => {
       email: "ana.pereira@example.com"
     },
     {
+      categoria: "Alimento",
+      data: "03/09/2024",
+      hora: "11h20",
+      nomeCompleto: "Ana Pereira",
+      descricao: "Doação de 3 cestas básicas contendo arroz, feijão, macarrão, óleo, açúcar, sal e café.",
+      endereco: "Rua dos Pinhais 321",
+      complemento: "Vila Nova - PR",
+      telefone: "+55 41 5678-9012",
+      celular: "+55 41 91234-6789",
+      email: "ana.pereira@example.com"
+    },    {
+      categoria: "Alimento",
+      data: "03/09/2024",
+      hora: "11h20",
+      nomeCompleto: "Ana Pereira",
+      descricao: "Doação de 3 cestas básicas contendo arroz, feijão, macarrão, óleo, açúcar, sal e café.",
+      endereco: "Rua dos Pinhais 321",
+      complemento: "Vila Nova - PR",
+      telefone: "+55 41 5678-9012",
+      celular: "+55 41 91234-6789",
+      email: "ana.pereira@example.com"
+    },
+    {
       categoria: "Limpeza",
       data: "02/09/2024",
       hora: "10h15",
@@ -80,7 +127,7 @@ const Historico = () => {
             <div className={style.containerGeral}>
 
               <div className={style.containerCard}>
-                <LineChart />
+                {/* <LineChart /> */}
               </div>
             </div>
 
@@ -93,9 +140,6 @@ const Historico = () => {
                   <p>11 Novas Doações</p>
                 </div>
               </div>
-
-              <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
-
               {vetorMockup && vetorMockup.map((data, index) => (
                 <div key={index} >
                   <ListaDoacoes data={data} />
