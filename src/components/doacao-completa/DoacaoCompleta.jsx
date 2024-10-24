@@ -5,29 +5,75 @@ import iconPerfil from "../../utils/assets/icon_perfil_usuario.png";
 import { toast } from "react-toastify";
 import api from "../../api";
 import { React, useEffect, handleClose } from "react";
+import { useNavigate } from "react-router-dom";
 
 const DoacaoCompleta = ({ data, isVisible, onClose }) => {
-	const handleDelete = () => {
-		api.delete(data.id)
-			.then(() => {
-				handleClose();
-			})
+	const navigate = useNavigate();
+	var mostrarEdit = false
 
-		toast.success("Doacao apagada com sucesso!");
-		onClose();
+	async function handleDelete(id) {
+		const yourConfig = {
+			headers: {
+				'Authorization': "Bearer " + sessionStorage.getItem("token"),
+				'Content-Type': "application/json"
+			}
+		}
+
+		try {
+			const response = await api.delete(`doacoes/${id}`, yourConfig);
+			toast.success("Doacao apagada com sucesso!");
+			onClose();
+			window.location.reload();
+		}
+		
+		catch (error) {
+			console.error('Error deletando doacao:', error);
+		}
 	}
 
-	const handleEdit = () => {
-		api.put()
-		toast.success("Doacao editada com sucesso!");
-		onClose();
+	async function handleEdit(id) {
+		if(mostrarEdit == false){
+			document.getElementById("descricaoDoacao").style.display = "none";
+			document.getElementById("descricaoDoacaoEdit").style.display = "block";
+			mostrarEdit = true;
+			return;
+		}
+
+		const yourConfig = {
+			headers: {
+				'Authorization': "Bearer " + sessionStorage.getItem("token"),
+				'Content-Type': "application/json"
+			}
+		}
+
+		const requestBody = {
+			'descricao': document.getElementById("descricaoDoacaoEdit").value
+		}
+
+		try {
+			const response = await api.put(`doacoes/atualizar-descricao/${id}`, requestBody, yourConfig);
+
+			toast.success("Descricao atualizada com sucesso!");
+			document.getElementById("descricaoDoacao").innerHTML = response.data.descricao;
+
+
+			document.getElementById("descricaoDoacao").style.display = "block";
+			document.getElementById("descricaoDoacaoEdit").style.display = "none";
+
+
+			mostrarEdit = false;
+		}
+		
+		catch (error) {
+			console.error('Error deletando doacao:', error);
+		}
 	}
 
 	// Fetch data from the API
 	async function handleFlag(id) {
 		const yourConfig = {
 			headers: {
-				'Authorization': "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI3OTk1MDIwLCJleHAiOjE3MzE1OTUwMjB9.gkDsEDCQ4gE7Ls1XDHCFpoqKlGQsofe0pOcqVsMwYmFexkDzgLYY-NuaS4pDS_Zn",
+				'Authorization': "Bearer " + sessionStorage.getItem("token"),
 				'Content-Type': "application/json"
 			}
 		}
@@ -85,7 +131,10 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 										</p>
 									</div>
 									<div className={style.coluna}>
-										<br /><button>Apagar doação</button>
+										<br />
+										<button onClick={() => handleDelete(data.id)}>
+											Apagar doação	
+										</button>
 									</div>
 									<div className={style.coluna}>
 										<br /><button style={{ backgroundColor: '#6C9BD9' }} onClick={ () => {
@@ -142,8 +191,15 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 									<h1>Descricao da Doacao</h1>
 								</div>
 								<div className={style.descricaoDoacao}>
-									<br />{data.descricao}</div>
-								<div className={style.divBotao}>
+									<br />
+										<p id="descricaoDoacao">{data.descricao}</p>
+										
+										<br></br>
+										<textarea id="descricaoDoacaoEdit" style={{display: "none"}}>
+
+										</textarea>
+									</div>
+								<div className={style.divBotao} onClick={() => handleEdit(data.id)}>
 									<button>Editar Descricao</button>
 								</div>
 							</div>

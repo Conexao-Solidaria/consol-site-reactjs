@@ -7,6 +7,7 @@ import InputPadrao from "../../components/inputs/InputPadrao";
 import { useState } from "react";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
+import api from "../../api";
 
 const CadastrarDonatario = () => {
     const [nome, setNome] = useState("");
@@ -51,18 +52,18 @@ const CadastrarDonatario = () => {
     const optTrabalhando = ["Sim", "Não"];
 
     async function executarBusca() {
-        infoInput = document.getElementById('inputNome');
+        var infoInput = document.getElementById('inputNome');
 
         if (infoInput.value.length > 0) {
             const yourConfig = {
                 headers: {
-                    'Authorization': "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI4NDE4NTgxLCJleHAiOjE3MzIwMTg1ODF9.JpnQcoct6mjEBzVDhZ8wJTTES-R8031wzfUMfD-4_zSSiFYi3bYrwo3LuWXWxDcZ",
+                    'Authorization': "Bearer " + sessionStorage.getItem("token"),
                 }
             }
 
             try {
                 const response = await api.get(`familias/filtro/por-nome?nome=${infoInput.value}`, yourConfig);
-                dropdown = document.getElementById('dropdown');
+                var dropdown = document.getElementById('dropdown');
                 dropdown.innerHTML = "";
 
                 for (var i = 0; i <= response.data.length - 1; i++) {
