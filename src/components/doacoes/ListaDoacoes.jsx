@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
-import iconPerfil from "../../utils/assets/icon_perfil_usuario.png";
-import modalStyle from "../modal/Modal.module.css";
 import style from "./ListaDoacoes.module.css";
 import DoacaoCompleta from "../doacao-completa/DoacaoCompleta";
 import api from "../../api";
@@ -16,30 +14,16 @@ const ListaDoacoes = ({ data }) => {
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
-  }
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setIsDonatarioCompleto(false);
-    setIsDoacaoCompleta(false);
-  }
-
-  const [isDoacaoCompleta, setIsDoacaoCompleta] = React.useState(false);
-
-  const handleDoacaoCompleta = () => {
-    setIsDoacaoCompleta(!isDoacaoCompleta);
-  }
-
-  const [isDonatarioCompleto, setIsDonatarioCompleto] = React.useState(false);
-
-  const handleDonatarioCompleto = () => {
-    setIsDonatarioCompleto(!isDonatarioCompleto);
-  }
+  };
 
   return (
     <>
       <div className={style.containerListaDoacoes} onClick={handleModal}>
-        <img src={iconDoacoes} alt='Icone de Doações'></img>
+        <img src={iconDoacoes} alt='Icone de Doações' />
         <div className={style.containerTipoDoacao}>
           <p><b>Doação</b></p>
           <p>ID</p>
@@ -163,11 +147,12 @@ const ListaDoacoes = ({ data }) => {
       </div>
       <DoacaoCompleta
         data={data}
-        isVisible={isDoacaoCompleta}
-        onClose={handleDoacaoCompleta}
+        isModalOpen={isModalOpen}
+        handleModal={handleModal}
+        closeModal={closeModal}
       />
     </>
   );
-}
+};
 
 export default ListaDoacoes;

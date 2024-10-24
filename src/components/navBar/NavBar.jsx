@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./navBar.module.css";
+import styles from "./NavBar.module.css";
 import iconIgreja from "../../utils/assets/iconIgreja.png";
 import iconHome from "../../utils/assets/icon_home.png";
 import iconHistorico from "../../utils/assets/icon_historico.png";
@@ -45,7 +45,6 @@ const NavBar = () => {
 
   return (
     <>
-      <div className={styles.teste}></div>
       <div
         className={`${styles.container} ${showText ? styles.expandedContainer : ""}`}
       >

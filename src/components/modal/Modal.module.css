@@ -4,10 +4,6 @@
   --shadow-dark: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
 }
 
-p {
-  color: black !important;
-}
-
 .containerModal {
   display: none;
   position: fixed;
@@ -23,13 +19,23 @@ p {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  z-index: 1000;
+  z-index: 999;
   position: fixed;
   top: 0;
   right: 0;
+  min-width: 400px;
   width: 40vw;
   height: 100vh;
   background-color: var(--global-baby-blue);
+  overflow-y: auto;
+}
+
+.modal p {
+  color: black !important;
+}
+
+.modal b {
+  font-size: 14px;
 }
 
 .modal div {
@@ -37,21 +43,27 @@ p {
 }
 
 .modal .modalHeader {
-  display: flex;
   justify-content: end;
   width: 100%;
   padding: 10px 10px;
   border-bottom: solid 1px var(--global-black);
 }
 
-.modal .modalHeader b {
+.modal .modalHeader .iconFechar {
+  height: 25px;
   width: auto;
   cursor: pointer;
-  padding: 0px;
 }
 
 .line {
   padding: 0px 16px;
+}
+
+.modal .icon {
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: auto;
 }
 
 .background {
@@ -65,7 +77,6 @@ p {
 }
 
 .content {
-  display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-light);
   background-color: var(--global-white);
@@ -78,7 +89,7 @@ p {
   padding: 0px;
   justify-content: center;
   border-bottom: 1px solid var(--global-light-grey);
-} 
+}
 
 .titulo h1 {
   padding: 0px;
@@ -92,20 +103,62 @@ p {
   height: 100%;
 }
 
+.coluna .descricao {
+  padding-left: 1em;
+}
+
 .coluna p {
   text-align: left;
 }
 
-.botao {
-  width: fit-content; 
-  align-self: flex-end;
+.informacoes {
   height: 100%;
-  border-style: none;
-  color: white;
-  border-radius: 10px;
-  padding: 8px 16px;
-  text-align: center;
-  display: inline-block;
-  background-color: var(--global-blue);
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
 }
 
+.informacoes .containerInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.informacoes .containerInfo .info {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: start;
+}
+
+.informacoes .containerInfo .info:last-child {
+  align-self: flex-end;
+}
+
+.informacoes button {
+  width: 100%;
+}
+
+.contato .info {
+  margin-top: 1vh;
+}
+
+@media (max-width: 400px) {
+  .modal {
+    min-width: auto;
+    width: 100vw;
+  }
+
+  .modal .icon {
+    width: 20%;
+  }
+
+  .modal b {
+    font-size: 12px;
+  }
+}
