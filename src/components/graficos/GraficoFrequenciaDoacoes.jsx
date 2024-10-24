@@ -1,110 +1,45 @@
-import React, { useEffect } from 'react';
-import * as echarts from 'echarts';
+// GraficoFrequenciaDoacoes.jsx
+import React from 'react';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
-const LineChart = () => {
-  useEffect(() => {
-    const series = [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar',
-        stack: 'a',
-        name: 'a'
-      },
-      {
-        data: [10, 46, 64, '-', 0, '-', 0],
-        type: 'bar',
-        stack: 'a',
-        name: 'b'
-      },
-      {
-        data: [30, '-', 0, 20, 10, '-', 0],
-        type: 'bar',
-        stack: 'a',
-        name: 'c'
-      },
-      {
-        data: [30, '-', 0, 20, 10, '-', 0],
-        type: 'bar',
-        stack: 'b',
-        name: 'd'
-      },
-      {
-        data: [10, 20, 150, 0, '-', 50, 10],
-        type: 'bar',
-        stack: 'b',
-        name: 'e'
-      }
-    ];
+// Registrando os componentes necessários do Chart.js
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-    const stackInfo = {};
-    for (let i = 0; i < series[0].data.length; ++i) {
-      for (let j = 0; j < series.length; ++j) {
-        const stackName = series[j].stack;
-        if (!stackName) {
-          continue;
-        }
-        if (!stackInfo[stackName]) {
-          stackInfo[stackName] = {
-            stackStart: [],
-            stackEnd: []
-          };
-        }
-        const info = stackInfo[stackName];
-        const data = series[j].data[i];
-        if (data && data !== '-') {
-          if (info.stackStart[i] == null) {
-            info.stackStart[i] = j;
-          }
-          info.stackEnd[i] = j;
-        }
-      }
-    }
-    for (let i = 0; i < series.length; ++i) {
-      const data = series[i].data;
-      const info = stackInfo[series[i].stack];
-      for (let j = 0; j < series[i].data.length; ++j) {
-        const isEnd = info.stackEnd[j] === i;
-        const topBorder = isEnd ? 20 : 0;
-        const bottomBorder = 0;
-        data[j] = {
-          value: data[j],
-          itemStyle: {
-            borderRadius: [topBorder, topBorder, bottomBorder, bottomBorder]
-          }
-        };
-      }
-    }
+const GraficoFrequenciaDoacoes = () => {
+  // Dados do gráfico
+  const data = {
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'], // Meses ou categorias
+    datasets: [
+      {
+        label: 'Frequência de Doações',
+        data: [12, 19, 3, 5, 2, 3], // Frequência de doações em cada mês
+        backgroundColor: 'rgba(75, 192, 192, 0.6)', // Cor das barras
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
 
-    const chartDom = document.getElementById('chart');
-    const myChart = echarts.init(chartDom);
-    const option = {
-      text: 'Gráfico de Barras Empilhadas',
-        subtext: 'Exemplo de gráfico com barras empilhadas',
-        left: 'center',
-        top: 'top',
-        textStyle: {
-          fontSize: 18,
-          fontWeight: 'bold'
-        },
-        subtextStyle: {
-          fontSize: 12
-        }
-      ,xAxis: {
-        type: 'category',
-        data: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: series,
+  // Configurações do gráfico
+  const options = {
+    responsive: true,
+    plugins: {
       legend: {
-        data: ['a', 'b', 'c', 'd', 'e']
-      }
-    };
-    myChart.setOption(option);
-  }, []);
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Frequência de Doações por Mês',
+      },
+    },
+  };
 
-  return <div id="chart" style={{ width: '100%', height: '100%' }}></div>;
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <Bar data={data} options={options} />
+    </div>
+  );
 };
 
-export default LineChart;
+export default GraficoFrequenciaDoacoes;
