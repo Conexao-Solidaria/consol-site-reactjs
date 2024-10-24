@@ -76,7 +76,6 @@ const CadastroDoacao = () => {
 			alert("Preencha todos os campos");
 		}
 	}
-	
     return (
         <>
             <div className={style.container}>
