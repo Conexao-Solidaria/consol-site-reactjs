@@ -82,7 +82,6 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                     <b>Descrição:</b>
                   </p>
                   <p className={style.descricao}>{data.descricao}</p>
-                  <button onClick={teste}>teste</button>
                 </div>
               </div>
             </div>

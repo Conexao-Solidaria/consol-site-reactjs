@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./PesquisaDoacao.module.css";
 import ListaDoacoes from "../../components/doacoes/ListaDoacoes";
-import iconLupa from "../../utils/assets/icon_lupa.png";
 import { useNavigate } from "react-router-dom";
 import { mockDoacao } from "../../mocks/CsMocks";
 import api from "../../api";
@@ -81,7 +80,7 @@ const PesquisaDoacao = ({ onSearch }) => {
                 </div>
               </div>
               <div className={style.line}></div>
-              {data?.map((data, index) => (
+              {mockDoacao?.map((data, index) => (
                 <div key={index}>
                   <ListaDoacoes data={data} />
                 </div>
