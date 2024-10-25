@@ -75,9 +75,9 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 									</div>
 									<div className={style.coluna}>
 										<p>Horario:
-											<br /><b>{data?.dataDoacao.split('T')[1]}</b></p>
+											<br /><b>{data.dataDoacao.split('T')[1]}</b></p>
 										<p>Data:
-											<br />{data?.dataDoacao.split('T')[0]}</p>
+											<br />{data.dataDoacao.split('T')[0]}</p>
 									</div>
 									<div className={style.coluna}>
 										<p>Status doação:
@@ -89,7 +89,6 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 									</div>
 									<div className={style.coluna}>
 										<br /><button style={{ backgroundColor: '#6C9BD9' }} onClick={ () => {
-											console.log(data.id)
 											handleFlag(data.id)
 											}}>Mudar status</button>
 									</div>

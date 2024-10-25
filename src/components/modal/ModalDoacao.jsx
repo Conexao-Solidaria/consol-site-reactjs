@@ -12,9 +12,6 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
   const handleDoacaoCompleta = () => {
     setIsDoacaoCompleta(!isDoacaoCompleta);
   };
-  function teste() {
-    console.log(data)
-  }
 
   return (
     <>
