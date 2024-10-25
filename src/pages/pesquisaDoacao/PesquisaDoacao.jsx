@@ -5,6 +5,7 @@ import style from "./PesquisaDoacao.module.css";
 import ListaDoacoes from "../../components/doacoes/ListaDoacoes";
 import iconLupa from "../../utils/assets/icon_lupa.png";
 import { useNavigate } from "react-router-dom";
+import { mockDoacao } from "../../mocks/CsMocks";
 import api from "../../api";
 
 const PesquisaDoacao = ({ onSearch }) => {
@@ -32,75 +33,22 @@ const PesquisaDoacao = ({ onSearch }) => {
     },
   };
 
-  useEffect(() => {
-    setData([
-      {
-        id: 1,
-        nomeCompleto: "Braia Hudson",
-        flagDoacaoEntregue: true,
-        descricao: "Isso e uma descricao",
-        categoria: "Isso e uma categoria",
-        endereco: "rua",
-        complemento: "e uma faculdade",
-        telefone1: "112",
-        telefone2: "113",
-        celular: "321",
-        email: "email@sptech.school",
-        data: "08/05/2000",
-        hora: "12:00"
-      },
-      {
-        id: 2,
-        nomeCompleto: "Braia Hudson",
-        flagDoacaoEntregue: true,
-        descricao: "Isso e uma descricao",
-        categoria: "Isso e uma categoria",
-        endereco: "rua",
-        complemento: "e uma faculdade",
-        telefone1: "112",
-        telefone2: "113",
-        celular: "321",
-        email: "email@sptech.school",
-        data: "08/05/2000",
-        hora: "12:00"
-      },
-      {
-        id: 3,
-        nomeCompleto: "Braia Hudson",
-        flagDoacaoEntregue: true,
-        descricao: "Isso e uma descricao",
-        categoria: "Isso e uma categoria",
-        endereco: "rua",
-        complemento: "e uma faculdade",
-        telefone1: "112",
-        telefone2: "113",
-        celular: "321",
-        email: "email@sptech.school",
-        data: "08/05/2000",
-        hora: "12:00"
-      },
-    ]);
+    async function fetchData() {
+    	try {
+    		const response = await api.get("/doacoes", yourConfig);
+    		setData(response);
+    	}
+    	catch (error) {
+    		console.error('Error fetching data:', error);
+    	}
+    	finally {
+    		setLoading(false);
+    	}
+    }
 
-    // Fetch data from the API
-    // async function fetchData() {
-    // 	try {
-    // 		const response = await api.get("/doacoes", yourConfig);
-    // 		setData(response);
-    // 	}
-    // 	catch (error) {
-    // 		console.error('Error fetching data:', error);
-    // 	}
-    // 	finally {
-    // 		setLoading(false); // Set loading to false when the data is ready
-    // 	}
-    // }
-
-    // fetchData(); // Call the function to fetch data when the component mounts
-    setLoading(false);
-  }, []);
+    fetchData();
 
   if (loading) {
-    // Show a loading indicator or placeholder until the data is loaded
     return <div>Loading...</div>;
   }
 
@@ -133,7 +81,7 @@ const PesquisaDoacao = ({ onSearch }) => {
                 </div>
               </div>
               <div className={style.line}></div>
-              {data && data?.map((data, index) => (
+              {data?.map((data, index) => (
                 <div key={index}>
                   <ListaDoacoes data={data} />
                 </div>
