@@ -36,10 +36,7 @@ const PesquisaDoacao = ({ onSearch }) => {
     setData([
       {
         id: 1,
-        donatario: {
-          nome: "Braian",
-          sobrenome: "braga",
-        },
+        nomeCompleto: "Braia Hudson",
         flagDoacaoEntregue: true,
         descricao: "Isso e uma descricao",
         categoria: "Isso e uma categoria",
@@ -54,10 +51,7 @@ const PesquisaDoacao = ({ onSearch }) => {
       },
       {
         id: 2,
-        donatario: {
-          nome: "Hudson",
-          sobrenome: "braga",
-        },
+        nomeCompleto: "Braia Hudson",
         flagDoacaoEntregue: true,
         descricao: "Isso e uma descricao",
         categoria: "Isso e uma categoria",
@@ -72,10 +66,7 @@ const PesquisaDoacao = ({ onSearch }) => {
       },
       {
         id: 3,
-        donatario: {
-          nome: "Braga",
-          sobrenome: "braga",
-        },
+        nomeCompleto: "Braia Hudson",
         flagDoacaoEntregue: true,
         descricao: "Isso e uma descricao",
         categoria: "Isso e uma categoria",
@@ -142,7 +133,7 @@ const PesquisaDoacao = ({ onSearch }) => {
                 </div>
               </div>
               <div className={style.line}></div>
-              {data?.map((data, index) => (
+              {data && data?.map((data, index) => (
                 <div key={index}>
                   <ListaDoacoes data={data} />
                 </div>

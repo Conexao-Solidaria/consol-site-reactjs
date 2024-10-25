@@ -6,7 +6,6 @@ import iconPerfil from "../../utils/assets/icon_perfil_usuario.png"
 import api from "../../api";
 
 const ListaDoacoes = ({ data }) => {
-  console.log("opa" ,data)
   // var dataDia = data?.dataDoacao.split('T')[0]
   // dataDia = dataDia.split('-')
   // dataDia = dataDia[2] + '/' + dataDia[1] + '/' + dataDia[0]
@@ -32,7 +31,7 @@ const ListaDoacoes = ({ data }) => {
         </div>
         <div>
           <div className={style.containerInformacoes}>
-            <p className={style.paragrafo}>{data.donatario.nome}</p>
+            <p className={style.paragrafo}>{data.nomeCompleto}</p>
             <div className={style.verticalLine}></div>
             {/* <p>{dataDia + " " + data?.dataDoacao.split('T')[1]}</p> */}
             <p>Aqui deveria vir o data dia quando tiver dataDoacao</p>
@@ -119,9 +118,9 @@ const ListaDoacoes = ({ data }) => {
                 </div>
                 <div className={style.coluna}>
                   <p>Nome:
-                    <br /><b>{data.donatario.nome.split(' ')[0]}</b></p>
+                    <br /><b>{data.nomeCompleto.split(' ')[0]}</b></p>
                   <p>Sobrenome:
-                    <br /><b>{data.donatario.nome.split(' ').slice(1).join(' ')}</b></p>
+                    <br /><b>{data.nomeCompleto.split(' ').slice(1).join(' ')}</b></p>
                 </div>
                 <div className={style.coluna}>
                   <p>Endereco:
@@ -138,10 +137,10 @@ const ListaDoacoes = ({ data }) => {
               <div className={style.informacoesDoacao}>
                 <div className={style.coluna}>
                   <p>Telefone:
-                    <br /><b>{data.donatario.telefone1}</b>
+                    <br /><b>{data.telefone1}</b>
                   </p>
                   <p>Celular:
-                    <br /><b>{data.donatario.telefone2}</b>
+                    <br /><b>{data.telefone2}</b>
                   </p>
                 </div>
               </div>
