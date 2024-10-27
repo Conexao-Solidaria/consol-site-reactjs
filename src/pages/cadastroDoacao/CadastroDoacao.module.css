@@ -79,6 +79,7 @@ body {
   width: 50%;
   flex-direction: column;
   padding: 16px 24px;
+  gap: 16px;
 }
 
 .formLine {
@@ -86,42 +87,28 @@ body {
   gap: 16px;
 }
 
+.formLine#formLine1 {
+  flex-direction: column;
+}
+
+.formLine#formLine2 {
+  height: 100%;
+}
+
+.formLine#formLine2 textarea{
+  height: 100%;
+}
+
+.formLine#formLine2 input::placeholder{
+  text-align: start;
+}
+
 .formLine#formLine3 {
-  display: grid;
-  grid-template-columns: 1fr .9fr 2fr;
-}
-
-.formLine#formLine3 .dataNascimento {
-  grid-column: span 1;
-}
-
-.formLine#formLine3 .estadoCivil {
-  grid-column: span 1;
-}
-
-.formLine#formLine3 .escolaridade {
-  grid-column-end: span 1;
-}
-
-.formLine#formLine5 {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-}
-
-.formLine#formLine5 .trabalhando {
-  grid-column: span 1;
-}
-
-.formLine#formLine5 .ocupacao {
-  grid-column: span 3;
-}
-
-.formLine#formLine7 {
   justify-content: end;
 }
 
-.formLine button {
-  width: 120px;
+.formulario button {
+  width: inherit;
   height: 40px;
 }
 

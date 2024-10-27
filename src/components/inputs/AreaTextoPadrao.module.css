@@ -15,8 +15,9 @@
   color: #333;
 }
 
-.input {
+.textarea {
   font-family: Inter;
+  resize: none;
   width: 100%;
   padding: 6px 12px;
   font-size: 16px;

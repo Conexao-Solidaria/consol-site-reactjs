@@ -7,15 +7,13 @@ import FotoDoacao from "../../utils/assets/foto-cadastro-doacao.png";
 import api from "../../api";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import InputPadrao from "../../components/inputs/InputPadrao";
+import AreaTextoPadrao from "../../components/inputs/AreaTextoPadrao";
 
 const CadastroDoacao = () => {
   const [titular, setTitular] = useState("");
   const [descricao, setDescricao] = useState("");
 
-  var dropdown = null;
-
   function aparecerDropdown() {
-    console.log("Executado")
     const titularDropdown = document.getElementById("dropdown");
     if (titular.length > 0) {
       titularDropdown.style.display = "block";
@@ -37,7 +35,7 @@ const CadastroDoacao = () => {
           `titulares/filtro/por-nome?nome=${titular}`,
           yourConfig,
         );
-        dropdown = document.getElementById("dropdown");
+        let dropdown = document.getElementById("dropdown");
         dropdown.innerHTML = "";
 
         for (var i = 0; i <= response.data.length - 1; i++) {
@@ -99,38 +97,45 @@ const CadastroDoacao = () => {
           </div>
           <div className={style.containerConteudo}>
             <div className={style.tituloPagina}>
-              <p>Cadastrar Donatário</p>
+              <p>Cadastrar Doação</p>
               <hr />
             </div>
             <div className={style.containerFormulario}>
               <div className={style.formulario}>
-                <InputPadrao
-                  className={style.titular}
-                  label="Quem está recebendo a doação?"
-                  placeholder="Pesquisar donatário"
-                  onlyLetters={true}
-                  value={titular}
-                  onChange={(value) => setTitular(value)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter") {
-                      aparecerDropdown();
-                      executarBusca();
-                    }
-                  }}
-                  id={"titular"}
-                />
-                <select
-                  id="dropdown"
-                  style={{ display: "none" }}
-                />
-                <InputPadrao
-                className={style.descricao}
-                label="Descrição:"
-                placeholder="Descrição da doação"
-                value={descricao}
-                onChange={(value) => setDescricao(value)}
-                id={"descricao"}/>
+                <div className={style.formLine} id={style.formLine1}>
+                  <InputPadrao
+                    className={style.titular}
+                    label="Quem está recebendo a doação?"
+                    placeholder="Pesquisar donatário"
+                    onlyLetters={true}
+                    value={titular}
+                    onChange={(value) => setTitular(value)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        aparecerDropdown();
+                        executarBusca();
+                      }
+                    }}
+                    id={"titular"}
+                  />
+                  <select
+                    id="dropdown"
+                    style={{ display: "none" }}
+                  />
+                </div>
+                <div className={style.formLine} id={style.formLine2}>
+                  <AreaTextoPadrao
+                    className={style.descricao}
+                    label="Descrição:"
+                    placeholder="Descrição da doação"
+                    value={descricao}
+                    onChange={(value) => setDescricao(value)}
+                    id={"descricao"}
+                  />
+                </div>
+                <div className={style.formLine} id={style.formLine3}>
                 <BotaoPadrao texto="Adicionar Doação" onClick={ cadastrarDoacao }/>
+                </div>
               </div>
               <div className={style.imagem}>
                 <img src={FotoDoacao} alt="Foto de itens de uma doação" />
