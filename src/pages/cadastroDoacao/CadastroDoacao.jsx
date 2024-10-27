@@ -1,144 +1,145 @@
-import React from 'react';
+import React from "react";
+import { useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastroDoacao.module.css";
-import image from "../../utils/assets/foto-cadastro-doacao.png";
+import FotoDoacao from "../../utils/assets/foto-cadastro-doacao.png";
 import api from "../../api";
-
+import BotaoPadrao from "../../components/botoes/BotaoPadrao";
+import InputPadrao from "../../components/inputs/InputPadrao";
 
 const CadastroDoacao = () => {
-	var infoInput = null,
-		dropdown = null;
+  const [titular, setTitular] = useState("");
+  const [descricao, setDescricao] = useState("");
 
+  var dropdown = null;
 
-	function aparecerDropdown(){
-		infoInput = document.getElementById('dropdown');
-		infoInput.style.display = "block";
-	}
+  function aparecerDropdown() {
+    console.log("Executado")
+    const titularDropdown = document.getElementById("dropdown");
+    if (titular.length > 0) {
+      titularDropdown.style.display = "block";
+    } else {
+      titularDropdown.style.display = "none";
+    }
+  }
 
-	async function executarBusca(){
-		infoInput = document.getElementById('inputNome');
+  async function executarBusca() {
+    if (titular.length > 0) {
+      const yourConfig = {
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      };
 
-		if(infoInput.value.length > 0){
-			const yourConfig = {
-				headers: {
-					'Authorization': "Bearer " + sessionStorage.getItem("token"),
-				}
-			}
+      try {
+        const response = await api.get(
+          `titulares/filtro/por-nome?nome=${titular}`,
+          yourConfig,
+        );
+        dropdown = document.getElementById("dropdown");
+        dropdown.innerHTML = "";
 
-			try {
-				const response = await api.get(`titulares/filtro/por-nome?nome=${infoInput.value}`, yourConfig);
-				dropdown = document.getElementById('dropdown');
-				dropdown.innerHTML = "";
-	
-				for (var i = 0 ; i <= response.data.length - 1 ; i++){
-					var opt = document.createElement('option');
-	
-					opt.value = response.data[i].id;
-					opt.innerHTML = response.data[i].nome;
-	
-					dropdown.appendChild(opt);
-				}
-			}
-			
-			catch (error) {
-				console.error('Error updating flag:', error);
-			}
-		}
-	}
+        for (var i = 0; i <= response.data.length - 1; i++) {
+          var opt = document.createElement("option");
 
-	async function cadastrarDoacao() {
-		const elementoDropDown = document.getElementById('dropdown');
-		const areaTexto = document.getElementById('areaDescricao');
+          opt.value = response.data[i].id;
+          opt.innerHTML = response.data[i].nome;
 
-		if(elementoDropDown.value != null && areaTexto.value.length > 0){
-			const yourConfig = {
-				headers: {
-					'Authorization': "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI4NDA5MzQ0LCJleHAiOjE3MzIwMDkzNDR9.Hd-dTzDW4s7hoMHz584ZIPm2pCa3F0snHHQ-O7-Px1CBEwZcHnlIR-ceTLkx6zaJ",
-					'Content-Type': 'application/json'
-				}
-			}
-			const bodyDoacao = {
-				"descricao": areaTexto.value,
-				"dataDoacao": "2024-07-07 14:25:04"
-			}
+          dropdown.appendChild(opt);
+        }
+      } catch (error) {
+        console.error("Error updating flag:", error);
+      }
+    }
+  }
 
-			try {
-				await api.post(`doacoes/titular/${elementoDropDown.value}/instituicao/1`, bodyDoacao, yourConfig);
-				alert("DOAÇÃO CRIADA")
-			}
-			
-			catch (error) {
-				console.error('Error updating flag:', error);
-			}
-		}
-		else{
-			alert("Preencha todos os campos");
-		}
-	}
-    return (
-        <>
-            <div className={style.container}>
-                <NavBar />
-                <div className={style.containerHead}>
-                    <Head />
+  async function cadastrarDoacao() {
+    const elementoDropDown = document.getElementById("dropdown");
+    const areaTexto = document.getElementById("descricao");
 
-                    <div className={style.containerConteudo}>
+    if (elementoDropDown.value != null && areaTexto.value.length > 0) {
+      const yourConfig = {
+        headers: {
+          Authorization:
+            "Bearer " +
+            "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI4NDA5MzQ0LCJleHAiOjE3MzIwMDkzNDR9.Hd-dTzDW4s7hoMHz584ZIPm2pCa3F0snHHQ-O7-Px1CBEwZcHnlIR-ceTLkx6zaJ",
+          "Content-Type": "application/json",
+        },
+      };
+      const bodyDoacao = {
+        descricao: areaTexto.value,
+        dataDoacao: "2024-07-07 14:25:04",
+      };
 
-                        <div className={style.containerGeral}>
-                            <div className={style.containerCard}>
-                                <h3>Pesquisar doações realizadas</h3>
-                                <input className={style.inputDoacao} type="text" placeholder='Pesquisar doação' />
-                            </div>
-                        </div>
+      try {
+        await api.post(
+          `doacoes/titular/${elementoDropDown.value}/instituicao/1`,
+          bodyDoacao,
+          yourConfig,
+        );
+        alert("DOAÇÃO CRIADA");
+      } catch (error) {
+        console.error("Error updating flag:", error);
+      }
+    } else {
+      alert("Preencha todos os campos");
+    }
+  }
 
-                        <div className={style.containerCadastro}>
-                            <div className={style.containerTituloCadastro}>
-                                <div className={style.containerTitulo}>
-                                    <p>Cadastrar Doação</p>
-                                </div>
-                            </div>
-
-                            {/* <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div> */}
-
-                            <div className={style.containerInfosCadastro}>
-                                <div className={style.containerFormularioCadastro}>
-                                    <div className={style.campo2Formulario}>
-                                        <span>Quem está recebendo a doação?</span>
-                                        <input className={style.inputLinha2} id="inputNome" placeholder='Pesquisar Titular' type="text" />
-										<select id='dropdown' style={{
-											display: "none"
-										}}>
-											
-										</select>
-										<br />
-										<button className={style.botao} onClick={() => {
-											aparecerDropdown();
-											executarBusca();
-											}}>Pesquisar</button>
-									</div>
-                                    <div className={style.campo3Formulario}>
-                                        <span>Descrição:</span>
-                                        <textarea className={style.inputLinha3} placeholder='Descrição' type="text" id="areaDescricao" />
-                                    </div>
-                                    <div className={style.ContainerBotao}>
-										<button onClick={() => {
-											cadastrarDoacao();
-										}}  className={style.botao}>Adicionar</button>
-									</div>
-                                </div>
-                                <div className={style.containerImagemCadastro}>
-                                    <div className={style.containerImage}>
-                                        <img src={image} alt="Itens de uma cesta básica'" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <>
+      <div className={style.container}>
+        <div className={style.navbarContainer}>
+          <NavBar />
+        </div>
+        <div className={style.containerGeral}>
+          <div className={style.containerHead}>
+            <Head />
+          </div>
+          <div className={style.containerConteudo}>
+            <div className={style.tituloPagina}>
+              <p>Cadastrar Donatário</p>
+              <hr />
             </div>
-        </>
-
-    );
+            <div className={style.containerFormulario}>
+              <div className={style.formulario}>
+                <InputPadrao
+                  className={style.titular}
+                  label="Quem está recebendo a doação?"
+                  placeholder="Pesquisar donatário"
+                  onlyLetters={true}
+                  value={titular}
+                  onChange={(value) => setTitular(value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      aparecerDropdown();
+                      executarBusca();
+                    }
+                  }}
+                  id={"titular"}
+                />
+                <select
+                  id="dropdown"
+                  style={{ display: "none" }}
+                />
+                <InputPadrao
+                className={style.descricao}
+                label="Descrição:"
+                placeholder="Descrição da doação"
+                value={descricao}
+                onChange={(value) => setDescricao(value)}
+                id={"descricao"}/>
+                <BotaoPadrao texto="Adicionar Doação" onClick={ cadastrarDoacao }/>
+              </div>
+              <div className={style.imagem}>
+                <img src={FotoDoacao} alt="Foto de itens de uma doação" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 export default CadastroDoacao;

@@ -3,7 +3,7 @@ import style from "./InputPadrao.module.css";
 import InputMask from "react-input-mask";
 import PropTypes from "prop-types";
 
-const InputPadrao = ({ label, placeholder, mask, onlyLetters, onChange, value, id }) => {
+const InputPadrao = ({ label, placeholder, mask, onlyLetters, onChange, onKeyDown, value, id }) => {
      const handleChange = (e) => {
           const newValue = e.target.value;
           if (onlyLetters) {
@@ -28,6 +28,7 @@ const InputPadrao = ({ label, placeholder, mask, onlyLetters, onChange, value, i
                          <input
                               {...inputProps}
                               onChange={handleChange}
+                              onKeyDown={onKeyDown}
                               value={value}
                               id={id}
                          />
@@ -43,6 +44,7 @@ InputPadrao.propTypes = {
      mask: PropTypes.string.isRequired,
      onlyLetters: PropTypes.bool,
      onChange: PropTypes.func.isRequired,
+     onKeyDown: PropTypes.func,
      value: PropTypes.string.isRequired,
 };
 
