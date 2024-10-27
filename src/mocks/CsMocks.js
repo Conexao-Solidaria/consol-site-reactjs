@@ -1,5 +1,3 @@
-// Mock doações
-
 export const mockDoacao = [
   {
     categoria: "Alimento",
@@ -110,3 +108,61 @@ export const mockDoacao = [
   }
 ];
 
+export const mockTitular = [
+  {
+    id: 0,
+    dataCadastro: "2024-10-27",
+    nome: "Lucas Silva",
+    rg: "174914076",
+    cpf: "64237253066",
+    dataNascimento: "2024-10-27",
+    telefone1: "+55 41 5678-9012",
+    telefone2: "+55 41 5678-9012",
+    estadoCivil: "Casado(a)",
+    escolaridade: "Ensino Fundamental Incompleto",
+    trabalhando: false,
+    ocupacao: ""
+  },
+  {
+    id: 1,
+    dataCadastro: "2024-10-27",
+    nome: "Joana Moura",
+    rg: "174914076",
+    cpf: "64237253066",
+    dataNascimento: "2024-10-27",
+    telefone1: "+55 41 5678-9012",
+    telefone2: "+55 41 5678-9012",
+    estadoCivil: "Casado(a)",
+    escolaridade: "Ensino Fundamental Incompleto",
+    trabalhando: false,
+    ocupacao: ""
+  },
+  {
+    id: 2,
+    dataCadastro: "2024-10-27",
+    nome: "Rafaela Silva",
+    rg: "174914076",
+    cpf: "64237253066",
+    dataNascimento: "2024-10-27",
+    telefone1: "+55 41 5678-9012",
+    telefone2: "+55 41 5678-9012",
+    estadoCivil: "Casado(a)",
+    escolaridade: "Ensino Fundamental Incompleto",
+    trabalhando: false,
+    ocupacao: ""
+  },
+  {
+    id: 3,
+    dataCadastro: "2024-10-27",
+    nome: "Jorge Carvalho",
+    rg: "174914076",
+    cpf: "64237253066",
+    dataNascimento: "2024-10-27",
+    telefone1: "+55 41 5678-9012",
+    telefone2: "+55 41 5678-9012",
+    estadoCivil: "Casado(a)",
+    escolaridade: "Ensino Fundamental Incompleto",
+    trabalhando: false,
+    ocupacao: ""
+  }
+]
