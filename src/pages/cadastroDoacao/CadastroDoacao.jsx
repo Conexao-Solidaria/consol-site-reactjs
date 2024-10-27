@@ -1,26 +1,19 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastroDoacao.module.css";
 import FotoDoacao from "../../utils/assets/foto-cadastro-doacao.png";
 import api from "../../api";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
-import InputPadrao from "../../components/inputs/InputPadrao";
+import InputPesquisa from "../../components/inputs/InputPesquisa";
 import AreaTextoPadrao from "../../components/inputs/AreaTextoPadrao";
+import { mockTitular } from "../../mocks/CsMocks";
 
 const CadastroDoacao = () => {
   const [titular, setTitular] = useState("");
   const [descricao, setDescricao] = useState("");
-
-  function aparecerDropdown() {
-    const titularDropdown = document.getElementById("dropdown");
-    if (titular.length > 0) {
-      titularDropdown.style.display = "block";
-    } else {
-      titularDropdown.style.display = "none";
-    }
-  }
+  const [options, setOptions] = useState([]);
 
   async function executarBusca() {
     if (titular.length > 0) {
@@ -31,24 +24,21 @@ const CadastroDoacao = () => {
       };
 
       try {
-        const response = await api.get(
-          `titulares/filtro/por-nome?nome=${titular}`,
-          yourConfig,
+        // const response = await api.get(
+        //   `titulares/filtro/por-nome?nome=${titular}`,
+        //   yourConfig,
+        // );
+
+        // setOptions(response.data);
+        const resultadosFiltrados = mockTitular.filter(t =>
+          t.nome.toLowerCase().includes(titular.toLowerCase())
         );
-        let dropdown = document.getElementById("dropdown");
-        dropdown.innerHTML = "";
-
-        for (var i = 0; i <= response.data.length - 1; i++) {
-          var opt = document.createElement("option");
-
-          opt.value = response.data[i].id;
-          opt.innerHTML = response.data[i].nome;
-
-          dropdown.appendChild(opt);
-        }
+        setOptions(resultadosFiltrados);
       } catch (error) {
         console.error("Error updating flag:", error);
       }
+    } else {
+      setOptions([]);
     }
   }
 
@@ -85,6 +75,15 @@ const CadastroDoacao = () => {
     }
   }
 
+  useEffect(() => {
+    executarBusca();
+  }, [titular]);
+
+  const handleOptionSelect = (option) => {
+    setTitular(option.nome);
+    setOptions([]);
+  };
+
   return (
     <>
       <div className={style.container}>
@@ -103,24 +102,16 @@ const CadastroDoacao = () => {
             <div className={style.containerFormulario}>
               <div className={style.formulario}>
                 <div className={style.formLine} id={style.formLine1}>
-                  <InputPadrao
+                  <InputPesquisa
                     className={style.titular}
                     label="Quem está recebendo a doação?"
                     placeholder="Pesquisar donatário"
                     onlyLetters={true}
                     value={titular}
                     onChange={(value) => setTitular(value)}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter") {
-                        aparecerDropdown();
-                        executarBusca();
-                      }
-                    }}
+                    options={options}
+                    onOptionSelect={handleOptionSelect}
                     id={"titular"}
-                  />
-                  <select
-                    id="dropdown"
-                    style={{ display: "none" }}
                   />
                 </div>
                 <div className={style.formLine} id={style.formLine2}>

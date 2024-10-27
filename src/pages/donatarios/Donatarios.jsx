@@ -25,7 +25,7 @@ function Donatarios() {
         <div className={style.containerConteudo}>
           <div className={style.containerPesquisa}>
             <h2>Pesquisar Donatário:</h2>
-            <input type="text" placeholder="Pesquisar Donátario"/>
+            <input type="text" placeholder="Pesquisar Donatário"/>
           </div>
           <div className={style.containerDonatarios}>
             <div className={style.containerFiltro}>
