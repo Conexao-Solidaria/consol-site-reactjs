@@ -34,7 +34,7 @@ const Historico = () => {
                 </div>
               </div>
               {mockDoacao?.map((data, index) => (
-                <div key={index} >
+                <div key={index}>
                   <ListaDoacoes data={data} />
                 </div>
               ))}

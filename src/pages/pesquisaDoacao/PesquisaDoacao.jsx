@@ -100,9 +100,9 @@ const PesquisaDoacao = ({ onSearch }) => {
                                     <button onClick={cadastroDoacao}>+ Adicionar Doação</button>
                                 </div>
                             </div>
-                            <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
+                            <div className={style.line}></div>
                             {
-                                data.data && data.data.map((item, index) => (
+                                mockDoacao?.map((item, index) => (
                                     <div key={index} >
                                         <ListaDoacoes data={item} />
                                     </div>
