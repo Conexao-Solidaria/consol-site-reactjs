@@ -20,7 +20,7 @@ const Historico = () => {
             <div className={style.containerGeral}>
 
               <div className={style.containerCard}>
-                {/* <LineChart /> */}
+                <LineChart />
               </div>
             </div>
 

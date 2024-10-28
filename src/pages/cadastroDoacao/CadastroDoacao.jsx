@@ -13,6 +13,7 @@ import { mockTitular } from "../../mocks/CsMocks";
 
 const CadastroDoacao = () => {
   const [titular, setTitular] = useState("");
+  const [idTitular, setIdTitular] = useState("");
   const [descricao, setDescricao] = useState("");
   const [options, setOptions] = useState([]);
 
@@ -30,14 +31,14 @@ const CadastroDoacao = () => {
           yourConfig,
         );
 
-        const resultadosFiltrados = response.filter(t =>
+        const resultadosFiltrados = response.data.filter(t =>
           t.nome.toLowerCase().includes(titular.toLowerCase())
         );
         setOptions(resultadosFiltrados);
         // const resultadosFiltrados = mockTitular.filter(t =>
         //   t.nome.toLowerCase().includes(titular.toLowerCase())
-        // );
-        setOptions(resultadosFiltrados);
+        //);
+        // setOptions(resultadosFiltrados);
       } catch (error) {
         console.error("Error updating flag:", error);
       }
@@ -61,18 +62,27 @@ const CadastroDoacao = () => {
       let today = new Date();
       let dd = String(today.getDate()).padStart(2,'0');
       let mm = String(today.getMonth() + 1).padStart(2,'0');
-      let yyyy = today.getFullYear;
+      let yyyy = today.getFullYear();
 
-      today = yyyy + '-' + mm + '-' + dd;
+      let hours = today.getHours();
+      let minutes = today.getMinutes();
+      let seconds = today.getSeconds();
+
+      if (seconds < 10){
+        today = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:0${seconds}`;
+      } else {
+        today = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:${seconds}`;
+      }
+
 
       const bodyDoacao = {
         descricao: areaTexto.value,
-        dataDoacao: today,
+        dataDoacao: today
       };
 
       try {
         await api.post(
-          `doacoes/titular/${titular}/instituicao/1`,
+          `doacoes/titular/${idTitular}/instituicao/1`,
           bodyDoacao,
           yourConfig,
         );
@@ -92,6 +102,7 @@ const CadastroDoacao = () => {
   }, [titular]);
 
   const handleOptionSelect = (option) => {
+    setIdTitular(option.id)
     setTitular(option.nome);
     setOptions([]);
   };
