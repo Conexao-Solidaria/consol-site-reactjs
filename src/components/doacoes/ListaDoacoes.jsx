@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
 import style from "./ListaDoacoes.module.css";
 import ModalDoacao from "../modal/ModalDoacao";
+import DoacaoCompleta from "../doacao-completa/DoacaoCompleta";
+import iconPerfil from "../../utils/assets/icon_perfil_usuario.png"
+import api from "../../api";
 
 const ListaDoacoes = ({ data }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // var dataDia = data?.dataDoacao.split('T')[0]
+  // dataDia = dataDia.split('-')
+  // dataDia = dataDia[2] + '/' + dataDia[1] + '/' + dataDia[0]
+
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);

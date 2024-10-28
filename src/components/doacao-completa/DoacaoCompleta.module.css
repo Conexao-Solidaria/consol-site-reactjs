@@ -52,3 +52,30 @@
 .contatoDonatario {
   padding: 16px;
 }
+
+button{
+  width: 30vh;
+  height: 4vh;
+  font-size: 3vh;
+  border-radius: 0.5vh;
+  border: none;
+  background-color: #EB4C46;
+  color: white;
+}
+
+.divBotao button{
+  width: 60vh;
+  height: 4vh;
+  font-size: 3vh;
+  border-radius: 0.5vh;
+  border: none;
+  background-color: #6C9BD9;
+  color: white;
+}
+
+.divBotao{
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

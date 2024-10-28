@@ -115,6 +115,7 @@ const Historico = () => {
       email: "lucas.silva@example.com"
     }
   ];
+
   return (
     <>
       <div className={style.container}>
@@ -139,8 +140,8 @@ const Historico = () => {
                   <p>11 Novas Doações</p>
                 </div>
               </div>
-              {vetorMockup && vetorMockup.map((data, index) => (
-                <div key={index} >
+              {vetorMockup?.map((data, index) => (
+                <div key={index}>
                   <ListaDoacoes data={data} />
                 </div>
               ))}

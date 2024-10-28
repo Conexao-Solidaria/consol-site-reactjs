@@ -101,11 +101,11 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                 <div className={style.containerInfo}>
                   <div className={style.info}>
                     <p>Nome:</p>
-                    <b>{data.nomeCompleto.split(" ")[0]}</b>
+                    <b>{data.nome.split(" ")[0]}</b>
                   </div>
                   <div className={style.info}>
                     <p>Sobrenome:</p>
-                    <b>{data.nomeCompleto.split(" ").slice(1).join(" ")}</b>
+                    <b>{data.nome.split(" ").slice(1).join(" ")}</b>
                   </div>
                   <div className={style.info}>
                     <p>Endereço:</p>

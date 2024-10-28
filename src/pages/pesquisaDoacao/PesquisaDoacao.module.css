@@ -13,7 +13,6 @@ body {
     overflow-y: auto;
     overflow-y: visible;
     background-color: var(--global-baby-blue);
-
 }
 
 .container {
@@ -64,9 +63,11 @@ body {
 
 .inputBarraPesquisa {
     display: flex;
-    justify-content: flex-end;
+	justify-content: center;
+	align-items: center;
     width: 100%;
     padding: 5px;
+	margin-left: 40vh;
     position: relative;
 }
 
@@ -78,19 +79,22 @@ body {
     border-radius: 6px;
     box-sizing: border-box; /* Para incluir padding na largura */
     margin-right: 20px;
+	background-image: url("../../utils/assets/icon_lupa.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+	background-size: 5vh;
+    padding-left: 40px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-shadow: none;
 }
 
-.containerBarraPesquisa button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    margin-right: 20px;
-
+.containerBarraPesquisa button{
+	height: 5vh;
+	color: white;
+	background-color:#6c9bd9;
+	font-family: Inter;
+	border-radius: 1vh;
 }
 
 .containerBarraPesquisa p{
@@ -167,13 +171,14 @@ body {
     height: 50px;
     display: flex;
     justify-content: start;
-    align-items: flex-start;
+    align-items: center;
 }
 
-.containerFiltros p {
+p {
     margin-right: 10px;
     display: flex;
     align-items: flex-start;
+	font-size: 2vh;
 }
 
 .containerFiltros button {
