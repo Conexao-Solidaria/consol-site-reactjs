@@ -8,6 +8,7 @@ import api from "../../api";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import InputPesquisa from "../../components/inputs/InputPesquisa";
 import AreaTextoPadrao from "../../components/inputs/AreaTextoPadrao";
+import { toast } from "react-toastify";
 import { mockTitular } from "../../mocks/CsMocks";
 
 const CadastroDoacao = () => {
@@ -24,15 +25,18 @@ const CadastroDoacao = () => {
       };
 
       try {
-        // const response = await api.get(
-        //   `titulares/filtro/por-nome?nome=${titular}`,
-        //   yourConfig,
-        // );
+        const response = await api.get(
+          `titulares/filtro/por-nome?nome=${titular}`,
+          yourConfig,
+        );
 
-        // setOptions(response.data);
-        const resultadosFiltrados = mockTitular.filter(t =>
+        const resultadosFiltrados = response.filter(t =>
           t.nome.toLowerCase().includes(titular.toLowerCase())
         );
+        setOptions(resultadosFiltrados);
+        // const resultadosFiltrados = mockTitular.filter(t =>
+        //   t.nome.toLowerCase().includes(titular.toLowerCase())
+        // );
         setOptions(resultadosFiltrados);
       } catch (error) {
         console.error("Error updating flag:", error);
@@ -43,35 +47,43 @@ const CadastroDoacao = () => {
   }
 
   async function cadastrarDoacao() {
-    const elementoDropDown = document.getElementById("dropdown");
     const areaTexto = document.getElementById("descricao");
 
-    if (elementoDropDown.value != null && areaTexto.value.length > 0) {
+    if (titular != null && descricao.length > 0) {
       const yourConfig = {
         headers: {
           Authorization:
-            "Bearer " +
-            "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI4NDA5MzQ0LCJleHAiOjE3MzIwMDkzNDR9.Hd-dTzDW4s7hoMHz584ZIPm2pCa3F0snHHQ-O7-Px1CBEwZcHnlIR-ceTLkx6zaJ",
+          "Bearer " + sessionStorage.getItem("token"),
           "Content-Type": "application/json",
         },
       };
+
+      let today = new Date();
+      let dd = String(today.getDate()).padStart(2,'0');
+      let mm = String(today.getMonth() + 1).padStart(2,'0');
+      let yyyy = today.getFullYear;
+
+      today = yyyy + '-' + mm + '-' + dd;
+
       const bodyDoacao = {
         descricao: areaTexto.value,
-        dataDoacao: "2024-07-07 14:25:04",
+        dataDoacao: today,
       };
 
       try {
         await api.post(
-          `doacoes/titular/${elementoDropDown.value}/instituicao/1`,
+          `doacoes/titular/${titular}/instituicao/1`,
           bodyDoacao,
           yourConfig,
         );
+        toast.success("Doação cadastrada com sucesso")
         alert("DOAÇÃO CRIADA");
       } catch (error) {
+        toast.error("Erro ao cadastrar doação");
         console.error("Error updating flag:", error);
       }
     } else {
-      alert("Preencha todos os campos");
+      toast.error("Preencha todos os campos");
     }
   }
 
