@@ -121,7 +121,6 @@ const Historico = () => {
         <NavBar />
         <div className={style.containerHead}>
           <Head />
-
           <div className={style.containerConteudo}>
 
             <div className={style.containerGeral}>

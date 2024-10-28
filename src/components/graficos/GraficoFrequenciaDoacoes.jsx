@@ -13,7 +13,7 @@ const GraficoFrequenciaDoacoes = () => {
   ];
 
   return (
-    <ResponsiveContainer width="80%" height={275}>
+    <ResponsiveContainer width="80%" height={205}>
       <BarChart data={data} margin={{ top: 10, right: 89, left: 0, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="month" label={{ value: 'Mês', position: 'insideBottom', offset: -5 }} />
