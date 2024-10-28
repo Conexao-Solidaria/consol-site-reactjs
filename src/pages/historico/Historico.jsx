@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Historico.module.css";
-import LineChart from '../../components/graficos/GraficoFrequenciaDoacoes';
+import BarChart from '../../components/graficos/GraficoFrequenciaDoacoes';
 import ListaDoacoes from '../../components/doacoes/ListaDoacoes';
 
 const Historico = () => {
@@ -127,7 +127,7 @@ const Historico = () => {
             <div className={style.containerGeral}>
 
               <div className={style.containerCard}>
-                {/* <LineChart /> */}
+                <BarChart />
               </div>
             </div>
 

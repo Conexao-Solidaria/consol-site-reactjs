@@ -1,44 +1,27 @@
-// GraficoFrequenciaDoacoes.jsx
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-
-// Registrando os componentes necessários do Chart.js
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const GraficoFrequenciaDoacoes = () => {
-  // Dados do gráfico
-  const data = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'], // Meses ou categorias
-    datasets: [
-      {
-        label: 'Frequência de Doações',
-        data: [12, 19, 3, 5, 2, 3], // Frequência de doações em cada mês
-        backgroundColor: 'rgba(75, 192, 192, 0.6)', // Cor das barras
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  // Configurações do gráfico
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Frequência de Doações por Mês',
-      },
-    },
-  };
+  // Dados fictícios para os últimos 6 meses
+  const data = [
+    { month: 'Maio', donations: 25 },
+    { month: 'Junho', donations: 40 },
+    { month: 'Julho', donations: 30 },
+    { month: 'Agosto', donations: 50 },
+    { month: 'Setembro', donations: 20 },
+    { month: 'Outubro', donations: 60 },
+  ];
 
   return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <Bar data={data} options={options} />
-    </div>
+    <ResponsiveContainer width="80%" height={275}>
+      <BarChart data={data} margin={{ top: 10, right: 89, left: 0, bottom: 5 }}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="month" label={{ value: 'Mês', position: 'insideBottom', offset: -5 }} />
+        <YAxis label={{ value: 'Doações', angle: -90, position: 'insideLeft' }} />
+        <Tooltip />
+        <Bar dataKey="donations" fill="#003366" />
+      </BarChart>
+    </ResponsiveContainer>
   );
 };
 
