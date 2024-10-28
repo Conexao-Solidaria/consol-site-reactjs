@@ -114,17 +114,15 @@ const CadastroDoacao = () => {
                     id={"titular"}
                   />
                 </div>
+                <AreaTextoPadrao
+                  className={style.descricao}
+                  label="Descrição:"
+                  placeholder="Descrição da doação"
+                  value={descricao}
+                  onChange={(value) => setDescricao(value)}
+                  id={"descricao"}
+                />
                 <div className={style.formLine} id={style.formLine2}>
-                  <AreaTextoPadrao
-                    className={style.descricao}
-                    label="Descrição:"
-                    placeholder="Descrição da doação"
-                    value={descricao}
-                    onChange={(value) => setDescricao(value)}
-                    id={"descricao"}
-                  />
-                </div>
-                <div className={style.formLine} id={style.formLine3}>
                 <BotaoPadrao texto="Adicionar Doação" onClick={ cadastrarDoacao }/>
                 </div>
               </div>

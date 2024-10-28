@@ -92,18 +92,6 @@ body {
 }
 
 .formLine#formLine2 {
-  height: 100%;
-}
-
-.formLine#formLine2 textarea{
-  height: 100%;
-}
-
-.formLine#formLine2 input::placeholder{
-  text-align: start;
-}
-
-.formLine#formLine3 {
   justify-content: end;
 }
 
