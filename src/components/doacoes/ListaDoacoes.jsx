@@ -10,6 +10,7 @@ const ListaDoacoes = ({ data }) => {
   // var dataDia = data?.dataDoacao.split('T')[0]
   // dataDia = dataDia.split('-')
   // dataDia = dataDia[2] + '/' + dataDia[1] + '/' + dataDia[0]
+  console.log(data)
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
@@ -26,14 +27,13 @@ const ListaDoacoes = ({ data }) => {
       <div className={style.containerListaDoacoes} onClick={handleModal}>
         <img src={iconDoacoes} alt='Icone de Doações' />
         <div className={style.containerTipoDoacao}>
-          <p><b>Doação</b></p>
-          <p className={style.Categoria}>{data.categoria}</p>
+          <p><b>Doação ID: {data.id}</b></p>
         </div>
         <div>
           <div className={style.containerInformacoes}>
-            <p className={style.paragrafo}>{data.nomeCompleto}</p>
+            <p className={style.paragrafo}>{data.flagDoacaoEntregue === 1 ? 'Entregue' : 'Não entregue'}</p>
             <div className={style.verticalLine}></div>
-            <p>{data.data}</p>
+            <p>{data.dataDoacao}</p>
           </div>
         </div>
       </div>
