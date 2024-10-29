@@ -1,64 +1,107 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Donatarios.module.css";
-import DonatarioDetalhes from "../../components/detalhesLista/donatarioDetalhes/DonatarioDetalhes"
+import DonatarioDetalhes from "../../components/detalhesLista/donatarioDetalhes/DonatarioDetalhes";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 
 function Donatarios() {
-  const navigate = useNavigate();
+    const [query, setQuery] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
 
-  const CadastroFamilia = () => {
-    navigate("/cadastrar-familia")
-  }
+    const navigate = useNavigate();
 
-  return <>
-    <div className={style.container}>
-      <div className={style.navbarContainer}>
-        <NavBar />
-      </div>
-      <div className={style.containerGeral}>
-        <div className={style.containerHead}>
-          <Head />
-        </div>
-        <div className={style.containerConteudo}>
-          <div className={style.containerPesquisa}>
-            <h2>Pesquisar Donatário:</h2>
-            <input type="text" placeholder="Pesquisar Donatário"/>
-          </div>
-          <div className={style.containerDonatarios}>
-            <div className={style.containerFiltro}>
-              <div className={style.filtros}>
-                <p>Filtar por:</p>
-                <span> Nome </span>
-                <p>Filtros:</p>
-                <BotaoPadrao texto="Nome" />
-                <BotaoPadrao texto="Rua" />
-                <BotaoPadrao texto="Bairro" />
-              </div>
-              <div className={style.botoes}>
-                <BotaoPadrao texto="+ Cadastrar Família" onClick={CadastroFamilia} />
-                <BotaoPadrao texto="+ Cadastrar Donatário" to="/cadastrar-donatario"/>
-              </div>
+    const yourConfig = {
+        headers: {
+            Authorization: "Bearer " + sessionStorage.getItem("token")
+        }
+    }
+
+    const CadastroFamilia = () => {
+        navigate("/cadastrar-familia");
+    };
+
+    const fetchData = async (searchQuery = '') => {
+        try {
+            const url = searchQuery ? `titulares/filtro/por-nome?nome=${searchQuery}` : "/titulares";
+            const response = await api.get(url, yourConfig);
+            // Verify that response.data is an array
+            if (Array.isArray(response.data)) {
+                setData(response.data);
+            } else {
+                console.error('Expected an array but received:', response.data);
+                setData([]); // Fallback to an empty array
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setData([]); // Fallback to an empty array on error
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData(); // Initial fetch for all donors
+    }, []);
+
+    const handleSearch = (event) => {
+        const searchValue = event.target.value;
+        setQuery(searchValue);
+
+        // Fetch data with the search query
+        fetchData(searchValue);
+    };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <>
+            <div className={style.container}>
+                <div className={style.navbarContainer}>
+                    <NavBar />
+                </div>
+                <div className={style.containerGeral}>
+                    <div className={style.containerHead}>
+                        <Head />
+                    </div>
+                    <div className={style.containerConteudo}>
+                        <div className={style.containerPesquisa}>
+                            <h2>Pesquisar Donatário:</h2>
+                            <input
+                                type="text"
+                                placeholder="Pesquisar Donátario"
+                                value={query}
+                                onChange={handleSearch}
+                            />
+                        </div>
+                        <div className={style.containerDonatarios}>
+                            <div className={style.containerFiltro}>
+                                <div className={style.botoes}>
+                                    <BotaoPadrao texto="+ Cadastrar Família" onClick={CadastroFamilia} />
+                                    <BotaoPadrao texto="+ Cadastrar Donatário" to="/cadastrar-donatario" />
+                                </div>
+                            </div>
+                            <div className={style.containerLista}>
+                                {data.map((donatario, index) => (
+                                    <DonatarioDetalhes 
+                                        key={index} 
+                                        nome={donatario.nome} 
+                                        CPF={donatario.cpf} 
+                                        RG={donatario.rg} 
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className={style.containerLista}>
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-              <DonatarioDetalhes />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </>;
+        </>
+    );
 }
 
 export default Donatarios;
