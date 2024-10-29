@@ -5,12 +5,18 @@ import style from "../modal/Modal.module.css";
 import DoacaoCompleta from "../doacao-completa/DoacaoCompleta";
 import iconFechar from "../../utils/assets/fechar.png";
 import BotaoPadrao from "../botoes/BotaoPadrao";
+import ModalDonatario from "../modalDonatario/ModalDonatario";
 
 const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
   const [isDoacaoCompleta, setIsDoacaoCompleta] = React.useState(false);
+  const [isModalDonatario, setIsModalDonatario] = React.useState(false);
 
   const handleDoacaoCompleta = () => {
     setIsDoacaoCompleta(!isDoacaoCompleta);
+  };
+
+  const handleModalDonatario = () => {
+    setIsModalDonatario(!isModalDonatario)
   };
 
   return (
@@ -159,7 +165,7 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                   <div className={style.info}>
                     <BotaoPadrao
                       texto="Ver Mais"
-                      onClick={handleDoacaoCompleta}
+                      onClick={handleModalDonatario}
                     />
                   </div>
                 </div>
@@ -172,6 +178,11 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
         data={data}
         isVisible={isDoacaoCompleta}
         onClose={handleDoacaoCompleta}
+      />
+      <ModalDonatario
+        data={data}
+        isVisible={isModalDonatario}
+        onClose={handleModalDonatario}
       />
     </>
   );

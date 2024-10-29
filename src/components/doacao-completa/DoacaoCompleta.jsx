@@ -25,7 +25,7 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 			onClose();
 			window.location.reload();
 		}
-		
+
 		catch (error) {
 			console.error('Error deletando doacao:', error);
 		}
@@ -63,7 +63,7 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 
 			mostrarEdit = false;
 		}
-		
+
 		catch (error) {
 			console.error('Error deletando doacao:', error);
 		}
@@ -106,7 +106,7 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 						<div className={style.linha}>
 							<div className={modalStyle.content}>
 								<div className={modalStyle.titulo}>
-									<h1>Mais informacoes da doacao</h1>
+									<h1>Informações adicionais da doação</h1>
 								</div>
 								<div className={style.informacaoDoacaoCompleta}>
 									<div className={style.modalImagem}
@@ -133,7 +133,7 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 									<div className={style.coluna}>
 										<br />
 										<button onClick={() => handleDelete(data.id)}>
-											Apagar doação	
+											Apagar doação
 										</button>
 									</div>
 									<div className={style.coluna}>
@@ -148,7 +148,7 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 							<div className={style.coluna}>
 								<div className={modalStyle.content}>
 									<div className={modalStyle.titulo}>
-										<h1>Mais informacoes da doacao</h1>
+										<h1>Informações do donatário</h1>
 									</div>
 									<div className={style.donatarioBeneficiado}>
 										<div className={style.colunaImagem}>
@@ -171,7 +171,7 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 								</div>
 								<div className={modalStyle.content}>
 									<div className={modalStyle.titulo}>
-										<h1>Contatos do Donatario</h1>
+										<h1>Contatos do donatário</h1>
 									</div>
 									<div className={style.contatoDonatario}>
 										<div className={modalStyle.coluna}>
@@ -187,19 +187,19 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
 							</div>
 							<div className={modalStyle.content}>
 								<div className={modalStyle.titulo}>
-									<h1>Descricao da Doacao</h1>
+									<h1>Descrição da doação</h1>
 								</div>
 								<div className={style.descricaoDoacao}>
 									<br />
 										<p id="descricaoDoacao">{data.descricao}</p>
-										
+
 										<br></br>
 										<textarea id="descricaoDoacaoEdit" style={{display: "none"}}>
 
 										</textarea>
 									</div>
 								<div className={style.divBotao} onClick={() => handleEdit(data.id)}>
-									<button>Editar Descricao</button>
+									<button>Editar Descrição</button>
 								</div>
 							</div>
 						</div>
