@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastrarDonatario.module.css";
 import FotoFamilia from "../../utils/assets/familiares_image.png";
 import InputPadrao from "../../components/inputs/InputPadrao";
+import { useState } from "react";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
 import api from "../../api";
@@ -18,8 +19,18 @@ const CadastrarDonatario = () => {
     const [ocupacao, setOcupacao] = useState("");
     const [familia, setFamilia] = useState("");
 
+
+
     const [estadoCivil, setEstadoCivil] = useState("");
-    const optEstadoCivil = ["Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "Separado(a)"];
+    const optEstadoCivil = [
+        "Solteiro(a)",
+        "Casado(a)",
+        "Divorciado(a)",
+        "Viúvo(a)",
+        "Separado(a)"
+    ];
+
+
 
     const [escolaridade, setEscolaridade] = useState("");
     const optEscolaridade = [
@@ -35,106 +46,39 @@ const CadastrarDonatario = () => {
         "Doutorado"
     ];
 
+
+
     const [trabalhando, isTrabalhando] = useState("");
-    const optTrabalhando = ["Selecione", "Sim", "Não"];
+    const optTrabalhando = ["Sim", "Não"];
 
-    const [familiaOptions, setFamiliaOptions] = useState([]);
+    async function executarBusca() {
+        const infoInput = document.getElementById('inputNome');
 
-    const fetchFamilias = async () => {
-        const yourConfig = {
-            headers: {
-                'Authorization': "Bearer " + sessionStorage.getItem("token"),
-            },
-        };
-
-        try {
-            const response = await api.get("/familias", yourConfig);
-            if (Array.isArray(response.data)) {
-                setFamiliaOptions(response.data);
-            } else {
-                console.error('Expected an array but received:', response.data);
-            }
-        } catch (error) {
-            console.error('Error fetching families:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchFamilias(); // Fetch all families on component mount
-    }, []);
-
-    async function handleSubmit() {
-        // Get today's date for dataCadastro
-        let today = new Date();
-        let dd = String(today.getDate()).padStart(2, '0');
-        let mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-        let yyyy = today.getFullYear();
-
-        today = yyyy + '-' + mm + '-' + dd; // Format YYYY-MM-DD
-
-        const selectedFamilia = familia; // ID of the selected family
-
-        let telefone1Real = celular;
-        telefone1Real = telefone1Real.replace(/\D/g, ''); // Remove non-numeric characters
-        telefone1Real = telefone1Real.replace(" ", ''); // Remove non-numeric characters
-        let telefone2Real = telefone;
-        telefone2Real = telefone2Real.replace(/\D/g, ''); // Remove non-numeric characters
-        telefone2Real = telefone2Real.replace(" ", ""); // Reformat the phone number
-        let rgReal = rg.replace(/\D/g, ''); // Remove non-numeric characters
-        rgReal = rgReal.replace(" ", ''); // Remove non-numeric characters
-        let cpfReal = cpf.replace(/\D/g, ''); // Remove non-numeric characters
-        cpfReal = cpfReal.replace(" ", ''); // Remove non-numeric characters
-        let dateNascReal = dataNasc.split('/').reverse().join('-');
-
-
-
-
-        // Create an object with all the input values
-        const donatarioData = {
-            nome,
-            rg: rgReal,
-            cpf: cpfReal,
-            dataNascimento: dateNascReal,
-            telefone1: telefone1Real,
-            telefone2: telefone2Real,
-            ocupacao,
-            estadoCivil,
-            escolaridade,
-            trabalhando: trabalhando === "Sim",
-            dataCadastro: today,
-            idFamilia: selectedFamilia
-        };
-
-
-        // Check if all required fields are filled
-        if (
-            donatarioData.cpf &&
-            donatarioData.nome &&
-            donatarioData.dataNascimento &&
-            donatarioData.telefone1 &&
-            donatarioData.telefone2 &&
-            donatarioData.ocupacao &&
-            donatarioData.estadoCivil &&
-            donatarioData.escolaridade &&
-            donatarioData.trabalhando !== undefined &&
-            donatarioData.idFamilia
-        ) {
-            console.log(donatarioData);
+        if (infoInput.value.length > 0) {
             const yourConfig = {
                 headers: {
-                    'Authorization': "Bearer " + sessionStorage.getItem("token"),
-                    'Content-Type': 'application/json'
+                    'Authorization': "Bearer " + "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJqb2FvQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI4NDE4NTgxLCJleHAiOjE3MzIwMTg1ODF9.JpnQcoct6mjEBzVDhZ8wJTTES-R8031wzfUMfD-4_zSSiFYi3bYrwo3LuWXWxDcZ",
                 }
-            };
+            }
 
             try {
-                await api.post(`/titulares`, donatarioData, yourConfig);
-                alert("DOAÇÃO CRIADA");
-            } catch (error) {
-                console.error('Error submitting data:', error);
+                const response = await api.get(`familias/filtro/por-nome?nome=${infoInput.value}`, yourConfig);
+                let dropdown = document.getElementById('dropdown');
+                dropdown.innerHTML = "";
+
+                for (var i = 0; i <= response.data.length - 1; i++) {
+                    var opt = document.createElement('option');
+
+                    opt.value = response.data[i].id;
+                    opt.innerHTML = response.data[i].nome;
+
+                    dropdown.appendChild(opt);
+                }
             }
-        } else {
-            alert("Preencha todos os campos");
+
+            catch (error) {
+                console.error('Error updating flag:', error);
+            }
         }
     }
 
@@ -155,7 +99,7 @@ const CadastrarDonatario = () => {
                         </div>
                         <div className={style.containerFormulario}>
                             <div className={style.formulario}>
-                                <div className={style.formLine}>
+                                <div className={style.formLine} id={style.formLine1}>
                                     <InputPadrao
                                         className={style.nomeCompleto}
                                         label="Nome Completo:"
@@ -166,7 +110,7 @@ const CadastrarDonatario = () => {
                                         id={"nome"}
                                     />
                                 </div>
-                                <div className={style.formLine}>
+                                <div className={style.formLine} id={style.formLine2}>
                                     <InputPadrao
                                         className={style.rg}
                                         label="RG:"
@@ -186,7 +130,7 @@ const CadastrarDonatario = () => {
                                         id={"cpf"}
                                     />
                                 </div>
-                                <div className={style.formLine}>
+                                <div className={style.formLine} id={style.formLine3}>
                                     <InputPadrao
                                         className={style.dataNascimento}
                                         label="Data de Nascimento:"
@@ -215,7 +159,7 @@ const CadastrarDonatario = () => {
                                         id={"escolaridade"}
                                     />
                                 </div>
-                                <div className={style.formLine}>
+                                <div className={style.formLine} id={style.formLine4}>
                                     <InputPadrao
                                         className={style.celular}
                                         label="Celular:"
@@ -235,7 +179,7 @@ const CadastrarDonatario = () => {
                                         id={"telefone"}
                                     />
                                 </div>
-                                <div className={style.formLine}>
+                                <div className={style.formLine} id={style.formLine5}>
                                     <ComboBox
                                         className={style.trabalhando}
                                         label="Trabalhando?"
@@ -253,20 +197,18 @@ const CadastrarDonatario = () => {
                                         id={"ocupacao"}
                                     />
                                 </div>
-
-                                <select id='dropdown' value={familia} onChange={(e) => setFamilia(e.target.value)}>
-                                    <option value="" disabled>Selecione a família</option>
-                                    {familiaOptions.map((familia) => (
-                                        <option key={familia.id} value={familia.id}>
-                                            {familia.nome}
-                                        </option>
-                                    ))}
-                                </select>
-                                <br />
-                                <div className={style.formLine}>
-                                    <BotaoPadrao texto="Cadastrar" onClick={() => {
-                                        handleSubmit();
-                                    }} />
+                                <div className={style.formLine} id={style.formLine6}>
+                                    <InputPadrao
+                                        className={style.familia}
+                                        label="A qual familía pertence?"
+                                        placeholder="Nome da Família"
+                                        value={familia}
+                                        onChange={(value) => setFamilia(value)}
+                                        id={"familia"}
+                                    />
+                                </div>
+                                <div className={style.formLine} id={style.formLine7}>
+                                    <BotaoPadrao texto="Cadastrar" />
                                 </div>
                             </div>
                             <div className={style.imagem}>

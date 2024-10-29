@@ -11,6 +11,8 @@ function Donatarios() {
     const [query, setQuery] = useState('');
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [dataMonth, setDataMonth] = useState([]);
+    
 
     const navigate = useNavigate();
 
@@ -90,9 +92,7 @@ function Donatarios() {
                                 {data.map((donatario, index) => (
                                     <DonatarioDetalhes 
                                         key={index} 
-                                        nome={donatario.nome} 
-                                        CPF={donatario.cpf} 
-                                        RG={donatario.rg} 
+                                        dados = {donatario}
                                     />
                                 ))}
                             </div>
