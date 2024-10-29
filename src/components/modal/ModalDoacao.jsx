@@ -55,14 +55,25 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                     <b>Doação</b>
                   </div>
                   <div className={style.info}>
-                    <p>Data/Hora:</p>
-                    <b>{data.data}</b>
-                    <p>{data.hora}</p>
+                    <p>Data:</p>
+                    <b>
+                      {(() => {
+                        const [date] = data.dataDoacao.split("T");
+                        const [year, month, day] = date.split("-");
+                        return `${day}/${month}/${year}`;
+                      })()}
+                    </b>
                   </div>
                   <div className={style.info}>
-                    <p>Categoria:</p>
-                    <b>{data.categoria}</b>
+                    <p>Hora:</p>
+                    <b>
+                      {(() => {
+                        const [, time] = data.dataDoacao.split("T");
+                        return time;
+                      })()}
+                    </b>
                   </div>
+
                   <div className={style.info}>
                     <BotaoPadrao
                       texto="Ver Mais"
@@ -101,16 +112,15 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                 <div className={style.containerInfo}>
                   <div className={style.info}>
                     <p>Nome:</p>
-                    <b>{data.nome.split(" ")[0]}</b>
+                    <b>{data.donatario.nome.split(" ")[0]}</b>
                   </div>
                   <div className={style.info}>
                     <p>Sobrenome:</p>
-                    <b>{data.nome.split(" ").slice(1).join(" ")}</b>
+                    <b>{data.donatario.nome.split(" ").slice(1).join(" ")}</b>
                   </div>
                   <div className={style.info}>
-                    <p>Endereço:</p>
-                    <b>{data.endereco}</b>
-                    <p>{data.complemento}</p>
+                    <p>Cep:</p>
+                    <b>{data.donatario.cep}</b>
                   </div>
                 </div>
               </div>
@@ -124,15 +134,27 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                 <div className={`${style.containerInfo} ${style.contato}`}>
                   <div className={style.info}>
                     <p>Telefone:</p>
-                    <b>{data.telefone}</b>
+                    <b>
+                      {(() => {
+                        const tel = data.donatario.telefone1;
+                        const formattedTel = `(${tel.slice(0, 2)})${tel.slice(2, 7)}-${tel.slice(7)}`;
+                        return formattedTel;
+                      })()}
+                    </b>
                   </div>
                   <div className={style.info}>
-                    <p>Celular:</p>
-                    <b>{data.celular}</b>
+                    <p>Telefone:</p>
+                    <b>
+                      {(() => {
+                        const tel = data.donatario.telefone2;
+                        const formattedTel = `(${tel.slice(0, 2)})${tel.slice(2, 7)}-${tel.slice(7)}`;
+                        return formattedTel;
+                      })()}
+                    </b>
                   </div>
                   <div className={style.info}>
                     <p>Email:</p>
-                    <b>{data.email}</b>
+                    <b>{data.donatario.email}</b>
                   </div>
                   <div className={style.info}>
                     <BotaoPadrao
