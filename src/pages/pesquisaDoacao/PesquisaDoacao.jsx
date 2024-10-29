@@ -102,7 +102,7 @@ const PesquisaDoacao = ({ onSearch }) => {
                             </div>
                             <div className={style.line}></div>
                             {
-                                mockDoacao?.map((item, index) => (
+                                data.data && data.data.map((item, index) => (
                                     <div key={index} >
                                         <ListaDoacoes data={item} />
                                     </div>
