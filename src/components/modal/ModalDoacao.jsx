@@ -159,10 +159,6 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                     </b>
                   </div>
                   <div className={style.info}>
-                    <p>Email:</p>
-                    <b>{data.donatario.email}</b>
-                  </div>
-                  <div className={style.info}>
                     <BotaoPadrao
                       texto="Ver Mais"
                       onClick={handleModalDonatario}

@@ -89,20 +89,21 @@ button{
   height: 100%;
 }
 
-.infoDonatario {
+.infoWrapper {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
 
-.infoDonatario > div {
+.infoWrapper > div {
   flex: 1 1 45%;
-  max-width: 45%;
+  max-width: 50%;
 }
 
 .informacaoModalDonatario .areaDonatario {
   width: 100%;
+  gap: 16px;
 }
 
 .botoes {
@@ -119,6 +120,10 @@ button{
 
 .botoes :last-child:hover {
   background-color: #ffb7b4;
+}
+
+.infoContainer {
+  padding: 16px;
 }
 
 @media (max-width: 900px) {

@@ -1,17 +1,32 @@
 import modalStyle from "../modal/Modal.module.css";
 import style from "./ModalDonatario.module.css";
-import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
 import iconPerfil from "../../utils/assets/icon_perfil_usuario.png";
 import iconFechar from "../../utils/assets/fechar.png";
 import { toast } from "react-toastify";
 import api from "../../api";
-import { React, useEffect, handleClose } from "react";
+import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BotaoPadrao from "../botoes/BotaoPadrao";
 
 const ModalDonatario = ({ data, isVisible, onClose }) => {
+  const [dataDonatario, setDataDonatario] = useState(null);
   const navigate = useNavigate();
-  var mostrarEdit = false;
+
+  const buscaDadosDonatario = async () => {
+    const yourConfig = {
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const response = await api.get(`/titular/${data.donatario.id}`, yourConfig);
+      setDataDonatario(response.data);
+    } catch (error) {
+      console.log("Erro ao busacar titular: ", error);
+    }
+  }
 
   async function handleDelete(id) {
     const yourConfig = {
@@ -31,69 +46,11 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
     }
   }
 
-  async function handleEdit(id) {
-    if (mostrarEdit == false) {
-      document.getElementById("descricaoDoacao").style.display = "none";
-      document.getElementById("descricaoDoacaoEdit").style.display = "block";
-      mostrarEdit = true;
-      return;
+  useEffect(() => {
+    if (isVisible && data?.donatario?.id) {
+      buscaDadosDonatario();
     }
-
-    const yourConfig = {
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-        "Content-Type": "application/json",
-      },
-    };
-
-    const requestBody = {
-      descricao: document.getElementById("descricaoDoacaoEdit").value,
-    };
-
-    try {
-      const response = await api.put(
-        `doacoes/atualizar-descricao/${id}`,
-        requestBody,
-        yourConfig,
-      );
-
-      toast.success("Descricao atualizada com sucesso!");
-      document.getElementById("descricaoDoacao").innerHTML =
-        response.data.descricao;
-
-      document.getElementById("descricaoDoacao").style.display = "block";
-      document.getElementById("descricaoDoacaoEdit").style.display = "none";
-
-      mostrarEdit = false;
-    } catch (error) {
-      console.error("Error deletando doacao:", error);
-    }
-  }
-
-  // Fetch data from the API
-  async function handleFlag(id) {
-    const yourConfig = {
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-        "Content-Type": "application/json",
-      },
-    };
-
-    const requestBody = {
-      flagDoacaoEntregue: 1,
-    };
-
-    try {
-      console.log(id);
-      const response = await api.put(
-        `doacoes/atualizar-flag/${id}`,
-        requestBody,
-        yourConfig,
-      );
-    } catch (error) {
-      console.error("Error updating flag:", error);
-    }
-  }
+  }, [isVisible, data]);
 
   if (!isVisible) return null;
   return (
@@ -124,7 +81,7 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                       alt="Icone de Perfil"
                       className={style.iconPerfil}
                     />
-                    <div className={style.infoDonatario}>
+                    <div className={style.infoWrapper}>
                       <div className={modalStyle.info}>
                         <p>Nome:</p>
                         <b>{data.donatario.nome.split(" ")[0]}</b>
@@ -141,37 +98,20 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                       </div>
                     </div>
                   </div>
-
                   <div className={style.botoes}>
                     <BotaoPadrao
                       texto="Editar Donatário"
-                      onClick={() => handleDelete(data.id)}
+                      onClick={() => navigate("/editar-donatario")}
                     />
                     <BotaoPadrao
                       texto="Apagar Donatário"
-                      onClick={() => handleFlag(data.id)}
+                      onClick={() => handleDelete(data.id)}
                     />
                   </div>
-                  {/* <div className={modalStyle.coluna}>
-                    <br />
-                    <button onClick={() => handleDelete(data.id)}>
-                      Apagar doação
-                    </button>
-                  </div>
-                  <div className={style.coluna}>
-                    <br />
-                    <button
-                      style={{ backgroundColor: "#6C9BD9" }}
-                      onClick={() => {
-                        handleFlag(data.id);
-                      }}
-                    >
-                      Mudar status
-                    </button>
-                  </div> */}
                 </div>
               </div>
             </div>
+
             {/* Informações de contatos do donatário */}
             <div className={style.linha}>
               <div className={style.coluna}>
@@ -179,19 +119,28 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                   <div className={modalStyle.titulo}>
                     <h1>Contatos</h1>
                   </div>
-                  <div className={style.donatarioBeneficiado}>
-                    <div className={style.colunaImagem}>
-                      <div
-                        className={style.modalImagem}
-                        style={{ width: "10vw" }}
-                      ></div>
-                    </div>
-                    <div className={style.coluna}>
-                      <p>
-                        Nome:
-                        <br />
-                        <b>{data.donatario.nome}</b>
-                      </p>
+                  <div className={style.infoContainer}>
+                    <div className={style.infoWrapper}>
+                      <div className={modalStyle.info}>
+                        <p>Telefone:</p>
+                        <b>
+                          {(() => {
+                            const tel = data.donatario.telefone1;
+                            const formattedTel = `(${tel.slice(0, 2)})${tel.slice(2, 7)}-${tel.slice(7)}`;
+                            return formattedTel;
+                          })()}
+                        </b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Celular:</p>
+                        <b>
+                          {(() => {
+                            const tel = data.donatario.telefone2;
+                            const formattedTel = `(${tel.slice(0, 2)})${tel.slice(2, 7)}-${tel.slice(7)}`;
+                            return formattedTel;
+                          })()}
+                        </b>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -199,18 +148,42 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                   <div className={modalStyle.titulo}>
                     <h1>Dados pessoais</h1>
                   </div>
-                  <div className={style.contatoDonatario}>
-                    <div className={modalStyle.coluna}>
-                      <p>
-                        Telefone:
-                        <br />
-                        <b>{data.donatario.telefone1}</b>
-                      </p>
-                      <p>
-                        Celular:
-                        <br />
-                        <b>{data.donatario.telefone2}</b>
-                      </p>
+                  <div className={style.infoContainer}>
+                    <div className={style.infoWrapper}>
+                      <div className={modalStyle.info}>
+                        <p>CPF:</p>
+                        <b>{dataDonatario?.cpf}</b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Data de Nascimento:</p>
+                        <b>
+                          {dataDonatario?.dataNascimento}
+                        </b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>RG:</p>
+                        <b>{dataDonatario?.rg}</b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Estado Civil:</p>
+                        <b>{dataDonatario?.estadoCivil}</b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Trabalhando:</p>
+                        <b>{dataDonatario?.trabalhando ? "Sim" : "Não"}</b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Escolaridade:</p>
+                        <b>{dataDonatario?.escolaridade}</b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Ocupação:</p>
+                        <b>{dataDonatario?.ocupacao}</b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Família:</p>
+                        <b>{dataDonatario?.familia.nome}</b>
+                      </div>
                     </div>
                   </div>
                 </div>
