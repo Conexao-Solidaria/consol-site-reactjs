@@ -87,7 +87,6 @@ const CadastroDoacao = () => {
           yourConfig,
         );
         toast.success("Doação cadastrada com sucesso")
-        alert("DOAÇÃO CRIADA");
       } catch (error) {
         toast.error("Erro ao cadastrar doação");
         console.error("Error updating flag:", error);
