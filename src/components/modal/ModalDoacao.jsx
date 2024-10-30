@@ -5,12 +5,18 @@ import style from "../modal/Modal.module.css";
 import DoacaoCompleta from "../doacao-completa/DoacaoCompleta";
 import iconFechar from "../../utils/assets/fechar.png";
 import BotaoPadrao from "../botoes/BotaoPadrao";
+import ModalDonatario from "../modalDonatario/ModalDonatario";
 
 const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
   const [isDoacaoCompleta, setIsDoacaoCompleta] = React.useState(false);
+  const [isModalDonatario, setIsModalDonatario] = React.useState(false);
 
   const handleDoacaoCompleta = () => {
     setIsDoacaoCompleta(!isDoacaoCompleta);
+  };
+
+  const handleModalDonatario = () => {
+    setIsModalDonatario(!isModalDonatario);
   };
 
   return (
@@ -55,14 +61,25 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                     <b>Doação</b>
                   </div>
                   <div className={style.info}>
-                    <p>Data/Hora:</p>
-                    <b>{data.data}</b>
-                    <p>{data.hora}</p>
+                    <p>Data:</p>
+                    <b>
+                      {(() => {
+                        const [date] = data?.dataDoacao.split("T");
+                        const [year, month, day] = date.split("-");
+                        return `${day}/${month}/${year}`;
+                      })()}
+                    </b>
                   </div>
                   <div className={style.info}>
-                    <p>Categoria:</p>
-                    <b>{data.categoria}</b>
+                    <p>Hora:</p>
+                    <b>
+                      {(() => {
+                        const [, time] = data?.dataDoacao.split("T");
+                        return time;
+                      })()}
+                    </b>
                   </div>
+
                   <div className={style.info}>
                     <BotaoPadrao
                       texto="Ver Mais"
@@ -78,7 +95,7 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                   <p>
                     <b>Descrição:</b>
                   </p>
-                  <p className={style.descricao}>{data.descricao}</p>
+                  <p className={style.descricao}>{data?.descricao}</p>
                 </div>
               </div>
             </div>
@@ -101,16 +118,11 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                 <div className={style.containerInfo}>
                   <div className={style.info}>
                     <p>Nome:</p>
-                    <b>{data.donatario.nome}</b>
+                    <b>{data?.donatario.nome.split(" ")[0]}</b>
                   </div>
                   <div className={style.info}>
                     <p>Sobrenome:</p>
-                    <b>{data.donatario.nome}</b>
-                  </div>
-                  <div className={style.info}>
-                    <p>Endereço:</p>
-                    <b>{data.endereco}</b>
-                    <p>{data.complemento}</p>
+                    <b>{data?.donatario.nome.split(" ").slice(1).join(" ")}</b>
                   </div>
                 </div>
               </div>
@@ -124,20 +136,32 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                 <div className={`${style.containerInfo} ${style.contato}`}>
                   <div className={style.info}>
                     <p>Telefone:</p>
-                    <b>{data.telefone}</b>
+                    <b>
+                      {data?.donatario.telefone1
+                        ? (() => {
+                            const tel = data.donatario.telefone1;
+                            const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                            return formattedTel;
+                          })()
+                        : "Não disponível"}
+                    </b>
                   </div>
                   <div className={style.info}>
-                    <p>Celular:</p>
-                    <b>{data.celular}</b>
-                  </div>
-                  <div className={style.info}>
-                    <p>Email:</p>
-                    <b>{data.email}</b>
+                    <p>Telefone:</p>
+                    <b>
+                      {data?.donatario.telefone2
+                        ? (() => {
+                            const tel = data.donatario.telefone1;
+                            const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                            return formattedTel;
+                          })()
+                        : "Não disponível"}
+                    </b>
                   </div>
                   <div className={style.info}>
                     <BotaoPadrao
                       texto="Ver Mais"
-                      onClick={handleDoacaoCompleta}
+                      onClick={handleModalDonatario}
                     />
                   </div>
                 </div>
@@ -150,6 +174,11 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
         data={data}
         isVisible={isDoacaoCompleta}
         onClose={handleDoacaoCompleta}
+      />
+      <ModalDonatario
+        data={data}
+        isVisible={isModalDonatario}
+        onClose={handleModalDonatario}
       />
     </>
   );

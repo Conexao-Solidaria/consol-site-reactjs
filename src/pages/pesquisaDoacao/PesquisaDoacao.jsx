@@ -16,7 +16,7 @@ const PesquisaDoacao = ({ onSearch }) => {
     }
 
     const [query, setQuery] = useState('');
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const handleInputChange = (event) => {
@@ -44,7 +44,7 @@ const PesquisaDoacao = ({ onSearch }) => {
     const fetchData = async (url) => {
         try {
             const response = await api.get(url, yourConfig);
-            setData(response);
+            setData(response.data);
         }
         catch (error) {
             console.error('Error fetching data:', error);
