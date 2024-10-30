@@ -16,7 +16,7 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
   };
 
   const handleModalDonatario = () => {
-    setIsModalDonatario(!isModalDonatario)
+    setIsModalDonatario(!isModalDonatario);
   };
 
   return (
@@ -64,7 +64,7 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                     <p>Data:</p>
                     <b>
                       {(() => {
-                        const [date] = data.dataDoacao.split("T");
+                        const [date] = data?.dataDoacao.split("T");
                         const [year, month, day] = date.split("-");
                         return `${day}/${month}/${year}`;
                       })()}
@@ -74,7 +74,7 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                     <p>Hora:</p>
                     <b>
                       {(() => {
-                        const [, time] = data.dataDoacao.split("T");
+                        const [, time] = data?.dataDoacao.split("T");
                         return time;
                       })()}
                     </b>
@@ -95,7 +95,7 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                   <p>
                     <b>Descrição:</b>
                   </p>
-                  <p className={style.descricao}>{data.descricao}</p>
+                  <p className={style.descricao}>{data?.descricao}</p>
                 </div>
               </div>
             </div>
@@ -118,15 +118,15 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                 <div className={style.containerInfo}>
                   <div className={style.info}>
                     <p>Nome:</p>
-                    <b>{data.donatario.nome.split(" ")[0]}</b>
+                    <b>{data?.donatario.nome.split(" ")[0]}</b>
                   </div>
                   <div className={style.info}>
                     <p>Sobrenome:</p>
-                    <b>{data.donatario.nome.split(" ").slice(1).join(" ")}</b>
+                    <b>{data?.donatario.nome.split(" ").slice(1).join(" ")}</b>
                   </div>
                   <div className={style.info}>
                     <p>Cep:</p>
-                    <b>{data.donatario.cep}</b>
+                    <b>{data?.donatario.cep}</b>
                   </div>
                 </div>
               </div>
@@ -141,21 +141,25 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                   <div className={style.info}>
                     <p>Telefone:</p>
                     <b>
-                      {(() => {
-                        const tel = data.donatario.telefone1;
-                        const formattedTel = `(${tel.slice(0, 2)})${tel.slice(2, 7)}-${tel.slice(7)}`;
-                        return formattedTel;
-                      })()}
+                      {data?.donatario.telefone1
+                        ? (() => {
+                            const tel = data.donatario.telefone1;
+                            const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                            return formattedTel;
+                          })()
+                        : "Não disponível"}
                     </b>
                   </div>
                   <div className={style.info}>
                     <p>Telefone:</p>
                     <b>
-                      {(() => {
-                        const tel = data.donatario.telefone2;
-                        const formattedTel = `(${tel.slice(0, 2)})${tel.slice(2, 7)}-${tel.slice(7)}`;
-                        return formattedTel;
-                      })()}
+                      {data?.donatario.telefone2
+                        ? (() => {
+                            const tel = data.donatario.telefone1;
+                            const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                            return formattedTel;
+                          })()
+                        : "Não disponível"}
                     </b>
                   </div>
                   <div className={style.info}>

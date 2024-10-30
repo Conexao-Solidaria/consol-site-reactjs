@@ -21,7 +21,7 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
     };
 
     try {
-      const response = await api.get(`/titular/${data.donatario.id}`, yourConfig);
+      const response = await api.get(`/titulares/${data.donatario.id}`, yourConfig);
       setDataDonatario(response.data);
     } catch (error) {
       console.log("Erro ao busacar titular: ", error);
@@ -51,6 +51,43 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
       buscaDadosDonatario();
     }
   }, [isVisible, data]);
+
+  const formatarCPF = (cpf) => {
+    if (!cpf) return '';
+
+    const digitos = cpf.replace(/\D/g, '');
+
+    if (digitos.length !== 11) return cpf;
+
+    return `${digitos.slice(0, 3)}.${digitos.slice(3, 6)}.${digitos.slice(6, 9)}-${digitos.slice(9)}`;
+  };
+
+  const formatarRG = (rg) => {
+    if (!rg) return '';
+
+    const rgBruto = rg.replace(/\D/g, '');
+
+    if (rgBruto.length === 9) {
+      return `${rgBruto.slice(0, 2)}.${rgBruto.slice(2, 5)}.${rgBruto.slice(5, 8)}-${rgBruto.slice(8)}`;
+    }
+
+    return rgBruto;
+  };
+
+  const formatarData = (dateString) => {
+    if (!dateString) return '';
+
+    const date = new Date(dateString);
+
+    if (isNaN(date)) return dateString;
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
+
 
   if (!isVisible) return null;
   return (
@@ -152,17 +189,15 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                     <div className={style.infoWrapper}>
                       <div className={modalStyle.info}>
                         <p>CPF:</p>
-                        <b>{dataDonatario?.cpf}</b>
+                        <b>{formatarCPF(dataDonatario?.cpf)}</b>
                       </div>
                       <div className={modalStyle.info}>
                         <p>Data de Nascimento:</p>
-                        <b>
-                          {dataDonatario?.dataNascimento}
-                        </b>
+                        <b>{formatarData(dataDonatario?.dataNascimento)}</b>
                       </div>
                       <div className={modalStyle.info}>
                         <p>RG:</p>
-                        <b>{dataDonatario?.rg}</b>
+                        <b>{formatarRG(dataDonatario?.rg)}</b>
                       </div>
                       <div className={modalStyle.info}>
                         <p>Estado Civil:</p>
