@@ -6,6 +6,7 @@ import ListaDoacoes from "../../components/doacoes/ListaDoacoes";
 import { useNavigate } from "react-router-dom";
 import { mockDoacao } from "../../mocks/CsMocks";
 import api from "../../api";
+import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 const PesquisaDoacao = ({ onSearch }) => {
   const navigate = useNavigate();
@@ -78,14 +79,18 @@ const PesquisaDoacao = ({ onSearch }) => {
 
           <div className={style.containerConteudo}>
             <div className={style.containerBarraPesquisa}>
-              <p>
-                <b>Pesquisar por nome donatario:</b>
-              </p>
+              <div className={style.nomePesquisa}>
+              <b>
+                Pesquisar por nome donatario:
+              </b>
+              </div>
+
               <div className={style.inputBarraPesquisa}>
                 <input type="text" onChange={handleInputChange} />
-                <button value={"PESQUISAR"} onClick={handleSearch}>
-                  PESQUISAR
-                </button>
+                <BotaoPadrao
+                  texto="Pesquisar"
+                  onClick={handleSearch}
+                />
               </div>
             </div>
 
@@ -94,15 +99,19 @@ const PesquisaDoacao = ({ onSearch }) => {
                 <div className={style.containerFiltros}>
                   <p>Filtros data:</p>
                   <input type="date" id="inputData" />
-                  <button value={"PESQUISAR POR DATA"} onClick={handleDate}>
-                    PESQUISAR POR DATA
-                  </button>
+                  <BotaoPadrao
+                    texto="Pesquisar Por Data"
+                    onClick={handleDate}
+                  />
                 </div>
                 <div className={style.containerAdicionarDoacao}>
-                  <button onClick={cadastroDoacao}>+ Adicionar Doação</button>
+                  <BotaoPadrao
+                  texto="+ Adicionar Doação"
+                  onClick={cadastroDoacao}
+                  />
                 </div>
               </div>
-              <div className={style.line}></div>
+              <hr />
               {data?.map((item, index) => (
                 <div key={index}>
                   <ListaDoacoes data={item} />

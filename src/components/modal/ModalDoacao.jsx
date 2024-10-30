@@ -58,7 +58,7 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                 <div className={style.containerInfo}>
                   <div className={style.info}>
                     <p>Titulo:</p>
-                    <b>Doação</b>
+                    <b>Doação nº{data.id}</b>
                   </div>
                   <div className={style.info}>
                     <p>Data:</p>

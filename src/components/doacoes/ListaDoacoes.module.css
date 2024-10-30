@@ -3,11 +3,10 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 95%;
+  width: 100%;
   padding: 5px;
   height: 100%;
-  margin: 0px 0px 10px 0px;
+  justify-content: space-between;
 }
 
 .containerListaDoacoes img {
@@ -50,4 +49,20 @@
 
 .identificador {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.dados {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.dados .vl {
+  height: 30px;
+  border-left: 1px solid #ccc ;
+  margin: 0 10px;
 }
