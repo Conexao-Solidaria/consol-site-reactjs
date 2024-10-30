@@ -7,9 +7,11 @@ import api from "../../api";
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BotaoPadrao from "../botoes/BotaoPadrao";
+import ListaDoacoes from "../doacoes/ListaDoacoes";
 
 const ModalDonatario = ({ data, isVisible, onClose }) => {
-  const [dataDonatario, setDataDonatario] = useState(null);
+  const [dataDonatario, setDataDonatario] = useState();
+  const [dataDoacoes, setDataDoacoes] = useState([]);
   const navigate = useNavigate();
 
   const buscaDadosDonatario = async () => {
@@ -21,12 +23,34 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
     };
 
     try {
-      const response = await api.get(`/titulares/${data.donatario.id}`, yourConfig);
+      const response = await api.get(
+        `/titulares/${data.donatario.id}`,
+        yourConfig,
+      );
       setDataDonatario(response.data);
     } catch (error) {
-      console.log("Erro ao busacar titular: ", error);
+      console.log("Erro ao buscar titular: ", error);
     }
-  }
+  };
+
+  const buscaDadosDoacoes = async () => {
+    const yourConfig = {
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+      params: {
+        nome: data.donatario.nome,
+      },
+    };
+
+    try {
+      const response = await api.get(`/doacoes/por-nome`, yourConfig);
+      setDataDoacoes(response.data);
+    } catch (error) {
+      console.log("Erro ao buscar doacoes: ", error);
+    }
+  };
 
   async function handleDelete(id) {
     const yourConfig = {
@@ -37,7 +61,7 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
     };
 
     try {
-      const response = await api.delete(`doacoes/${id}`, yourConfig);
+      await api.delete(`doacoes/${id}`, yourConfig);
       toast.success("Doacao apagada com sucesso!");
       onClose();
       window.location.reload();
@@ -47,15 +71,16 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
   }
 
   useEffect(() => {
-    if (isVisible && data?.donatario?.id) {
+    if (isVisible && data) {
       buscaDadosDonatario();
+      buscaDadosDoacoes();
     }
   }, [isVisible, data]);
 
   const formatarCPF = (cpf) => {
-    if (!cpf) return '';
+    if (!cpf) return "";
 
-    const digitos = cpf.replace(/\D/g, '');
+    const digitos = cpf.replace(/\D/g, "");
 
     if (digitos.length !== 11) return cpf;
 
@@ -63,9 +88,9 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
   };
 
   const formatarRG = (rg) => {
-    if (!rg) return '';
+    if (!rg) return "";
 
-    const rgBruto = rg.replace(/\D/g, '');
+    const rgBruto = rg.replace(/\D/g, "");
 
     if (rgBruto.length === 9) {
       return `${rgBruto.slice(0, 2)}.${rgBruto.slice(2, 5)}.${rgBruto.slice(5, 8)}-${rgBruto.slice(8)}`;
@@ -75,19 +100,18 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
   };
 
   const formatarData = (dateString) => {
-    if (!dateString) return '';
+    if (!dateString) return "";
 
     const date = new Date(dateString);
 
     if (isNaN(date)) return dateString;
 
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
 
     return `${day}/${month}/${year}`;
   };
-
 
   if (!isVisible) return null;
   return (
@@ -161,21 +185,25 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                       <div className={modalStyle.info}>
                         <p>Telefone:</p>
                         <b>
-                          {(() => {
-                            const tel = data.donatario.telefone1;
-                            const formattedTel = `(${tel.slice(0, 2)})${tel.slice(2, 7)}-${tel.slice(7)}`;
-                            return formattedTel;
-                          })()}
+                          {data?.donatario.telefone1
+                            ? (() => {
+                                const tel = data.donatario.telefone1;
+                                const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                                return formattedTel;
+                              })()
+                            : "Não disponível"}
                         </b>
                       </div>
                       <div className={modalStyle.info}>
                         <p>Celular:</p>
                         <b>
-                          {(() => {
-                            const tel = data.donatario.telefone2;
-                            const formattedTel = `(${tel.slice(0, 2)})${tel.slice(2, 7)}-${tel.slice(7)}`;
-                            return formattedTel;
-                          })()}
+                          {data?.donatario.telefone2
+                            ? (() => {
+                                const tel = data.donatario.telefone2;
+                                const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                                return formattedTel;
+                              })()
+                            : "Não disponível"}
                         </b>
                       </div>
                     </div>
@@ -227,7 +255,13 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                 <div className={modalStyle.titulo}>
                   <h1>Doações recebidas</h1>
                 </div>
-                <div className={style.descricaoDoacao}></div>
+                <div className={style.doacaoWrapper}>
+                  {dataDoacoes?.map((item, index) => (
+                    <div key={index}>
+                      <ListaDoacoes data={item} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
