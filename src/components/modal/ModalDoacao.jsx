@@ -124,10 +124,6 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                     <p>Sobrenome:</p>
                     <b>{data?.donatario.nome.split(" ").slice(1).join(" ")}</b>
                   </div>
-                  <div className={style.info}>
-                    <p>Cep:</p>
-                    <b>{data?.donatario.cep}</b>
-                  </div>
                 </div>
               </div>
             </div>

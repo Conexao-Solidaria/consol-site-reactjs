@@ -153,10 +153,6 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                           {data.donatario.nome.split(" ").slice(1).join(" ")}
                         </b>
                       </div>
-                      <div className={modalStyle.info}>
-                        <p>Cep:</p>
-                        <b>{data.donatario.cep}</b>
-                      </div>
                     </div>
                   </div>
                   <div className={style.botoes}>
