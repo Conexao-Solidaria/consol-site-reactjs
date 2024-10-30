@@ -14,11 +14,10 @@ const Acessos = () => {
         }
     }
 
-    // Função para buscar os usuários que solicitaram acesso
     const fetchUsuarios = async () => {
         try {
-            const response = await api.get("/usuarios", yourConfig); // Ajuste o endpoint conforme sua API
-            setUsuarios(response.data); // Supondo que o backend retorne uma lista com 'nome' e 'email'
+            const response = await api.get("/usuarios", yourConfig);
+            setUsuarios(response.data);
         } catch (error) {
             console.error("Erro ao buscar usuários:", error);
         } finally {
@@ -26,7 +25,6 @@ const Acessos = () => {
         }
     };
 
-    // Carrega os usuários ao montar o componente
     useEffect(() => {
         fetchUsuarios();
     }, []);
@@ -36,12 +34,8 @@ const Acessos = () => {
             const flagAceitar = {
                 flagAprovado: 1
             }
-
-
-
-            await api.put(`/usuarios/atualizar-flag/${id}`, flagAceitar, yourConfig); // Ajuste o endpoint conforme necessário
+            await api.put(`/usuarios/atualizar-flag/${id}`, flagAceitar, yourConfig);
             toast.success(`Acesso aceito para o usuário com ID: ${id}`);
-            // Opcional: Atualize a lista de usuários, removendo o usuário aceito
             setUsuarios(usuarios.filter(usuario => usuario.id !== id));
         } catch (error) {
             console.error("Erro ao aceitar acesso:", error);
@@ -53,11 +47,8 @@ const Acessos = () => {
             const flagRecusar = {
                 flagAprovado: 0
             }
-
-            await api.put(`/usuarios/atualizar-flag/${id}`, flagRecusar, yourConfig); // Ajuste o endpoint conforme necessário
+            await api.put(`/usuarios/atualizar-flag/${id}`, flagRecusar, yourConfig);
             toast.error(`Acesso negado para o usuário com ID: ${id}`);
-
-            // Opcional: Atualize a lista de usuários, removendo o usuário recusado
             setUsuarios(usuarios.filter(usuario => usuario.id !== id));
         } catch (error) {
             console.error("Erro ao recusar acesso:", error);
