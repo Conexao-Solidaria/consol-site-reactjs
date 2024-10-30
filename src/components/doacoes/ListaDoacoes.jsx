@@ -25,17 +25,32 @@ const ListaDoacoes = ({ data }) => {
   return (
     <>
       <div className={style.containerListaDoacoes} onClick={handleModal}>
-        <img src={iconDoacoes} alt='Icone de Doações' />
+        <div className={style.identificador}>
+          <img
+            src={iconDoacoes}
+            className={style.iconDoacoes}
+            alt='Icone de Doações'
+          />
+          <p>Doação nº {data.id}</p>
+        </div>
+        <div className={style.dados}>
+          <p className={style.paragrafo}>
+            {data.flagDoacaoEntregue? 'Entregue' : 'Não entregue'}
+          </p>
+          <hr />
+
+        </div>
+        {/* <img src={iconDoacoes} alt='Icone de Doações' />
         <div className={style.containerTipoDoacao}>
           <p><b>Doação ID: {data.id}</b></p>
         </div>
         <div>
           <div className={style.containerInformacoes}>
-            <p className={style.paragrafo}>{data.flagDoacaoEntregue === 1 ? 'Entregue' : 'Não entregue'}</p>
+            <p className={style.paragrafo}>{data.flagDoacaoEntregue? 'Entregue' : 'Não entregue'}</p>
             <div className={style.verticalLine}></div>
             <p>{data.dataDoacao}</p>
           </div>
-        </div>
+        </div>*/}
       </div>
       <ModalDoacao
         data={data}
