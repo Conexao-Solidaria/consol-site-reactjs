@@ -17,7 +17,7 @@ const CadastrarDonatario = () => {
     const [telefone, setTelefone] = useState("");
     const [ocupacao, setOcupacao] = useState("");
     const [familia, setFamilia] = useState("");
-
+    
     const [estadoCivil, setEstadoCivil] = useState("");
     const optEstadoCivil = ["Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "Separado(a)"];
 
@@ -34,10 +34,10 @@ const CadastrarDonatario = () => {
         "Mestrado",
         "Doutorado"
     ];
-
+    
     const [trabalhando, isTrabalhando] = useState("");
     const optTrabalhando = ["Selecione", "Sim", "Não"];
-
+    
     const [familiaOptions, setFamiliaOptions] = useState([]);
 
     const fetchFamilias = async () => {
@@ -64,16 +64,8 @@ const CadastrarDonatario = () => {
     }, []);
 
     async function handleSubmit() {
-        // Get today's date for dataCadastro
-        let today = new Date();
-        let dd = String(today.getDate()).padStart(2, '0');
-        let mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-        let yyyy = today.getFullYear();
-
-        today = yyyy + '-' + mm + '-' + dd; // Format YYYY-MM-DD
-
         const selectedFamilia = familia; // ID of the selected family
-
+        
         let telefone1Real = celular;
         telefone1Real = telefone1Real.replace(/\D/g, ''); // Remove non-numeric characters
         telefone1Real = telefone1Real.replace(" ", ''); // Remove non-numeric characters
@@ -86,9 +78,7 @@ const CadastrarDonatario = () => {
         cpfReal = cpfReal.replace(" ", ''); // Remove non-numeric characters
         let dateNascReal = dataNasc.split('/').reverse().join('-');
 
-
-
-
+        
         // Create an object with all the input values
         const donatarioData = {
             nome,
@@ -100,8 +90,7 @@ const CadastrarDonatario = () => {
             ocupacao,
             estadoCivil,
             escolaridade,
-            trabalhando: trabalhando === "Sim",
-            dataCadastro: today,
+            trabalhando: trabalhando === "Sim" ? 1 : 0,
             idFamilia: selectedFamilia
         };
 
@@ -126,7 +115,7 @@ const CadastrarDonatario = () => {
                     'Content-Type': 'application/json'
                 }
             };
-
+    
             try {
                 await api.post(`/titulares`, donatarioData, yourConfig);
                 alert("DOAÇÃO CRIADA");
@@ -261,7 +250,7 @@ const CadastrarDonatario = () => {
                                             {familia.nome}
                                         </option>
                                     ))}
-                                </select>
+                                </select> 
                                 <br />
                                 <div className={style.formLine}>
                                     <BotaoPadrao texto="Cadastrar" onClick={() => {
