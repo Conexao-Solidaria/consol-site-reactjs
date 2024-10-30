@@ -148,7 +148,9 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
                         <p
                           style={{
                             fontWeight: "bold",
-                            color: data.flagDoacaoEntregue ? 'green' : 'red !important'
+                            color: data.flagDoacaoEntregue
+                              ? "green"
+                              : "red !important",
                           }}
                         >
                           {data.flagDoacaoEntregue
@@ -178,27 +180,26 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
                     <h1>Informações do donatário</h1>
                   </div>
                   <div className={style.donatarioBeneficiado}>
-                    <div className={style.colunaImagem}>
-                      <div
-                        className={style.modalImagem}
-                        style={{ width: "10vw" }}
-                      >
-                        <img
-                          src={iconPerfil}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                          }}
-                          alt="Icone de Doações"
-                        ></img>
+                    <img
+                      src={iconPerfil}
+                      className={style.iconPerfil}
+                      alt="Icone de Perfil"
+                    />
+                    <div className={style.infoWrapper}>
+                      <div className={modalStyle.info}>
+                        <p>Nome:</p>
+                        <b>{data.donatario.nome.split(" ")[0]}</b>
                       </div>
-                    </div>
-                    <div className={style.coluna}>
-                      <p>
-                        Nome:
-                        <br />
-                        <b>{data.donatario.nome}</b>
-                      </p>
+                      <div className={modalStyle.info}>
+                        <p>Sobrenome:</p>
+                        <b>
+                          {data.donatario.nome.split(" ").slice(1).join(" ")}
+                        </b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Cep:</p>
+                        <b>{data.donatario.cep}</b>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -206,18 +207,32 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
                   <div className={modalStyle.titulo}>
                     <h1>Contatos do donatário</h1>
                   </div>
-                  <div className={style.contatoDonatario}>
-                    <div className={modalStyle.coluna}>
-                      <p>
-                        Telefone:
-                        <br />
-                        <b>{data.donatario.telefone1}</b>
-                      </p>
-                      <p>
-                        Celular:
-                        <br />
-                        <b>{data.donatario.telefone2}</b>
-                      </p>
+                  <div className={style.infoContainer}>
+                    <div className={style.infoWrapper}>
+                      <div className={modalStyle.info}>
+                        <p>Telefone:</p>
+                        <b>
+                          {data?.donatario.telefone1
+                            ? (() => {
+                                const tel = data.donatario.telefone1;
+                                const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                                return formattedTel;
+                              })()
+                            : "Não disponível"}
+                        </b>
+                      </div>
+                      <div className={modalStyle.info}>
+                        <p>Telefone:</p>
+                        <b>
+                          {data?.donatario.telefone2
+                            ? (() => {
+                                const tel = data.donatario.telefone2;
+                                const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                                return formattedTel;
+                              })()
+                            : "Não disponível"}
+                        </b>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -227,20 +242,17 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
                   <h1>Descrição da doação</h1>
                 </div>
                 <div className={style.descricaoDoacao}>
-                  <br />
                   <p id="descricaoDoacao">{data.descricao}</p>
-
-                  <br></br>
                   <textarea
                     id="descricaoDoacaoEdit"
                     style={{ display: "none" }}
                   ></textarea>
                 </div>
-                <div
-                  className={style.divBotao}
-                  onClick={() => handleEdit(data.id)}
-                >
-                  <button>Editar Descrição</button>
+                <div className={style.botaoDescricao}>
+                  <BotaoPadrao
+                    texto="Editar Descrição"
+                    onClick={() => handleEdit(data.id)}
+                  />
                 </div>
               </div>
             </div>
