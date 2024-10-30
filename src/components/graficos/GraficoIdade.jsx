@@ -1,54 +1,48 @@
 import React from "react";
-import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-
-ChartJS.register(ArcElement, Tooltip, Legend);
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 const GraficoIdade = () => {
-  const data = {
-    labels: [
-      "de 0 a 12 anos",
-      "de 12 a 20 anos",
-      "de 20 a 60 anos",
-      "Mais de 60 anos",
-    ],
-    datasets: [
-      {
-        label: "Idades",
-        data: [15, 40, 12, 5],
-        backgroundColor: ["#AEC6CF", "#77DD77", "#FFB347", "#C9A9F9"],
-        borderColor: ["#AEC6CF", "#77DD77", "#FFB347", "#C9A9F9"],
-        borderWidth: 1,
-      },
-    ],
-  };
+  const data = [
+    { name: 'Group A', value: 400 },
+    { name: 'Group B', value: 300 },
+    { name: 'Group C', value: 300 },
+    { name: 'Group D', value: 200 },
+  ];
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "right",
-      },
-      title: {
-        display: true,
-        text: "Distribuição de Idades",
-      },
-    },
+  const COLORS = ['#EB4C46', '#104892', '#DEE8EC', '#A9A9A9'];
+
+  const RADIAN = Math.PI / 180;
+
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Doughnut data={data} options={options} />
-    </div>
-  );
+    <ResponsiveContainer width="100%" height="80%">
+      <PieChart>
+        <Pie
+          data={data}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>);
 };
 
 export default GraficoIdade;

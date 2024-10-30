@@ -9,27 +9,27 @@ import iconPerfil from "../../utils/assets/icon_perfil.png";
 import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const home = () => {
-        navigate("/")
-    }
+  const home = () => {
+    navigate("/")
+  }
 
-    const historico = () => {
-        navigate("/historico")
-    }
+  const historico = () => {
+    navigate("/historico")
+  }
 
-    const doacao = () => {
-        navigate("/doacoes")
-    }
+  const doacao = () => {
+    navigate("/doacoes")
+  }
 
-    const donatario = () => {
-        navigate("/donatarios")
-    }
+  const donatario = () => {
+    navigate("/donatarios")
+  }
 
-    const acessos = () => {
-        navigate("/acessos")
-    }
+  const acessos = () => {
+    navigate("/acessos")
+  }
 
   const [showText, setShowText] = useState(false);
 
@@ -57,13 +57,13 @@ const NavBar = () => {
         <div className={styles.line}></div>
 
         <a onClick={home}>
-            {" "}
+          {" "}
           <img src={iconHome} alt="Icone de uma casa" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Início </p>{" "}
         </a>
         <br />
         <a onClick={historico}>
-        {/* <a className={styles.ativado} href="#"> */}
+          {/* <a className={styles.ativado} href="#"> */}
           {" "}
           <img src={iconHistorico} alt="Icone de histórico" />{" "}
           <p style={{ display: showText ? "block" : "none" }}> Histórico </p>{" "}
