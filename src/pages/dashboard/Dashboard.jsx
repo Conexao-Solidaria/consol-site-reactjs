@@ -11,7 +11,19 @@ import api from "../../api";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    qtdFamilia: 0,
+    qtdCriancas: 0,
+    cadastrosProximosVencimento: 0,
+    distribuicaoIdades: {
+      zeroDoze: 0,
+      trezeVinteCinco: 0,
+      vinteCincoSessenta: 0,
+      maisSessenta: 0
+    },
+    qtdDoacoesMes: {}
+  });
+
 
   // const data = {
   //   qtdFamilias: 32,
@@ -46,7 +58,7 @@ const Dashboard = () => {
 
   const fetchData = async (url) => {
     try {
-      const uri = url + `?data=${getDataAtual()}`;
+      const uri = `${url}?data=${getDataAtual()}`;
       const response = await api.get(uri, yourConfig);
       setData(response.data);
     } catch (error) {
@@ -58,8 +70,13 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchData("/dashboard/data-atual");
-  }, []);
+    const interval = setInterval(() => fetchData("/dashboard/data-atual"), 60000);
+    return () => clearInterval(interval);
+}, []);
 
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <>
@@ -108,7 +125,7 @@ const Dashboard = () => {
                       <h1>Faixa etária dos membros das famílias</h1>
                       <hr></hr>
                       <div className={style.contentGraficoPizza}>
-                        <GraficoIdade />
+                        <GraficoIdade distribuicaoIdades={data?.distribuicaoIdades} />
                       </div>
                       <hr></hr>
                       <div className={style.legenda}>
@@ -134,7 +151,7 @@ const Dashboard = () => {
                     <h1>Quantidade de Doações por mês</h1>
                     <hr></hr>
                     <div className={style.contentGrafico}>
-                      <GraficoNumeroDoacoes data={data.qtdDoacoesMes} />
+                      <GraficoNumeroDoacoes data={data?.qtdDoacoesMes} />
                     </div>
                   </div>
                 </div>
