@@ -18,7 +18,7 @@ const CadastroFamilia = () => {
             nome.value!== "" &&
             cep.value !== "" &&
             numeroCasa.value !== "" &&
-            renda.value > 0
+            parseFloat(renda.value) > 0
         ){
 			const yourConfig = {
 				headers: {
@@ -42,6 +42,8 @@ const CadastroFamilia = () => {
                 "renda": renda.value,
                 "dataCadastro": today
 			}
+
+			console.log(bodyDoacao);
 
 			try {
 				await api.post(`familias`, bodyDoacao, yourConfig);
