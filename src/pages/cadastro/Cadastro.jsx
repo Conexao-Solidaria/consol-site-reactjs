@@ -40,7 +40,7 @@ function Cadastrar() {
 			});
 			
 			toast.success("Novo usuário cadastrado com sucesso!");
-			navigate("/login");
+			navigate("/");
 		} catch (error) {
 			toast.error("Ocorreu um erro ao realizar o cadastro");
 			setError(error.response?.data?.message || "Erro ao cadastrar");

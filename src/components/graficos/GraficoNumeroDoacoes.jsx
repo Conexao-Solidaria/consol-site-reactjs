@@ -2,6 +2,9 @@ import React from "react";
 import { LineChart, Line, ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip } from "recharts";
 
 const GraficoNumeroDoacoes = ({ data }) => {
+    if(data == undefined && data == null){
+        return <div>Sem dados para exibir</div>
+    } 
 
   const doacoesMes = Object.keys(data).map((mes) => ({
     mes,
