@@ -3,6 +3,7 @@ import style from "./Configuracao.module.css";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Configuracao() {
 	const navigate = useNavigate();

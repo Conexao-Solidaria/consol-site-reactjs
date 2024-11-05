@@ -5,6 +5,7 @@ import style from "./CadastrarFamilia.module.css";
 import image from "../../utils/assets/familia1.png";
 import api from '../../api';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from'react';
 
 
 const CadastroFamilia = () => {

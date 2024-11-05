@@ -8,6 +8,7 @@ import { useState } from "react";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const CadastrarDonatario = () => {
 	const navigate = useNavigate();
