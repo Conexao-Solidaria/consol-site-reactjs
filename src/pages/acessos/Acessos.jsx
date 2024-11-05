@@ -6,6 +6,13 @@ import api from "../../api";
 import { toast } from "react-toastify";
 
 const Acessos = () => {
+	const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
     const [usuarios, setUsuarios] = useState([]);
     const [loading, setLoading] = useState(true);
     const yourConfig = {

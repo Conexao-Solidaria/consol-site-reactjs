@@ -4,10 +4,18 @@ import Head from "../../components/head/Head";
 import style from "./CadastrarFamilia.module.css";
 import image from "../../utils/assets/familia1.png";
 import api from '../../api';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from'react';
 
 
 const CadastroFamilia = () => {
-
+	  const navigate = useNavigate();
+	
+	  useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			  navigate("/")
+		  }
+	  })
     async function cadastrarFamilia() {
 		const nome = document.getElementById('nome');
         const cep = document.getElementById('cep');

@@ -17,6 +17,14 @@ const CadastroDoacao = () => {
   const [descricao, setDescricao] = useState("");
   const [options, setOptions] = useState([]);
 
+  const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
+  
   async function executarBusca() {
     if (titular.length > 0) {
       const yourConfig = {

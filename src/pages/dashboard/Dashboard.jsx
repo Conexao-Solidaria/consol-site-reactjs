@@ -24,7 +24,13 @@ const Dashboard = () => {
     qtdDoacoesMes: {}
   });
 
-
+  const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
   // const data = {
   //   qtdFamilias: 32,
   //   qtdCriancas: 15,

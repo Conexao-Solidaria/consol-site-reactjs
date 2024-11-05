@@ -2,8 +2,17 @@ import React from "react";
 import style from "./Configuracao.module.css";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Configuracao() {
+  const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
     return (
         <div className={style.container}>
             <NavBar />

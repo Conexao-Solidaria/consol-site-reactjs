@@ -8,15 +8,17 @@ import api from "../../api";
 import { mockDoacao } from "../../mocks/CsMocks";
 
 const Historico = () => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [newDonation, setNewDonation] = useState(0);
+	const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
 
-    const yourConfig = {
-        headers: {
-            Authorization: "Bearer " + sessionStorage.getItem("token")
-        }
-    }
+	const [data, setData] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [newDonation, setNewDonation] = useState(0);
 
     const fetchData = async (url) => {
         try {

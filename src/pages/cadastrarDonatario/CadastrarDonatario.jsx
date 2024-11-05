@@ -17,6 +17,13 @@ const CadastrarDonatario = () => {
     const [telefone, setTelefone] = useState("");
     const [ocupacao, setOcupacao] = useState("");
     const [familia, setFamilia] = useState("");
+	const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
     
     const [estadoCivil, setEstadoCivil] = useState("");
     const optEstadoCivil = ["Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "Separado(a)"];
