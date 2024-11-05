@@ -11,11 +11,13 @@
   border-radius: 10px;
   background-color: var(--global-blue);
   color: var(--global-white);
+  font-size: 16px;
   font-weight: 400;
-  height: 26px;
+  height: auto;
   width: auto;
   padding: 0px 5px;
   cursor: pointer;
+  min-height: 26px;
 }
 
 .botao:hover {

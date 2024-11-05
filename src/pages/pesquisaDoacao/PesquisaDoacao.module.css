@@ -13,7 +13,6 @@ body {
     overflow-y: auto;
     overflow-y: visible;
     background-color: var(--global-baby-blue);
-
 }
 
 .container {
@@ -41,7 +40,6 @@ body {
     margin-right: 10px;
 }
 
-
 .verticalLine {
     width: 1px;
     height: 10vh;
@@ -60,40 +58,36 @@ body {
     padding: 5px;
     height: 100%;
     margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.inputBarraPesquisa {
+.containerPesquisa {
+    margin-top: 2vh;
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 5px;
-    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--global-white);
+    border-radius: 10px;
+    width: 95%;
+    height: 15%;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    align-items: center;
+    box-shadow: 0px 4px 6px 2px var(--global-light-grey-houver);
 }
 
-.inputBarraPesquisa input {
-    width: 40%;
-    padding: 10px ; 
-    font-size: 16px;
-    border: 1px solid #cdd1d6;
-    border-radius: 6px;
-    box-sizing: border-box; /* Para incluir padding na largura */
-    margin-right: 20px;
+.containerPesquisa input {
+    width: 332px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 30px;
+    border: 1px solid var(--global-light-grey);
+    border-radius: 10px;
+    background: url("../../utils/assets/icon_pesquisa.png") no-repeat right 10px center;
+    background-size: 18px 18px;
 }
 
-.containerBarraPesquisa button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    margin-right: 20px;
-
-}
-
-.containerBarraPesquisa p{
+.containerBarraPesquisa p {
     width: 100%;
     padding: 5px;
     margin-left: 20px;
@@ -102,17 +96,14 @@ body {
 
 .containerListaDoacoes {
     background-color: var(--global-white);
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 95%;
     padding: 5px;
     margin-top: 10px;
     text-align: center;
-    max-height: 750px;
+    max-height: 40vw;
     overflow-y: auto;
-
 }
 
 .containerListaDoacoes .containerDoacao {
@@ -139,7 +130,6 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-
 }
 
 .containerListaDoacoes .containerIdDoBanco p {
@@ -166,30 +156,20 @@ body {
     width: 50%;
     height: 50px;
     display: flex;
-    justify-content: start;
-    align-items: flex-start;
 }
 
-.containerFiltros p {
+p {
     margin-right: 10px;
     display: flex;
     align-items: flex-start;
-}
-
-.containerFiltros button {
-    color: azure;
-    background-color: #6c9bd9;
-    border-color: #6c9bd9;
-    border-radius: 6px;
-    margin: 15px;
+    font-size: 2vh;
 }
 
 .containerAdicionarDoacao {
-    width: 50%;
+    width: 100%;
     height: 50px;
     display: flex;
     justify-content: end;
-    align-items: flex-end;
 }
 
 .filtroMaisAdicionaDoacao {
@@ -210,4 +190,8 @@ body {
     height: 1px;
     background-color: rgba(0, 0, 0, 0.205);
     margin-top: 6px;
+}
+
+.nomePesquisa {
+    width: 100%;
 }

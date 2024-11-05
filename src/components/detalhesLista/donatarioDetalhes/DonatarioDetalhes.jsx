@@ -1,27 +1,29 @@
 import React from "react";
-import style from "./DonatarioDetalhes.module.css"
-import iconPerfil from "../../../utils/assets/icon_perfil_usuario.png"
+import style from "./DonatarioDetalhes.module.css";
+import iconPerfil from "../../../utils/assets/icon_perfil_usuario.png";
 
-const DonatarioDetalhes = (nome, endereco, numeroCasa) => {
+const DonatarioDetalhes = ({ key, dados }) => {
   return (
-  <>
-    <div className={style.container}>
-      <div className={style.donatarioDetalhes}>
-        <div className={style.iconContainer}>
-          <img src={iconPerfil} alt="" />
+    <>
+      <div className={style.container}>
+        <div className={style.donatarioDetalhes}>
+          <div className={style.iconContainer}>
+            <img src={iconPerfil} alt="Profile Icon" />
+          </div>
+          <div className={style.contentContainer}>
+            <span>{dados.nome}</span>
+            <p>Donatário</p>
+            <p>CPF: {dados.cpf}</p>
+            <p>RG: {dados.rg}</p>
+          </div>
         </div>
-        <div className={style.contentContainer}>
-          <span>Nome Sobrenome</span>
-          <p>Donatário</p>
+        <div className={style.enderecoDetalhes}>
+          <span>{dados.telefone1} | {dados.telefone2}</span>
+          <p>Telefone | Celular</p>
         </div>
       </div>
-      <div className={style.enderecoDetalhes}>
-        <span>Rua Exemplo 000, complemento</span>
-        <p>Bairro- Estado</p>
-      </div>
-    </div>
-  </>
-  )
-}
+    </>
+  );
+};
 
 export default DonatarioDetalhes;

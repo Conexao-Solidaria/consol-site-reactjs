@@ -21,7 +21,7 @@ function Login() {
 	  sessionStorage.setItem("token", response.data.token);
 	  sessionStorage.setItem("usuario", JSON.stringify(response.data));
       toast.success("Login bem-sucedido!");
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       toast.error(error.response?.data?.message || "Erro ao tentar entrar");
       setError(error.response?.data?.message || "Erro ao tentar entrar");

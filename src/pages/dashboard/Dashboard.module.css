@@ -18,228 +18,127 @@ body {
 .container {
   display: flex;
   width: 100%;
-  height: 100%;
-}
-
-.containerHead {
-  width: 100%;
-}
-
-.containerConteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: 20px;
 }
 
 .containerGeral {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--global-grey);
-  border-radius: 10px;
-  width: 95%;
-  padding: 5px;
-}
-
-.containerCard {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--global-white);
-  width: 30%;
-  margin-left: 10px;
-  border-radius: 10px;
-}
-
-.line {
   width: 100%;
-  height: 1px;
-  background-color: var(--global-light-grey-houver);
+  height: 100vh;
 }
 
-.containerCard .containerMetrica {
-  display: flex;
-  align-items: center;
+.containerHead {
+  width: 100%;
+  height: auto;
 }
 
-.containerCard .containerMetrica img {
-  width: 70px;
-  height: 70px;
-  margin-right: 50px;
-}
-
-.containerCard .containerMetrica p {
-  font-size: 40px;
-}
-
-.containerGraficos {
-  display: flex;
-  justify-content: center;
-  background-color: var(--global-grey);
-  width: 95%;
-  height: 300px;
-  margin-top: 10px;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.containerGraficos .containerIdade {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--global-white);
-  width: 40%;
-  border-radius: 10px;
-  margin-right: 20px;
-  padding: 5px;
-}
-
-.containerGraficos .containerDoacoes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--global-white);
-  width: 80%;
-  border-radius: 10px;
-  margin-right: 20px;
-}
-
-.containerListas {
-  background-color: var(--global-grey);
-  border-radius: 10px;
+.containerContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 95%;
-  padding: 5px;
-  margin-top: 10px;
-  text-align: center;
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-.containerListaDoacoes {
-  background-color: var(--global-white);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 95%;
-  padding: 5px;
+  gap: 16px;
+  width: 100%;
   height: 100%;
-  margin-bottom: 10px;
+
+  padding: 16px;
 }
 
-.containerListaDoacoes img {
-  width: 60px;
-  height: 60px;
+.linhaKPI {
+  width: 100%;
+  height: 35vh;
 }
 
-.containerListaDoacoes .containerTipoDoacao {
+.cardFundo {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  background-color: var(--global-beige);
+  border-radius: 10px;
 }
 
-.containerListaDoacoes .containerTipoDoacao p {
-  margin: 0px;
-}
-
-.containerListaDoacoes .containerTipoDoacao .Categoria {
-  color: var(--global-dark-blue);
-}
-
-.containerListaDoacoes .containerInformacoes {
+.card {
   display: flex;
-  justify-content: end;
-  width: 68vw;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: var(--global-white);
 }
 
-.verticalLine {
-  width: 1px;
-  height: 10vh;
-  background-color: var(--global-light-grey-houver);
-  margin-left: 10px;
-  margin-right: 10px;
+.card h1 {
+  font-size: 20px;
+  margin: 1px;
+  color: var(--global-black);
+  font-weight: normal;
 }
 
-@media screen and (max-width: 1024px) {
-  .containerGeral {
-    padding: 10px;
-  }
-
-  .containerCard {
-    width: 30%;
-    height: 250px;
-    text-align: center;
-  }
-
-  .containerCard p {
-    padding: 0;
-  }
-
-  .graficoIdade {
-    width: 0px;
-  }
-
-  .containerListaDoacoes img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .containerListaDoacoes .containerInformacoes {
-    display: flex;
-    justify-content: end;
-    width: 60vw;
-  }
+.card hr {
+  margin: 0;
+  background-color: var(--global-light-grey);
 }
 
-@media screen and (max-width: 750px) {
-  .containerGeral {
-    flex-direction: column;
-    width: 80%;
-  }
+.linha {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+}
 
-  .containerCard {
-    width: 90%;
-    padding: 0px;
-    height: auto;
-    margin-bottom: 10px;
-  }
+.cardGrafico {
+  width: 35vw;
+  max-width: 35vw;
+  height: 100%;
+}
 
-  .containerGraficos {
-    width: 80%;
-    height: 100%;
-    flex-direction: column;
-  }
+.contentKPI {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+}
 
-  .containerGraficos .containerIdade {
-    width: 95%;
-    margin-bottom: 10px;
-  }
+.contentKPI p {
+  font-size: 100px;
+  font-weight: bold;
+  color: var(--global-black);
+}
 
-  .containerGraficos .containerDoacoes {
-    width: 95%;
-    margin-bottom: 50px;
-  }
+.contentGrafico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0px 16px 0px 0px;
+}
 
-  .containerListaDoacoes img {
-    width: 40px;
-    height: 40px;
-  }
+.contentGraficoPizza {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-height: 40vh;
+  padding: 0px 16px 0px 0px;
+}
 
-  .containerListaDoacoes {
-    font-size: 12px;
-  }
+.legenda {
+  text-align: left;
+}
 
-  .containerListaDoacoes .containerInformacoes {
-    display: flex;
-    justify-content: end;
-    width: 45vw;
-  }
+.legenda p div {
+  display: inline-block;
+  align-self: center;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #6F7378;
+  border-radius: 4px;
+  position: relative;
+  margin-right: 8px;
 }

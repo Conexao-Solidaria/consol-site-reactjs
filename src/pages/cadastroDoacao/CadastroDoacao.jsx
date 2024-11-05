@@ -1,73 +1,161 @@
-import React from 'react';
+import React from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastroDoacao.module.css";
-import image from "../../utils/assets/foto-cadastro-doacao.png";
-
+import FotoDoacao from "../../utils/assets/foto-cadastro-doacao.png";
+import api from "../../api";
+import BotaoPadrao from "../../components/botoes/BotaoPadrao";
+import InputPesquisa from "../../components/inputs/InputPesquisa";
+import AreaTextoPadrao from "../../components/inputs/AreaTextoPadrao";
+import { toast } from "react-toastify";
+import { mockTitular } from "../../mocks/CsMocks";
 
 const CadastroDoacao = () => {
-    return (
-        <>
-            <div className={style.container}>
-                <NavBar />
-                <div className={style.containerHead}>
-                    <Head />
+  const [titular, setTitular] = useState("");
+  const [idTitular, setIdTitular] = useState("");
+  const [descricao, setDescricao] = useState("");
+  const [options, setOptions] = useState([]);
 
-                    <div className={style.containerConteudo}>
+  async function executarBusca() {
+    if (titular.length > 0) {
+      const yourConfig = {
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      };
 
-                        <div className={style.containerGeral}>
-                            <div className={style.containerCard}>
-                                <h3>Pesquisar doações realizadas</h3>
-                                <input className={style.inputDoacao} type="text" placeholder='Pesquisar doação' />
-                            </div>
-                        </div>
+      try {
+        const response = await api.get(
+          `titulares/filtro/por-nome?nome=${titular}`,
+          yourConfig,
+        );
 
-                        <div className={style.containerCadastro}>
-                            <div className={style.containerTituloCadastro}>
-                                <div className={style.containerTitulo}>
-                                    <p>Cadastrar Doação</p>
-                                </div>
-                            </div>
+        const resultadosFiltrados = response.data.filter(t =>
+          t.nome.toLowerCase().includes(titular.toLowerCase())
+        );
+        setOptions(resultadosFiltrados);
+        // const resultadosFiltrados = mockTitular.filter(t =>
+        //   t.nome.toLowerCase().includes(titular.toLowerCase())
+        //);
+        // setOptions(resultadosFiltrados);
+      } catch (error) {
+        console.error("Error updating flag:", error);
+      }
+    } else {
+      setOptions([]);
+    }
+  }
 
-                            {/* <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div> */}
+  async function cadastrarDoacao() {
+    const areaTexto = document.getElementById("descricao");
 
-                            <div className={style.containerInfosCadastro}>
-                                <div className={style.containerFormularioCadastro}>
+    if (titular != null && descricao.length > 0) {
+      const yourConfig = {
+        headers: {
+          Authorization:
+          "Bearer " + sessionStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      };
 
-                                    <div className={style.campo1Formulario}>
-                                        <div>
-                                            <span>Horário:</span> 
-                                            <input className={style.inputLinha1} placeholder='00h00' type="text" />
-                                        </div>
-                                        <div>
-                                            <span>Data:</span>
-                                             <input className={style.inputLinha1} placeholder='DD/MM/YY' type="text" />
-                                        </div>
-                                    </div>
-                                    <div className={style.campo2Formulario}>
-                                        <span>Quem está recebendo a doação?</span>
-                                        <input className={style.inputLinha2} placeholder='Pesquisar Titular' type="text" />
-                                    </div>
-                                    <div className={style.campo3Formulario}>
-                                        <span>Descrição:</span>
-                                        <textarea className={style.inputLinha3} placeholder='Descrição' type="text" />
-                                    </div>
-                                    <div className={style.ContainerBotao}><button className={style.botao}>Adicionar</button></div>
-                                </div>
-                                <div className={style.containerImagemCadastro}>
-                                    <div className={style.containerImage}>
-                                        <img src={image} alt="Itens de uma cesta básica'" />
-                                    </div>
-                                </div>
-                            </div>
+      let today = new Date();
+      let dd = String(today.getDate()).padStart(2,'0');
+      let mm = String(today.getMonth() + 1).padStart(2,'0');
+      let yyyy = today.getFullYear();
+
+      let hours = today.getHours();
+      let minutes = today.getMinutes();
+      let seconds = today.getSeconds();
+
+      if (seconds < 10){
+        today = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:0${seconds}`;
+      } else {
+        today = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:${seconds}`;
+      }
 
 
-                        </div>
-                    </div>
-                </div>
+      const bodyDoacao = {
+        descricao: areaTexto.value,
+        dataDoacao: today
+      };
+
+      try {
+        await api.post(
+          `doacoes/titular/${idTitular}/instituicao/1`,
+          bodyDoacao,
+          yourConfig,
+        );
+        toast.success("Doação cadastrada com sucesso")
+      } catch (error) {
+        toast.error("Erro ao cadastrar doação");
+        console.error("Error updating flag:", error);
+      }
+    } else {
+      toast.error("Preencha todos os campos");
+    }
+  }
+
+  useEffect(() => {
+    executarBusca();
+  }, [titular]);
+
+  const handleOptionSelect = (option) => {
+    setIdTitular(option.id)
+    setTitular(option.nome);
+    setOptions([]);
+  };
+
+  return (
+    <>
+      <div className={style.container}>
+        <div className={style.navbarContainer}>
+          <NavBar />
+        </div>
+        <div className={style.containerGeral}>
+          <div className={style.containerHead}>
+            <Head />
+          </div>
+          <div className={style.containerConteudo}>
+            <div className={style.tituloPagina}>
+              <p>Cadastrar Doação</p>
+              <hr />
             </div>
-        </>
-
-    );
+            <div className={style.containerFormulario}>
+              <div className={style.formulario}>
+                <div className={style.formLine} id={style.formLine1}>
+                  <InputPesquisa
+                    className={style.titular}
+                    label="Quem está recebendo a doação?"
+                    placeholder="Pesquisar donatário"
+                    onlyLetters={true}
+                    value={titular}
+                    onChange={(value) => setTitular(value)}
+                    options={options}
+                    onOptionSelect={handleOptionSelect}
+                    id={"titular"}
+                  />
+                </div>
+                <AreaTextoPadrao
+                  className={style.descricao}
+                  label="Descrição:"
+                  placeholder="Descrição da doação"
+                  value={descricao}
+                  onChange={(value) => setDescricao(value)}
+                  id={"descricao"}
+                />
+                <div className={style.formLine} id={style.formLine2}>
+                <BotaoPadrao texto="Adicionar Doação" onClick={ cadastrarDoacao }/>
+                </div>
+              </div>
+              <div className={style.imagem}>
+                <img src={FotoDoacao} alt="Foto de itens de uma doação" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 export default CadastroDoacao;
