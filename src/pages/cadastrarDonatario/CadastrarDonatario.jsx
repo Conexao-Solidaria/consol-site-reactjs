@@ -7,7 +7,6 @@ import InputPadrao from "../../components/inputs/InputPadrao";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
 import api from "../../api";
-import { useNavigate } from "react-router-dom";
 
 const CadastrarDonatario = () => {
     const [nome, setNome] = useState("");
@@ -18,11 +17,6 @@ const CadastrarDonatario = () => {
     const [telefone, setTelefone] = useState("");
     const [ocupacao, setOcupacao] = useState("");
     const [familia, setFamilia] = useState("");
-	const navigate = useNavigate();
-
-	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
-		navigate("/")
-	}
     
     const [estadoCivil, setEstadoCivil] = useState("");
     const optEstadoCivil = ["Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "Separado(a)"];

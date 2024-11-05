@@ -13,11 +13,8 @@ function Donatarios() {
     const [data, setData] = useState([]);
     const [dataMonth, setDataMonth] = useState([]);
     
-    const navigate = useNavigate();
 
-	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
-		navigate("/")
-	}
+    const navigate = useNavigate();
 
     const yourConfig = {
         headers: {

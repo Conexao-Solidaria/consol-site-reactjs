@@ -4,15 +4,9 @@ import Head from "../../components/head/Head";
 import style from "./CadastrarFamilia.module.css";
 import image from "../../utils/assets/familia1.png";
 import api from '../../api';
-import { useNavigate } from 'react-router-dom';
 
 
 const CadastroFamilia = () => {
-	const navigate = useNavigate();
-
-	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
-		navigate("/")
-	}
 
     async function cadastrarFamilia() {
 		const nome = document.getElementById('nome');
