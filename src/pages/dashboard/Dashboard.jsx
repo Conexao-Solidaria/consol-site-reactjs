@@ -8,6 +8,7 @@ import iconeAlerta from "../../utils/assets/alerta.svg";
 import GraficoNumeroDoacoes from "../../components/graficos/GraficoNumeroDoacoes";
 import GraficoIdade from "../../components/graficos/GraficoIdade";
 import api from "../../api";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,11 @@ const Dashboard = () => {
     qtdDoacoesMes: {}
   });
 
+  const navigate = useNavigate();
+
+  if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
+	navigate("/")
+  }
 
   // const data = {
   //   qtdFamilias: 32,
