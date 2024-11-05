@@ -17,6 +17,10 @@ function Cadastrar() {
 	const [confirmSenha, setConfirmSenha] = useState("");
 	const [error, setError] = useState("");
 
+  	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
+  		navigate("/")
+  	}
+
 	const cadastrarUsuario = async (event) => {
 		event.preventDefault();
 		if (senha !== confirmSenha || senha == "") {
