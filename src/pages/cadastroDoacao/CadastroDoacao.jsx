@@ -19,10 +19,12 @@ const CadastroDoacao = () => {
   const [options, setOptions] = useState([]);
 
   const navigate = useNavigate();
-
-  if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
-  	navigate("/")
-  }
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
 
   async function executarBusca() {
     if (titular.length > 0) {

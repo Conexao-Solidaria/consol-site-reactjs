@@ -10,11 +10,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Historico = () => {
 	const navigate = useNavigate();
-
-	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-		navigate("/")
-	}
 	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
+
 	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [newDonation, setNewDonation] = useState(0);

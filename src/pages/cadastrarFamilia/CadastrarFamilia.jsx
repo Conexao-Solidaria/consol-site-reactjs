@@ -9,10 +9,12 @@ import { useNavigate } from 'react-router-dom';
 
 const CadastroFamilia = () => {
 	const navigate = useNavigate();
-
-	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
-		navigate("/")
-	}
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
 
     async function cadastrarFamilia() {
 		const nome = document.getElementById('nome');

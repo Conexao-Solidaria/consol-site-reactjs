@@ -9,10 +9,12 @@ import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 const PesquisaDoacao = () => {
     const navigate = useNavigate();
-  
-  	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
-		navigate("/")
-  	}
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
 
     const cadastroDoacao = () => {
         navigate("/cadastro-doacao");

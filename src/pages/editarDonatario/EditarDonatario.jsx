@@ -10,11 +10,13 @@ import ComboBox from "../../components/comboBox/ComboBox";
 import { useNavigate } from "react-router-dom";
 
 const CadastrarDonatario = () => {
-  const navigate = useNavigate();
-  
-  if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
-	navigate("/")
-  }
+	const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
 
   const [nome, setNome] = useState("");
   const [rg, setRg] = useState("");

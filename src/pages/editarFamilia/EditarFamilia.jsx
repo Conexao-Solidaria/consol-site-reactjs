@@ -4,13 +4,17 @@ import Head from "../../components/head/Head";
 import style from "./EditarFamilia.module.css";
 import FotoFamilia from "../../utils/assets/foto-familia.png";
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const EditarFamila = () => {
 	const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/")
+		}
+	})
 
-	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-		navigate("/")
-	}
 	return (
 		<>
 			<div className={style.container}>
