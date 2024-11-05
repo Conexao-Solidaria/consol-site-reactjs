@@ -4,14 +4,8 @@ import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import api from "../../api";
 import { toast } from "react-toastify";
-import { useNavigate } from 'react-router-dom';
 
 const Acessos = () => {
-	const navigate = useNavigate();
-  
-	if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined){
-		navigate("/")
-	}
     const [usuarios, setUsuarios] = useState([]);
     const [loading, setLoading] = useState(true);
     const yourConfig = {
