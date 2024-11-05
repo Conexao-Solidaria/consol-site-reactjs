@@ -7,7 +7,6 @@ import InputPadrao from "../../components/inputs/InputPadrao";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
 import api from "../../api";
-import { useNavigate } from "react-router-dom";
 
 const CadastrarDonatario = () => {
     const [nome, setNome] = useState("");

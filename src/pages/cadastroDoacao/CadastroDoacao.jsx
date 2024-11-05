@@ -10,7 +10,6 @@ import InputPesquisa from "../../components/inputs/InputPesquisa";
 import AreaTextoPadrao from "../../components/inputs/AreaTextoPadrao";
 import { toast } from "react-toastify";
 import { mockTitular } from "../../mocks/CsMocks";
-import { useNavigate } from "react-router-dom";
 
 const CadastroDoacao = () => {
   const [titular, setTitular] = useState("");
@@ -25,7 +24,7 @@ const CadastroDoacao = () => {
 			navigate("/")
 		}
 	})
-
+  
   async function executarBusca() {
     if (titular.length > 0) {
       const yourConfig = {

@@ -9,14 +9,13 @@ import { useEffect } from'react';
 
 
 const CadastroFamilia = () => {
-	const navigate = useNavigate();
+	  const navigate = useNavigate();
 	
-	useEffect(() => {
+	  useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			navigate("/")
-		}
-	})
-
+			  navigate("/")
+		  }
+	  })
     async function cadastrarFamilia() {
 		const nome = document.getElementById('nome');
         const cep = document.getElementById('cep');

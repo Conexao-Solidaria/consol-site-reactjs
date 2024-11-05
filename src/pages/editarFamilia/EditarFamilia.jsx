@@ -70,14 +70,11 @@ const EditarFamila = () => {
 							</div>
 
 						</div>
-
-
-
 					</div>
-
 				</div>
 			</div>
 		</>
 	);
+
 };
 export default EditarFamila;
