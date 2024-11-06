@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useNavigate } from 'react';
 import style from "./Acessos.module.css";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const Acessos = () => {
 	const navigate = useNavigate();
-	
+
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
 			navigate("/")

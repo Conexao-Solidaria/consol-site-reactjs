@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useNavigate } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastroDoacao.module.css";
@@ -18,13 +18,13 @@ const CadastroDoacao = () => {
   const [options, setOptions] = useState([]);
 
   const navigate = useNavigate();
-	
+
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
 			navigate("/")
 		}
 	})
-  
+
   async function executarBusca() {
     if (titular.length > 0) {
       const yourConfig = {

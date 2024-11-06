@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useNavigate } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastrarDonatario.module.css";
@@ -18,13 +18,13 @@ const CadastrarDonatario = () => {
     const [ocupacao, setOcupacao] = useState("");
     const [familia, setFamilia] = useState("");
 	const navigate = useNavigate();
-	
+
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
 			navigate("/")
 		}
 	})
-    
+
     const [estadoCivil, setEstadoCivil] = useState("");
     const optEstadoCivil = ["Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "Separado(a)"];
 
@@ -41,10 +41,10 @@ const CadastrarDonatario = () => {
         "Mestrado",
         "Doutorado"
     ];
-    
+
     const [trabalhando, isTrabalhando] = useState("");
     const optTrabalhando = ["Selecione", "Sim", "Não"];
-    
+
     const [familiaOptions, setFamiliaOptions] = useState([]);
 
     const fetchFamilias = async () => {
@@ -72,7 +72,7 @@ const CadastrarDonatario = () => {
 
     async function handleSubmit() {
         const selectedFamilia = familia; // ID of the selected family
-        
+
         let telefone1Real = celular;
         telefone1Real = telefone1Real.replace(/\D/g, ''); // Remove non-numeric characters
         telefone1Real = telefone1Real.replace(" ", ''); // Remove non-numeric characters
@@ -85,7 +85,7 @@ const CadastrarDonatario = () => {
         cpfReal = cpfReal.replace(" ", ''); // Remove non-numeric characters
         let dateNascReal = dataNasc.split('/').reverse().join('-');
 
-        
+
         // Create an object with all the input values
         const donatarioData = {
             nome,
@@ -122,7 +122,7 @@ const CadastrarDonatario = () => {
                     'Content-Type': 'application/json'
                 }
             };
-    
+
             try {
                 await api.post(`/titulares`, donatarioData, yourConfig);
                 alert("DOAÇÃO CRIADA");
@@ -257,7 +257,7 @@ const CadastrarDonatario = () => {
                                             {familia.nome}
                                         </option>
                                     ))}
-                                </select> 
+                                </select>
                                 <br />
                                 <div className={style.formLine}>
                                     <BotaoPadrao texto="Cadastrar" onClick={() => {
