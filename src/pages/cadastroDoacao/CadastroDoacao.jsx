@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useNavigate } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastroDoacao.module.css";
@@ -10,6 +10,7 @@ import InputPesquisa from "../../components/inputs/InputPesquisa";
 import AreaTextoPadrao from "../../components/inputs/AreaTextoPadrao";
 import { toast } from "react-toastify";
 import { mockTitular } from "../../mocks/CsMocks";
+import { useNavigate } from 'react-router-dom';
 
 const CadastroDoacao = () => {
   const [titular, setTitular] = useState("");

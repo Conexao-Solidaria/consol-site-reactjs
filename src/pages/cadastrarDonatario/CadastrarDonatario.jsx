@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useNavigate } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./CadastrarDonatario.module.css";
@@ -7,6 +7,7 @@ import InputPadrao from "../../components/inputs/InputPadrao";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
 import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 const CadastrarDonatario = () => {
     const [nome, setNome] = useState("");

@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useNavigate } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Historico.module.css";
 import BarChart from '../../components/graficos/GraficoFrequenciaDoacoes';
 import ListaDoacoes from '../../components/doacoes/ListaDoacoes';
 import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 import { mockDoacao } from "../../mocks/CsMocks";
 
 const Historico = () => {

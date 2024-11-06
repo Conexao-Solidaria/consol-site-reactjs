@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useNavigate } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Dashboard.module.css";
@@ -8,6 +8,7 @@ import iconeAlerta from "../../utils/assets/alerta.svg";
 import GraficoNumeroDoacoes from "../../components/graficos/GraficoNumeroDoacoes";
 import GraficoIdade from "../../components/graficos/GraficoIdade";
 import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
