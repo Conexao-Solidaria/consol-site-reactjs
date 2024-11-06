@@ -5,11 +5,12 @@ import style from "./Historico.module.css";
 import BarChart from '../../components/graficos/GraficoFrequenciaDoacoes';
 import ListaDoacoes from '../../components/doacoes/ListaDoacoes';
 import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 import { mockDoacao } from "../../mocks/CsMocks";
 
 const Historico = () => {
 	const navigate = useNavigate();
-	
+
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
 			navigate("/")
@@ -20,11 +21,18 @@ const Historico = () => {
 	const [loading, setLoading] = useState(true);
 	const [newDonation, setNewDonation] = useState(0);
 
+  const yourConfig = {
+    headers: {
+      Authorization: "Bearer " + sessionStorage.getItem("token"),
+      "Content-Type": "application/json",
+    },
+  };
+
     const fetchData = async (url) => {
         try {
             let contador = 0;
             const response = await api.get(url, yourConfig);
-            
+
             setData(response);
 
             response.data.forEach(responseU => {

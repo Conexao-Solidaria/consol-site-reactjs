@@ -8,6 +8,7 @@ import iconeAlerta from "../../utils/assets/alerta.svg";
 import GraficoNumeroDoacoes from "../../components/graficos/GraficoNumeroDoacoes";
 import GraficoIdade from "../../components/graficos/GraficoIdade";
 import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -25,7 +26,7 @@ const Dashboard = () => {
   });
 
   const navigate = useNavigate();
-	
+
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
 			navigate("/")

@@ -4,10 +4,11 @@ import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import api from "../../api";
 import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 const Acessos = () => {
 	const navigate = useNavigate();
-	
+
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
 			navigate("/")
