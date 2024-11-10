@@ -3,7 +3,7 @@ import style from "./InputPadrao.module.css";
 import InputMask from "react-input-mask";
 import PropTypes from "prop-types";
 
-const InputPadrao = ({
+const InputSenha = ({
   label,
   placeholder,
   mask,
@@ -12,7 +12,6 @@ const InputPadrao = ({
   onKeyDown,
   value,
   id,
-  type
 }) => {
   const handleChange = (e) => {
     const newValue = e.target.value;
@@ -41,6 +40,7 @@ const InputPadrao = ({
             onKeyDown={onKeyDown}
             value={value}
             id={id}
+            type="password"
           />
         )}
       </InputMask>
@@ -48,7 +48,7 @@ const InputPadrao = ({
   );
 };
 
-InputPadrao.propTypes = {
+InputSenha.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   mask: PropTypes.string.isRequired,
@@ -58,4 +58,4 @@ InputPadrao.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-export default InputPadrao;
+export default InputSenha;

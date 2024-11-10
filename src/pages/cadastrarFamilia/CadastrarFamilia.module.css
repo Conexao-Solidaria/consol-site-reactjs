@@ -110,7 +110,7 @@ body {
 }
 
 
-input {
+.formularioInput {
     font-family: Inter;
     width: 100%;
     padding: 6px 12px;

@@ -2,21 +2,13 @@ ARG NODE_VERSION=20.17.0
 
 FROM node:${NODE_VERSION}-alpine AS build
 
-ENV NODE_ENV=production
-
 WORKDIR /usr/app
 
 COPY package.json package-lock.json ./
-RUN npm install --omit=dev 
+RUN npm install 
 
 COPY . .
-RUN npm run build
 
-FROM nginx:alpine
+EXPOSE 3000
 
-COPY --from=build /usr/app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
-
+CMD ["npm", "start"]

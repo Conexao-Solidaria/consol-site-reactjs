@@ -5,6 +5,7 @@ import image from "../../utils/assets/login_image.jpg";
 import { toast } from "react-toastify";
 import api from "../../api";
 import InputPadrao from "../../components/inputs/InputPadrao";
+import InputSenha from "../../components/inputs/InputSenha";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 function Login() {
@@ -42,12 +43,12 @@ function Login() {
               value={email}
               onChange={(value) => setEmail(value)}
             />
-            <InputPadrao
+            <InputSenha
               label="Senha:"
               placeholder="Senha"
               value={senha}
               onChange={(value) => setSenha(value)}
-            />
+            /> 
             {error && <div className={styles.error}>{error}</div>}
             <div className={styles.containerRedirector}>
               <a href="/cadastro">Cadastrar-se</a>
