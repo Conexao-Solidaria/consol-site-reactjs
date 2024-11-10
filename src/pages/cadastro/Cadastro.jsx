@@ -38,7 +38,7 @@ function Cadastrar() {
 				coordenador: 0,
 				fkinstituicao: 1
 			});
-			
+
 			toast.success("Novo usuário cadastrado com sucesso!");
 			navigate("/");
 		} catch (error) {
@@ -80,12 +80,14 @@ function Cadastrar() {
 							placeholder="Sua senha"
 							value={senha}
 							onChange={(value) => setSenha(value)}
+              className={styles.inputSenha}
 						/>
 						<InputPadrao
 							label="Confirmação de senha:"
 							placeholder="Confirme sua senha"
 							value={confirmSenha}
 							onChange={(value) => setConfirmSenha(value)}
+              className={styles.inputSenha}
 						/>
 						{error && <div className={styles.error}>{error}</div>}
 						<div className={styles.containerRedirector}>
