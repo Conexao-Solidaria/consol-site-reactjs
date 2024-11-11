@@ -49,7 +49,7 @@ function Cadastrar() {
 
 	return (
 		<div className={styles.containerBackground}>
-			<img src={imagem} alt="Mulher colocando um broche de voluntário"
+			<img src={imagem} alt="Mulher colocando um broche de voluntário" className={styles.imageBackground}
 			/>
 			<div className={styles.container}>
 				<div className={styles.containerForm}>
@@ -81,6 +81,7 @@ function Cadastrar() {
 							value={senha}
 							onChange={(value) => setSenha(value)}
               className={styles.inputSenha}
+              isPassword="true"
 						/>
 						<InputPadrao
 							label="Confirmação de senha:"
@@ -88,6 +89,7 @@ function Cadastrar() {
 							value={confirmSenha}
 							onChange={(value) => setConfirmSenha(value)}
               className={styles.inputSenha}
+              isPassword="true"
 						/>
 						{error && <div className={styles.error}>{error}</div>}
 						<div className={styles.containerRedirector}>
