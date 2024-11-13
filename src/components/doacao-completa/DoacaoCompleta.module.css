@@ -32,7 +32,7 @@
 }
 
 .modalImagem img {
-  width: 100%;
+  width: 20%;
   height: auto;
   display: block;
 }
@@ -86,12 +86,12 @@ button{
 }
 
 .iconDoacoes {
-  width: 100%;
+  width: 30%;
   height: 100%;
 }
 
 .iconPerfil {
-  width: 100%;
+  width: 30%;
   height: 100%;
 }
 

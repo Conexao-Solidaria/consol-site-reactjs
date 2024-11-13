@@ -21,7 +21,7 @@ const Rotas = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/editar-donatario" element={<EditarDonatario />}></Route>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path='/editar-familia' element={<EditarFamilia />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/login" element={<Login />} />

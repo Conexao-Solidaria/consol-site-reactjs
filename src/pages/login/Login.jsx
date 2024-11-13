@@ -5,6 +5,7 @@ import image from "../../utils/assets/login_image.jpg";
 import { toast } from "react-toastify";
 import api from "../../api";
 import InputPadrao from "../../components/inputs/InputPadrao";
+import InputSenha from "../../components/inputs/InputSenha";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 function Login() {
@@ -21,7 +22,7 @@ function Login() {
 	  sessionStorage.setItem("token", response.data.token);
 	  sessionStorage.setItem("usuario", JSON.stringify(response.data));
       toast.success("Login bem-sucedido!");
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       toast.error(error.response?.data?.message || "Erro ao tentar entrar");
       setError(error.response?.data?.message || "Erro ao tentar entrar");
@@ -42,13 +43,13 @@ function Login() {
               value={email}
               onChange={(value) => setEmail(value)}
             />
-            <InputPadrao
+            <InputSenha
               label="Senha:"
               placeholder="Senha"
               value={senha}
               onChange={(value) => setSenha(value)}
-              isPassword="true"
-            />
+            /> 
+
             {error && <div className={styles.error}>{error}</div>}
             <div className={styles.containerRedirector}>
               <a href="/cadastro">Cadastrar-se</a>
