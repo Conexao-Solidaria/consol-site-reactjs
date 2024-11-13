@@ -1,31 +1,31 @@
 #!/bin/bash
 
 if [[ "$1" == "-d" ]]; then
-
   echo "Running detached..."
-  output=$(docker run --name consol-fe -d -p 3000:3000 -v $(pwd):/usr/app -i consol-fe 2>/dev/null)
-  exit_code=$?
-  
-  if [[ "$exit_code" -ne "0" ]]; then
 
-    echo "Container already exists. Retrying..."
+  docker ps -q -f name=consol-fe &>/dev/null
+
+  if [[ $? -ne 0 ]]; then
+    docker run --name consol-fe -d -p 3000:3000 -v "$(pwd):/usr/app" -i consol-fe
+  else
+    echo "Container already exists. Restarting..."
 
     docker rm -f consol-fe
-
-    docker run --name consol-fe -d -p 3000:3000 -v $(pwd):/usr/app -i consol-fe
+    docker run --name consol-fe -d -p 3000:3000 -v "$(pwd):/usr/app" -i consol-fe
   fi
-
   exit 0
 fi
 
-  output=$(docker run --name consol-fe -d -p 3000:3000 -v $(pwd):/usr/app -i consol-fe 2>/dev/null)
-  exit_code=$?
-  
-  if [[ "$exit_code" -ne "0" ]]; then
-    echo "Container already exists. Retrying..."
+docker ps -q -f name=consol-fe &>/dev/null
 
-    docker rm -f consol-fe
+if [[ $? -ne 0 ]]; then
+  echo "Container does not exist. Creating and running..."
 
-    docker run --name consol-fe -p 3000:3000 -v $(pwd):/usr/app -i consol-fe
-  fi
+  docker run --name consol-fe -p 3000:3000 -v "$(pwd):/usr/app" -i consol-fe
+else
+  echo "Container already exists. Restarting..."
+
+  docker rm -f consol-fe
+  docker run --name consol-fe -p 3000:3000 -v "$(pwd):/usr/app" -i consol-fe
+fi
 
