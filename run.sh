@@ -9,8 +9,8 @@ run_container() {
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     mount_path="$(pwd)"
   elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
-    # Convert Windows path to a WSL-compatible path for Docker Desktop
-    mount_path="/$(wslpath -w "$(pwd)" | sed 's/\\/\//g' | sed 's/://')"
+    # Convert Windows path to Docker's expected format
+    mount_path=$(echo "$(pwd)" | sed 's/\\/\//g' | sed 's/^C:/\/c/')
   else
     echo "Unsupported OS"
     exit 1
