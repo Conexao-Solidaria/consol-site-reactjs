@@ -14,8 +14,7 @@ const InputPadrao = ({
   onKeyDown,
   value,
   id,
-  type
-
+  isPassword
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
