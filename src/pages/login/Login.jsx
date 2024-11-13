@@ -31,7 +31,7 @@ function Login() {
 
   return (
     <div className={styles.containerBackground}>
-      <img src={image} alt="Mulher colocando um broche escrito 'voluntário'"
+      <img src={image} alt="Mulher colocando um broche escrito 'voluntário'" className={styles.imageBackground}
       />
       <div className={styles.container}>
         <div className={styles.containerForm}>
@@ -49,6 +49,7 @@ function Login() {
               value={senha}
               onChange={(value) => setSenha(value)}
             /> 
+
             {error && <div className={styles.error}>{error}</div>}
             <div className={styles.containerRedirector}>
               <a href="/cadastro">Cadastrar-se</a>

@@ -109,7 +109,6 @@ body {
     gap: 4px;
 }
 
-
 .formularioInput {
     font-family: Inter;
     width: 100%;
@@ -202,7 +201,7 @@ span{
 
 }
 
-.botao {    
+.botao {
     width: 20vh;
     height: 6vh;
     border-radius: 10px;
@@ -242,7 +241,7 @@ span{
         display: flex;
         justify-content: end;
         width: 60vw;
-    
+
     }
 }
 
@@ -264,18 +263,18 @@ span{
         height: 100%;
         flex-direction: column;
     }
-    
+
     .containerGraficos .containerIdade{
         width: 95%;
         margin-bottom: 10px;
-       
+
     }
 
     .containerGraficos .containerDoacoes{
         width: 95%;
         margin-bottom: 50px;
     }
-    
+
     .containerListaDoacoes img{
         width: 30px;
         height: 30px;
@@ -289,7 +288,7 @@ span{
         display: flex;
         justify-content: end;
         width: 45vw;
-    
+
     }
 
 }

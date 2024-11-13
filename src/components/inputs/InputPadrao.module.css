@@ -24,3 +24,22 @@
   border-radius: 8px;
   box-sizing: border-box;
 }
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.toggleIcon {
+  position: absolute;
+  right: 2px;
+  cursor: pointer;
+  color: #747474;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}

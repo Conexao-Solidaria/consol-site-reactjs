@@ -39,7 +39,7 @@ function Cadastrar() {
 				coordenador: 0,
 				fkinstituicao: 1
 			});
-			
+
 			toast.success("Novo usuário cadastrado com sucesso!");
 			navigate("/");
 		} catch (error) {
@@ -50,7 +50,7 @@ function Cadastrar() {
 
 	return (
 		<div className={styles.containerBackground}>
-			<img src={imagem} alt="Mulher colocando um broche de voluntário"
+			<img src={imagem} alt="Mulher colocando um broche de voluntário" className={styles.imageBackground}
 			/>
 			<div className={styles.container}>
 				<div className={styles.containerForm}>
@@ -81,12 +81,16 @@ function Cadastrar() {
 							placeholder="Sua senha"
 							value={senha}
 							onChange={(value) => setSenha(value)}
+              className={styles.inputSenha}
+              isPassword="true"
 						/>
 						<InputSenha
 							label="Confirmação de senha:"
 							placeholder="Confirme sua senha"
 							value={confirmSenha}
 							onChange={(value) => setConfirmSenha(value)}
+              className={styles.inputSenha}
+              isPassword="true"
 						/>
 						{error && <div className={styles.error}>{error}</div>}
 						<div className={styles.containerRedirector}>
