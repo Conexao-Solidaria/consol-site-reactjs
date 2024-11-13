@@ -26,7 +26,7 @@ const Head = () => {
           {" "}
           <img src={iconConfig} alt="Icone de configuração" />
         </a>
-        <h3>SGD</h3>
+
 
         <button onClick={toggleMenu}>
           <img src={iconPerfil} alt="Icone de perfil" />
@@ -34,12 +34,6 @@ const Head = () => {
 
         <nav className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
           <ul>
-            <li>
-              <a href="#home">
-                {" "}
-                <img src={iconTrocarConta} alt="" /> Trocar de Usuário
-              </a>
-            </li>
             <li>
               <a href="#about">
                 {" "}
