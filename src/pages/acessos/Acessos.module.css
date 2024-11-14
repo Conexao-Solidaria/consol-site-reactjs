@@ -55,7 +55,7 @@ body {
 .gerenciar {
     margin-top: 2vh;
     width: 87vw;
-    height: 80vh;
+    height: 38vh;
     background-color: white;
     border-radius: 1vw;
     box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
@@ -128,7 +128,7 @@ hr{
 
 .cartao button{
     margin-right: 1vh;
-    width: 25vh;
+    width: 29vh;
     height: 6vh;
     border-radius: 1vh;
     border: 0px;
@@ -141,6 +141,10 @@ hr{
     font-size: 3vh;
     margin-right: 3vh;
     
+}
+
+.cartao span{
+	font-size: 2vh;
 }
 
 .cartao .button1{
