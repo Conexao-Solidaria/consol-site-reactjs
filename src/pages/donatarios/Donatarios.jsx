@@ -27,8 +27,14 @@ function Donatarios() {
     }
 
     const CadastroFamilia = () => {
+        sessionStorage.removeItem("idFamilia")
         navigate("/cadastrar-familia");
     };
+
+    const CadastroDonatario = () => {
+        sessionStorage.removeItem("idFamilia")
+        navigate("/cadastrar-donatario");
+    }
 
     const fetchData = async (searchQuery = '') => {
         try {
@@ -89,7 +95,7 @@ function Donatarios() {
                             <div className={style.containerFiltro}>
                                 <div className={style.botoes}>
                                     <BotaoPadrao texto="+ Cadastrar Família" onClick={CadastroFamilia} />
-                                    <BotaoPadrao texto="+ Cadastrar Donatário" to="/cadastrar-donatario" />
+                                    <BotaoPadrao texto="+ Cadastrar Donatário" onClick={CadastroDonatario} />
                                 </div>
                             </div>
                             <div className={style.containerLista}>
