@@ -19,16 +19,19 @@ function Login() {
 
 		try {
 			const response = await api.post("/usuarios/login", { email, senha });
-			console.log(response.data)
+
 			if (response.data.flagAprovado == 0) {
 				toast.error("Esperando liberar acesso");
 				return
 			}
+
 			sessionStorage.setItem("token", response.data.token);
 			sessionStorage.setItem("usuario", JSON.stringify(response.data));
+			
 			toast.success("Login bem-sucedido!");
 			navigate("/dashboard");
-		} catch (error) {
+		} 
+		catch (error) {
 			toast.error(error.response?.data?.message || "Erro ao tentar entrar");
 			setError(error.response?.data?.message || "Erro ao tentar entrar");
 		}

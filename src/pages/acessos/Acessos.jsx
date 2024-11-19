@@ -13,6 +13,10 @@ const Acessos = () => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
 			navigate("/");
 		}
+		else if (JSON.parse(sessionStorage.getItem("usuario")).coordenador != 1) {
+			toast.error("Você não tem permissão para ver a tela de acessos")
+			navigate("/dashboard");
+		}
 	});
 
 	const [usuarios, setUsuarios] = useState([]);
@@ -34,20 +38,27 @@ const Acessos = () => {
 
 			response.data.map(usuario => {
 				if (usuario.idUsuario == JSON.parse(sessionStorage.getItem("usuario")).userId) {
-					// No action
+					
 				} else if (usuario.flagAprovado === 1) {
 					usuariosDentro.push(usuario);
 				} else {
 					usuariosFora.push(usuario);
 				}
 			});
+
 			setUsuariosDentroSistema(usuariosDentro);
 			setUsuarios(usuariosFora);
+
+			setSearchTerm("");
 		} catch (error) {
 			console.error("Erro ao buscar usuários:", error);
 		} finally {
 			setLoading(false);
 		}
+	};
+
+	const teste = (id) => {
+		console.log(document.getElementById(id).checked);
 	};
 
 	useEffect(() => {
@@ -56,10 +67,20 @@ const Acessos = () => {
 
 	const handleAccept = async (id) => {
 		try {
-			const flagAceitar = { flagAprovado: 1 };
-			await api.put(`/usuarios/atualizar-flag/${id}`, flagAceitar, yourConfig);
+			let bodyRequi = null;
+			if (document.getElementById(id).checked) {
+				bodyRequi = { 
+					flagAprovado: 1,
+					coordenador: 1
+				};
+				await api.put(`/usuarios/atualizar-flag-coordenador/${id}`, bodyRequi, yourConfig);
+			} else {
+				bodyRequi = { flagAprovado: 1 };
+				await api.put(`/usuarios/atualizar-flag/${id}`, bodyRequi, yourConfig);
+			}
+
 			toast.success(`Acesso aceito para o usuário com ID: ${id}`);
-			setUsuarios(usuarios.filter(usuario => usuario.id !== id));
+			fetchUsuarios();
 		} catch (error) {
 			console.error("Erro ao aceitar acesso:", error);
 		}
@@ -70,7 +91,7 @@ const Acessos = () => {
 			const flagRecusar = { flagAprovado: 0 };
 			await api.put(`/usuarios/atualizar-flag/${id}`, flagRecusar, yourConfig);
 			toast.error(`Acesso negado para o usuário com ID: ${id}`);
-			setUsuarios(usuarios.filter(usuario => usuario.id !== id));
+			fetchUsuarios();
 		} catch (error) {
 			console.error("Erro ao recusar acesso:", error);
 		}
@@ -80,18 +101,18 @@ const Acessos = () => {
 		try {
 			await api.delete(`/usuarios/${id}`, yourConfig);
 			toast.error(`Acesso negado para o usuário com ID: ${id}`);
-			setUsuarios(usuarios.filter(usuario => usuario.id !== id));
+			fetchUsuarios();
 		} catch (error) {
 			console.error("Erro ao recusar acesso:", error);
 		}
 	};
 
-	const filteredUsuarios = usuarios.filter(usuario => 
+	const filteredUsuarios = usuarios.filter(usuario =>
 		usuario.nomeUsuario.toLowerCase().includes(searchTerm.toLowerCase()) ||
 		usuario.email.toLowerCase().includes(searchTerm.toLowerCase())
 	);
 
-	const filteredUsuariosDentro = usuariosDentroSistema.filter(usuario => 
+	const filteredUsuariosDentro = usuariosDentroSistema.filter(usuario =>
 		usuario.nomeUsuario.toLowerCase().includes(searchTerm.toLowerCase()) ||
 		usuario.email.toLowerCase().includes(searchTerm.toLowerCase())
 	);
@@ -110,9 +131,9 @@ const Acessos = () => {
 				</div>
 				<div className={style.pesquisa}>
 					<span className={style.tituloTexto}>Pesquisar Usuários:</span>
-					<input 
-						type="text" 
-						placeholder="Pesquisar Usuário" 
+					<input
+						type="text"
+						placeholder="Pesquisar Usuário"
 						value={searchTerm}
 						onChange={(e) => setSearchTerm(e.target.value)}
 					/>
@@ -138,8 +159,10 @@ const Acessos = () => {
 									>
 										<i className="material-icons">arrow_forward</i> Aceitar
 									</button>
-									<input type="checkbox" id={usuario.idUsuario} />
-									<span>Como administrador?</span>
+									<div className={style.checkboxDiv}>
+										<input type="checkbox" id={usuario.idUsuario} />
+										<span>Como administrador?</span>
+									</div>
 									<button
 										className={style.button2}
 										onClick={() => handleDelete(usuario.idUsuario)}

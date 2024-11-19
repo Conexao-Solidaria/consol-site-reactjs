@@ -147,11 +147,23 @@ hr{
 	font-size: 2vh;
 }
 
+.buttons{
+	width: 50vw;
+	display: flex;
+}
+
 .cartao .button1{
     background-color: #4ED463;
 }
 
+.checkboxDiv{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .cartao .button2{
+	margin-left: 5vw;
     background-color: #EB4C46;
 }
 @media (max-width: 768px) {
