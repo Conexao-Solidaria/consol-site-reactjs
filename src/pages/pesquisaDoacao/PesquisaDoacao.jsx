@@ -78,7 +78,7 @@ const PesquisaDoacao = () => {
           </div>
           <div className={style.containerConteudo}>
             <div className={style.containerPesquisa}>
-              <h2>Pesquisar Titular:</h2>
+              <h2>Pesquisar titular da doação:</h2>
               <input
                 type="text"
                 placeholder="Quem recebeu a doação?"
@@ -90,7 +90,7 @@ const PesquisaDoacao = () => {
               <div className={style.containerFiltro}>
                 <div className={style.botoes}>
                   <BotaoPadrao
-                    texto="+ Cadastrar Família"
+                    texto="+ Cadastrar Doação"
                     onClick={cadastroDoacao}
                   />
                 </div>
