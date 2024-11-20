@@ -28,6 +28,13 @@ const ListaDoacoes = ({ data }) => {
     return `${day}/${month}/${year}`;
   };
 
+  const formataCep = (cep) => {
+    return cep
+        .replace(/\D/g, '')
+        .replace(/^(\d{5})(\d)/, '$1-$2')
+        .slice(0, 9);
+  }
+
   return (
     <>
       <div className={style.container} onClick={handleModal}>
@@ -36,12 +43,13 @@ const ListaDoacoes = ({ data }) => {
             <img src={iconDoacoes} alt="" />
           </div>
           <div className={style.contentContainer}>
-            <b>Doação feita para { data.titular.nome }</b>
+            <p>Doação nº {data.id} </p>
+            <b>Doação feita para { data.titular.familia.nome }</b>
             <p>Titular recebedor: { data.titular.nome }</p>
           </div>
         </div>
         <div className={style.detalhesExtras}>
-          <p> {data.cep} </p>
+          <p>Cep: {formataCep(data.titular.familia.cep)} | Casa nº {data.titular.familia.numeroCasa}</p>
           <p>Doação feita em { formatarData(data.dataDoacao) }</p>
         </div>
       </div>
