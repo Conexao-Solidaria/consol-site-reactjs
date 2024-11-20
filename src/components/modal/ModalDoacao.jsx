@@ -118,11 +118,11 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                 <div className={style.containerInfo}>
                   <div className={style.info}>
                     <p>Nome:</p>
-                    <b>{data?.donatario.nome.split(" ")[0]}</b>
+                    <b>{data?.titular.nome.split(" ")[0]}</b>
                   </div>
                   <div className={style.info}>
                     <p>Sobrenome:</p>
-                    <b>{data?.donatario.nome.split(" ").slice(1).join(" ")}</b>
+                    <b>{data?.titular.nome.split(" ").slice(1).join(" ")}</b>
                   </div>
                 </div>
               </div>
@@ -137,9 +137,9 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                   <div className={style.info}>
                     <p>Telefone:</p>
                     <b>
-                      {data?.donatario.telefone1
+                      {data?.titular.telefone1
                         ? (() => {
-                            const tel = data.donatario.telefone1;
+                            const tel = data.titular.telefone1;
                             const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
                             return formattedTel;
                           })()
@@ -149,9 +149,9 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
                   <div className={style.info}>
                     <p>Telefone:</p>
                     <b>
-                      {data?.donatario.telefone2
+                      {data?.titular.telefone2
                         ? (() => {
-                            const tel = data.donatario.telefone1;
+                            const tel = data.titular.telefone1;
                             const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
                             return formattedTel;
                           })()

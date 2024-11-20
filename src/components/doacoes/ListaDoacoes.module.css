@@ -1,68 +1,72 @@
-.containerListaDoacoes {
-  background-color: var(--global-white);
-  border-radius: 10px;
+@import url("../../utils/globals.css");
+
+@font-face {
+  font-family: Inter;
+  src: url("../../utils/fonts/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+html,
+body {
+  margin: 0%;
+  padding: 0%;
+  font-family: Inter;
+  overflow-y: auto;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
   display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 5px;
-  height: 100%;
   justify-content: space-between;
+  padding: 16px 24px;
 }
 
-.containerListaDoacoes img {
-  width: 40px;
-  height: 40px;
-}
-
-.containerListaDoacoes .containerTipoDoacao {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-
-}
-
-.containerListaDoacoes .containerTipoDoacao p {
-  margin: 0px;
-}
-
-.containerListaDoacoes .containerTipoDoacao .Categoria {
-  color: var(--global-dark-blue);
-  padding-left: 13px;
-}
-
-.containerListaDoacoes .containerInformacoes {
-  display: flex;
-  justify-content: end;
-  width: 68vw;
-
-}
-
-.verticalLine {
-  width: 1px;
-  height: 10vh;
+.container:hover {
   background-color: var(--global-light-grey-houver);
-  margin-left: 10px;
-  margin-right: 10px;
+  color: var(--global-grey);
+  cursor: pointer;
 }
 
-.identificador {
+span {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+p {
+  font-size: 12px;
+  color: var(--global-light-grey-houver);
+}
+
+.donatarioDetalhes {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 50%;
   gap: 16px;
 }
 
-.dados {
+.iconContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  height: auto;
   align-items: center;
+  justify-content: flex-end;
 }
 
-.dados .vl {
-  height: 30px;
-  border-left: 1px solid #ccc ;
-  margin: 0 10px;
+.iconContainer img {
+  height: 35px;
+  width: auto;
+}
+
+.detalhesExtras {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+
+@media (max-width: 950px) {
+  .detalhesExtras {
+    display: none;
+  }
 }

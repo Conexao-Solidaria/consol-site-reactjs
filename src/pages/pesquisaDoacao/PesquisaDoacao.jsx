@@ -36,7 +36,7 @@ const PesquisaDoacao = () => {
     try {
       const url = searchQuery
         ? `/doacoes/por-nome?nome=${searchQuery}`
-        : "/doacoes"; // Update API endpoint here
+        : "/doacoes/listagem-com-familia"; // Update API endpoint here
       const response = await api.get(url, yourConfig);
       if (Array.isArray(response.data)) {
         setData(response.data);

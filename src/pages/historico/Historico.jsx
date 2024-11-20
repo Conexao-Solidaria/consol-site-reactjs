@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Historico.module.css";
-import BarChart from '../../components/graficos/GraficoFrequenciaDoacoes';
-import ListaDoacoes from '../../components/doacoes/ListaDoacoes';
+import BarChart from "../../components/graficos/GraficoFrequenciaDoacoes";
+import ListaDoacoes from "../../components/doacoes/ListaDoacoes";
 import api from "../../api";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { mockDoacao } from "../../mocks/CsMocks";
 
 const Historico = () => {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	useEffect(() => {
-		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			navigate("/login")
-		}
-	})
+  useEffect(() => {
+    if (
+      sessionStorage.getItem("token") == null &&
+      sessionStorage.getItem("user") == undefined
+    ) {
+      navigate("/login");
+    }
+  });
 
-	const [data, setData] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [newDonation, setNewDonation] = useState(0);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [newDonation, setNewDonation] = useState(0);
 
   const yourConfig = {
     headers: {
@@ -28,38 +31,40 @@ const Historico = () => {
     },
   };
 
-    const fetchData = async (url) => {
-        try {
-            let contador = 0;
-            const response = await api.get(url, yourConfig);
+  const fetchData = async (url) => {
+    try {
+      let contador = 0;
+      const response = await api.get(url, yourConfig);
 
-            setData(response);
+      setData(response);
 
-            response.data.forEach(responseU => {
-                let date = new Date(responseU.dataDoacao);
-                let dateNow = new Date();
-                console.log(dateNow.getMonth() + " " + date.getMonth())
-                if(dateNow.getMonth() - 1 == date.getMonth() || dateNow.getMonth() == date.getMonth() && dateNow.getFullYear() == date.getFullYear()){
-                    contador += 1;
-                }
-            });
-            setNewDonation(contador);
+      response.data.forEach((responseU) => {
+        let date = new Date(responseU.dataDoacao);
+        let dateNow = new Date();
+        console.log(dateNow.getMonth() + " " + date.getMonth());
+        if (
+          dateNow.getMonth() - 1 == date.getMonth() ||
+          (dateNow.getMonth() == date.getMonth() &&
+            dateNow.getFullYear() == date.getFullYear())
+        ) {
+          contador += 1;
         }
-        catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        finally {
-            setLoading(false); // Set loading to false when the data is ready
-        }
+      });
+      setNewDonation(contador);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false); // Set loading to false when the data is ready
     }
+  };
 
-    useEffect(() => {
-        fetchData("/doacoes"); // Initial fetch for all donations
-    }, []);
+  useEffect(() => {
+    fetchData("/doacoes"); // Initial fetch for all donations
+  }, []);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -68,11 +73,9 @@ const Historico = () => {
         <div className={style.containerHead}>
           <Head />
           <div className={style.containerConteudo}>
-
             <div className={style.containerGeral}>
-
               <div className={style.containerCard}>
-                <BarChart donations={data.data}/>
+                <BarChart donations={data.data} />
               </div>
             </div>
 
@@ -82,17 +85,20 @@ const Historico = () => {
                   <p>{newDonation} Novas Doações</p>
                 </div>
               </div>
-              {data.data && data.data?.map((data, index) => (
-                <div key={index}>
-                  <ListaDoacoes data={data} />
-                </div>
-              ))}
+              {Array.isArray(data) && data.length > 0 ? (
+                data.map((item, index) => (
+                  <div key={index}>
+                    <ListaDoacoes data={item} />
+                  </div>
+                ))
+              ) : (
+                <p>Nenhuma doação encontrada.</p>
+              )}
             </div>
           </div>
         </div>
       </div>
     </>
-
   );
 };
 
