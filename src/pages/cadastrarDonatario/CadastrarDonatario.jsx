@@ -269,9 +269,9 @@ const CadastrarDonatario = () => {
                                         id={"ocupacao"}
                                     />
                                 </div>
-
-                                <select id='dropdown' value={familia} onChange={(e) => setFamilia(e.target.value)}>
-                                    <option value="" disabled>Selecione a família</option>
+								
+                                <select id='dropdown' className={style.dropdown} value={familia} onChange={(e) => setFamilia(e.target.value)}>
+                                    <option value={null}>Selecione a família</option>
                                     {familiaOptions.map((familia) => (
                                         <option key={familia.id} value={familia.id}>
                                             {familia.nome}
