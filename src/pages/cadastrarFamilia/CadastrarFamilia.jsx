@@ -10,10 +10,10 @@ import { useEffect } from'react';
 
 const CadastroFamilia = () => {
 	  const navigate = useNavigate();
-	
+
 	  useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			  navigate("/")
+			  navigate("/login")
 		  }
 	  })
     async function cadastrarFamilia() {
@@ -40,7 +40,7 @@ const CadastroFamilia = () => {
             let dd = String(today.getDate()).padStart(2, '0');
             let mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
             let yyyy = today.getFullYear();
-    
+
             today = yyyy + '-' + mm + '-' + dd; // Format YYYY-MM-DD
 
 			const bodyDoacao = {
@@ -57,7 +57,7 @@ const CadastroFamilia = () => {
 				await api.post(`familias`, bodyDoacao, yourConfig);
 				alert("DOAÇÃO CRIADA")
 			}
-			
+
 			catch (error) {
 				console.error('Error updating flag:', error);
                 alert('Valores inválidos')
