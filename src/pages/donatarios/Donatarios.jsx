@@ -67,7 +67,7 @@ function Donatarios() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Carregando página...</div>;
   }
 
   return (

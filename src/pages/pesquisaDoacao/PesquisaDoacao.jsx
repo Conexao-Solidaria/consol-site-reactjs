@@ -36,7 +36,7 @@ const PesquisaDoacao = () => {
     try {
       const url = searchQuery
         ? `/doacoes/por-nome?nome=${searchQuery}`
-        : "/doacoes/listagem-com-familia"; // Update API endpoint here
+        : "/doacoes/listagem-com-familia";
       const response = await api.get(url, yourConfig);
       if (Array.isArray(response.data)) {
         setData(response.data);
@@ -53,17 +53,17 @@ const PesquisaDoacao = () => {
   };
 
   useEffect(() => {
-    fetchData(); // Fetch all donations initially
+    fetchData();
   }, []);
 
   const handleSearch = (event) => {
     const searchValue = event.target.value;
     setQuery(searchValue);
-    fetchData(searchValue); // Fetch donations based on search query
+    fetchData(searchValue);
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Carregando página...</div>;
   }
 
   return (
