@@ -12,10 +12,10 @@ import { useEffect } from "react";
 
 const CadastrarDonatario = () => {
 	const navigate = useNavigate();
-	
+
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			navigate("/")
+			navigate("/login")
 		}
 	})
 

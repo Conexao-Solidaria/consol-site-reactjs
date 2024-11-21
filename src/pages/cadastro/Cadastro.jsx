@@ -6,6 +6,7 @@ import imagem from "../../utils/assets/cadastro_image.jpg";
 import { toast } from "react-toastify";
 import api from "../../api";
 import InputPadrao from "../../components/inputs/InputPadrao";
+import InputSenha from "../../components/inputs/InputSenha";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 function Cadastrar() {
@@ -75,7 +76,7 @@ function Cadastrar() {
 							value={cpf}
 							onChange={(value) => setCpf(value)}
 						/>
-						<InputPadrao
+						<InputSenha
 							label="Senha:"
 							placeholder="Sua senha"
 							value={senha}
@@ -83,7 +84,7 @@ function Cadastrar() {
               className={styles.inputSenha}
               isPassword="true"
 						/>
-						<InputPadrao
+						<InputSenha
 							label="Confirmação de senha:"
 							placeholder="Confirme sua senha"
 							value={confirmSenha}
