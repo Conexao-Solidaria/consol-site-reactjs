@@ -29,7 +29,7 @@ function Login() {
 			sessionStorage.setItem("usuario", JSON.stringify(response.data));
 			
 			toast.success("Login bem-sucedido!");
-			navigate("/dashboard");
+			navigate("/");
 		} 
 		catch (error) {
 			toast.error(error.response?.data?.message || "Erro ao tentar entrar");
