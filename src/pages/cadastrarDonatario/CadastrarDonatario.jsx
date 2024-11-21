@@ -24,6 +24,9 @@ const CadastrarDonatario = () => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
 			navigate("/login")
 		}
+        if(sessionStorage.getItem("idFamilia") != undefined || sessionStorage.getItem("idFamilia") != null){
+            document.getElementById("dropdown").style = "display: none;"
+        }
 	})
 
     const [estadoCivil, setEstadoCivil] = useState("");
@@ -68,42 +71,58 @@ const CadastrarDonatario = () => {
     };
 
     useEffect(() => {
-        fetchFamilias(); // Fetch all families on component mount
+        fetchFamilias();
     }, []);
 
     async function handleSubmit() {
-        const selectedFamilia = familia; // ID of the selected family
+        const selectedFamilia = familia;
 
         let telefone1Real = celular;
-        telefone1Real = telefone1Real.replace(/\D/g, ''); // Remove non-numeric characters
-        telefone1Real = telefone1Real.replace(" ", ''); // Remove non-numeric characters
+        telefone1Real = telefone1Real.replace(/\D/g, '');
+        telefone1Real = telefone1Real.replace(" ", '');
         let telefone2Real = telefone;
-        telefone2Real = telefone2Real.replace(/\D/g, ''); // Remove non-numeric characters
-        telefone2Real = telefone2Real.replace(" ", ""); // Reformat the phone number
-        let rgReal = rg.replace(/\D/g, ''); // Remove non-numeric characters
-        rgReal = rgReal.replace(" ", ''); // Remove non-numeric characters
-        let cpfReal = cpf.replace(/\D/g, ''); // Remove non-numeric characters
-        cpfReal = cpfReal.replace(" ", ''); // Remove non-numeric characters
+        telefone2Real = telefone2Real.replace(/\D/g, '');
+        telefone2Real = telefone2Real.replace(" ", "");
+        let rgReal = rg.replace(/\D/g, '');
+        rgReal = rgReal.replace(" ", '');
+        let cpfReal = cpf.replace(/\D/g, '');
+        cpfReal = cpfReal.replace(" ", '');
         let dateNascReal = dataNasc.split('/').reverse().join('-');
 
+        let donatarioData = null
 
-        // Create an object with all the input values
-        const donatarioData = {
-            nome,
-            rg: rgReal,
-            cpf: cpfReal,
-            dataNascimento: dateNascReal,
-            telefone1: telefone1Real,
-            telefone2: telefone2Real,
-            ocupacao,
-            estadoCivil,
-            escolaridade,
-            trabalhando: trabalhando === "Sim" ? 1 : 0,
-            idFamilia: selectedFamilia
-        };
+        if(sessionStorage.getItem("idFamilia") != undefined || sessionStorage.getItem("idFamilia") != null){
+            donatarioData = {
+                nome,
+                rg: rgReal,
+                cpf: cpfReal,
+                dataNascimento: dateNascReal,
+                telefone1: telefone1Real,
+                telefone2: telefone2Real,
+                ocupacao,
+                estadoCivil,
+                escolaridade,
+                trabalhando: trabalhando === "Sim" ? 1 : 0,
+                idFamilia: sessionStorage.getItem("idFamilia")
+            };
+        }
+        else{
+            donatarioData = {
+                nome,
+                rg: rgReal,
+                cpf: cpfReal,
+                dataNascimento: dateNascReal,
+                telefone1: telefone1Real,
+                telefone2: telefone2Real,
+                ocupacao,
+                estadoCivil,
+                escolaridade,
+                trabalhando: trabalhando === "Sim" ? 1 : 0,
+                idFamilia: selectedFamilia
+            };
+    
+        }
 
-
-        // Check if all required fields are filled
         if (
             donatarioData.cpf &&
             donatarioData.nome &&
@@ -250,9 +269,9 @@ const CadastrarDonatario = () => {
                                         id={"ocupacao"}
                                     />
                                 </div>
-
-                                <select id='dropdown' value={familia} onChange={(e) => setFamilia(e.target.value)}>
-                                    <option value="" disabled>Selecione a família</option>
+								
+                                <select id='dropdown' className={style.dropdown} value={familia} onChange={(e) => setFamilia(e.target.value)}>
+                                    <option value={null}>Selecione a família</option>
                                     {familiaOptions.map((familia) => (
                                         <option key={familia.id} value={familia.id}>
                                             {familia.nome}
