@@ -13,10 +13,10 @@ body {
   overflow-y: auto;
 }
 
-p {
+.container p {
   margin: 0;
   font-size: 12px;
-  color: var(--global-light-grey-houver);
+  color: var(--global-darker-grey);
 }
 
 .container {
@@ -35,7 +35,7 @@ p {
   color: var(--global-black);
 }
 
-span {
+.container span {
   font-weight: 700;
   font-size: 20px;
 }
@@ -62,6 +62,7 @@ span {
   display: flex;
   width: 50%;
   flex-direction: column;
+  text-align: left;
 }
 
 .detalhesExtras {
@@ -70,6 +71,14 @@ span {
   flex-direction: column;
   justify-content: space-around;
   align-items: end;
+}
+
+.containerNonClick {
+  padding: 16px 24px;
+}
+
+.containerNonClick .contentContainer {
+  width: 100%;
 }
 
 @media (max-width: 950px) {

@@ -252,8 +252,8 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                   <h1>Doações recebidas</h1>
                 </div>
                 <div className={style.doacaoWrapper}>
-                  {Array.isArray(data) && data.length > 0 ? (
-                    data.map((item, index) => (
+                  {Array.isArray(dataDoacoes) && dataDoacoes.length > 0 ? (
+                    dataDoacoes.map((item, index) => (
                       <div key={index}>
                         <ListaDoacoes data={item} />
                       </div>

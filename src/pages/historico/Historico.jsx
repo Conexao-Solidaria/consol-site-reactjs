@@ -34,9 +34,9 @@ const Historico = () => {
   const fetchData = async (url) => {
     try {
       let contador = 0;
-      const response = await api.get(url, yourConfig);
+      const response = await api.get(url + "/listagem-com-familia", yourConfig);
 
-      setData(response);
+      setData(response.data);
 
       response.data.forEach((responseU) => {
         let date = new Date(responseU.dataDoacao);
@@ -59,7 +59,7 @@ const Historico = () => {
   };
 
   useEffect(() => {
-    fetchData("/doacoes"); // Initial fetch for all donations
+    fetchData("/doacoes");
   }, []);
 
   if (loading) {
@@ -75,7 +75,7 @@ const Historico = () => {
           <div className={style.containerConteudo}>
             <div className={style.containerGeral}>
               <div className={style.containerCard}>
-                <BarChart donations={data.data} />
+                <BarChart donations={data} />
               </div>
             </div>
 
@@ -88,7 +88,7 @@ const Historico = () => {
               {Array.isArray(data) && data.length > 0 ? (
                 data.map((item, index) => (
                   <div key={index}>
-                    <ListaDoacoes data={item} />
+                    <ListaDoacoes data={item} isClickable="true"/>
                   </div>
                 ))
               ) : (
