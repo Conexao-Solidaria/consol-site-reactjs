@@ -12,7 +12,7 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   const home = () => {
-    navigate("/dashboard")
+    navigate("/")
   }
 
   const historico = () => {

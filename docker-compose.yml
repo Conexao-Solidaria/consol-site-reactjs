@@ -1,0 +1,15 @@
+services:
+  consol-fe:
+    image: consol-fe
+    container_name: consol-fe
+    build: .
+    ports:
+      - "3000:3000"  
+    volumes:
+      - ./:/usr/app:delegated  
+    working_dir: /usr/app
+    command: npm start  
+    environment:
+      - CHOKIDAR_USEPOLLING=true  
+    stdin_open: true  
+    tty: true  

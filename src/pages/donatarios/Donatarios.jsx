@@ -13,10 +13,10 @@ function Donatarios() {
     const [data, setData] = useState([]);
     const [dataMonth, setDataMonth] = useState([]);
     const navigate = useNavigate();
-	
+
 	  useEffect(() => {
 		  if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			  navigate("/")
+			  navigate("/login")
 		  }
 	  })
 
@@ -94,8 +94,8 @@ function Donatarios() {
                             </div>
                             <div className={style.containerLista}>
                                 {data.map((donatario, index) => (
-                                    <DonatarioDetalhes 
-                                        key={index} 
+                                    <DonatarioDetalhes
+                                        key={index}
                                         dados = {donatario}
                                     />
                                 ))}

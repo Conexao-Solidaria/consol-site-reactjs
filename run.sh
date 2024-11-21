@@ -28,4 +28,3 @@ else
   docker rm -f consol-fe
   docker run --name consol-fe -p 3000:3000 -v "$(pwd):/usr/app" -i consol-fe
 fi
-
