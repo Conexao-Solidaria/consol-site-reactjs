@@ -14,8 +14,10 @@ import CadastrarDonatario from "./pages/cadastrarDonatario/CadastrarDonatario";
 import Configuracao from "./pages/configuracao/Configuracao";
 import CadastroFamilia from "./pages/cadastrarFamilia/CadastrarFamilia";
 import EditarDonatario from "./pages/editarDonatario/EditarDonatario";
+import applyFilter from "./applyFilter";
 
 const Rotas = () => {
+	applyFilter();
   return (
     <>
       <BrowserRouter>
