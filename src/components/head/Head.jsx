@@ -13,6 +13,12 @@ const Head = () => {
     setIsOpen(!isOpen);
   };
 
+  const logOut = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("usuario");
+    navigate("/login");
+  };
+
   return (
     <>
       {/* container com header */}
@@ -26,7 +32,6 @@ const Head = () => {
         <img src={iconPerfil} alt="Icone de perfil" onClick={toggleMenu} />
       </div>
 
-      {/* container menu */}
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
         <div className={styles.menuItem} onClick={navigate("/login")}>
           <img src={iconSair} alt="" />

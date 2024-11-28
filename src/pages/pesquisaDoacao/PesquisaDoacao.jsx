@@ -9,13 +9,11 @@ import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 const PesquisaDoacao = () => {
     const navigate = useNavigate();
-	
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			navigate("/")
+			navigate("/login")
 		}
 	})
-
     const cadastroDoacao = () => {
         navigate("/cadastro-doacao");
     };
@@ -32,7 +30,7 @@ const PesquisaDoacao = () => {
 
     const fetchData = async (searchQuery = '') => {
         try {
-            const url = searchQuery ? `/doacoes/por-nome?nome=${searchQuery}` : "/doacoes"; // Update API endpoint here
+            const url = searchQuery ? `/doacoes/por-nome?nome=${searchQuery}` : "/doacoes";
             const response = await api.get(url, yourConfig);
             if (Array.isArray(response.data)) {
                 setData(response.data);
@@ -49,13 +47,72 @@ const PesquisaDoacao = () => {
     };
 
     useEffect(() => {
-        fetchData(); // Fetch all donations initially
+        fetchData();
     }, []);
 
     const handleSearch = (event) => {
         const searchValue = event.target.value;
         setQuery(searchValue);
-        fetchData(searchValue); // Fetch donations based on search query
+        fetchData(searchValue);
+    };
+
+    const downloadCSV = async () => {
+        try {
+            const response = await api.get('/doacoes/baixar-csv', yourConfig);
+    
+            const rawData = response.data;
+            const lines = rawData.split('\n');
+    
+            const headers = lines[0].split(',').map(header => header.trim()).join(';');
+            
+            const formattedLines = lines.slice(1).map(line => {
+                const columns = line.split(',');
+                if (columns[0] === undefined || (columns[1] === undefined && columns[2] === undefined && columns[3] === undefined && columns[4] === undefined)) {
+                    return '';
+                }
+                if (columns.length > 0) {
+                    return `${columns[0].trim()};${columns[1].trim()};${columns[2].trim()};${columns[3].trim()};${columns[4].trim()}`;
+                }
+                return '';
+            });
+    
+            const formattedCSV = [headers, ...formattedLines].join('\n');
+    
+            const bom = '\uFEFF';
+            const blob = new Blob([bom + formattedCSV], { type: 'text/csv;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+
+            link.href = url;
+
+            link.setAttribute('download', `doacoes ${new Date().toLocaleDateString()}.csv`);
+            document.body.appendChild(link);
+
+            link.click();
+            link.remove();
+        } catch (error) {
+            console.error('Error downloading CSV:', error);
+        }
+    };
+
+    const downloadTXT = async () => {
+        try {
+            const response = await api.get('/doacoes/baixar-txt', yourConfig);
+
+            const blob = new Blob([response.data], { type: 'text/plain;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+
+            link.href = url;
+            link.setAttribute('download', `doacoes ${new Date().toLocaleDateString()}.txt`);
+
+            document.body.appendChild(link);
+
+            link.click();
+            link.remove();
+        } catch (error) {
+            console.error('Error downloading TXT:', error);
+        }
     };
 
     if (loading) {
@@ -70,7 +127,10 @@ const PesquisaDoacao = () => {
                     <Head />
                     <div className={style.containerConteudo}>
                         <div className={style.containerPesquisa}>
-                            <h2>Pesquisar Doação:</h2>
+                            <div className={style.containerBotao}>
+                                <BotaoPadrao texto="Baixar planilha de doações" onClick={downloadCSV} />
+                                <BotaoPadrao texto="Baixar texto de doações" onClick={downloadTXT} />
+                            </div>
                             <input
                                 type="text"
                                 placeholder="Pesquisar Donatário"
