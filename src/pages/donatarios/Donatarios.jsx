@@ -12,9 +12,13 @@ function Donatarios() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [dataMonth, setDataMonth] = useState([]);
-    
-
     const navigate = useNavigate();
+
+	  useEffect(() => {
+		  if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			  navigate("/login")
+		  }
+	  })
 
     const yourConfig = {
         headers: {
@@ -23,8 +27,14 @@ function Donatarios() {
     }
 
     const CadastroFamilia = () => {
+        sessionStorage.removeItem("idFamilia")
         navigate("/cadastrar-familia");
     };
+
+    const CadastroDonatario = () => {
+        sessionStorage.removeItem("idFamilia")
+        navigate("/cadastrar-donatario");
+    }
 
     const fetchData = async (searchQuery = '') => {
         try {
@@ -85,13 +95,13 @@ function Donatarios() {
                             <div className={style.containerFiltro}>
                                 <div className={style.botoes}>
                                     <BotaoPadrao texto="+ Cadastrar Família" onClick={CadastroFamilia} />
-                                    <BotaoPadrao texto="+ Cadastrar Donatário" to="/cadastrar-donatario" />
+                                    <BotaoPadrao texto="+ Cadastrar Donatário" onClick={CadastroDonatario} />
                                 </div>
                             </div>
                             <div className={style.containerLista}>
                                 {data.map((donatario, index) => (
-                                    <DonatarioDetalhes 
-                                        key={index} 
+                                    <DonatarioDetalhes
+                                        key={index}
                                         dados = {donatario}
                                     />
                                 ))}

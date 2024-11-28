@@ -160,6 +160,11 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                       texto="Editar Donatário"
                       onClick={() => navigate("/editar-donatario")}
                     />
+                      <BotaoPadrao
+                      texto="Editar Família"
+                      onClick={() => navigate("/editar-familia")}
+                    />
+
                     <BotaoPadrao
                       texto="Apagar Donatário"
                       onClick={() => handleDelete(data.id)}

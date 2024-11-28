@@ -6,6 +6,7 @@ import imagem from "../../utils/assets/cadastro_image.jpg";
 import { toast } from "react-toastify";
 import api from "../../api";
 import InputPadrao from "../../components/inputs/InputPadrao";
+import InputSenha from "../../components/inputs/InputSenha";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 function Cadastrar() {
@@ -38,7 +39,7 @@ function Cadastrar() {
 				coordenador: 0,
 				fkinstituicao: 1
 			});
-			
+
 			toast.success("Novo usuário cadastrado com sucesso!");
 			navigate("/");
 		} catch (error) {
@@ -49,7 +50,7 @@ function Cadastrar() {
 
 	return (
 		<div className={styles.containerBackground}>
-			<img src={imagem} alt="Mulher colocando um broche de voluntário"
+			<img src={imagem} alt="Mulher colocando um broche de voluntário" className={styles.imageBackground}
 			/>
 			<div className={styles.container}>
 				<div className={styles.containerForm}>
@@ -75,17 +76,21 @@ function Cadastrar() {
 							value={cpf}
 							onChange={(value) => setCpf(value)}
 						/>
-						<InputPadrao
+						<InputSenha
 							label="Senha:"
 							placeholder="Sua senha"
 							value={senha}
 							onChange={(value) => setSenha(value)}
+              className={styles.inputSenha}
+              isPassword="true"
 						/>
-						<InputPadrao
+						<InputSenha
 							label="Confirmação de senha:"
 							placeholder="Confirme sua senha"
 							value={confirmSenha}
 							onChange={(value) => setConfirmSenha(value)}
+              className={styles.inputSenha}
+              isPassword="true"
 						/>
 						{error && <div className={styles.error}>{error}</div>}
 						<div className={styles.containerRedirector}>

@@ -7,6 +7,7 @@ import InputPadrao from "../../components/inputs/InputPadrao";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
 import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 const CadastrarDonatario = () => {
     const [nome, setNome] = useState("");
@@ -17,7 +18,17 @@ const CadastrarDonatario = () => {
     const [telefone, setTelefone] = useState("");
     const [ocupacao, setOcupacao] = useState("");
     const [familia, setFamilia] = useState("");
-    
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/login")
+		}
+        if(sessionStorage.getItem("idFamilia") != undefined || sessionStorage.getItem("idFamilia") != null){
+            document.getElementById("dropdown").style = "display: none;"
+        }
+	})
+
     const [estadoCivil, setEstadoCivil] = useState("");
     const optEstadoCivil = ["Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "Separado(a)"];
 
@@ -34,10 +45,10 @@ const CadastrarDonatario = () => {
         "Mestrado",
         "Doutorado"
     ];
-    
+
     const [trabalhando, isTrabalhando] = useState("");
     const optTrabalhando = ["Selecione", "Sim", "Não"];
-    
+
     const [familiaOptions, setFamiliaOptions] = useState([]);
 
     const fetchFamilias = async () => {
@@ -60,42 +71,58 @@ const CadastrarDonatario = () => {
     };
 
     useEffect(() => {
-        fetchFamilias(); // Fetch all families on component mount
+        fetchFamilias();
     }, []);
 
     async function handleSubmit() {
-        const selectedFamilia = familia; // ID of the selected family
-        
+        const selectedFamilia = familia;
+
         let telefone1Real = celular;
-        telefone1Real = telefone1Real.replace(/\D/g, ''); // Remove non-numeric characters
-        telefone1Real = telefone1Real.replace(" ", ''); // Remove non-numeric characters
+        telefone1Real = telefone1Real.replace(/\D/g, '');
+        telefone1Real = telefone1Real.replace(" ", '');
         let telefone2Real = telefone;
-        telefone2Real = telefone2Real.replace(/\D/g, ''); // Remove non-numeric characters
-        telefone2Real = telefone2Real.replace(" ", ""); // Reformat the phone number
-        let rgReal = rg.replace(/\D/g, ''); // Remove non-numeric characters
-        rgReal = rgReal.replace(" ", ''); // Remove non-numeric characters
-        let cpfReal = cpf.replace(/\D/g, ''); // Remove non-numeric characters
-        cpfReal = cpfReal.replace(" ", ''); // Remove non-numeric characters
+        telefone2Real = telefone2Real.replace(/\D/g, '');
+        telefone2Real = telefone2Real.replace(" ", "");
+        let rgReal = rg.replace(/\D/g, '');
+        rgReal = rgReal.replace(" ", '');
+        let cpfReal = cpf.replace(/\D/g, '');
+        cpfReal = cpfReal.replace(" ", '');
         let dateNascReal = dataNasc.split('/').reverse().join('-');
 
-        
-        // Create an object with all the input values
-        const donatarioData = {
-            nome,
-            rg: rgReal,
-            cpf: cpfReal,
-            dataNascimento: dateNascReal,
-            telefone1: telefone1Real,
-            telefone2: telefone2Real,
-            ocupacao,
-            estadoCivil,
-            escolaridade,
-            trabalhando: trabalhando === "Sim" ? 1 : 0,
-            idFamilia: selectedFamilia
-        };
+        let donatarioData = null
 
+        if(sessionStorage.getItem("idFamilia") != undefined || sessionStorage.getItem("idFamilia") != null){
+            donatarioData = {
+                nome,
+                rg: rgReal,
+                cpf: cpfReal,
+                dataNascimento: dateNascReal,
+                telefone1: telefone1Real,
+                telefone2: telefone2Real,
+                ocupacao,
+                estadoCivil,
+                escolaridade,
+                trabalhando: trabalhando === "Sim" ? 1 : 0,
+                idFamilia: sessionStorage.getItem("idFamilia")
+            };
+        }
+        else{
+            donatarioData = {
+                nome,
+                rg: rgReal,
+                cpf: cpfReal,
+                dataNascimento: dateNascReal,
+                telefone1: telefone1Real,
+                telefone2: telefone2Real,
+                ocupacao,
+                estadoCivil,
+                escolaridade,
+                trabalhando: trabalhando === "Sim" ? 1 : 0,
+                idFamilia: selectedFamilia
+            };
+    
+        }
 
-        // Check if all required fields are filled
         if (
             donatarioData.cpf &&
             donatarioData.nome &&
@@ -115,7 +142,7 @@ const CadastrarDonatario = () => {
                     'Content-Type': 'application/json'
                 }
             };
-    
+
             try {
                 await api.post(`/titulares`, donatarioData, yourConfig);
                 alert("DOAÇÃO CRIADA");
@@ -242,15 +269,15 @@ const CadastrarDonatario = () => {
                                         id={"ocupacao"}
                                     />
                                 </div>
-
-                                <select id='dropdown' value={familia} onChange={(e) => setFamilia(e.target.value)}>
-                                    <option value="" disabled>Selecione a família</option>
+								
+                                <select id='dropdown' className={style.dropdown} value={familia} onChange={(e) => setFamilia(e.target.value)}>
+                                    <option value={null}>Selecione a família</option>
                                     {familiaOptions.map((familia) => (
                                         <option key={familia.id} value={familia.id}>
                                             {familia.nome}
                                         </option>
                                     ))}
-                                </select> 
+                                </select>
                                 <br />
                                 <div className={style.formLine}>
                                     <BotaoPadrao texto="Cadastrar" onClick={() => {

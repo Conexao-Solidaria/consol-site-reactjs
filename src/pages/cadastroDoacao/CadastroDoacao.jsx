@@ -10,12 +10,21 @@ import InputPesquisa from "../../components/inputs/InputPesquisa";
 import AreaTextoPadrao from "../../components/inputs/AreaTextoPadrao";
 import { toast } from "react-toastify";
 import { mockTitular } from "../../mocks/CsMocks";
+import { useNavigate } from 'react-router-dom';
 
 const CadastroDoacao = () => {
   const [titular, setTitular] = useState("");
   const [idTitular, setIdTitular] = useState("");
   const [descricao, setDescricao] = useState("");
   const [options, setOptions] = useState([]);
+
+  const navigate = useNavigate();
+
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/login")
+		}
+	})
 
   async function executarBusca() {
     if (titular.length > 0) {
