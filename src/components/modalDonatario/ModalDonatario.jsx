@@ -24,7 +24,7 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
 
     try {
       const response = await api.get(
-        `/titulares/${data.donatario.id}`,
+        `/titulares/${data.titular.id}`,
         yourConfig,
       );
       setDataDonatario(response.data);
@@ -40,7 +40,7 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
         "Content-Type": "application/json",
       },
       params: {
-        nome: data.donatario.nome,
+        nome: data.titular.nome,
       },
     };
 
@@ -151,12 +151,12 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                     <div className={style.infoWrapper}>
                       <div className={modalStyle.info}>
                         <p>Nome:</p>
-                        <b>{data.donatario.nome.split(" ")[0]}</b>
+                        <b>{data.titular.nome.split(" ")[0]}</b>
                       </div>
                       <div className={modalStyle.info}>
                         <p>Sobrenome:</p>
                         <b>
-                          {data.donatario.nome.split(" ").slice(1).join(" ")}
+                          {data.titular.nome.split(" ").slice(1).join(" ")}
                         </b>
                       </div>
                     </div>
@@ -192,19 +192,19 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                       <div className={modalStyle.info}>
                         <p>Telefone:</p>
                         <b>
-                          {data?.donatario.telefone1
+                          {data?.titular.telefone1
                             ? (() => {
-                              const tel = data.donatario.telefone1;
-                              const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
-                              return formattedTel;
-                            })()
+                                const tel = data.titular.telefone1;
+                                const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                                return formattedTel;
+                              })()
                             : "Não disponível"}
                         </b>
                       </div>
                       <div className={modalStyle.info}>
                         <p>Celular:</p>
                         <b>
-                          {data?.donatario.telefone2
+                          {data?.titular.telefone2
                             ? (() => {
                               const tel = data.donatario.telefone2;
                               const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
@@ -263,11 +263,15 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                   <h1>Doações recebidas</h1>
                 </div>
                 <div className={style.doacaoWrapper}>
-                  {dataDoacoes?.map((item, index) => (
-                    <div key={index}>
-                      <ListaDoacoes data={item} />
-                    </div>
-                  ))}
+                  {Array.isArray(dataDoacoes) && dataDoacoes.length > 0 ? (
+                    dataDoacoes.map((item, index) => (
+                      <div key={index}>
+                        <ListaDoacoes data={item} />
+                      </div>
+                    ))
+                  ) : (
+                    <p>Nenhuma doação encontrada.</p>
+                  )}
                 </div>
               </div>
             </div>

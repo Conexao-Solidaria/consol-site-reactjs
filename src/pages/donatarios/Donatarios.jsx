@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Donatarios.module.css";
@@ -8,23 +8,20 @@ import { useNavigate } from "react-router-dom";
 import api from "../../api";
 
 function Donatarios() {
-    const [query, setQuery] = useState('');
-    const [loading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
-    const [dataMonth, setDataMonth] = useState([]);
-    const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [dataMonth, setDataMonth] = useState([]);
+  const navigate = useNavigate();
 
-	  useEffect(() => {
-		  if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			  navigate("/login")
-		  }
-	  })
-
-    const yourConfig = {
-        headers: {
-            Authorization: "Bearer " + sessionStorage.getItem("token")
-        }
+  useEffect(() => {
+    if (
+      sessionStorage.getItem("token") == null &&
+      sessionStorage.getItem("user") == undefined
+    ) {
+      navigate("/login");
     }
+  });
 
     const CadastroFamilia = () => {
         sessionStorage.removeItem("idFamilia")
@@ -55,21 +52,38 @@ function Donatarios() {
         }
     };
 
-    useEffect(() => {
-        fetchData(); // Initial fetch for all donors
-    }, []);
-
-    const handleSearch = (event) => {
-        const searchValue = event.target.value;
-        setQuery(searchValue);
-
-        // Fetch data with the search query
-        fetchData(searchValue);
-    };
-
-    if (loading) {
-        return <div>Loading...</div>;
+  const fetchData = async (searchQuery = "") => {
+    try {
+      const url = searchQuery
+        ? `titulares/filtro/por-nome?nome=${searchQuery}`
+        : "/titulares";
+      const response = await api.get(url, yourConfig);
+      // Verify that response.data is an array
+      if (Array.isArray(response.data)) {
+        setData(response.data);
+      } else {
+        console.error("Expected an array but received:", response.data);
+        setData([]); // Fallback to an empty array
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setData([]); // Fallback to an empty array on error
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchData(); // Initial fetch for all donors
+  }, []);
+
+  const handleSearch = (event) => {
+    const searchValue = event.target.value;
+    setQuery(searchValue);
+
+    // Fetch data with the search query
+    fetchData(searchValue);
+  };
 
     return (
         <>
@@ -109,9 +123,18 @@ function Donatarios() {
                         </div>
                     </div>
                 </div>
+              </div>
+              <div className={style.containerLista}>
+                {data.map((donatario, index) => (
+                  <DonatarioDetalhes key={index} dados={donatario} />
+                ))}
+              </div>
             </div>
-        </>
-    );
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Donatarios;

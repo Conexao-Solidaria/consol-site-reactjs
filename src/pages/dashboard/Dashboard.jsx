@@ -75,7 +75,7 @@ const Dashboard = () => {
   }, []);
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <div>Carregando página...</div>;
   }
 
   return (

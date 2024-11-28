@@ -194,12 +194,12 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
                     <div className={style.infoWrapper}>
                       <div className={modalStyle.info}>
                         <p>Nome:</p>
-                        <b>{data.donatario.nome.split(" ")[0]}</b>
+                        <b>{data.titular.nome.split(" ")[0]}</b>
                       </div>
                       <div className={modalStyle.info}>
                         <p>Sobrenome:</p>
                         <b>
-                          {data.donatario.nome.split(" ").slice(1).join(" ")}
+                          {data.titular.nome.split(" ").slice(1).join(" ")}
                         </b>
                       </div>
                     </div>
@@ -214,9 +214,9 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
                       <div className={modalStyle.info}>
                         <p>Telefone:</p>
                         <b>
-                          {data?.donatario.telefone1
+                          {data?.titular.telefone1
                             ? (() => {
-                                const tel = data.donatario.telefone1;
+                                const tel = data.titular.telefone1;
                                 const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
                                 return formattedTel;
                               })()
@@ -226,9 +226,9 @@ const DoacaoCompleta = ({ data, isVisible, onClose }) => {
                       <div className={modalStyle.info}>
                         <p>Telefone:</p>
                         <b>
-                          {data?.donatario.telefone2
+                          {data?.titular.telefone2
                             ? (() => {
-                                const tel = data.donatario.telefone2;
+                                const tel = data.titular.telefone2;
                                 const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
                                 return formattedTel;
                               })()
