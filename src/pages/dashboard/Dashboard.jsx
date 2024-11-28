@@ -8,7 +8,7 @@ import iconeAlerta from "../../utils/assets/alerta.svg";
 import GraficoNumeroDoacoes from "../../components/graficos/GraficoNumeroDoacoes";
 import GraficoIdade from "../../components/graficos/GraficoIdade";
 import api from "../../api";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -20,39 +20,29 @@ const Dashboard = () => {
       zeroDoze: 0,
       trezeVinteCinco: 0,
       vinteCincoSessenta: 0,
-      maisSessenta: 0
+      maisSessenta: 0,
     },
-    qtdDoacoesMes: {}
+    qtdDoacoesMes: {},
   });
 
   const navigate = useNavigate();
 
-	useEffect(() => {
-		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			navigate("/login")
-		}
-	})
-  // const data = {
-  //   qtdFamilias: 32,
-  //   qtdCriancas: 15,
-  //   cadastrosProximosVencimento: 9,
-  //   doacoesMes: [
-  //     { mes: "Jan", qtdDoacoes: 10 },
-  //     { mes: "Fev", qtdDoacoes: 22 },
-  //     { mes: "Mar", qtdDoacoes: 23 },
-  //     { mes: "Abr", qtdDoacoes: 17 },
-  //     { mes: "Mai", qtdDoacoes: 30 },
-  //     { mes: "Jun", qtdDoacoes: 35 },
-  //   ]
-  // }
+  useEffect(() => {
+    if (
+      sessionStorage.getItem("token") == null &&
+      sessionStorage.getItem("user") == undefined
+    ) {
+      navigate("/");
+    }
+  });
 
   const getDataAtual = () => {
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
     var yyyy = today.getFullYear();
 
-    today = yyyy + '-' + mm + '-' + dd;
+    today = yyyy + "-" + mm + "-" + dd;
 
     return today;
   };
@@ -77,9 +67,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchData("/dashboard/data-atual");
-    const interval = setInterval(() => fetchData("/dashboard/data-atual"), 60000);
+    const interval = setInterval(
+      () => fetchData("/dashboard/data-atual"),
+      60000,
+    );
     return () => clearInterval(interval);
-}, []);
+  }, []);
 
   if (loading) {
     return <div>Carregando...</div>;
@@ -124,6 +117,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+
             <div className={style.linha}>
               <div className={style.cardFundo}>
                 <div className={style.linha}>
@@ -132,7 +126,9 @@ const Dashboard = () => {
                       <h1>Faixa etária dos membros das famílias</h1>
                       <hr></hr>
                       <div className={style.contentGraficoPizza}>
-                        <GraficoIdade distribuicaoIdades={data?.distribuicaoIdades} />
+                        <GraficoIdade
+                          distribuicaoIdades={data?.distribuicaoIdades}
+                        />
                       </div>
                       <hr></hr>
                       <div className={style.legenda}>

@@ -18,7 +18,7 @@ const CadastrarDonatario = () => {
     const [telefone, setTelefone] = useState("");
     const [ocupacao, setOcupacao] = useState("");
     const [familia, setFamilia] = useState("");
-	const navigate = useNavigate();
+	  const navigate = useNavigate();
 
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
