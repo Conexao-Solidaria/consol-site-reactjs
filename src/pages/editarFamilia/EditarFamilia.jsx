@@ -7,7 +7,13 @@ import image from "../../utils/assets/familia1.png";
 import api from '../../api';
 
 const EditarFamilia = () => {
-    const navigate = useNavigate();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+			navigate("/login")
+		}
+	})
 
     const [nome, setNome] = useState('');
     const [cep, setCep] = useState('');
@@ -148,3 +154,4 @@ const EditarFamilia = () => {
 };
 
 export default EditarFamilia;
+

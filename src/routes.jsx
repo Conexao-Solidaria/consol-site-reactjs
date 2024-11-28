@@ -14,17 +14,20 @@ import CadastrarDonatario from "./pages/cadastrarDonatario/CadastrarDonatario";
 import Configuracao from "./pages/configuracao/Configuracao";
 import CadastroFamilia from "./pages/cadastrarFamilia/CadastrarFamilia";
 import EditarDonatario from "./pages/editarDonatario/EditarDonatario";
+import applyFilter from "./applyFilter";
 
 const Rotas = () => {
+	applyFilter();
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/editar-donatario" element={<EditarDonatario />}></Route>
+          <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path='/editar-familia' element={<EditarFamilia />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/acessos" element={<Acessos />} />
           <Route path="/doacoes" element={<PesquisaDoacao />} />
