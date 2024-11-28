@@ -19,6 +19,12 @@ const Head = () => {
     setIsOpen(!isOpen);
   };
 
+  const logOut = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("usuario");
+    navigate("/login");
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -35,13 +41,7 @@ const Head = () => {
         <nav className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
           <ul>
             <li>
-              <a href="#home">
-                {" "}
-                <img src={iconTrocarConta} alt="" /> Trocar de Usuário
-              </a>
-            </li>
-            <li>
-              <a href="#about">
+              <a onClick={logOut}>
                 {" "}
                 <img src={iconSair} alt="" /> Sair
               </a>
