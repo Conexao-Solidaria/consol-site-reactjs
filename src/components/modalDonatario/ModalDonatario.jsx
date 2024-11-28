@@ -53,6 +53,12 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
   };
 
   async function handleDelete(id) {
+
+    if (JSON.parse(sessionStorage.getItem("usuario")).coordenador != 1) {
+      toast.error("Você não tem permissão para ver a tela de acessos")
+      return;
+    }
+
     const yourConfig = {
       headers: {
         Authorization: "Bearer " + sessionStorage.getItem("token"),
@@ -160,6 +166,11 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                       texto="Editar Donatário"
                       onClick={() => navigate("/editar-donatario")}
                     />
+                      <BotaoPadrao
+                      texto="Editar Família"
+                      onClick={() => navigate("/editar-familia")}
+                    />
+
                     <BotaoPadrao
                       texto="Apagar Donatário"
                       onClick={() => handleDelete(data.id)}
@@ -195,10 +206,10 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                         <b>
                           {data?.titular.telefone2
                             ? (() => {
-                                const tel = data.titular.telefone2;
-                                const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
-                                return formattedTel;
-                              })()
+                              const tel = data.donatario.telefone2;
+                              const formattedTel = `(${tel.slice(0, 2)}) ${tel.slice(2, 7)}-${tel.slice(7)}`;
+                              return formattedTel;
+                            })()
                             : "Não disponível"}
                         </b>
                       </div>

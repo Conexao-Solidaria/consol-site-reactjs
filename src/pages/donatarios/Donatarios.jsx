@@ -23,15 +23,34 @@ function Donatarios() {
     }
   });
 
-  const yourConfig = {
-    headers: {
-      Authorization: "Bearer " + sessionStorage.getItem("token"),
-    },
-  };
+    const CadastroFamilia = () => {
+        sessionStorage.removeItem("idFamilia")
+        navigate("/cadastrar-familia");
+    };
 
-  const CadastroFamilia = () => {
-    navigate("/cadastrar-familia");
-  };
+    const CadastroDonatario = () => {
+        sessionStorage.removeItem("idFamilia")
+        navigate("/cadastrar-donatario");
+    }
+
+    const fetchData = async (searchQuery = '') => {
+        try {
+            const url = searchQuery ? `titulares/filtro/por-nome?nome=${searchQuery}` : "/titulares";
+            const response = await api.get(url, yourConfig);
+            // Verify that response.data is an array
+            if (Array.isArray(response.data)) {
+                setData(response.data);
+            } else {
+                console.error('Expected an array but received:', response.data);
+                setData([]); // Fallback to an empty array
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setData([]); // Fallback to an empty array on error
+        } finally {
+            setLoading(false);
+        }
+    };
 
   const fetchData = async (searchQuery = "") => {
     try {
@@ -66,41 +85,43 @@ function Donatarios() {
     fetchData(searchValue);
   };
 
-  if (loading) {
-    return <div>Carregando página...</div>;
-  }
-
-  return (
-    <>
-      <div className={style.container}>
-        <div className={style.navbarContainer}>
-          <NavBar />
-        </div>
-        <div className={style.containerGeral}>
-          <div className={style.containerHead}>
-            <Head />
-          </div>
-          <div className={style.containerConteudo}>
-            <div className={style.containerPesquisa}>
-              <h2>Pesquisar Donatário:</h2>
-              <input
-                type="text"
-                placeholder="Pesquisar Donátario"
-                value={query}
-                onChange={handleSearch}
-              />
-            </div>
-            <div className={style.containerDonatarios}>
-              <div className={style.containerFiltro}>
-                <div className={style.botoes}>
-                  <BotaoPadrao
-                    texto="+ Cadastrar Família"
-                    onClick={CadastroFamilia}
-                  />
-                  <BotaoPadrao
-                    texto="+ Cadastrar Donatário"
-                    to="/cadastrar-donatario"
-                  />
+    return (
+        <>
+            <div className={style.container}>
+                <div className={style.navbarContainer}>
+                    <NavBar />
+                </div>
+                <div className={style.containerGeral}>
+                    <div className={style.containerHead}>
+                        <Head />
+                    </div>
+                    <div className={style.containerConteudo}>
+                        <div className={style.containerPesquisa}>
+                            <h2>Pesquisar Donatário:</h2>
+                            <input
+                                type="text"
+                                placeholder="Pesquisar Donátario"
+                                value={query}
+                                onChange={handleSearch}
+                            />
+                        </div>
+                        <div className={style.containerDonatarios}>
+                            <div className={style.containerFiltro}>
+                                <div className={style.botoes}>
+                                    <BotaoPadrao texto="+ Cadastrar Família" onClick={CadastroFamilia} />
+                                    <BotaoPadrao texto="+ Cadastrar Donatário" onClick={CadastroDonatario} />
+                                </div>
+                            </div>
+                            <div className={style.containerLista}>
+                                {data.map((donatario, index) => (
+                                    <DonatarioDetalhes
+                                        key={index}
+                                        dados = {donatario}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
               </div>
               <div className={style.containerLista}>

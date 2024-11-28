@@ -21,7 +21,6 @@ const PesquisaDoacao = () => {
       navigate("/login");
     }
   });
-
   const cadastroDoacao = () => {
     navigate("/cadastro-doacao");
   };
@@ -65,7 +64,6 @@ const PesquisaDoacao = () => {
   if (loading) {
     return <div>Carregando página...</div>;
   }
-
   return (
     <>
       <div className={style.container}>
