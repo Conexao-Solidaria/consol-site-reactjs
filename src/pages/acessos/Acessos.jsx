@@ -15,7 +15,7 @@ const Acessos = () => {
 		}
 		else if (JSON.parse(sessionStorage.getItem("usuario")).coordenador != 1) {
 			toast.error("Você não tem permissão para ver a tela de acessos")
-			navigate("/dashboard");
+			navigate("/");
 		}
 	});
 
