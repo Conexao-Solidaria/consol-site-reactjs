@@ -11,7 +11,7 @@ const Acessos = () => {
 
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			navigate("/");
+			navigate("/login");
 		}
 		else if (JSON.parse(sessionStorage.getItem("user")).coordenador != 1) {
 			toast.error("Você não tem permissão para ver a tela de acessos")

@@ -56,7 +56,7 @@ const Historico = () => {
 
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			console.log("SE FODEU OTÁRIO")
+			navigate("/login")
 		}
 		fetchData("/doacoes");
 	}, []);

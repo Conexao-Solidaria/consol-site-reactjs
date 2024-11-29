@@ -59,7 +59,7 @@ const CadastroDoacao = () => {
   async function cadastrarDoacao() {
     const areaTexto = document.getElementById("descricao");
 
-    if (titular != null && descricao.length > 0) {
+    if (idTitular && descricao.length > 0) {
       const yourConfig = {
         headers: {
           Authorization:
@@ -95,12 +95,14 @@ const CadastroDoacao = () => {
           bodyDoacao,
           yourConfig,
         );
+
         toast.success("Doação cadastrada com sucesso")
-      } catch (error) {
+      } 
+      catch (error) {
         toast.error("Erro ao cadastrar doação");
-        console.error("Error updating flag:", error);
       }
-    } else {
+    }
+    else {
       toast.error("Preencha todos os campos");
     }
   }
