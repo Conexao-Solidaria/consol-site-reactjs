@@ -20,13 +20,10 @@ const CadastrarDonatario = () => {
 	})
 
   const [nome, setNome] = useState("");
-  const [rg, setRg] = useState("");
-  const [cpf, setCpf] = useState("");
   const [dataNasc, setDataNasc] = useState("");
   const [celular, setCelular] = useState("");
   const [telefone, setTelefone] = useState("");
   const [ocupacao, setOcupacao] = useState("");
-  const [familia, setFamilia] = useState("");
 
   const [estadoCivil, setEstadoCivil] = useState("");
   const optEstadoCivil = [
@@ -64,7 +61,7 @@ const CadastrarDonatario = () => {
           </div>
           <div className={style.containerConteudo}>
             <div className={style.tituloPagina}>
-              <p>Cadastrar Donatário</p>
+              <p>Editar Donatário</p>
               <hr />
             </div>
             <div className={style.containerFormulario}>
@@ -77,24 +74,6 @@ const CadastrarDonatario = () => {
                     onlyLetters={true}
                     value={nome}
                     onChange={(value) => setNome(value)}
-                  />
-                </div>
-                <div className={style.formLine} id={style.formLine2}>
-                  <InputPadrao
-                    className={style.rg}
-                    label="RG:"
-                    placeholder="__.___.___-_"
-                    mask="99.999.999-9"
-                    value={rg}
-                    onChange={(value) => setRg(value)}
-                  />
-                  <InputPadrao
-                    className={style.cpf}
-                    label="CPF:"
-                    placeholder="___.___.___-__"
-                    mask="999.999.999-99"
-                    value={cpf}
-                    onChange={(value) => setCpf(value)}
                   />
                 </div>
                 <div className={style.formLine} id={style.formLine3}>
@@ -155,15 +134,6 @@ const CadastrarDonatario = () => {
                     placeholder="Ocupação"
                     value={ocupacao}
                     onChange={(value) => setOcupacao(value)}
-                  />
-                </div>
-                <div className={style.formLine} id={style.formLine6}>
-                  <InputPadrao
-                    className={style.familia}
-                    label="A qual familía pertence?"
-                    placeholder="Nome da Família"
-                    value={familia}
-                    onChange={(value) => setFamilia(value)}
                   />
                 </div>
                 <div className={style.formLine} id={style.formLine7}>

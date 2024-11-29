@@ -11,14 +11,14 @@ const Acessos = () => {
 
 	useEffect(() => {
 		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			navigate("/");
+			navigate("/login");
 		}
-		else if (JSON.parse(sessionStorage.getItem("usuario")).coordenador != 1) {
+		else if (JSON.parse(sessionStorage.getItem("user")).coordenador != 1) {
 			toast.error("Você não tem permissão para ver a tela de acessos")
 			navigate("/");
 		}
 	});
-
+    
 	const [usuarios, setUsuarios] = useState([]);
 	const [usuariosDentroSistema, setUsuariosDentroSistema] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -37,7 +37,7 @@ const Acessos = () => {
 			let usuariosDentro = [];
 
 			response.data.map(usuario => {
-				if (usuario.idUsuario == JSON.parse(sessionStorage.getItem("usuario")).userId) {
+				if (usuario.idUsuario == JSON.parse(sessionStorage.getItem("user")).userId) {
 					
 				} else if (usuario.flagAprovado === 1) {
 					usuariosDentro.push(usuario);

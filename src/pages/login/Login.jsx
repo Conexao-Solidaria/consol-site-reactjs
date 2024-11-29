@@ -26,7 +26,7 @@ function Login() {
 			}
 
 			sessionStorage.setItem("token", response.data.token);
-			sessionStorage.setItem("usuario", JSON.stringify(response.data));
+			sessionStorage.setItem("user", JSON.stringify(response.data));
 			
 			toast.success("Login bem-sucedido!");
 			navigate("/");
