@@ -8,133 +8,113 @@ import { useNavigate } from "react-router-dom";
 import api from "../../api";
 
 function Donatarios() {
-  const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [dataMonth, setDataMonth] = useState([]);
-  const navigate = useNavigate();
+	const [query, setQuery] = useState("");
+	const [loading, setLoading] = useState(true);
+	const [data, setData] = useState([]);
+	const [dataMonth, setDataMonth] = useState([]);
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    if (
-      sessionStorage.getItem("token") == null &&
-      sessionStorage.getItem("user") == undefined
-    ) {
-      navigate("/login");
-    }
-  });
+	useEffect(() => {
+		if (
+			sessionStorage.getItem("token") == null &&
+			sessionStorage.getItem("user") == undefined
+		) {
+			navigate("/login");
+		}
+	});
+	const yourConfig = {
+		headers: {
+			Authorization: "Bearer " + sessionStorage.getItem("token")
+		}
+	}
 
-    const CadastroFamilia = () => {
-        sessionStorage.removeItem("idFamilia")
-        navigate("/cadastrar-familia");
-    };
+	const CadastroFamilia = () => {
+		sessionStorage.removeItem("idFamilia")
+		navigate("/cadastrar-familia");
+	};
 
-    const CadastroDonatario = () => {
-        sessionStorage.removeItem("idFamilia")
-        navigate("/cadastrar-donatario");
-    }
+	const CadastroDonatario = () => {
+		sessionStorage.removeItem("idFamilia")
+		navigate("/cadastrar-donatario");
+	}
 
-    const fetchData = async (searchQuery = '') => {
-        try {
-            const url = searchQuery ? `titulares/filtro/por-nome?nome=${searchQuery}` : "/titulares";
-            const response = await api.get(url, yourConfig);
-            // Verify that response.data is an array
-            if (Array.isArray(response.data)) {
-                setData(response.data);
-            } else {
-                console.error('Expected an array but received:', response.data);
-                setData([]); // Fallback to an empty array
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            setData([]); // Fallback to an empty array on error
-        } finally {
-            setLoading(false);
-        }
-    };
+	const fetchData = async (searchQuery = "") => {
+		try {
+			const url = searchQuery
+				? `titulares/filtro/por-nome?nome=${searchQuery}`
+				: "/titulares";
+			const response = await api.get(url, yourConfig);
+			if (Array.isArray(response.data)) {
+				setData(response.data);
+			} else {
+				console.error("Expected an array but received:", response.data);
+				setData([]);
+			}
+		} catch (error) {
+			console.error("Error fetching data:", error);
+			setData([]);
+		} finally {
+			setLoading(false);
+		}
+	};
 
-  const fetchData = async (searchQuery = "") => {
-    try {
-      const url = searchQuery
-        ? `titulares/filtro/por-nome?nome=${searchQuery}`
-        : "/titulares";
-      const response = await api.get(url, yourConfig);
-      // Verify that response.data is an array
-      if (Array.isArray(response.data)) {
-        setData(response.data);
-      } else {
-        console.error("Expected an array but received:", response.data);
-        setData([]); // Fallback to an empty array
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setData([]); // Fallback to an empty array on error
-    } finally {
-      setLoading(false);
-    }
-  };
+	useEffect(() => {
+		fetchData();
+	}, []);
 
-  useEffect(() => {
-    fetchData(); // Initial fetch for all donors
-  }, []);
+	const handleSearch = (event) => {
+		const searchValue = event.target.value;
+		setQuery(searchValue);
 
-  const handleSearch = (event) => {
-    const searchValue = event.target.value;
-    setQuery(searchValue);
+		fetchData(searchValue);
+	};
 
-    // Fetch data with the search query
-    fetchData(searchValue);
-  };
-
-    return (
-        <>
-            <div className={style.container}>
-                <div className={style.navbarContainer}>
-                    <NavBar />
-                </div>
-                <div className={style.containerGeral}>
-                    <div className={style.containerHead}>
-                        <Head />
-                    </div>
-                    <div className={style.containerConteudo}>
-                        <div className={style.containerPesquisa}>
-                            <h2>Pesquisar Donatário:</h2>
-                            <input
-                                type="text"
-                                placeholder="Pesquisar Donátario"
-                                value={query}
-                                onChange={handleSearch}
-                            />
-                        </div>
-                        <div className={style.containerDonatarios}>
-                            <div className={style.containerFiltro}>
-                                <div className={style.botoes}>
-                                    <BotaoPadrao texto="+ Cadastrar Família" onClick={CadastroFamilia} />
-                                    <BotaoPadrao texto="+ Cadastrar Donatário" onClick={CadastroDonatario} />
-                                </div>
-                            </div>
-                            <div className={style.containerLista}>
-                                {data.map((donatario, index) => (
-                                    <DonatarioDetalhes
-                                        key={index}
-                                        dados = {donatario}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div className={style.containerLista}>
-                {data.map((donatario, index) => (
-                  <DonatarioDetalhes key={index} dados={donatario} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className={style.container}>
+				<div className={style.navbarContainer}>
+					<NavBar />
+				</div>
+				<div className={style.containerGeral}>
+					<div className={style.containerHead}>
+						<Head />
+					</div>
+					<div className={style.containerConteudo}>
+						<div className={style.containerPesquisa}>
+							<h2>Pesquisar Donatário:</h2>
+							<input
+								type="text"
+								placeholder="Pesquisar Donátario"
+								value={query}
+								onChange={handleSearch}
+							/>
+						</div>
+						<div className={style.containerDonatarios}>
+							<div className={style.containerFiltro}>
+								<div className={style.botoes}>
+									<BotaoPadrao texto="+ Cadastrar Família" onClick={CadastroFamilia} />
+									<BotaoPadrao texto="+ Cadastrar Donatário" onClick={CadastroDonatario} />
+								</div>
+							</div>
+							<div className={style.containerLista}>
+								{data.map((donatario, index) => (
+									<DonatarioDetalhes
+										key={index}
+										dados={donatario}
+									/>
+								))}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className={style.containerLista}>
+				{data.map((donatario, index) => (
+					<DonatarioDetalhes key={index} dados={donatario} />
+				))}
+			</div>
+		</>
+	);
 }
 
 export default Donatarios;

@@ -26,14 +26,13 @@ const Head = () => {
         <img
           src={iconConfig}
           alt="Icone de configuração"
-          onClick={navigate("/configuracoes")}
         />
 
         <img src={iconPerfil} alt="Icone de perfil" onClick={toggleMenu} />
       </div>
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
-        <div className={styles.menuItem} onClick={navigate("/login")}>
+        <div className={styles.menuItem}>
           <img src={iconSair} alt="" />
           <p>Sair</p>
         </div>
