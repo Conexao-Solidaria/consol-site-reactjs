@@ -8,6 +8,7 @@ import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 import ComboBox from "../../components/comboBox/ComboBox";
 import api from "../../api";
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const CadastrarDonatario = () => {
     const [nome, setNome] = useState("");
@@ -135,7 +136,6 @@ const CadastrarDonatario = () => {
             donatarioData.trabalhando !== undefined &&
             donatarioData.idFamilia
         ) {
-            console.log(donatarioData);
             const yourConfig = {
                 headers: {
                     'Authorization': "Bearer " + sessionStorage.getItem("token"),
@@ -145,7 +145,7 @@ const CadastrarDonatario = () => {
 
             try {
                 await api.post(`/titulares`, donatarioData, yourConfig);
-                alert("DOAÇÃO CRIADA");
+                toast.success("Donatario cadastrado")
             } catch (error) {
                 console.error('Error submitting data:', error);
             }

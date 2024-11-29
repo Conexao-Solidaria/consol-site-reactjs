@@ -21,23 +21,23 @@ const Head = () => {
 
   return (
     <>
-      {/* container com header */}
+      {/* Container com header */}
       <div className={styles.container}>
-        <img
-          src={iconConfig}
-          alt="Icone de configuração"
-        />
+      <div className={styles.container}>
+        <img src={iconConfig} alt="Icone de configuração" />
 
         <img src={iconPerfil} alt="Icone de perfil" onClick={toggleMenu} />
       </div>
+      </div>
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
-        <div className={styles.menuItem}>
-          <img src={iconSair} alt="" />
+        <div className={styles.menuItem} onClick={logOut}>
+          <img src={iconSair} alt="Icone de sair" />
           <p>Sair</p>
         </div>
       </div>
     </>
   );
 };
+
 export default Head;
