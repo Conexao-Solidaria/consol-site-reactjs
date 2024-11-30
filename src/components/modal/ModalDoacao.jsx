@@ -176,7 +176,7 @@ const ModalDoacao = ({ data, isModalOpen, handleModal, closeModal }) => {
         onClose={handleDoacaoCompleta}
       />
       <ModalDonatario
-        data={data}
+        data={data.titular}
         isVisible={isModalDonatario}
         onClose={handleModalDonatario}
       />

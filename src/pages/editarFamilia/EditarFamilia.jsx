@@ -66,7 +66,7 @@ const EditarFamilia = () => {
         try {
             await api.post(`familias`, bodyDoacao, yourConfig);
             alert("Família atualizada com sucesso!");
-            navigate("/dashboard");
+            navigate("/");
         } catch (error) {
             console.error('Erro ao salvar os dados:', error.response?.data || error.message);
             alert(`Erro ao atualizar a família: ${error.response?.data?.message || 'Valores inválidos'}`);

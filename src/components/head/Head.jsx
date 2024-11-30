@@ -19,15 +19,21 @@ const Head = () => {
     navigate("/login");
   };
 
+  const goToSettings = () => {
+    navigate("/configuracao");
+  };
+
   return (
     <>
       {/* Container com header */}
       <div className={styles.container}>
-      <div className={styles.container}>
-        <img src={iconConfig} alt="Icone de configuração" />
+        <img
+          src={iconConfig}
+          alt="Icone de configuração"
+          onClick={goToSettings}
+        />
 
         <img src={iconPerfil} alt="Icone de perfil" onClick={toggleMenu} />
-      </div>
       </div>
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
