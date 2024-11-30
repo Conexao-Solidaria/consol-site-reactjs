@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./NavBar.module.css";
 import iconIgreja from "../../utils/assets/iconIgreja.png";
 import iconHome from "../../utils/assets/icon_home.png";
@@ -31,97 +31,74 @@ const NavBar = () => {
     navigate("/acessos")
   }
 
-  const [showText, setShowText] = useState(false);
+  const [showText, setShowText] = useState();
 
-  const toggleText = () => {
+  const expand = () => {
     setShowText(!showText);
-  };
+    sessionStorage.setItem("navBarIsOpen", !showText);
+  }
 
-  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    if (sessionStorage.getItem("navBarIsOpen") === "true") {
+      setShowText(true);
+    } else {
+      setShowText(false);
+    }
+  }, []);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <>
       <div
-        className={`${styles.container} ${showText ? styles.expandedContainer : ""}`}
+        className={styles.container}
       >
-        <img
-          src={iconIgreja}
-          className={styles.iconIgreja}
-          alt="Icone de uma igreja"
-        />
-
-        <div className={styles.line}></div>
-
-        <a onClick={home}>
-          {" "}
-          <img src={iconHome} alt="Icone de uma casa" />{" "}
-          <p style={{ display: showText ? "block" : "none" }}> Início </p>{" "}
-        </a>
-        <br />
-        <a onClick={historico}>
-          {/* <a className={styles.ativado} href="#"> */}
-          {" "}
-          <img src={iconHistorico} alt="Icone de histórico" />{" "}
-          <p style={{ display: showText ? "block" : "none" }}> Histórico </p>{" "}
-        </a>
-        <br />
-        <a onClick={doacao}>
-          {" "}
-          <img src={iconDoacoes} alt="Icone de doações" />{" "}
-          <p style={{ display: showText ? "block" : "none" }}> Doações </p>{" "}
-        </a>
-        <br />
-        <a onClick={donatario}>
-          {" "}
-          <img src={iconPerfil} alt="Icone de perfil" />{" "}
-          <p style={{ display: showText ? "block" : "none" }}> Donatários</p>{" "}
-        </a>
-        <br />
-        <a onClick={acessos}>
-          {" "}
-          <img src={fechadura} alt="Icone de acessos" />{" "}
-          <p style={{ display: showText ? "block" : "none" }}> Acessos</p>{" "}
-        </a>
-
-        <div className={styles.containerBar} onClick={toggleText}>
-          <div className={styles.bar}></div>
-          <div className={styles.bar}></div>
-          <div className={styles.bar}></div>
-        </div>
-      </div>
-
-      <div className={styles.menuMobile}>
-        <button onClick={toggleMenu}>
-          <div className={styles.containerBar} onClick={toggleText}>
-            <div className={styles.bar}></div>
-            <div className={styles.bar}></div>
-            <div className={styles.bar}></div>
+        <div>
+          <div className={styles.containerIconIgreja}>
+            <img
+              src={iconIgreja}
+              className={styles.iconIgreja}
+              alt="Icone de uma igreja"
+            />
           </div>
-        </button>
+          <hr />
+          <div className={styles.navigation}>
+            <div className={styles.linha} onClick={home}>
+              <img src={iconHome} alt="Icone de uma casa" />{" "}
+              {showText ? <p> Início </p> :
+                <p className={styles.hidden}> Início </p>}
+            </div>
+            <br />
+            <div className={styles.linha} onClick={historico}>
+              <img src={iconHistorico} alt="Icone de histórico" />{" "}
+              {showText ? <p> Histórico </p> :
+                <p className={styles.hidden}> Histórico </p>}
+            </div>
+            <br />
+            <div className={styles.linha} onClick={doacao}>
+              <img src={iconDoacoes} alt="Icone de doações" />{" "}
+              {showText ? <p> Doações </p> :
+                <p className={styles.hidden}> Doações </p>}
+            </div>
+            <br />
+            <div className={styles.linha} onClick={donatario}>
+              <img src={iconPerfil} alt="Icone de perfil" />{" "}
+              {showText ? <p> Donatários </p> :
+                <p className={styles.hidden}> Donatários </p>}
+            </div>
+            <br />
+            <div className={styles.linha} onClick={acessos}>
+              <img src={fechadura} alt="Icone de acessos" />{" "}
+              {showText ? <p> Acessos </p> :
+                <p className={styles.hidden}> Acessos </p>}
+            </div>
+          </div>
+        </div>
 
-        <nav className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
-          <a href="#">
-            {" "}
-            <img src={iconHome} alt="Icone de uma casa" /> <p> Início </p>{" "}
-          </a>
-          <a href="#">
-            {" "}
-            <img src={iconHistorico} alt="Icone de histórico" />{" "}
-            <p> Histórico </p>{" "}
-          </a>
-          <a href="#">
-            {" "}
-            <img src={iconDoacoes} alt="Icone de doações" /> <p> Doações </p>{" "}
-          </a>
-          <a href="#">
-            {" "}
-            <img src={iconPerfil} alt="Icone de perfil" /> <p> Donatários</p>{" "}
-          </a>
-        </nav>
+        <div className={styles.expand} onClick={expand}>
+          <hr />
+          <hr />
+          <hr />
+        </div>
       </div>
     </>
   );

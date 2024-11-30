@@ -13,6 +13,10 @@ const Head = () => {
     setIsOpen(!isOpen);
   };
 
+  const config = () => {
+    navigate("/configuracoes");
+  }
+
   const logOut = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("usuario");
@@ -23,11 +27,19 @@ const Head = () => {
     <>
       {/* Container com header */}
       <div className={styles.container}>
-      <div className={styles.container}>
-        <img src={iconConfig} alt="Icone de configuração" />
+        <img
+          className={styles.conf}
+          src={iconConfig}
+          alt="Icone de configuração"
+          onClick={config}
+        />
 
-        <img src={iconPerfil} alt="Icone de perfil" onClick={toggleMenu} />
-      </div>
+        <img
+          className={styles.logo}
+          src={iconPerfil}
+          alt="Icone de perfil"
+          onClick={toggleMenu}
+        />
       </div>
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>

@@ -6,223 +6,114 @@
 }
 
 html,
-body {
-  margin: 0%;
-  padding: 0%;
-  font-family: Inter;
-  overflow-y: auto;
-  overflow-y: visible;
-  background-color: var(--global-baby-blue);
-
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  gap: 1rem;
+  padding-bottom: 1rem;
 }
 
 .container {
   display: flex;
   width: 100%;
   height: 100vh;
+  max-height: 100vh;
 }
 
-.containerHead {
+.content {
+  display: flex;
   width: 100%;
-  height: auto;
+  height: 100%;
+  padding: 0rem 1rem;
 }
 
-.containerConteudo {
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
-  height: 85vh;
+  justify-content: start;
+  background-color: var(--global-white);
+  border-radius: 10px;
+  width: 100%;
+  padding: 1vh;
   margin: 0;
+  box-shadow: var(--global-box-shadow);
 }
 
-.containerGeral {
+.containerGrafico {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--global-white);
-  border-radius: 10px;
-  width: 80vw;
-  height: 50vh;
-  padding: 1vh;
-  margin: 0;
-  box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
+  width: 100%;
+  height: 100%;
+}
+
+.main hr {
+  background-color: var(--global-light-grey);
+  border: none;
 }
 
 .containerFiltro {
 	display: flex;
-	width: 70vw;
+	width: 100%;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 2vh;
+  gap: 1rem;
 }
 
 .containerFiltro input {
-	margin-right: 1vw;
-	width: 10vw;
-	height: 4vh;
-	border-radius: 0.3vw;
+	width: 15rem;
+	height: 2.5rem;
+	border-radius: 10px;
 	border: 0.22vh solid #6C9BD9;
-	font-size: 2.2vh;
 	text-align: center;
 }
 
 .containerFiltro button {
-	width: 13vw;
-	font-size: 1.3vw;
+	width: 20rem;
 	background-color: #6C9BD9;
 	color: white;
 	border: none;
+  cursor: pointer;
 }
 
-.containerCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--global-white);
-  width: 100%;
-  height: 100%;
-  margin-left: 10px;
-  border-radius: 10px;
-}
-
-.line {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.205);
-  margin-top: 6px;
-}
-
-.containerCard .containerMetrica {
-  display: flex;
-  align-items: center;
-
-}
-
-.containerCard .containerMetrica img {
-  width: 70px;
-  height: 70px;
-  margin-right: 50px;
-
-}
-
-.containerCard .containerMetrica p {
-  font-size: 40px;
-}
-
-.containerListas {
-  background-color: var(--global-white);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  max-width: 1200px;
-  margin: 20px 0px 0px 0px;
-  text-align: center;
-  height: 60%;
-  overflow-y: auto;
-  box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
+.containerFiltro button:hover {
+  background-color: #7FA8E0;
 }
 
 .containerKpiHistorico {
   width: 100%;
-  height: 50px;
   color: white;
   display: flex;
   align-items: flex-start;
-  font-size: 11px;
   text-wrap: nowrap;
-  padding: 8px 0px 0px 10px;
 }
 
 .kpiHistorico {
-  width: 13%;
-  height: 20px;
+  height: 1.5rem;
   align-items: center;
   display: flex;
   justify-content: center;
   background-color: #6C9BD9;
-  margin: 3px;
-  padding: 5px 35px 5px 35px;
+  padding: 0.5rem;
   border-radius: 10px;
 }
 
 .kpiHistorico p {
   color: white;
+  font-size: 1rem;
 }
 
-.textoLista {
+.listaHistorico {
   width: 100%;
   display: flex;
-  align-items: flex-start;
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .containerListas {
-    width: 100%;
-    padding: 10px;
-    height: 500px;
-  }
-
-  .containerGeral, .containerListas {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .containerCard {
-    margin-left: 0;
-  }
-
-  .kpiHistorico {
-    width: auto;
-    padding: 5px 10px;
-  }
-
-  .containerKpiHistorico {
-    font-size: 10px;
-    padding: 8px 0px 0px 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .containerGeral {
-    height: auto;
-  }
-
-  .containerConteudo {
-    margin: 10px 0;
-  }
-
-  .kpiHistorico {
-    padding: 5px 15px;
-    font-size: 9px;
-  }
-
-  .containerCard {
-    padding: 5px;
-  }
-
-  .containerListas {
-    height: 650px;
-  }
-
-  .kpiHistorico p {
-    font-size: 10px;
-  }
-
-  .containerMetrica p {
-    font-size: 24px;
-  }
-
-  .containerMetrica img {
-    width: 50px;
-    height: 50px;
-  }
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }

@@ -6,7 +6,6 @@ import imagem from "../../utils/assets/cadastro_image.jpg";
 import { toast } from "react-toastify";
 import api from "../../api";
 import InputPadrao from "../../components/inputs/InputPadrao";
-import InputSenha from "../../components/inputs/InputSenha";
 import BotaoPadrao from "../../components/botoes/BotaoPadrao";
 
 function Cadastrar() {
@@ -20,7 +19,7 @@ function Cadastrar() {
 
 	const cadastrarUsuario = async (event) => {
 		event.preventDefault();
-		if (senha !== confirmSenha || senha == "") {
+		if (senha !== confirmSenha || senha === "") {
 			setError("As senhas não coincidem");
 			return;
 		}
@@ -50,7 +49,10 @@ function Cadastrar() {
 
 	return (
 		<div className={styles.containerBackground}>
-			<img src={imagem} alt="Mulher colocando um broche de voluntário" className={styles.imageBackground}
+			<img 
+    src={imagem} 
+    alt="Mulher colocando um broche de voluntário" 
+    className={styles.imageBackground}
 			/>
 			<div className={styles.container}>
 				<div className={styles.containerForm}>
@@ -76,21 +78,21 @@ function Cadastrar() {
 							value={cpf}
 							onChange={(value) => setCpf(value)}
 						/>
-						<InputSenha
+						<InputPadrao
 							label="Senha:"
 							placeholder="Sua senha"
 							value={senha}
 							onChange={(value) => setSenha(value)}
               className={styles.inputSenha}
-              isPassword="true"
+    isPassword={true}
 						/>
-						<InputSenha
+						<InputPadrao
 							label="Confirmação de senha:"
 							placeholder="Confirme sua senha"
 							value={confirmSenha}
+    isPassword={true}
 							onChange={(value) => setConfirmSenha(value)}
               className={styles.inputSenha}
-              isPassword="true"
 						/>
 						{error && <div className={styles.error}>{error}</div>}
 						<div className={styles.containerRedirector}>

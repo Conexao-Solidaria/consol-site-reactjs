@@ -118,7 +118,6 @@ input {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
-    background: url('../../utils/assets/icon_pesquisa.png') no-repeat right 10px center;
     background-size: 18px 18px;
 }
 
