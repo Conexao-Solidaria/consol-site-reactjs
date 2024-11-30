@@ -1,0 +1,87 @@
+@import url("../../utils/globals.css");
+
+@font-face {
+  font-family: Inter;
+  src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+
+.container {
+  background-color: var(--global-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  overflow: hidden;
+  height: 100vh;
+  width: fit-content;
+  z-index: 10;
+}
+
+.container .containerIconIgreja {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .iconIgreja {
+  width: 3rem;
+}
+
+.container hr {
+  background-color: var(--global-white);
+  width: 100%;
+}
+
+.container .navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.container .navigation img {
+  width: 2rem;
+  min-width: 2rem;
+}
+
+.container .navigation .linha {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 5px;
+  height: 2rem;
+  width: 100%;
+  gap: 0.5rem;
+  text-decoration: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: width 0.5s ease-in-out;
+}
+
+.container .navigation .linha:hover {
+  background-color: var(--global-blue-marked);
+}
+
+.container .navigation .linha p {
+  font-size: 1rem;
+  color: var(--global-white);
+}
+
+.container .navigation .linha p.hidden {
+  display: none;
+}
+
+.container .expand {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.container .expand hr {
+  height: 3px;
+}

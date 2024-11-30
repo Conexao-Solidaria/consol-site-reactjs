@@ -1,0 +1,122 @@
+@import url("../../utils/globals.css");
+
+@font-face {
+    font-family: Inter;
+    src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+span {
+    font-size: 2vh;
+    margin-right: 1vh;
+}
+
+h2 {
+    font-size: 2vh;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+    overflow-x: hidden;
+}
+
+hr {
+    color: black;
+    background-color: black;
+    height: 0.1vh;
+    border: none;
+}
+
+.container {
+    display: flex;
+    padding: 0;
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+}
+
+.tituloTexto {
+    text-align: left; /* Alinhado à esquerda */
+    font-size: 3vw; /* Ajuste responsivo */
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.titulo, .temas, .suporte {
+    background-color: white;
+    border-radius: 1vw;
+    box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
+    padding: 2vh; /* Adiciona padding */
+}
+
+.temas {
+    height: auto; /* Altura automática */
+    width: 100%;
+}
+
+.suporte {
+    margin-top: 5vh; /* Espaço superior */
+    width: 100%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 6vh;
+    height: 3.5vh;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 1vh;
+}
+
+.temasItens {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+select {
+    height: 3vh;
+    width: auto; /* Largura automática */
+    font-size: 2vh;
+    margin-left: 1vh; /* Espaço à esquerda */
+}
+
+.suporte {
+    display: flex;
+    flex-direction: column;
+}
+
+.faq {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1vh; /* Espaço superior */
+}
+
+.faq input {
+    height: 3.5vh;
+    width: 3.5vh;
+    background-image: url("../../utils/assets/seta-direita.png");
+    background-color: #6C9BD9;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1vh;
+    border: none;
+}

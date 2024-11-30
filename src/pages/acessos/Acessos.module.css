@@ -1,0 +1,229 @@
+@import url("../../utils/globals.css");
+
+@font-face {
+    font-family: Inter;
+    src: url("../../utils/fonts/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+span{
+    font-size: 3vh;
+    margin-right: 1vh;
+}
+
+h2{
+    font-size: 2vh;
+}
+
+html,
+body {
+    margin: 0%;
+    padding: 0%;
+    font-family: Inter;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    padding: 0;
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+}
+
+.pesquisa {
+    width: 87vw;
+    height: 6vh;
+    background-color: white;
+    border-radius: 1vw;
+    box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
+    display: flex;
+    align-items: center;
+}
+
+.pesquisa input{
+    height: 3vh;
+    width: 40vh;
+    border-radius: 1vh;
+    margin-right: 1vh;
+}
+
+
+.gerenciar {
+    margin-top: 2vh;
+    width: 87vw;
+    height: 38vh;
+    background-color: white;
+    border-radius: 1vw;
+    box-shadow: 1vh 1vh 5px rgba(0, 0, 0, 0.229);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.gerenciarTitulo{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo{
+    width: 85vw;
+    display: flex;
+    align-items: center;
+}
+
+.tituloTexto{
+    width: 85vw;
+    margin-left: 1vh;
+    font-weight: 600;
+    font-size: 2vh;
+}
+
+.gerenciar .tituloTexto{
+    width: 85vw;
+    text-align: center;
+    font-size: 2vh;
+}
+
+hr{
+    color: black;
+    background-color: black;
+    height: 0.1vh;
+    width: 100%;
+    border: none;
+}
+
+.cartoes{
+    width: 100%;
+    height: 100%;
+}
+
+.cartao {
+    margin-left: 1vh;
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vh;
+    box-sizing: border-box;
+}
+
+.cartoes span{
+    font-size: 2vh;
+    color: #333;
+}
+
+.cartoes h2{
+    font-size: 2vh;
+    color: #333;
+}
+
+.cartao button{
+    margin-right: 1vh;
+    width: 29vh;
+    height: 6vh;
+    border-radius: 1vh;
+    border: 0px;
+    font-size: 3vh;
+    color: white;
+    text-align: center;
+}
+
+.cartao i{
+    font-size: 3vh;
+    margin-right: 3vh;
+    
+}
+
+.cartao span{
+	font-size: 2vh;
+}
+
+.buttons{
+	width: 50vw;
+	display: flex;
+}
+
+.cartao .button1{
+    background-color: #4ED463;
+}
+
+.checkboxDiv{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cartao .button2{
+	margin-left: 5vw;
+    background-color: #EB4C46;
+}
+@media (max-width: 768px) {
+    .cartao {
+        flex-direction: column; 
+        align-items: stretch; 
+        margin: 1vh 0;
+    }
+
+    .cartao button {
+        width: 100%;
+        height: 5vh; 
+        margin: 0.5vh 0; 
+    }
+}
+
+@media (max-width: 768px) {
+    .pesquisa {
+        width: 90vw;
+        height: 5vh;
+    }
+
+    .pesquisa input {
+        height: 4vh;
+        width: 70vw;
+        font-size: 1.5vh;
+    }
+
+    .gerenciar {
+        width: 90vw;
+        height: auto;
+    }
+
+    .tituloTexto {
+        font-size: 2vh;
+    }
+
+    h2 {
+        font-size: 2vh;
+    }
+
+    span {
+        font-size: 2vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .pesquisa {
+        height: 6vh;
+    }
+
+    .pesquisa input {
+        height: 4vh;
+        width: 80vw;
+        font-size: 1.5vh;
+    }
+
+    .tituloTexto {
+        font-size: 2.5vh;
+    }
+
+    h2 {
+        font-size: 2vh;
+    }
+}

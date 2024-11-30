@@ -1,0 +1,145 @@
+.linha {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+}
+
+.colunaImagem {
+  display: flex;
+  width: auto;
+  padding: 16px;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.coluna p {
+  text-align: left;
+}
+
+.modalImagem {
+  width: 100%;
+  height: auto;
+}
+
+.modalImagem img {
+  width: 20%;
+  height: auto;
+  display: block;
+}
+
+.informacaoDoacaoCompleta {
+  display: flex;
+  margin: 16px;
+  gap: 16px;
+}
+
+.descricaoDoacao {
+  height: 100%;
+  padding: 16px;
+  text-align: left;
+}
+
+.botaoDescricao {
+  justify-content: center;
+  padding: 16px;
+}
+
+.contatoDonatario {
+  padding: 16px;
+}
+
+button{
+  width: 30vh;
+  height: 4vh;
+  font-size: 3vh;
+  border-radius: 0.5vh;
+  border: none;
+  background-color: #EB4C46;
+  color: white;
+}
+
+.divBotao button{
+  width: 60vh;
+  height: 4vh;
+  font-size: 3vh;
+  border-radius: 0.5vh;
+  border: none;
+  background-color: #6C9BD9;
+  color: white;
+}
+
+.divBotao{
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.iconDoacoes {
+  width: 30%;
+  height: 100%;
+}
+
+.iconPerfil {
+  width: 30%;
+  height: 100%;
+}
+
+.infoWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.infoWrapper > div {
+  flex: 1 1 45%;
+  max-width: 50%;
+}
+
+.informacaoDoacaoCompleta .areaDoacao {
+  width: 100%;
+  gap: 16px;
+}
+
+.botoes {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.botoes :last-child {
+  background-color: #EB4C46;
+}
+
+.botoes :last-child:hover {
+  background-color: #ffb7b4;
+}
+
+.donatarioBeneficiado {
+  padding: 16px;
+  gap: 16px;
+}
+
+.infoContainer {
+  padding: 16px;
+}
+
+@media (max-width: 900px) {
+
+  .informacaoDoacaoCompleta {
+    flex-direction: column;
+  }
+}

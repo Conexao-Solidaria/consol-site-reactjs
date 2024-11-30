@@ -1,269 +1,135 @@
-import React from 'react';
-import NavBar from "../../components/navBar/navBar";
+import React, { useState, useEffect } from "react";
+import NavBar from "../../components/navBar/NavBar";
 import Head from "../../components/head/Head";
 import style from "./Historico.module.css";
-import iconDoacoes from "../../utils/assets/icon_doacoes_azul.png";
-import LineChart from '../../components/graficos/GraficoFrequenciaDoacoes';
-
-
+import BarChart from "../../components/graficos/GraficoFrequenciaDoacoes";
+import ListaDoacoes from "../../components/doacoes/ListaDoacoes";
+import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 const Historico = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [newDonation, setNewDonation] = useState(0);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
+  const yourConfig = {
+    headers: {
+      Authorization: "Bearer " + sessionStorage.getItem("token"),
+      "Content-Type": "application/json",
+    },
+  };
+
+  const fetchData = async (url) => {
+    try {
+      let contador = 0;
+      const response = await api.get(url, yourConfig);
+      setData(response);
+
+      response.data.forEach(responseU => {
+        let date = new Date(responseU.dataDoacao);
+        let dateNow = new Date();
+        if (
+          (dateNow.getMonth() - 1 === date.getMonth() && dateNow.getFullYear() === date.getFullYear()) ||
+          (dateNow.getMonth() === date.getMonth() && dateNow.getFullYear() === date.getFullYear())
+        ) {
+          contador += 1;
+        }
+      });
+      setNewDonation(contador);
+    }
+    catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDateChange = () => {
+    if (startDate && endDate) {
+      fetchData(`/doacoes/filtro/por-periodo?dataInicio=${startDate}&dataFim=${endDate}`);
+    }
+  };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+      navigate("/login")
+    }
+    fetchData("/doacoes");
+  }, []);
+
+  if (loading) {
     return (
-        <>
-            <div className={style.container}>
-                <NavBar />
-                <div className={style.containerHead}>
-                    <Head />
-
-                    <div className={style.containerConteudo}>
-
-                        <div className={style.containerGeral}>
-                            
-                            <div className={style.containerCard}>
-                            <LineChart/>
-                            </div>
-                        </div>
-
-                        <div className={style.containerListas}>
-                            <div className={style.containerKpiHistorico}>
-                            <div className={style.kpiHistorico}>
-                                <p>14 Doações Periódicas</p>
-                            </div>
-                            <div className={style.kpiHistorico}>
-                                <p>11 Novas Doações</p>
-                            </div>
-                            </div>
-                            
-                            <div className={style.line}>‎‎‎‎‎‎‎‎ㅤ</div>
-
-
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={style.containerListaDoacoes}>
-                                <img src={iconDoacoes} alt='Icone de Doações'></img>
-                                <div className={style.containerTipoDoacao}>
-                                    <p><b>Doação</b></p>
-                                    <p className={style.Categoria}>Categoria</p>
-                                </div>
-                                <div >
-                                    <div className={style.containerInformacoes}>
-                                        <p className={style.paragrafo}> Nome Sobrenome</p>
-                                        <div className={style.verticalLine}></div>
-                                        <p> xx/xx/xxxx</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div >
-
-        </>
-
+      <>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            fontSize: "2rem",
+          }}>
+          Carregando página...
+        </div>;
+      </>
     );
+  }
+
+  return (
+    <>
+      <div className={style.container}>
+        <NavBar />
+        <div className={style.main}>
+          <Head />
+          <div className={style.content}>
+            <div className={style.card}>
+              <div className={style.containerGrafico}>
+                <BarChart donations={data.data} />
+              </div>
+              <hr />
+              <div className={style.containerFiltro}>
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                />
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                />
+                <button onClick={handleDateChange}>
+                  Filtro por período
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className={style.content}>
+            <div className={style.card}>
+              <div className={style.containerKpiHistorico}>
+                <div className={style.kpiHistorico}>
+                  <p>{newDonation} Novas Doações</p>
+                </div>
+              </div>
+              <hr />
+
+              {/*
+              {data.data && data.data.map((data, index) => (
+                <div key={index}>
+                  <ListaDoacoes data={data} />
+                </div>
+              ))}
+              */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Historico;

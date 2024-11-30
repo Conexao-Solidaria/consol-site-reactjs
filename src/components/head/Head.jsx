@@ -2,32 +2,54 @@ import React, { useState } from "react";
 import styles from "./Head.module.css";
 import iconPerfil from "../../utils/assets/icon_perfil_usuario.png";
 import iconConfig from "../../utils/assets/icon_configuracoes.png";
-import iconTrocarConta from "../../utils/assets/icon_trocar.png";
-import iconSair from "../../utils/assets/icon_sair.png"
+import iconSair from "../../utils/assets/icon_sair.png";
+import { useNavigate } from "react-router-dom";
 
 const Head = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
-    return (
-        <>
-            <div className={styles.container}>
-                <a><img src={iconConfig} alt="Icone de configuração" /></a>
-                <h3>SGD</h3>
+  const config = () => {
+    navigate("/configuracoes");
+  }
 
-                <button onClick={toggleMenu}><img src={iconPerfil} alt="Icone de perfil" /></button>
+  const logOut = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("usuario");
+    navigate("/login");
+  };
 
-                <nav className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
-                    <ul>
-                        <li><a href="#home">  <img src={iconTrocarConta} />  Trocar de Usuário</a></li>
-                        <li><a href="#about"> <img src={iconSair} />  Sair</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </>
-    );
+  return (
+    <>
+      {/* Container com header */}
+      <div className={styles.container}>
+        <img
+          className={styles.conf}
+          src={iconConfig}
+          alt="Icone de configuração"
+          onClick={config}
+        />
+
+        <img
+          className={styles.logo}
+          src={iconPerfil}
+          alt="Icone de perfil"
+          onClick={toggleMenu}
+        />
+      </div>
+
+      <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
+        <div className={styles.menuItem} onClick={logOut}>
+          <img src={iconSair} alt="Icone de sair" />
+          <p>Sair</p>
+        </div>
+      </div>
+    </>
+  );
 };
+
 export default Head;

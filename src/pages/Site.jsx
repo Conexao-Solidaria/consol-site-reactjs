@@ -1,11 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Site = () => {
-    return (
-        <>
-            
-        </>
-    );
+  return <></>;
 };
 export default Site;
