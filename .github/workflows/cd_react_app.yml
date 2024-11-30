@@ -1,0 +1,31 @@
+name: CD React App
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+  
+jobs:
+  build_and_run_docker_image:
+    name: Build and Run Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Make Scripts Executable
+        run: |
+          chmod +x build.sh
+          chmod +x run.sh
+
+      - name: Build Docker Image
+        run: ./build.sh
+
+      - name: Run Docker Container
+        run: ./run.sh
