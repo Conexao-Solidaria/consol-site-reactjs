@@ -80,7 +80,7 @@ const Historico = () => {
 
   return (
     <>
-      <div className={style.container}>
+          <div className="content">
         <NavBar />
         <div className={style.main}>
           <Head />
@@ -108,7 +108,7 @@ const Historico = () => {
             </div>
           </div>
 
-          <div className={style.content}>
+          <div className="content">
             <div className={style.card}>
               <div className={style.containerKpiHistorico}>
                 <div className={style.kpiHistorico}>

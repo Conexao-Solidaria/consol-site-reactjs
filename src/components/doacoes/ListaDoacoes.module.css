@@ -5,88 +5,39 @@
   src: url("../../utils/fonts/Inter-VariableFont_slnt\,wght.ttf");
 }
 
-html,
-body {
-  margin: 0%;
-  padding: 0%;
-  font-family: Inter;
-  overflow-y: auto;
-}
-
-.container p {
-  margin: 0;
-  font-size: 12px;
-  color: var(--global-darker-grey);
-}
-
-.container {
+.linhaDoacao {
   display: flex;
-  justify-content: space-between;
-  padding: 16px 24px;
-}
-
-.container:hover {
-  background-color: var(--global-grey);
-  color: var(--global-black);
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
   cursor: pointer;
 }
 
-.container:hover p {
-  color: var(--global-black);
+.linhaDoacao:hover {
+  background-color: var(--global-light-grey);
 }
 
-.container span {
-  font-weight: 700;
-  font-size: 20px;
+.linhaDoacao img {
+  width: 4rem;
+  height: 4rem;
 }
 
-.donatarioDetalhes {
+.linhaDoacao * {
+  font-size: 1rem;
+}
+
+.linhaDoacao .texto p {
+  font-size: 1rem;
+}
+
+.linhaDoacao .texto b {
+  font-size: 1.5rem;
+}
+
+.linhaDoacao .esq {
   display: flex;
-  width: 100%;
-  gap: 16px;
-}
-
-.iconContainer {
-  display: flex;
-  height: auto;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.iconContainer img {
-  height: 35px;
-  width: auto;
-}
-
-.contentContainer {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  text-align: left;
-}
-
-.detalhesExtras {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: end;
-}
-
-.containerNonClick {
-  padding: 16px 24px;
-}
-
-.containerNonClick .contentContainer {
-  width: 100%;
-}
-
-@media (max-width: 950px) {
-  .detalhesExtras {
-    display: none;
-  }
-
-  .contentContainer {
-    width: 100%;
-  }
+  flex: 1;
+  gap: 1rem;
 }

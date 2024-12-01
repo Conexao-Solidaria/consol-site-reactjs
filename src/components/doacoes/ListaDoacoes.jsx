@@ -38,8 +38,8 @@ const ListaDoacoes = ({ data, isClickable }) => {
   if (isClickable) {
     return (
       <>
-        <div className={style.container} onClick={handleModal}>
-          <div className={style.donatarioDetalhes}>
+        <div className={style.linhaDoacao} onClick={handleModal}>
+          <div className={style.esq}>
             <div className={style.iconContainer}>
               <img src={iconDoacoes} alt="" />
             </div>
@@ -67,15 +67,13 @@ const ListaDoacoes = ({ data, isClickable }) => {
   } else {
     return (
       <>
-        <div className={style.containerNonClick} style={{ backgroundColor: 'inherit', color: 'inherit', cursor: 'default' }}>
-          <div className={style.donatarioDetalhes}>
-            <div className={style.iconContainer}>
-              <img src={iconDoacoes} alt="" />
-            </div>
-            <div className={style.contentContainer}>
-              <p>Doação nº {data.id} </p>
-              <b>Doação feita em {formatarData(data.dataDoacao)}</b>
-            </div>
+        <div className={style.linhaDoacao} >
+          <div className={style.iconContainer}>
+            <img src={iconDoacoes} alt="" />
+          </div>
+          <div className={style.texto}>
+            <p>Doação nº {data.id} </p>
+            <b>Doação feita em {formatarData(data.dataDoacao)}</b>
           </div>
         </div>
       </>

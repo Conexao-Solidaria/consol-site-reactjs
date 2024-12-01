@@ -13,6 +13,10 @@ const Head = () => {
     setIsOpen(!isOpen);
   };
 
+  const config = () => {
+    navigate("/configuracoes");
+  }
+
   const logOut = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("usuario");

@@ -48,7 +48,7 @@ const InputPesquisa = ({
         mask={mask}
         value={value}
         onChange={handleChange}
-        className={style.input}
+        className={style.inputPesquisa}
         placeholder={placeholder}
       >
         {(inputProps) => (

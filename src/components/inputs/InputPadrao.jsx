@@ -33,7 +33,7 @@ const InputPadrao = ({
   };
 
   return (
-    <div className={style.container}>
+      <div className={style.container}>
       {label && <label className={style.label}>{label}</label>}
       <div className={style.inputContainer}>
         <InputMask
