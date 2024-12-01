@@ -46,11 +46,19 @@ jobs:
           name: build-artifacts 
           path: build
 
+      
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
+      - name: Recuperar build
+        uses: actions/download-artifact@v4
+        with: 
+          name: build-artifacts
+          path: ./
+          
       - name: Criar arquivo .pem a partir da variável DEPLOY_KEY e fazer o chmod 400 nele
         id: geracao-arquivo-pem
         run: |
