@@ -46,7 +46,8 @@ jobs:
           name: build-artifacts 
           path: build
 
-      
+      - name: Listar arquivos de build 
+        run: ls -lha build
 
   deploy:
     needs: build
