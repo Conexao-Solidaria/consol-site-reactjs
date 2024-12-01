@@ -19,7 +19,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Definindo a versão do Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with: 
           node-version: '20'
@@ -30,13 +30,13 @@ jobs:
       - name: Run npm build
         run: CI=false npm run build
 
-      - name: Gerar artefato GitHub com os arquivos de build 
+      - name: Upload GitHub build artifacts 
         uses: actions/upload-artifact@v4 
         with: 
           name: build-artifacts 
           path: build
 
-      - name: Listar arquivos recuperados 
+      - name: List directory 
         run: ls -lha
 
   deploy:
@@ -44,22 +44,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Recuperar build
+      - name: Recover uploaded build
         uses: actions/download-artifact@v4
         with: 
           name: build-artifacts
           path: build
 
-      - name: Listar arquivos recuperados 
+      - name: List directory 
         run: ls -lha
           
-      - name: Criar arquivo .pem a partir da variável DEPLOY_KEY e fazer o chmod 400 nele
+      - name: Generate .pem and change key permissions
         id: geracao-arquivo-pem
         run: |
           echo "${{ secrets.DEPLOY_KEY }}" >> $HOME/${{ secrets.NOME_ARQUIVO_PEM }}
           chmod 400 $HOME/${{ secrets.NOME_ARQUIVO_PEM }}
 
-      - name: Enviar arquivos de build p/ a EC2 
+      - name: Send build files to EC2 
         uses: appleboy/scp-action@master
         with: 
           host: ${{ secrets.DEPLOY_HOST }} 
