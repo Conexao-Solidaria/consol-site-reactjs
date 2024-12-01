@@ -58,10 +58,10 @@ jobs:
         uses: actions/download-artifact@v4
         with: 
           name: build-artifacts
-          path: ./build
+          path: ./
 
       - name: Listar arquivos recuperados 
-        run: ls -lha ./build
+        run: ls -lha ./
           
       - name: Criar arquivo .pem a partir da variável DEPLOY_KEY e fazer o chmod 400 nele
         id: geracao-arquivo-pem
