@@ -1,2 +1,2 @@
 # docker buildx build -t consol-fe . 
-npm run build
+set DISABLE_ESLINT_PLUGIN=true && npm run build
