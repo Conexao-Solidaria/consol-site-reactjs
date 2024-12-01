@@ -46,9 +46,6 @@ jobs:
           name: build-artifacts 
           path: build
 
-      - name: Listar arquivos de build 
-        run: ls -lha build
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -59,6 +56,9 @@ jobs:
         with: 
           name: build-artifacts
           path: ./
+
+      - name: Listar arquivos recuperados 
+        run: ls -lha
           
       - name: Criar arquivo .pem a partir da variável DEPLOY_KEY e fazer o chmod 400 nele
         id: geracao-arquivo-pem
