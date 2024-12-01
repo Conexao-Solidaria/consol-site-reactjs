@@ -73,5 +73,5 @@ jobs:
           username: root 
           key: ${{ secrets.DEPLOY_KEY }} 
           source: "./build/*" 
-          target: "./home/ubuntu/consol-reactjs"
+          target: "/ubuntu/consol-reactjs"
       
