@@ -37,6 +37,12 @@ jobs:
       - name: Build Docker Image
         run: ./build.sh
 
+      - name: Gerar artefato GitHub com os arquivos de build 
+        uses: actions/upload-artifact@v4 
+        with: 
+          name: build-artifacts 
+          path: build
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
