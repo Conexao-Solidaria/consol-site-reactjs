@@ -73,7 +73,7 @@ const PesquisaDoacao = () => {
             justifyContent: "center",
             alignItems: "center",
             height: "100vh",
-              fontSize: "2rem",
+            fontSize: "2rem",
           }}>
           Carregando página...
         </div>;
@@ -84,14 +84,10 @@ const PesquisaDoacao = () => {
   return (
     <>
       <div className={style.container}>
-        <div className={style.navbarContainer}>
-          <NavBar />
-        </div>
-        <div className={style.containerGeral}>
-          <div className={style.containerHead}>
-            <Head />
-          </div>
-          <div className={style.containerConteudo}>
+        <NavBar />
+        <div className={style.main}>
+          <Head />
+          <div className={style.content}>
             <div className={style.containerPesquisa}>
               <h2>Pesquisar titular da doação:</h2>
               <input
@@ -101,7 +97,9 @@ const PesquisaDoacao = () => {
                 onChange={handleSearch}
               />
             </div>
-            <div className={style.containerDoacoes}>
+          </div>
+          <div className={style.content}>
+            <div className={style.card}>
               <div className={style.containerFiltro}>
                 <div className={style.botoes}>
                   <BotaoPadrao
@@ -110,6 +108,7 @@ const PesquisaDoacao = () => {
                   />
                 </div>
               </div>
+    <hr />
               <div className={style.containerLista}>
                 {Array.isArray(data) && data.length > 0 ? (
                   data.map((item, index) => (

@@ -62,8 +62,7 @@
 .modal .icon {
   justify-content: center;
   align-items: center;
-  width: 30%;
-  height: auto;
+  height: 5rem;
 }
 
 .background {

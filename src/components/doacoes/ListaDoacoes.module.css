@@ -24,10 +24,20 @@
   height: 4rem;
 }
 
+.linhaDoacao * {
+  font-size: 1rem;
+}
+
 .linhaDoacao .texto p {
   font-size: 1rem;
 }
 
 .linhaDoacao .texto b {
   font-size: 1.5rem;
+}
+
+.linhaDoacao .esq {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
 }

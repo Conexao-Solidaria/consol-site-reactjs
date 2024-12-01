@@ -39,7 +39,7 @@ const ListaDoacoes = ({ data, isClickable }) => {
     return (
       <>
         <div className={style.linhaDoacao} onClick={handleModal}>
-          <div className={style.donatarioDetalhes}>
+          <div className={style.esq}>
             <div className={style.iconContainer}>
               <img src={iconDoacoes} alt="" />
             </div>
