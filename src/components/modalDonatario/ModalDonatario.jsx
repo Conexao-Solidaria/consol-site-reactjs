@@ -47,7 +47,6 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
 
         try {
             const response = await api.get(`/doacoes/por-nome`, yourConfig);
-            console.log(response.data)
             setDataDoacoes(response.data);
         } catch (error) {
             console.log("Erro ao buscar doacoes: ", error);

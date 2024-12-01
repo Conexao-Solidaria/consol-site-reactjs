@@ -34,7 +34,7 @@ const EditarFamilia = () => {
 
         try {
             const response = await api.get(
-                `/familias/${sessionStorage.getItem("idDonatarioEdicao")}`,
+                `/familias/${sessionStorage.getItem("idFamiliaEdicao")}`,
                 yourConfig,
             );
             let dados = response.data;
@@ -44,7 +44,7 @@ const EditarFamilia = () => {
             setNumeroCasa(dados.numeroCasa)
             setRenda(dados.renda)
         } catch (error) {
-            console.log("Erro ao buscar titular: ", error);
+            console.log("Erro ao buscar familia: ", error);
         }
     };
 
