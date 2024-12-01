@@ -11,13 +11,18 @@ on:
       - dev
   
 jobs:
-  build_and_run_docker_image:
-    name: Build and Run Docker Image
+  build:
+    name: Build and Configure Versions
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      - name: Definindo a versão do React
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '22'
 
       - name: Make Scripts Executable
         run: |
@@ -33,8 +38,6 @@ jobs:
       - name: Build Docker Image
         run: ./build.sh
 
-      - name: Run Docker Container
-        run: ./run.sh
 
   deploy:
     needs: build_and_run_docker_image  # segundo grupo de steps
