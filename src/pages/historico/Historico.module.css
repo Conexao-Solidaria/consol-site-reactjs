@@ -5,7 +5,10 @@
   src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
-html,
+*{
+  box-sizing: border-box;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -15,6 +18,7 @@ html,
   max-height: 100vh;
   gap: 1rem;
   padding-bottom: 1rem;
+  box-sizing: border-box;
 }
 
 .container {
@@ -32,16 +36,19 @@ html,
 }
 
 .card {
+  flex: 1; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
   background-color: var(--global-white);
   border-radius: 10px;
-  width: 100%;
-  padding: 1vh;
-  margin: 0;
+  width: 100%; 
+  max-height: calc(50vh - 2rem); 
+  padding: 1rem;
   box-shadow: var(--global-box-shadow);
+  overflow: hidden; 
+  box-sizing: border-box; 
 }
 
 .containerGrafico {
@@ -50,7 +57,8 @@ html,
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  flex: 1;
+  overflow: hidden;
 }
 
 .main hr {
@@ -111,9 +119,10 @@ html,
 
 .listaHistorico {
   width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: auto; 
 }

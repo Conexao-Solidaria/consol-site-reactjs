@@ -117,13 +117,11 @@ const Historico = () => {
               </div>
               <hr />
 
-              {/*
-              {data.data && data.data.map((data, index) => (
-                <div key={index}>
+              <div className={style.listaHistorico}>
+                {data.data && data.data.map((data, index) => (
                   <ListaDoacoes data={data} />
-                </div>
-              ))}
-              */}
+                ))}
+              </div>
             </div>
           </div>
         </div>
