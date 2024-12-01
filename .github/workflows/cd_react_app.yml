@@ -37,8 +37,8 @@ jobs:
       - name: Run npm install
         run: npm install
 
-      - name: Build Docker Image
-        run: ./build.sh
+      - name: Run npm build
+        run: npm run build-no-lint --loglevel verbose
 
       - name: Gerar artefato GitHub com os arquivos de build 
         uses: actions/upload-artifact@v4 
