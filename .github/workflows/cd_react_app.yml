@@ -35,3 +35,16 @@ jobs:
 
       - name: Run Docker Container
         run: ./run.sh
+
+  deploy:
+    needs: build_and_run_docker_image  # segundo grupo de steps
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Criar arquivo .pem a partir da variável DEPLOY_KEY e fazer o chmod 400 nele
+        id: geracao-arquivo-pem # o id é opcional, mas é bom para fins de log
+        run: |
+          echo "${{ secrets.DEPLOY_KEY }}" >> $HOME/${{ secrets.NOME_ARQUIVO_PEM }}
+          chmod 400 $HOME/${{ secrets.NOME_ARQUIVO_PEM }}
+        # aqui geramos um arquivo .pem a partir de seu conteúdo (que é apenas um arquivo texto)  
+
