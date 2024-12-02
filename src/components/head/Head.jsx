@@ -32,12 +32,13 @@ const Head = () => {
       {/* Container com header */}
       <div className={styles.container}>
         <img
+          className={styles.conf}
           src={iconConfig}
           alt="Icone de configuração"
           onClick={goToSettings}
         />
 
-        <img src={iconPerfil} alt="Icone de perfil" onClick={toggleMenu} />
+        <img className={styles.logo} src={iconPerfil} alt="Icone de perfil" onClick={toggleMenu} />
       </div>
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
