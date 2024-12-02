@@ -5,37 +5,59 @@ import style from "./EditarFamilia.module.css";
 import { useNavigate } from 'react-router-dom';
 import image from "../../utils/assets/familia1.png";
 import api from '../../api';
+import InputPadrao from '../../components/inputs/InputPadrao';
+import { toast } from 'react-toastify';
 
 const EditarFamilia = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
-			navigate("/login")
-		}
-	})
+        if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") == undefined) {
+            navigate("/login");
+        } else {
+            buscarDadoFamilia();
+        }
+    }, []);
 
     const [nome, setNome] = useState('');
     const [cep, setCep] = useState('');
     const [numeroCasa, setNumeroCasa] = useState('');
     const [renda, setRenda] = useState('');
 
-    useEffect(() => {
-        if (sessionStorage.getItem("token") == null && sessionStorage.getItem("user") === undefined) {
-            navigate("/");
+    const buscarDadoFamilia = async () => {
+        const yourConfig = {
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+                "Content-Type": "application/json",
+            },
+        };
+
+        try {
+            const response = await api.get(
+                `/familias/${sessionStorage.getItem("idFamiliaEdicao")}`,
+                yourConfig,
+            );
+            let dados = response.data;
+            
+            setNome(dados.nome)
+            setCep(dados.cep)
+            setNumeroCasa(dados.numeroCasa)
+            setRenda(dados.renda)
+        } catch (error) {
+            console.log("Erro ao buscar familia: ", error);
         }
-    }, [navigate]);
+    };
 
     const validarCampos = () => {
         if (!nome || !cep || !numeroCasa || !renda) {
             alert("Todos os campos são obrigatórios.");
             return false;
         }
-        if (!/^[0-9]{5}-?[0-9]{3}$/.test(cep)) {
+        else if (!/^[0-9]{5}-?[0-9]{3}$/.test(cep)) {
             alert("CEP inválido. Use o formato 12345-678.");
             return false;
         }
-        if (parseFloat(renda) <= 0) {
+        else if (parseFloat(renda) <= 0) {
             alert("A renda deve ser um valor maior que zero.");
             return false;
         }
@@ -52,27 +74,25 @@ const EditarFamilia = () => {
             }
         };
 
-        // Gerando a data atual no formato YYYY-MM-DD
         const today = new Date().toISOString().split('T')[0];
 
         const bodyDoacao = {
             nome,
             cep,
             numeroCasa,
-            renda,
-            dataCadastro: today
+            renda
         };
 
         try {
-            await api.post(`familias`, bodyDoacao, yourConfig);
-            alert("Família atualizada com sucesso!");
-            navigate("/dashboard");
-        } catch (error) {
+            await api.put(`familias/${sessionStorage.getItem("idFamiliaEdicao")}`, bodyDoacao, yourConfig);
+            toast.success("DADOS DE FAMILIA ATUALIZADOS")
+        }
+        catch (error) {
             console.error('Erro ao salvar os dados:', error.response?.data || error.message);
-            alert(`Erro ao atualizar a família: ${error.response?.data?.message || 'Valores inválidos'}`);
+            toast.error(`Erro ao atualizar a família: ${error.response?.data?.message || 'Valores inválidos'}`);
         }
     };
-
+    
     return (
         <>
             <div className={style.container}>
@@ -88,50 +108,46 @@ const EditarFamilia = () => {
                             </div>
                             <div className={style.containerInfosCadastro}>
                                 <div className={style.containerFormularioCadastro}>
-                                    <div className={style.campo3Formulario}>
-                                        <span>Nome:</span>
-                                        <input
-                                            className={style.inputLinha3}
-                                            placeholder='Nome'
-                                            type="text"
-                                            value={nome}
-                                            onChange={(e) => setNome(e.target.value)}
-                                        />
-                                    </div>
-
-                                    <div className={style.campo2Formulario}>
-                                        <span>CEP:</span>
-                                        <input
-                                            className={style.inputLinha2}
-                                            placeholder='CEP'
-                                            type="text"
-                                            value={cep}
-                                            onChange={(e) => setCep(e.target.value)}
-                                        />
-                                    </div>
-
-                                    <div className={style.campo1Formulario}>
-                                        <div>
-                                            <span>Número da casa:</span>
-                                            <input
-                                                className={style.inputLinha1}
-                                                placeholder='Número'
-                                                type="text"
-                                                value={numeroCasa}
-                                                onChange={(e) => setNumeroCasa(e.target.value)}
-                                            />
-                                        </div>
-                                        <div>
-                                            <span>Renda:</span>
-                                            <input
-                                                className={style.inputLinha1}
-                                                placeholder='R$000,000,00'
-                                                type="text"
-                                                value={renda}
-                                                onChange={(e) => setRenda(e.target.value)}
-                                            />
-                                        </div>
-                                    </div>
+                                <div className={style.formLine}>
+										<InputPadrao
+											className={style.nomeCompleto}
+											label="Nome da família:"
+											placeholder="Nome"
+											onlyLetters={true}
+											value={nome}
+											onChange={(value) => setNome(value)}
+											id={"nome"}
+										/>
+										<InputPadrao
+											className={style.nomeCompleto}
+											label="Renda:"
+											placeholder="R$000,000,00"
+											onlyLetters={false}
+											value={renda}
+											onChange={(value) => setRenda(value)}
+											id={"renda"}
+										/>
+									</div>
+									<div className={style.formLine}>
+										<InputPadrao
+											className={style.nomeCompleto}
+											label="Número da casa:"
+											placeholder="Número"
+											onlyLetters={false}
+											value={numeroCasa}
+											onChange={(value) => setNumeroCasa(value)}
+											id={"numeroCasa"}
+										/>
+										<InputPadrao
+											className={style.nomeCompleto}
+											label="CEP:"
+											placeholder="cep"
+											onlyLetters={false}
+											value={cep}
+											onChange={(value) => setCep(value)}
+											id={"cep"}
+										/>
+									</div>
 
                                     <div className={style.ContainerBotao}>
                                         <button className={style.botao} onClick={editarFamilia}>

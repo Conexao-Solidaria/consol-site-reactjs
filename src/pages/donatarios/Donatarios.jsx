@@ -126,11 +126,6 @@ function Donatarios() {
           </div>
         </div>
       </div>
-      <div className={style.containerLista}>
-        {data.map((donatario, index) => (
-          <DonatarioDetalhes key={index} dados={donatario} />
-        ))}
-      </div>
     </>
   );
 }
