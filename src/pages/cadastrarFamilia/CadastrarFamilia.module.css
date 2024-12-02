@@ -1,293 +1,275 @@
 @import url("../../utils/globals.css");
 
 @font-face {
-	font-family: Inter;
-	src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
+  font-family: Inter;
+  src: url("../../utils/fonts/Inter-VariableFont_slnt,wght.ttf");
 }
 
-html,
-body {
-	margin: 0%;
-	padding: 0%;
-	overflow-y: auto;
-	overflow-y: visible;
-	background-color: var(--global-baby-blue);
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
 }
 
 .container {
-	display: flex;
-	width: 100%;
-	height: 100%;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
 }
 
-.containerHead {
-	width: 100%;
-	height: auto;
+.content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0rem 1rem;
 }
 
-.containerConteudo {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
-	width: 100%;
-	height: 90vh;
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color: var(--global-white);
+  border-radius: 10px;
+  width: 100%;
+  max-height: calc(93vh - 2rem);
+  padding: 1rem;
+  box-shadow: var(--global-box-shadow);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.inputDoacao {
-	width: 300px;
-	height: 20px;
-	border-radius: 8px;
-	border-width: 0.8px;
-	padding-left: 10px;
+.main hr {
+  background-color: var(--global-light-grey);
+  border: none;
 }
 
-.containerCadastro {
-	background-color: var(--global-white);
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	width: 95%;
-	height: 95%;
-	box-shadow: 4px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
-	margin: 20px;
+.tituloPagina {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--global-white);
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  color: var(--global-black);
 }
 
-.containerTituloCadastro {
-	width: 99%;
-	height: 5vh;
-	color: rgb(0, 0, 0);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 0.3vh;
-	text-wrap: nowrap;
-	padding: 8px 0px 8px 10px;
+.tituloPagina p {
+  color: var(--global-black);
+  font-size: 1rem;
 }
 
-.containerTitulo {
-	width: 7%;
-	height: 20px;
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	margin: 3px;
-	padding: 5px 35px 5px 35px;
+.cadastro {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+
+}
+
+.containerFormulario {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: calc(100% - 2rem);
+  background-color: var(--global-white);
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.formLine {
+  display: flex;
+  gap: 1rem;
+}
+
+.formLine#formLine1 {
+  flex-direction: column;
+}
+
+.formLine#formLine2 {
+  justify-content: end;
+}
+
+.formulario button {
+  width: inherit;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.imagem {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagem img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.dropdown {
+  border-radius: 10px;
+  border: solid 1px #ccc;
+  color: #797979;
+  background-color: #fff;
+  padding: 0.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .containerInfosCadastro {
-	width: 100%;
-	height: 80vh;
-	display: flex;
-	padding: 2vh;
-	padding-left: 12vh;
-	justify-content: end;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  padding: 2vh;
+  padding-left: 12vh;
+  justify-content: end;
 }
 
 .containerFormularioCadastro {
-	width: 65%;
-	height: 10vh;
-	height: auto;
-	display: flex;
-	flex-direction: column;
+  width: 65%;
+  height: 10vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .campo1Formulario input {
-	width: 19.2vw;
-	padding: 8px 6px;
+  width: 19.2vw;
+  padding: 8px 6px;
 }
 
 .containerImagemCadastro {
-	width: 50%;
-	height: 80vh;
-	margin-left: 15vh;
+  width: 50%;
+  height: 80vh;
+  margin-left: 15vh;
 }
 
 .containerImage img {
-	height: 77vh;
-	border-radius: 10px;
+  height: 77vh;
+  border-radius: 10px;
 }
 
 .ContainerBotao {
-	width: 100%;
-	height: auto;
-	display: flex;
-	justify-content: flex-end;
-	padding: 0px 0px 5px;
-	margin: 20px -20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 0px 5px;
+  margin: 20px -20px;
 }
 
 .botao {
-	width: 20vh;
-	height: 6vh;
-	border-radius: 10px;
-	background-color: #6c9bd9;
-	color: white;
-	border-width: 0px;
+  width: 20vh;
+  height: 6vh;
+  border-radius: 10px;
+  background-color: #6c9bd9;
+  color: white;
+  border-width: 0px;
 }
 
 
 .tituloCadastro {
-	color: var(--global-light-grey-houver);
-	font-family: Inter;
-	font-weight: 400;
-	font-size: 2vh;
+  color: var(--global-light-grey-houver);
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 2vh;
 }
 
 .campo1Formulario {
-	width: 50%;
-	height: 5vh;
-	display: flex;
-	justify-content: space-between;
-	gap: 1vh;
-	align-items: center;
+  width: 50%;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  gap: 1vh;
+  align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
-
 input {
-	height: 3vh;
+  height: 3vh;
 }
 
 
 .formLine {
-	display: flex;
-	gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .formLine#formLine3 {
-	display: grid;
-	grid-template-columns: 1fr 0.9fr 2fr;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr 2fr;
 }
 
 .formLine#formLine3 .dataNascimento {
-	grid-column: span 1;
+  grid-column: span 1;
 }
 
 .formLine#formLine3 .estadoCivil {
-	grid-column: span 1;
+  grid-column: span 1;
 }
 
 .formLine#formLine3 .escolaridade {
-	grid-column-end: span 1;
+  grid-column-end: span 1;
 }
 
 .formLine#formLine5 {
-	display: grid;
-	grid-template-columns: 1fr 3fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }
 
 .formLine#formLine5 .trabalhando {
-	grid-column: span 1;
+  grid-column: span 1;
 }
 
 .formLine#formLine5 .ocupacao {
-	grid-column: span 3;
+  grid-column: span 3;
 }
 
 .formLine#formLine7 {
-	justify-content: end;
+  justify-content: end;
 }
 
 .formLine button {
-	width: 120px;
-	height: 40px;
+  width: 120px;
+  height: 40px;
 }
 
 .imagem {
-	width: 100%;
-	margin-left: 10vw;
+  width: 50%;
+  max-height: 83vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .imagem img {
-	width: 95%;
-	height: 95%;
-	object-fit: cover;
-	border-radius: 1vh;
-}
-
-@media screen and (max-width: 1024px) {
-	.containerGeral {
-		padding: 10px;
-	}
-
-	.containerCard {
-		width: 30%;
-		height: 250px;
-		text-align: center;
-	}
-
-	.containerCard p {
-		padding: 0;
-	}
-
-	.graficoIdade {
-		width: 0px;
-	}
-
-	.containerListaDoacoes img {
-		width: 40px;
-		height: 40px;
-	}
-
-	.containerListaDoacoes .containerInformacoes {
-		display: flex;
-		justify-content: end;
-		width: 60vw;
-	}
-}
-
-@media screen and (max-width: 750px) {
-	.containerGeral {
-		flex-direction: column;
-		width: 80%;
-	}
-
-	.containerCard {
-		width: 90%;
-		padding: 0px;
-		height: auto;
-		margin-bottom: 10px;
-	}
-
-	.containerGraficos {
-		width: 80%;
-		height: 100%;
-		flex-direction: column;
-	}
-
-	.containerGraficos .containerIdade {
-		width: 95%;
-		margin-bottom: 10px;
-	}
-
-	.containerGraficos .containerDoacoes {
-		width: 95%;
-		margin-bottom: 50px;
-	}
-
-	.containerListaDoacoes img {
-		width: 30px;
-		height: 30px;
-	}
-
-	.containerListaDoacoes {
-		font-size: 12px;
-	}
-
-	.containerListaDoacoes .containerInformacoes {
-		display: flex;
-		justify-content: end;
-		width: 45vw;
-	}
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
 }
