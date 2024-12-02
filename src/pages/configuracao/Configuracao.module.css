@@ -76,7 +76,7 @@
   align-items: center;
 }
 
-button {
+.main button {
   display: flex;
   background-color: var(--global-grey);
   color: var(--global-white);
