@@ -122,3 +122,7 @@
 .button1 {
   background-color: green; 
 }
+
+.main button {
+  cursor: pointer;
+}
