@@ -36,16 +36,14 @@ function Configuracao() {
       <div className={style.container}>
         <NavBar />
         <div className={style.main}>
-          <div className={style.containerHead}>
-            <Head />
-          </div>
-          <div className={style.temas}>
-            <span className={style.tituloTexto}>Temas e Acessibilidade</span>
-            <hr className="hr" />
-            <div className={style.temasItens}>
-              <div>
+          <Head />
+          <div className={style.content}>
+            <div className={style.card}>
+              <span className={style.titulo}>Temas e Acessibilidade</span>
+              <hr />
+              <div className={style.temasItens}>
                 <span>Modo daltonismo:</span>
-                <select value={filterValue} id="daltonismo" name="daltonismo" className={style.select} onChange={handleSelectChange}>
+                <select value={filterValue} id="daltonismo" name="daltonismo" className={style.dropdown} onChange={handleSelectChange}>
                   <option value="1">Sem filtro</option>
                   <option value="2">Pronatopia</option>
                   <option value="3">Deuteranopia</option>
@@ -54,17 +52,20 @@ function Configuracao() {
               </div>
             </div>
           </div>
-          <div className={style.suporte}>
-            <h2>Suporte</h2>
-            <div className={style.faq}>
-              <span>FAQ - Perguntas frequentes</span>
-              <input type="button" />
+          <div className={style.content}>
+            <div className={style.card}>
+              <span className={style.titulo}>Suporte</span>
+              <hr />
+              <div className={style.faq}>
+                <span>FAQ - Perguntas frequentes</span>
+                <button>{">"}</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </>
-      );
+  );
 }
 
-      export default Configuracao;
+export default Configuracao;

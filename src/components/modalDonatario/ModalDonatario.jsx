@@ -158,7 +158,7 @@ const ModalDonatario = ({ data, isVisible, onClose }) => {
                                         <img
                                             src={iconPerfil}
                                             alt="Icone de Perfil"
-                                            className={style.iconPerfil}
+                                            className={style.icon}
                                         />
                                         <div className={style.infoWrapper}>
                                             <div className={modalStyle.info}>

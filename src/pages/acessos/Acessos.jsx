@@ -126,81 +126,84 @@ const Acessos = () => {
       <div className={style.container}>
         <NavBar />
         <div className={style.main}>
-          <div className={style.containerHead}>
-            <Head />
+          <Head />
+          <div className={style.content}>
+            <div className={style.containerPesquisa}>
+              <span className={style.tituloTexto}>Pesquisar Usuários:</span>
+              <input
+                type="text"
+                placeholder="Pesquisar Usuário"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
           </div>
-          <div className={style.pesquisa}>
-            <span className={style.tituloTexto}>Pesquisar Usuários:</span>
-            <input
-              type="text"
-              placeholder="Pesquisar Usuário"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          <div className={style.gerenciar}>
-            <div className={style.gerenciarTitulo}>
+          <div className={style.content}>
+            <div className={style.card}>
               <div className={style.titulo}>
-                <span className={style.tituloTexto}>Controle de Acessos Pendentes</span>
+                <span className={style.tituloTexto}>
+                  Controle de Acessos Pendentes
+                </span>
               </div>
-              <hr className="hr" />
-            </div>
-            <div className={style.cartoes}>
-              {filteredUsuarios.map((usuario, index) => (
-                <div key={index} className={style.cartao}>
-                  <div>
-                    <h2>{usuario.nomeUsuario}</h2>
-                    <span>{usuario.email}</span>
-                  </div>
-                  <div className={style.buttons}>
-                    <button
-                      className={style.button1}
-                      onClick={() => handleAccept(usuario.idUsuario)}
-                    >
-                      <i className="material-icons">arrow_forward</i> Aceitar
-                    </button>
-                    <div className={style.checkboxDiv}>
-                      <input type="checkbox" id={usuario.idUsuario} />
-                      <span>Como administrador?</span>
+              <hr />
+              <div className={style.cartoes}>
+                {filteredUsuarios.map((usuario, index) => (
+                  <div key={index} className={style.cartao}>
+                    <div>
+                      <h2>{usuario.nomeUsuario}</h2>
+                      <span>{usuario.email}</span>
                     </div>
-                    <button
-                      className={style.button2}
-                      onClick={() => handleDelete(usuario.idUsuario)}
-                    >
-                      <i className="material-icons">close</i> Negar
-                    </button>
+                    <div className={style.buttons}>
+                      <div className={style.checkboxDiv}>
+                        <input type="checkbox" id={usuario.idUsuario} />
+                        <span>Como administrador?</span>
+                      </div>
+                      <button
+                        className={style.button1}
+                        onClick={() => handleAccept(usuario.idUsuario)}
+                      >
+                        Aceitar
+                      </button>
+                      <button
+                        className={style.button2}
+                        onClick={() => handleDelete(usuario.idUsuario)}
+                      >
+                        Negar
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-          <div className={style.gerenciar}>
-            <div className={style.titulo}>
-              <span className={style.tituloTexto}>Controle de Acessos Dentro do Sistema</span>
-            </div>
-            <div className={style.cartoes}>
-              {filteredUsuariosDentro.map((usuario, index) => (
-                <div key={index} className={style.cartao}>
-                  <div>
-                    <h2>{usuario.nomeUsuario}</h2>
-                    <span>{usuario.email}</span>
-                  </div>
-                  <div>
-                    <button
-                      className={style.button1}
-                      onClick={() => handleAccept(usuario.idUsuario)}
-                    >
-                      <i className="material-icons">arrow_forward</i> Aceitar
-                    </button>
-                    <button
-                      className={style.button2}
-                      onClick={() => handleReject(usuario.idUsuario)}
-                    >
-                      <i className="material-icons">close</i> Retirar acesso
-                    </button>
-                  </div>
-                </div>
-              ))}
+          <div className={style.content}>
+            <div className={style.card}>
+              <div className={style.titulo}>
+                <span className={style.tituloTexto}>
+                  Controle de Acessos Dentro do Sistema
+                </span>
+              </div>
+              <div className={style.cartoes}>
+                {filteredUsuariosDentro.map((usuario, index) => (
+                  <>
+                    <div key={index} className={style.cartao}>
+                      <div>
+                        <h2>{usuario.nomeUsuario}</h2>
+                        <span>{usuario.email}</span>
+                      </div>
+                      <div className={style.buttons}>
+                        <button
+                          className={style.button2}
+                          onClick={() => handleReject(usuario.idUsuario)}
+                        >
+                          Retirar acesso
+                        </button>
+                      </div>
+                    </div>
+                    <hr />
+                  </>
+                ))}
+              </div>
             </div>
           </div>
         </div>
