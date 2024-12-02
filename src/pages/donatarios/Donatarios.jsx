@@ -89,14 +89,10 @@ function Donatarios() {
   return (
     <>
       <div className={style.container}>
-        <div className={style.navbarContainer}>
-          <NavBar />
-        </div>
-        <div className={style.containerGeral}>
-          <div className={style.containerHead}>
-            <Head />
-          </div>
-          <div className={style.containerConteudo}>
+        <NavBar />
+        <div className={style.main}>
+          <Head />
+          <div className={style.content}>
             <div className={style.containerPesquisa}>
               <h2>Pesquisar Donatário:</h2>
               <input
@@ -106,13 +102,18 @@ function Donatarios() {
                 onChange={handleSearch}
               />
             </div>
-            <div className={style.containerDonatarios}>
+          </div>
+          <div className={style.content}>
+            <div className={style.card}>
               <div className={style.containerFiltro}>
                 <div className={style.botoes}>
-                  <BotaoPadrao texto="+ Cadastrar Família" onClick={CadastroFamilia} />
-                  <BotaoPadrao texto="+ Cadastrar Donatário" onClick={CadastroDonatario} />
+                  <BotaoPadrao
+                    texto="+ Cadastrar Família" onClick={CadastroFamilia} />
+                  <BotaoPadrao
+                    texto="+ Cadastrar Donatário" onClick={CadastroDonatario} />
                 </div>
               </div>
+              <hr />
               <div className={style.containerLista}>
                 {data.map((donatario, index) => (
                   <DonatarioDetalhes

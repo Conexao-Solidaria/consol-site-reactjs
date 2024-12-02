@@ -145,18 +145,18 @@ const Dashboard = () => {
                       </div>
                       <hr></hr>
                       <div className={style.legenda}>
-                        <p>
-                          <div style={{ backgroundColor: "#EB4C46" }} />0 - 12
+                        <p style={{fontSize: "1rem", color:"black"}}>
+                          <div style={{backgroundColor: "#EB4C46" }} />0 - 12
                         </p>
-                        <p>
+                        <p style={{fontSize: "1rem", color:"black"}}>
                           <div style={{ backgroundColor: "#104892" }} />
                           13 - 25
                         </p>
-                        <p>
+                        <p style={{fontSize: "1rem", color:"black"}}>
                           <div style={{ backgroundColor: "#DEE8EC" }} />
                           25 - 60
                         </p>
-                        <p>
+                        <p style={{fontSize: "1rem", color:"black"}}>
                           <div style={{ backgroundColor: "#A9A9A9" }} />
                           60+
                         </p>
