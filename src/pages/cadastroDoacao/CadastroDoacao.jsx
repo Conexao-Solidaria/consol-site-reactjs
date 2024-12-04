@@ -77,12 +77,15 @@ const CadastroDoacao = () => {
       let minutes = today.getMinutes();
       let seconds = today.getSeconds();
 
-      if (seconds < 10) {
-        today = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:0${seconds}`;
-      } else {
-        today = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:${seconds}`;
-      }
+      // if (seconds < 10) {
+      //   today = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:0${seconds}`;
+      // } else if (minutes < 10) {
+      //   today = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:${seconds}`;
+      // }
 
+      // Em caso de erro voltar
+      const formatWithZero = (value) => String(value).padStart(2, "0");
+      today = `${yyyy}-${formatWithZero(mm)}-${formatWithZero(dd)} ${formatWithZero(hours)}:${formatWithZero(minutes)}:${formatWithZero(seconds)}`;
 
       const bodyDoacao = {
         descricao: areaTexto.value,
