@@ -178,7 +178,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className={style.card}>
-                    <h1>Quantidade de Doações por mês</h1>
+                    <h1>Quantidade de Doações entregues por mês</h1>
                     <hr></hr>
                     <div className={style.contentGrafico}>
                       <GraficoNumeroDoacoes data={qtdDoacoesMes} />
