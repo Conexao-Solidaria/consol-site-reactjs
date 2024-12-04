@@ -24,6 +24,7 @@ const Dashboard = () => {
     },
     qtdDoacoesMes: {},
   });
+  const [qtdDoacoesMes, setQtdDoacoesMes] = useState(null);
 
   const navigate = useNavigate();
 
@@ -65,8 +66,21 @@ const Dashboard = () => {
     }
   };
 
+  const fetchDataQtdDoacao = async (url) => {
+    try {
+      const uri = `${url}?data=${getDataAtual()}`;
+      const response = await api.get(uri, yourConfig);
+      setQtdDoacoesMes(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchData("/dashboard/data-atual");
+    fetchDataQtdDoacao("/dashboard/data-base")
     const interval = setInterval(
       () => fetchData("/dashboard/data-atual"),
       60000,
@@ -167,7 +181,7 @@ const Dashboard = () => {
                     <h1>Quantidade de Doações por mês</h1>
                     <hr></hr>
                     <div className={style.contentGrafico}>
-                      <GraficoNumeroDoacoes data={data?.qtdDoacoesMes} />
+                      <GraficoNumeroDoacoes data={qtdDoacoesMes} />
                     </div>
                   </div>
                 </div>
